@@ -333,6 +333,7 @@ INPUT fft_bench_small.dat
 INPUT fft_bench_small.dat
 INPUT fft_bench_big.dat
 INPUT fft_bench_big.dat
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmri12.tfm
 INPUT main.aux
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmbx12.pfb
@@ -354,6 +355,8 @@ INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr17.p
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr17.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr8.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr8.pfb
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmri12.pfb
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmri12.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy8.pfb

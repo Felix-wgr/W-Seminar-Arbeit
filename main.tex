@@ -9,6 +9,17 @@
 
 \pgfplotsset{compat=1.18}
 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Korollar}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Bemerkung}
+
 \title{Fourier-Methoden: Theorie und Anwendungen}
 \author{Felix Wager}
 \date{\today}
@@ -321,8 +332,50 @@ Echtzeitaufnahme und Visualisierung, Tonhöhenerkennung oder Noise Cancelling, E
 \subsection{Bild}
 Röntgenbild und Moiré-Filterung, Ergebnisse.
 
-\section{Diskussion}
-\subsection{Bewertung der Ergebnisse}
+\section{Anhang}
+\begin{theorem}\label{thm:orthonorm}
+Die Menge $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ mit $\phi_n:[-\pi, \pi] \to \mathbb{C}, \\ \phi_n(x) = \frac{1}{\sqrt{2\pi}}e^{inx}$ bildet ein Orthonormalsystem.
+\end{theorem}
+
+\begin{proof}
+Ich zeige die Orthonormalität in zwei Schritten: 
+
+\textbf{1. Orthogonalität:}  
+Für $m \neq n$ gilt
+$$\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi}{\phi_n(x) \overline{\phi_m(x)}} = \frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx}$$
+
+Jetzt definiere ich $l := n-m$
+\[\frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx} = \frac{1}{2\pi}\int_{-\pi}^\pi{\cos(lx) + i \sin (lx)} dx\] 
+
+\[= \frac{1}{2\pi l}\left(\int_{-\pi}^\pi{\cos (lx) dx} + i\int_{-\pi}^\pi{ \sin (lx) dx} \right)  = \frac{1}{2\pi l} \left(\sin(lx)\big|_{-l\pi}^{l\pi} - i\cos(lx)\big|_{-l\pi}^{l\pi} \right)\]
+
+\[= \frac{1}{2\pi l} \cdot \left(\sin(l^2\pi) - \sin(-l^2\pi) - i\left(\cos(l^2\pi) - \cos(-l^2\pi)\right)\right) \]
+
+Da $l\in \mathbb{Z}$ ist $l^2 \in \mathbb{Z}$. Ein ganzzahliges Vielfaches von $\pi$
+eingesetzt im Sinus ist zudem immer 0. Denn der Sinus ist eine $2\pi$ periodische Funktion, und da
+sowohl $\sin(0) = 0$, als auch $\sin (\pi) = 0$ ist, ist jedes ganzzahliges Vielfaches von $\pi$ eingesetzt 
+im Sinus 0. Hinzu kommt, dass der Kosinus Achsensymmetrisch bezüglich der Y-Achse ist, also gilt:
+$\cos (x) =  \cos (-x)$. Daraus folgt:
+\[= \frac{1}{2\pi l} \cdot (0 - 0 - i\cdot(\cos(l\pi) - \cos(l\pi))) = \frac{1}{2\pi l} \cdot 0 = 0\]
+
+
+\textbf{2. Normierung:}  
+Für $m = n$ gilt
+
+\[\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi} \phi_n(x) \overline{\phi_n(x)} \, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i(n -n) x}\, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i\cdot0} \, dx\]
+
+\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} 1 \, dx = \frac{1}{2\pi} \cdot x \Big|_{-\pi}^{\pi} = \frac{1}{2\pi} \cdot (\pi-(-\pi)) = 1\]
+
+%\[\int_{-\pi}^{\pi} q_n(x) \cdot \overline{q_n(x)} \, dx\]
+%\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{inx} \cdot e^{-inx} \, dx\]
+%\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i(n-n)x} \, dx\]
+%\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i\cdot0} \, dx\]
+%\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} 1 \, dx = \frac{1}{2\pi} \cdot x \Big|_{-\pi}^{\pi}\]
+%\[= \frac{1}{2\pi} \cdot (\pi-(-\pi)) = 1\]
+
+
+Damit ist gezeigt, dass $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ ein Orthonormalsystem bildet.
+\end{proof}
 \subsection{Stärken und Grenzen}
 \subsection{Bedeutung im größeren Kontext}
 
