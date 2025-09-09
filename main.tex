@@ -30,8 +30,6 @@ Warum Fourier-Methoden heute so wichtig sind.
 \subsection{Aufbau der Arbeit}
 
 \section{Mathematische Grundlagen}
-\subsection{Historischer Hintergrund}
-Fourier und Wärmeleitung.
 \subsection{Komplexe Zahlen und die Eulerformel}
 Um sich die Arbeit mit Fourier Transformationen, Reihen und sonstigem erheblich zu erleichtern ist es sehr sinnvoll mit komplexen Zahlen zu arbeiten. Doch was sind komplexe Zahlen? 
 Komplexe Zahlen sind prinzipiell nichts anderes, als eine Erweiterung der Menge der Reellen Zahlen, welche es ermöglicht die Wurzel von negativen Zahlen zu ziehen. Dafür wird die Wurzel die imaginäre Einheit $i$ definiert. Mathematisch korrekt sieht das wie folgt aus:
@@ -56,7 +54,7 @@ Wenn man den Betrag dieses Ausdrucks bildet, so fällt auf, dass hier das Ergebn
 \includegraphics[scale=0.75]{eulerformel.jpg}
 \end{center}
 
-\subsection{Skalarprodukt von Funktionen und Orthonormalsysteme}
+\subsection{Das Skalarprodukt von Funktionen und Orthonormalsysteme}
 Des Weiteren spielen Orthonormalsysteme eine große Rolle, wenn man sich mit der Fourier Analyse beschäftigt. 
 Allgemein lässt sich sagen, dass ein Orthonormalsystem eine Menge von Vektoren oder Funktionen, aus einem Vektorraum mit Skalarprodukt, 
 sind, welche sowohl orthogonal zueinander, aber auch normiert zu sich selbst sind. 
@@ -81,8 +79,7 @@ Norm von Funktionen $\left( \|f\| = \sqrt{\int_a^b{\vert f(x)\vert^2 dx}} \right
 indem der zweite Faktor komplex konjugiert wird:
 $$\langle v,w \rangle := \int_a^b{v(x)*\overline{w(x)}dx} \quad \text{für} \: v,w : [a,b] \to \mathbb{C}$$
 
-
-\subsection{Fourier-Reihe}
+\subsection{Die Fourierreihe}
 Der erste große Schritt, um die Fourier Transformation herzuleiten, ist die Fourier Reihe. 
 Eine Reihe selbst ist in der Mathematik ist ein Begriff für eine unendliche Summe von Termen. 
 Die Fourier Reihe ist hierbei eine besondere Reihe. Ihr Sinn ist es periodische Funktionen 
@@ -104,21 +101,76 @@ $$p(x) = \sum_{k=-n}^n{c_k \, e^{ikx}} \quad \text{für geeignete} \: c_k \in \m
 Um jetzt den komplexen Faktor $c_k$, zunächst für $2\pi$ periodische Funktionen, 
 zu berechnen, verwendet man ein Orthonormalsystem, welches aus den Funktionen $\varphi_n(x)$ besteht:
 $$\phi_n(x):[-\pi,\pi] \to \mathbb{C}, \quad \phi_n(x) = \frac{1}{\sqrt{2\pi}} \, e^{inx} \quad \text{mit} \: n\in \mathbb{Z}$$
-Dass die Menge an Funktionen $\varphi_n$ ein Orthonormalsystem ist, habe 
+Dass die Menge an Funktionen $\phi_n$ ein Orthonormalsystem ist, habe 
 ich im Anhang gezeigt (Beweis A. 1). Um endlich $c_k$ zu berechnen, setzt man zunächst 
 die zu approximierende Funktion $f$, mit der Periodizität $2\pi$, mit dem 
 trigonometrischen Polynom gleich und schränkt sie zudem ein: 
 $$f:[-\pi,\pi]\to \mathbb{C},\quad f(x) = \sqrt{2\pi} * \sum_{k = -n}^n{c_k\phi_k(x)} $$
-Anschließend bildet man das Skalarprodukt von $f$ und $\varphi_m$, was möglich ist, da 
-$f$ auf der Definitionsbereich von $f$ und $\varphi_m$ gleich ist. 
+Anschließend bildet man das Skalarprodukt von $f$ und $\phi_m$, was möglich ist, da 
+$f$ auf der Definitionsbereich von $f$ und $\phi_m$ gleich ist. 
 $$\langle f, \phi_m \rangle = \int_{-\pi}^\pi {f(x) \overline{\phi_m(x)}dx} = \int_{-\pi}^\pi{\sqrt{2\pi}\sum_{k = -n}^n{c_k\phi_k(x)\overline{\phi_m(x)}}dx}$$
 Da Integral und Summe beide linear sind, darf man die Summe mit dem Integral vertauschen. 
 Zudem hängt $c_k$ nicht von $x$ ab, wodurch der Faktor $c_k$ für das Integral eine Konstante ist. 
 Nach einer Abwandlung des Distributivgesetzes darf er somit herausgezogen werden. Man erhält 
 also diesen Ausdruck: 
 $$\int_{-\pi}^\pi{f(x)\overline{\phi_m(x)} dx} = \sqrt{2\pi}\sum_{k=-n}^{n}{c_k\int_{-\pi}^\pi{\phi_k(x) \overline{\phi_m(x)} dx}}$$
-Aufgrund dessen, dass die Menge der Funktionen $\varphi_m$ ein Orthonormalsystem ist, ist jeder Summand, außer $k = m$, 0. Durch die Normiertheit des Orthonormalsystems bleibt übrig:
+Aufgrund dessen, dass die Menge der Funktionen $\phi_m$ ein Orthonormalsystem ist, ist jeder Summand, außer $k = m$, 0. Durch die Normiertheit des Orthonormalsystems bleibt übrig:
 $$c_m = \frac{1}{\sqrt{2\pi}}\int_{-\pi}^\pi{f(x)\overline{\phi_m(x)}dx} = \frac{1}{2\pi}\int_{-\pi}^\pi{f(x)e^{imx}dx}$$ 
+
+Jetzt ist es möglich mit dieser Formel und dem komplexen trigonometrischem Polynom eine 
+$2\pi$ periodische Funktion zu approximieren. Jedoch wäre es hilfreich, wenn dies für alle 
+Perioden möglich wäre. Um auch Funktionen mit einer Periodizität von $2L$ annähern zu können, 
+muss man den Faktor $c_k$ und das komplexe trigonometrische Polynom auf einer Periodizität von $2L$ ausweiten. 
+Damit das trigonometrische Polynom $2L$ periodisch wird muss folgendes gelten: 
+$$e^{i\omega x} = e^{i\omega(x+2L)}$$
+$\omega$ gilt es dabei herauszufinden, damit das trigonometrische Polynom $2L$ periodisch wird:
+$$e^{i\omega x} = e^{i\omega(x+2L)} \Leftrightarrow e^{i\omega 2L} = 1 \Leftrightarrow \omega 2L = 2\pi k \Leftrightarrow \omega_k = \frac{k\pi}{L}$$
+Das neue trigonometrische Polynom sieht also so aus:
+$$\sum_{k=-n}^n{c_k e^{i\omega_kx}} \Leftrightarrow \sum_{k=-n}^n{c_k e^{i\frac{k\pi}{L}x}}$$
+Um $c_k$ zu berechen, nimmt man sich eine $2L$ periodische Funktion $f$ und definiert sich eine $2\pi$ periodische 
+Hilfsfunktion $g$ in Abhängigkeit von $f$ wie folgt:
+$$g(t) := f\left(\frac{L}{\pi}t\right) $$
+Da $g$ eine $2\pi$ periodische Funktion ist, kann man mit der hergeleiteten Formel $c_k$ 
+von $g$ berechnen. Um die Formel für $2L$ periodische Funktionen zu erhalten, ist das 
+Ziel die Formel über $g$ auf $f$ auszuweiten. Das funktioniert über die Substitutionsregel 
+bei Integralen. Um sie anzuwenden, führen wir die Ableitung der inneren Funktion von $f$, 
+also $\frac{L}{\pi}$ in Form einer $1$ ein und erhalten die Formel für $c_k$, für die 
+Periodizität $2L$: 
+$$c_k = \frac{1}{2\pi} \int_{-\pi}^\pi{g(t)e^{-ikt}dt} \Leftrightarrow c_k = \frac{1}{2\pi}*\frac{\pi}{L} \int_{-\pi}^{\pi}{\frac{L}{\pi}f\left(\frac{L}{\pi}t\right)e^{-i\omega_kt} dt}$$
+Wendet man jetzt die Substitutionsregel an, erhält man: 
+$$c_k = \frac{1}{2L}\int_{-L}^{L}{f(x)e^{-i\omega_kx}dx} = \frac{1}{2L}\int_{-L}^{L}{f(x)e^{-i\frac{k\pi}{L}x}dx}$$
+
+\subsection{Von der Fourierreihe zur Fouriertranformation}
+Die Fourierreihe erlaubt es uns, periodische Signale als Summe von Sinus- und Kosinusfunktionen oder komplexen Exponentialfunktionen darzustellen. Doch viele Signale in der Praxis sind nicht-periodisch. Um auch diese Signale in ihre Frequenzanteile zerlegen zu können, verallgemeinern wir das Konzept der Fourierreihe zur Fouriertransformation. Mit der Fouriertransformation werden wir so eine Funktion erhalten, welche uns sagen wird wie groß der Anteil einer Frequenz oder Periodenlänge in einem Signal ist. Dazu nehmen wir die Fourierreihe einer Funktion $f$ mit der Periode $2L$ und der Frequenz $\omega_k$: 
+$$f(x) = \sum_{k = -\infty}^{\infty}{c_k e^{i\omega_k x} }, \quad c_k = \frac{1}{2L}\int_{-L}^L{f(x) e^{-i\omega_k x} dx}$$
+Dazu definieren wir eine Hilfsfunktion $F(\xi)$: 
+$$F:\mathbb{R} \to \mathbb{C}, \quad F(\xi) = \int_{-L}^{L}{f(x) e^{-i \xi x} dx}$$
+damit gilt
+$$ c_k = \frac{1}{2L} F(\omega_k)$$
+Setzt man den neu gewonnen Ausdruck für $c_k$ in die Fourierreihe ein, so erhält man 
+$$ f(x) = \sum_{n = -\infty}^{\infty}{F(\omega) e^{i\omega x}}$$
+Anschließend bildet man $\Delta \omega$ aus $\omega_k$:
+$$\omega_k = k \frac{\pi}{L} \Rightarrow \Delta \omega = \frac{\pi}{L} \Rightarrow \frac{1}{2L} = \frac{\Delta \omega} {2\pi}$$
+Und setzt die Gleichung auch in die Fourierreihe ein: 
+$$\frac{1}{2\pi} \sum_{k=-\infty}^{\infty}{F(\omega_k) e^{i \omega_k x} \Delta \omega}$$
+Dies ist eine Riemann Summe. Lässt man nun $L \to \infty$ laufen, erhält man ein Integral, welches die inverse Fouriertransformation ist:
+$$\lim_{L\to\infty} {\frac{1}{2\pi}\sum_{n = -\infty}^\infty{F(\omega_k) e^{i \omega_k x}\Delta \omega}} = \frac {1}{2\pi} \int_{-\infty}^{\infty}{F(\omega)e^{i \omega x} d\omega}$$
+Die Funktion $F(\omega)$ selbst ist die Fouriertransformation von $f$:
+$$F(\omega) = \int_{-\infty}^{\infty}{f(x) e^{-i\omega x} dx}$$
+
+Man kann das Integral in der Fouriertransformation am besten verstehen, wenn man es 
+als eine Art Durchschnitt betrachtet. Ähnlich wie beim Berechnen eines Mittelwerts 
+summiert das Integral nicht nur eine endliche Anzahl von Werten auf, sondern unendlich viele, 
+unendlich kleine Beiträge von $f(x)$. Im Integral steht dabei das Produkt $f(x) \cdot e^{-i\omega x}$.
+Dieses Produkt misst, wie stark die Frequenz $\omega$ in $f(x)$ enthalten ist:
+\begin{itemize}
+    \item Ist der Anteil der Frequenz $\omega$ in $f(x)$ hoch, dann verstärkt $e^{i\omega_kx}$ den Wert der Funktion $f(x)$
+          im Integral konstruktiv und $F(\omega)$ wird groß.
+    \item Enthält $f(x)$ diese Frequenz nicht, heben sich die positiven und negativen Anteile 
+          im Integral weitgehend auf und $F(\omega)$ wird klein.
+\end{itemize}
+So zeigt die Fouriertransformation, wie groß der Anteil jeder einzelnen Frequenz $\omega$ 
+in der Funktion $f$ ist.
 
 
 

@@ -313,6 +313,10 @@ INPUT .\eulerformel.jpg
 INPUT .\eulerformel.jpg
 INPUT .\eulerformel.jpg
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathex.enc
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\latex\lm\ts1lmr.fd
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ts1-lmr12.tfm
 INPUT fft_bench5.dat
 INPUT fft_bench5.dat
 INPUT fft_bench5.dat
@@ -323,6 +327,7 @@ INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi10.tf
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy10.tfm
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-ts1.enc
 INPUT fft_bench_small.dat
 INPUT fft_bench_small.dat
 INPUT fft_bench_small.dat
@@ -337,6 +342,8 @@ INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi10.
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi10.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi12.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi12.pfb
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi6.pfb
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi6.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi8.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmmi8.pfb
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr10.pfb
