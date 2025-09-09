@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.6)  7 SEP 2025 13:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.6)  9 SEP 2025 11:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -400,44 +400,90 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2024/01/07 v24.1 The Babel package
+\babel@savecnt=\count301
+\U@D=\dimen272
+\l@unhyphenated=\language79
+ (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read3
+\bbl@dirlevel=\count302
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
+) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/babel-german\german.ldf
+Language: german 2024/12/10 v2.15 German support for babel (pre-1996 orthography)
+ (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/babel-german\germanb.ldf
+Language: germanb 2024/12/10 v2.15 German support for babel (pre-1996 orthography)
+Package babel Info: Making " an active character on input line 139.
+))) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/de\babel-german.tex
+Package babel Info: Importing font and identification data for german
+(babel)             from babel-de-1901.ini. Reported on input line 25.
+) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.sty
+Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
+ (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count303
 )
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 11.
+\csq@reset=\count304
+\csq@gtype=\count305
+\csq@glevel=\count306
+\csq@qlevel=\count307
+\csq@maxlvl=\count308
+\csq@tshold=\count309
+\csq@ltx@everypar=\toks50
+ (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.def
+File: csquotes.def 2024-04-04 v5.2o csquotes generic definitions (JAW)
+)
+Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
+Package csquotes Info: ... configuration file loaded successfully.
+ (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.cfg
+File: csquotes.cfg 
+))
+Package csquotes Info: Checking for multilingual support...
+Package csquotes Info: ... found 'babel' package.
+Package csquotes Info: Adjusting default style.
+Package csquotes Info: Redefining alias 'default' -> 'german'.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 16.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count301
+\l__color_backend_stack_int=\count310
 \l__pdf_internal_box=\box65
 ) (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count302
-\scratchdimen=\dimen272
+\scratchcounter=\count311
+\scratchdimen=\dimen273
 \scratchbox=\box66
-\nofMPsegments=\count303
-\nofMParguments=\count304
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count305
-\MPscratchDim=\dimen273
-\MPnumerator=\count306
-\makeMPintoPDFobject=\count307
-\everyMPtoPDFconversion=\toks51
+\nofMPsegments=\count312
+\nofMParguments=\count313
+\everyMPshowfont=\toks51
+\MPscratchCnt=\count314
+\MPscratchDim=\dimen274
+\MPnumerator=\count315
+\makeMPintoPDFobject=\count316
+\everyMPtoPDFconversion=\toks52
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -446,38 +492,38 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 13.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 18.
 (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 13.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 18.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 13.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 18.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 13.
+(Font)              <14.4> on input line 18.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 13.
+(Font)              <10> on input line 18.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 13.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
+(Font)              <7> on input line 18.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (main.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 3.
+(Font)              <12> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 3.
+(Font)              <8> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 3.
+(Font)              <6> on input line 4.
  [1
 
 {C:/Users/fwage/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}])
@@ -488,22 +534,22 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 <eulerformel.jpg, id=21, 223.13362pt x 205.06613pt>
 File: eulerformel.jpg Graphic file (type jpg)
 <use eulerformel.jpg>
-Package pdftex.def Info: eulerformel.jpg  used on input line 51.
+Package pdftex.def Info: eulerformel.jpg  used on input line 56.
 (pdftex.def)             Requested size: 167.3498pt x 153.79921pt.
- [4 <./eulerformel.jpg>]
+ [4 <./eulerformel.jpg>] [5{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [6]
 PGFPlots: reading {fft_bench5.dat}
 PGFPlots: reading {fft_bench5.dat}
 PGFPlots: reading {fft_bench5.dat}
 PGFPlots: reading {fft_bench5.dat}
 PGFPlots: reading {fft_bench5.dat}
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 120.
- [5]
+(Font)              <10.95> on input line 189.
+ [7]
 PGFPlots: reading {fft_bench_small.dat}
 PGFPlots: reading {fft_bench_small.dat}
 PGFPlots: reading {fft_bench_small.dat}
 
-Overfull \hbox (18.87473pt too wide) in paragraph at lines 159--160
+Overfull \hbox (18.87473pt too wide) in paragraph at lines 228--229
  [][] 
  []
 
@@ -513,7 +559,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 PGFPlots: reading {fft_bench_big.dat}
 PGFPlots: reading {fft_bench_big.dat}
 
-Overfull \hbox (0.66815pt too wide) in paragraph at lines 191--192
+Overfull \hbox (0.66815pt too wide) in paragraph at lines 260--261
  [][] 
  []
 
@@ -521,32 +567,32 @@ Overfull \hbox (0.66815pt too wide) in paragraph at lines 191--192
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (3.60956pt too wide) in paragraph at lines 195--195
+Overfull \hbox (0.91496pt too wide) in paragraph at lines 264--264
 []\OT1/lmr/bx/n/14.4 Bildverarbeitung: Moir^^Se-Muster ent-fer-nen mit 2D-
  []
 
-[6]
+[8]
 
-LaTeX Warning: Text page 7 contains only floats.
+LaTeX Warning: Text page 9 contains only floats.
 
-[7] [8] (main.aux)
+[9] [10] (main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 24514 strings out of 474486
- 640796 string characters out of 5743756
+ 26392 strings out of 474486
+ 672023 string characters out of 5743756
  1955542 words of memory out of 5000000
- 46412 multiletter control sequences out of 15000+600000
+ 48254 multiletter control sequences out of 15000+600000
  601453 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,19n,107p,792b,2215s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (8 pages, 222216 bytes).
+ 99i,19n,107p,792b,2219s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (10 pages, 249364 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
+ 103 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
