@@ -1,8 +1,7 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, amsthm, graphicx, pgfplots}
-\usepackage{lmodern}
-\usepackage[utf8]{inputenc}  
+\usepackage{amsmath, amssymb, amsthm, graphicx, pgfplots, tikz}
+\usepackage{lmodern} 
 \usepackage[german]{babel}  
 \usepackage{csquotes} 
 
@@ -31,6 +30,7 @@
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
 \tableofcontents
 \newpage
+
 
 \section{Abstract}
 
@@ -70,15 +70,15 @@ Des Weiteren spielen Orthonormalsysteme eine große Rolle, wenn man sich mit der
 Allgemein lässt sich sagen, dass ein Orthonormalsystem eine Menge von Vektoren oder Funktionen, aus einem Vektorraum mit Skalarprodukt, 
 sind, welche sowohl orthogonal zueinander, aber auch normiert zu sich selbst sind. 
 Orthogonal sind sie, wenn das Skalarprodukt zweier unterschiedlicher Vektoren 0 ergibt und normiert, wenn das Skalarprodukt eines Vektors mit sich selbst 1 ergibt.
- Für alle Vektoren $v_n$ im $\mathbb{R}^n$ muss also folgendes gelten, damit die Menge der Vektoren ein Orthonormalsystem bildet: 
- $$\text{1. Orthogonalität: } \langle v_i, v_j\rangle = 0 \quad \forall \:i \neq j $$
- $$\text{2. Normiertheit: } \langle v_i, v_j\rangle = \sum_{i=1}^{n}v_i^2 = \|v_i\|^2 = 1 \quad \text{mit} \: i = j$$
- $$\left( \text{Skalarprodukt: } \langle v, w\rangle := \sum_{i = 1}^{n}v_i * w_i\right)$$
- Hier sieht man auch, dass das Skalarprodukt eines Vektors mit sich selbst, das gleiche 
- ist wie die quadrierte euklidische Norm des Vektors, wodurch der Begriff der Normiertheit 
- anschaulicher wird. Wie schon erwähnt lassen sich diese Eigenschaften auch auf Funktionen anwenden. 
- Hierfür definiert man die Normiertheit und die Orthogonalität auch, exakt gleich wie bei Vektoren, über das Skalarprodukt. Das Skalarprodukt für zwei Funktionen ist wie folgt definiert:
- $$\langle v, w \rangle := \int_a^bv{(x)*w(x)dx} \quad \text{für} \: v,w : [a,b] \to \mathbb{R} $$
+Für alle Vektoren $v_n$ im $\mathbb{R}^n$ muss also folgendes gelten, damit die Menge der Vektoren ein Orthonormalsystem bildet: 
+$$\text{1. Orthogonalität: } \langle v_i, v_j\rangle = 0 \quad \forall \:i \neq j $$
+$$\text{2. Normiertheit: } \langle v_i, v_j\rangle = \sum_{i=1}^{n}v_i^2 = \|v_i\|^2 = 1 \quad \text{mit} \: i = j$$
+$$\left( \text{Skalarprodukt: } \langle v, w\rangle := \sum_{i = 1}^{n}v_i * w_i\right)$$
+Hier sieht man auch, dass das Skalarprodukt eines Vektors mit sich selbst, das gleiche 
+ist wie die quadrierte euklidische Norm des Vektors, wodurch der Begriff der Normiertheit 
+anschaulicher wird. Wie schon erwähnt lassen sich diese Eigenschaften auch auf Funktionen anwenden. 
+Hierfür definiert man die Normiertheit und die Orthogonalität auch, exakt gleich wie bei Vektoren, über das Skalarprodukt. Das Skalarprodukt für zwei Funktionen ist wie folgt definiert:
+$$\langle v, w \rangle := \int_a^bv{(x)*w(x)dx} \quad \text{für} \: v,w : [a,b] \to \mathbb{R} $$
 Falls eine Menge von Funktionen Orthogonalität und Normiertheit erfüllt, ist diese Menge auch ein Orthogonalsystem. 
 Anschaulich kann man sich die Funktionen v(x) und w(x) noch als zwei Vektoren mit unendlich 
 vielen Dimensionen vorstellen, wobei der x Wert angibt in welcher Dimension man sich befindet. 
@@ -176,14 +176,26 @@ unendlich kleine Beiträge von $f(x)$. Im Integral steht dabei das Produkt $f(x)
 Dieses Produkt misst, wie stark die Frequenz $\omega$ in $f(x)$ enthalten ist:
 \begin{itemize}
     \item Ist der Anteil der Frequenz $\omega$ in $f(x)$ hoch, dann verstärkt $e^{i\omega_kx}$ den Wert der Funktion $f(x)$
-          im Integral konstruktiv und $F(\omega)$ wird groß.
+    im Integral konstruktiv und $F(\omega)$ wird groß.
     \item Enthält $f(x)$ diese Frequenz nicht, heben sich die positiven und negativen Anteile 
-          im Integral weitgehend auf und $F(\omega)$ wird klein.
+    im Integral weitgehend auf und $F(\omega)$ wird klein.
 \end{itemize}
 So zeigt die Fouriertransformation, wie groß der Anteil jeder einzelnen Frequenz $\omega$ 
 in der Funktion $f$ ist.
 
+\subsection{Die Foureirtransformation in der Praxis: Die DFT}
+In der Praxis arbeitet man selten mit kontinuierlichen Funktionen, sondern mit diskreten Messwerten, zum Beispiel bei Audiosignalen oder digitalen Bildern. Um diese Signale in ihre Frequenzanteile zu zerlegen, verwendet man die diskrete Fouriertransformation (DFT).
+Formell lässt sich die DFT für eine endliche Folge von N Messwerten
+$$x_0, x_1,..., x_{N-1}$$
+durch die folgende Formel darstellen:
+$$X_k = \sum_{n = 0}^{N-1}{x_n e^{-i2\pi \frac{kn}{N}}} \quad \text{mit } k\in[0, N-1]$$
+Anzumerken ist aber noch, dass es eine Besonderheit gibt. Wenn das Eingangssignal reell ist, 
+liefert die DFT zwar N Koeffizienten, jedoch sind die Frequenzen oberhalb von N/2 wegen des 
+Nyquist-Theorems lediglich Spiegelungen der tieferen Frequenzen und enthalten keine neuen 
+Informationen. Warum das so ist, werde ich hier nicht näher eingehen. Wie man die Formel für 
+die DFT herleitet, erkläre ich im nächsten Kapitel.
 
+\subsection{Die Foureirtransformation in der Praxis: Die FFT}
 
 \section{Fourier-Reihe}
 \subsection{Herleitung der Reihe}
@@ -212,7 +224,7 @@ Eigene Herleitung
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}
-\begin{axis}[
+    \begin{axis}[
     width=\textwidth,
     height=8cm,
     xlabel={Zeit [s]},
@@ -230,157 +242,196 @@ Eigene Herleitung
         {brown},
         {black},
         {teal}
-    }
-]
-
-\addplot table[x index=1, y expr=\thisrowno{2}/1000] {fft_bench5.dat};
-\addlegendentry{Rekursive FFT}
-
-\addplot table[x index=1, y expr=\thisrowno{3}/1000] {fft_bench5.dat};
-\addlegendentry{Iterative FFT}
-
-\addplot table[x index=1, y expr=\thisrowno{4}/1000] {fft_bench5.dat};
-\addlegendentry{Iterative FFT auf GPU}
-
-\addplot table[x index=1, y expr=\thisrowno{5}/1000] {fft_bench5.dat};
-\addlegendentry{cuFFT-Bibliothek (GPU)}
-
-\addplot table[x index=1, y expr=\thisrowno{6}/1000] {fft_bench5.dat};
-\addlegendentry{FFTW-Bibliothek (CPU)}
-
-
-\end{axis}
+        }
+        ]
+        
+        \addplot table[x index=1, y expr=\thisrowno{2}/1000] {fft_bench5.dat};
+        \addlegendentry{Rekursive FFT}
+        
+        \addplot table[x index=1, y expr=\thisrowno{3}/1000] {fft_bench5.dat};
+        \addlegendentry{Iterative FFT}
+        
+        \addplot table[x index=1, y expr=\thisrowno{4}/1000] {fft_bench5.dat};
+        \addlegendentry{Iterative FFT auf GPU}
+        
+        \addplot table[x index=1, y expr=\thisrowno{5}/1000] {fft_bench5.dat};
+        \addlegendentry{cuFFT-Bibliothek (GPU)}
+        
+        \addplot table[x index=1, y expr=\thisrowno{6}/1000] {fft_bench5.dat};
+        \addlegendentry{FFTW-Bibliothek (CPU)}
+        
+        
+    \end{axis}
 \end{tikzpicture}
 \caption{Vergleich der FFT-Methoden anhand der Benchmarks.}
 \end{figure}
 
 \begin{figure}[h!]
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-    width=\textwidth,
-    height=8cm,
-    xlabel={Zeit [ms]},
-    ylabel={Zeit [ms]},
-    grid=major,
-    major grid style={gray!30},
-    legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
-    label style={font=\large},
-    tick label style={font=\small},
-    line width=1pt,
-    no markers,
-    cycle list={
-        {blue},
-        {red},
-        {brown},
-        {black},
-        {teal}
-    }
-]
-
-\addplot table[x expr=\thisrowno{1}*1000, y index=2] {fft_bench_small.dat};
-\addlegendentry{Rekursive FFT}
-
-\addplot table[x expr=\thisrowno{1}*1000, y index=3] {fft_bench_small.dat};
-\addlegendentry{Iterative FFT}
-
-\addplot table[x expr=\thisrowno{1}*1000, y index=4] {fft_bench_small.dat};
-\addlegendentry{Iterative FFT auf GPU}
-
-\end{axis}
-\end{tikzpicture}
-\caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
-\end{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=\textwidth,
+            height=8cm,
+            xlabel={Zeit [ms]},
+            ylabel={Zeit [ms]},
+            grid=major,
+            major grid style={gray!30},
+            legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
+            label style={font=\large},
+            tick label style={font=\small},
+            line width=1pt,
+            no markers,
+            cycle list={
+                {blue},
+                {red},
+                {brown},
+                {black},
+                {teal}
+                }
+                ]
+                
+                \addplot table[x expr=\thisrowno{1}*1000, y index=2] {fft_bench_small.dat};
+                \addlegendentry{Rekursive FFT}
+                
+                \addplot table[x expr=\thisrowno{1}*1000, y index=3] {fft_bench_small.dat};
+                \addlegendentry{Iterative FFT}
+                
+                \addplot table[x expr=\thisrowno{1}*1000, y index=4] {fft_bench_small.dat};
+                \addlegendentry{Iterative FFT auf GPU}
+                
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
+    \end{figure}
+    
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width=\textwidth,
+                height=8cm,
+                xlabel={Zeit [min]},
+                ylabel={Zeit [s]},
+                grid=major,
+                major grid style={gray!30},
+                legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
+                label style={font=\large},
+                tick label style={font=\small},
+                line width=1pt,
+                no markers,
+                cycle list={
+                    {black},
+                    {teal}
+                    }
+                    ]
+                    
+                    \addplot table[x expr=\thisrowno{1}/60, y expr=\thisrowno{2}/1000] {fft_bench_big.dat};
+                    \addlegendentry{cuFFT-Bibliothek (GPU)}
+                    
+                    \addplot table[x expr=\thisrowno{1}/60, y expr=\thisrowno{3}/1000] {fft_bench_big.dat};
+                    \addlegendentry{FFTW-Bibliothek (CPU)}
+                    
+                \end{axis}
+            \end{tikzpicture}
+            \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
+        \end{figure}
+        
+        \subsection{Bildverarbeitung: Moiré-Muster entfernen mit 2D-FFT}
+        
+        \section{Anwendungen}
+        \subsection{Audio}
+        Echtzeitaufnahme und Visualisierung, Tonhöhenerkennung oder Noise Cancelling, Ergebnisse.
+        \subsection{Bild}
+        Röntgenbild und Moiré-Filterung, Ergebnisse.
+        
+        \section{Anhang}
+        \begin{theorem}\label{thm:orthonorm}
+            Die Menge $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ mit $\phi_n:[-\pi, \pi] \to \mathbb{C}, \\ \phi_n(x) = \frac{1}{\sqrt{2\pi}}e^{inx}$ bildet ein Orthonormalsystem.
+        \end{theorem}
+        
+        \begin{proof}
+            Ich zeige die Orthonormalität in zwei Schritten: 
+            
+            \textbf{1. Orthogonalität:}  
+            Für $m \neq n$ gilt
+            $$\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi}{\phi_n(x) \overline{\phi_m(x)}} = \frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx}$$
+            
+            Jetzt definiere ich $l := n-m$
+            \[\frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx} = \frac{1}{2\pi}\int_{-\pi}^\pi{\cos(lx) + i \sin (lx)} dx\] 
+            
+            \[= \frac{1}{2\pi l}\left(\int_{-\pi}^\pi{\cos (lx) dx} + i\int_{-\pi}^\pi{ \sin (lx) dx} \right)  = \frac{1}{2\pi l} \left(\sin(lx)\big|_{-l\pi}^{l\pi} - i\cos(lx)\big|_{-l\pi}^{l\pi} \right)\]
+            
+            \[= \frac{1}{2\pi l} \cdot \left(\sin(l^2\pi) - \sin(-l^2\pi) - i\left(\cos(l^2\pi) - \cos(-l^2\pi)\right)\right) \]
+            
+            Da $l\in \mathbb{Z}$ ist $l^2 \in \mathbb{Z}$. Ein ganzzahliges Vielfaches von $\pi$
+            eingesetzt im Sinus ist zudem immer 0. Denn der Sinus ist eine $2\pi$ periodische Funktion, und da
+            sowohl $\sin(0) = 0$, als auch $\sin (\pi) = 0$ ist, ist jedes ganzzahliges Vielfaches von $\pi$ eingesetzt 
+            im Sinus 0. Hinzu kommt, dass der Kosinus Achsensymmetrisch bezüglich der Y-Achse ist, also gilt:
+            $\cos (x) =  \cos (-x)$. Daraus folgt:
+            \[= \frac{1}{2\pi l} \cdot (0 - 0 - i\cdot(\cos(l\pi) - \cos(l\pi))) = \frac{1}{2\pi l} \cdot 0 = 0\]
+            
+            
+            \textbf{2. Normierung:}  
+            Für $m = n$ gilt
+            
+            \[\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi} \phi_n(x) \overline{\phi_n(x)} \, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i(n -n) x}\, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i\cdot0} \, dx\]
+            
+            \[= \frac{1}{2\pi} \int_{-\pi}^{\pi} 1 \, dx = \frac{1}{2\pi} \cdot x \Big|_{-\pi}^{\pi} = \frac{1}{2\pi} \cdot (\pi-(-\pi)) = 1\]
+            
+            Damit ist gezeigt, dass $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ ein Orthonormalsystem bildet.
+        \end{proof}
+\subsection{Stärken und Grenzen}
+\subsection{Bedeutung im größeren Kontext}
+        
 
 \begin{figure}[h!]
 \centering
-\begin{tikzpicture}
-\begin{axis}[
-    width=\textwidth,
-    height=8cm,
-    xlabel={Zeit [min]},
-    ylabel={Zeit [s]},
-    grid=major,
-    major grid style={gray!30},
-    legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
-    label style={font=\large},
-    tick label style={font=\small},
-    line width=1pt,
-    no markers,
-    cycle list={
-        {black},
-        {teal}
-    }
-]
+\begin{tikzpicture}[>=stealth]
 
-\addplot table[x expr=\thisrowno{1}/60, y expr=\thisrowno{2}/1000] {fft_bench_big.dat};
-\addlegendentry{cuFFT-Bibliothek (GPU)}
+% Achsen
+\draw[->] (-0.5,0) -- (15.5,0) node[right] {$n$};
+\draw[->] (0,-2.5) -- (0,2.5) node[above] {$f(n)$};
 
-\addplot table[x expr=\thisrowno{1}/60, y expr=\thisrowno{3}/1000] {fft_bench_big.dat};
-\addlegendentry{FFTW-Bibliothek (CPU)}
+% Winkel pro Einheit (in Grad) sodass 1.5 Perioden auf [0,14] liegen
+\pgfmathsetmacro{\degPerUnit}{180*3/14} % = 38.5714286...
 
-\end{axis}
+% Diskrete Punkte f(n) (aus der Sinusfunktion)
+\foreach \x in {0,...,14} {
+    \pgfmathsetmacro{\yy}{2*sin(\degPerUnit*\x)} % sin erwartet hier Grad
+    \fill[red] (\x,\yy) circle (2pt);
+    \node[red, above, font=\scriptsize] at (\x,\yy) {$f(\pgfmathprintnumber{\x})$};
+    \draw[dashed, gray!60] (\x,0) -- (\x,\yy);
+}
+
+% Linien zwischen Punkten (Stückweise verbunden)
+\draw[thick, blue] (0,{2*sin(0)})
+\foreach \x in {1,...,14} {
+   -- (\x,{2*sin(\degPerUnit*\x)})
+};
+
+% Trapezflächen (je zwei aufeinanderfolgende Punkte)
+\foreach \i in {0,...,13} {
+    \pgfmathsetmacro{\yone}{2*sin(\degPerUnit*\i)}
+    \pgfmathsetmacro{\ytwo}{2*sin(\degPerUnit*(\i+1))}
+    \pgfmathsetmacro{\xnext}{\i+1}
+    \fill[blue!20, opacity=0.5] (\i,0) -- (\i,\yone) -- (\xnext,\ytwo) -- (\xnext,0) -- cycle;
+}
+
+% (Optional) kontinuierliche Referenz-Sinuskurve mit gleicher Frequenz
+\draw[domain=0:14, smooth, samples=300, thin, red!70] plot(\x,{2*sin(\degPerUnit*\x)});
+
+% Beschriftung Trapezformel
+\node at (9,-2.3) {\footnotesize Fläche Trapez: $A = \tfrac{1}{2} (x_{n+1}-x_n)\,(f(n)+f(n+1))$};
+
 \end{tikzpicture}
-\caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
+\caption{Diskrete Werte einer Sinuskurve (Amplitude 2) — 1{,}5 Perioden über 0 bis 14.}
 \end{figure}
 
-\subsection{Bildverarbeitung: Moiré-Muster entfernen mit 2D-FFT}
-
-\section{Anwendungen}
-\subsection{Audio}
-Echtzeitaufnahme und Visualisierung, Tonhöhenerkennung oder Noise Cancelling, Ergebnisse.
-\subsection{Bild}
-Röntgenbild und Moiré-Filterung, Ergebnisse.
-
-\section{Anhang}
-\begin{theorem}\label{thm:orthonorm}
-Die Menge $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ mit $\phi_n:[-\pi, \pi] \to \mathbb{C}, \\ \phi_n(x) = \frac{1}{\sqrt{2\pi}}e^{inx}$ bildet ein Orthonormalsystem.
-\end{theorem}
-
-\begin{proof}
-Ich zeige die Orthonormalität in zwei Schritten: 
-
-\textbf{1. Orthogonalität:}  
-Für $m \neq n$ gilt
-$$\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi}{\phi_n(x) \overline{\phi_m(x)}} = \frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx}$$
-
-Jetzt definiere ich $l := n-m$
-\[\frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx} = \frac{1}{2\pi}\int_{-\pi}^\pi{\cos(lx) + i \sin (lx)} dx\] 
-
-\[= \frac{1}{2\pi l}\left(\int_{-\pi}^\pi{\cos (lx) dx} + i\int_{-\pi}^\pi{ \sin (lx) dx} \right)  = \frac{1}{2\pi l} \left(\sin(lx)\big|_{-l\pi}^{l\pi} - i\cos(lx)\big|_{-l\pi}^{l\pi} \right)\]
-
-\[= \frac{1}{2\pi l} \cdot \left(\sin(l^2\pi) - \sin(-l^2\pi) - i\left(\cos(l^2\pi) - \cos(-l^2\pi)\right)\right) \]
-
-Da $l\in \mathbb{Z}$ ist $l^2 \in \mathbb{Z}$. Ein ganzzahliges Vielfaches von $\pi$
-eingesetzt im Sinus ist zudem immer 0. Denn der Sinus ist eine $2\pi$ periodische Funktion, und da
-sowohl $\sin(0) = 0$, als auch $\sin (\pi) = 0$ ist, ist jedes ganzzahliges Vielfaches von $\pi$ eingesetzt 
-im Sinus 0. Hinzu kommt, dass der Kosinus Achsensymmetrisch bezüglich der Y-Achse ist, also gilt:
-$\cos (x) =  \cos (-x)$. Daraus folgt:
-\[= \frac{1}{2\pi l} \cdot (0 - 0 - i\cdot(\cos(l\pi) - \cos(l\pi))) = \frac{1}{2\pi l} \cdot 0 = 0\]
-
-
-\textbf{2. Normierung:}  
-Für $m = n$ gilt
-
-\[\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi} \phi_n(x) \overline{\phi_n(x)} \, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i(n -n) x}\, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i\cdot0} \, dx\]
-
-\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} 1 \, dx = \frac{1}{2\pi} \cdot x \Big|_{-\pi}^{\pi} = \frac{1}{2\pi} \cdot (\pi-(-\pi)) = 1\]
-
-%\[\int_{-\pi}^{\pi} q_n(x) \cdot \overline{q_n(x)} \, dx\]
-%\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{inx} \cdot e^{-inx} \, dx\]
-%\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i(n-n)x} \, dx\]
-%\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i\cdot0} \, dx\]
-%\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} 1 \, dx = \frac{1}{2\pi} \cdot x \Big|_{-\pi}^{\pi}\]
-%\[= \frac{1}{2\pi} \cdot (\pi-(-\pi)) = 1\]
-
-
-Damit ist gezeigt, dass $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ ein Orthonormalsystem bildet.
-\end{proof}
-\subsection{Stärken und Grenzen}
-\subsection{Bedeutung im größeren Kontext}
-
+                
+                
 \section{Fazit und Ausblick}
 \subsection{Zusammenfassung der Ergebnisse}
 \subsection{Ausblick: Erweiterungen und Anwendungen}
-
+                
 \end{document}
+                
