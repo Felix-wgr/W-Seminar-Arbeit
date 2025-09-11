@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, amsthm, graphicx, pgfplots, tikz}
+\usepackage{amsmath, amssymb, amsthm, graphicx, pgfplots, tikz, forest}
 \usepackage{lmodern} 
 \usepackage[german]{babel}  
 \usepackage{csquotes} 
@@ -18,6 +18,24 @@
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Bemerkung}
+
+\forestset{
+  fft tree/.style={
+    for tree={
+      align=center,
+      parent anchor=south,
+      child anchor=north,
+      edge={thick},
+      l sep=10mm,
+      s sep=2mm,
+      inner sep=1pt,
+      rounded corners=2pt,
+      draw,
+      minimum width=16mm,
+      font=\scriptsize
+    }
+  }
+}
 
 \title{Fourier-Methoden: Theorie und Anwendungen}
 \author{Felix Wager}
@@ -43,14 +61,14 @@ Warum Fourier-Methoden heute so wichtig sind.
 \section{Mathematische Grundlagen}
 \subsection{Komplexe Zahlen und die Eulerformel}
 Um sich die Arbeit mit Fourier Transformationen, Reihen und sonstigem erheblich zu erleichtern ist es sehr sinnvoll mit komplexen Zahlen zu arbeiten. Doch was sind komplexe Zahlen? 
-Komplexe Zahlen sind prinzipiell nichts anderes, als eine Erweiterung der Menge der Reellen Zahlen, welche es ermöglicht die Wurzel von negativen Zahlen zu ziehen. Dafür wird die Wurzel die imaginäre Einheit $i$ definiert. Mathematisch korrekt sieht das wie folgt aus:
-$$i^2 = -1$$
+Komplexe Zahlen sind prinzipiell nichts anderes, als eine Erweiterung der Menge der Reellen Zahlen, welche es ermöglicht die Wurzel von negativen Zahlen zu ziehen. Dafür wird die Wurzel von $-1$ als die imaginäre Einheit $i$ definiert. Mathematisch korrekt sieht das wie folgt aus:
+$$i^2 := -1$$
 Die Menge der komplexen Zahlen wird mit dem Symbol $\mathbb{C}$ abgekürzt. Eine typische komplexe Zahl hat in der algebraischen Schreibweise die Form:
 $$ z = a + ib \quad \text{mit} \quad a,b \in \mathbb{R} $$
 $a$ ist hierbei der Realteil $\Re(z)$ und $b$ der Imaginärteil $\Im(z)$ von $z$. \vspace{1em}
 
 Um mit komplexen Zahlen bei Fourier Reihen zu arbeiten, benötigt man auch ein paar Rechenoperationen. Die wichtigsten beiden sind hier der Betrag und das komplex konjugierte einer komplexen Zahl. Eine komplexe Zahl lässt sich auch als Vektor im $\mathbb{R}^2$ betrachtet, so ist dann der Betrag als euklidische Norm dieses Vektors definiert. 
-$$\vert{z}\vert = \sqrt{ a^2 + b^2}$$
+$$\vert{z}\vert := \|z\| = \sqrt{ a^2 + b^2}$$
 Bedeutet in einem Koordinatensystem, bei dem der Real- und Imaginärteil einer Zahl auf den x- und y-Achsen festgehalten wird, ist der Betrag die Länge vom Ursprung bis zum Punkt im Koordinatensystem dieser Zahl. 
 Und das komplex konjugierte einer Zahl ist eine Abbildung, welche lediglich den Imaginärteil mit $-1$ multipliziert:
 
@@ -188,7 +206,7 @@ In der Praxis arbeitet man selten mit kontinuierlichen Funktionen, sondern mit d
 Formell lässt sich die DFT für eine endliche Folge von N Messwerten
 $$x_0, x_1,..., x_{N-1}$$
 durch die folgende Formel darstellen:
-$$X_k = \sum_{n = 0}^{N-1}{x_n e^{-i2\pi \frac{kn}{N}}} \quad \text{mit } k\in[0, N-1]$$
+$$X_k = \sum_{j = 0}^{N-1}{x_n e^{-i2\pi \frac{kj}{N}}} \quad \text{mit } k\in[0, N-1]$$
 Anzumerken ist aber noch, dass es eine Besonderheit gibt. Wenn das Eingangssignal reell ist, 
 liefert die DFT zwar N Koeffizienten, jedoch sind die Frequenzen oberhalb von N/2 wegen des 
 Nyquist-Theorems lediglich Spiegelungen der tieferen Frequenzen und enthalten keine neuen 
@@ -196,6 +214,182 @@ Informationen. Warum das so ist, werde ich hier nicht näher eingehen. Wie man d
 die DFT herleitet, erkläre ich im nächsten Kapitel.
 
 \subsection{Die Foureirtransformation in der Praxis: Die FFT}
+Obwohl die DFT so in der Praxis anwendbar ist, ist sie heutzutage in fast keinem Programm oder 
+Algorithmus zu finden. Denn will man eine Funktion oder Signal mit $N$ Werten komplett 
+transformieren, dann muss man für $N$ verschiedene Frequenzen den Wert über die obere Formel 
+berechnen. Also sind es insgesamt $N^2$ Berechnungen, die man durchführen muss. In der Informatik 
+spricht man für den Abschnitt der DFT in einem Programm von einer Laufzeit von:   $O(N^2)$
+
+Im Jahre 1965 aber, entdeckte James W. Cooley und John W. Tukey eine neue Art die DFT zu 
+berechnen, was die Laufzeit auf $O(N\log N)$ verringerte. Somit konnte man die DFT erheblich 
+schneller berechnen. Daher kommt auch der Name FFT für den neuen Algorithmus, was für Fast Fourier 
+Transform, also schnelle Fouriertransformation, steht. Um die Umformung gut zu sehen, kann man die 
+diskrete Fouriertransformation etwas umschreiben. Dafür definiere ich die Folge $(\omega_n)_{n\in\mathbb{N}}$ 
+wie folgt:
+$$\omega_n := e^{-2\pi i /n}$$
+Schreibt man jetzt die Werte der Ausgangsfunktion $f$ als Vektor, kann man aufgrund der Struktur 
+der Matrixmultiplikation, diesen Vektor mit einer besonderen Matrix multiplizieren und erhält das 
+Ergebnis der Transformation auch in Form eines Vektors derselben Länge, mit den Werten $\hat{f}$. 
+\[
+\begin{bmatrix}
+\hat{f_0}\\
+\hat{f_1}\\
+\hat{f_2}\\
+\vdots \\
+\hat{f_n}\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 1 & 1 & \cdots & 1\\
+1 & \omega_n & \omega_n^2 & \cdots & \omega_n^{n-1} \\
+1 & \omega_n^2 & \omega_n^4 & \cdots & \omega_n^{2(n-1)}\\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & \omega_n^{n-1} & \omega_n^{2(n-1)} & \cdots & \omega_n^{(n-1)^2}\\
+\end{bmatrix}
+ \cdot
+\begin{bmatrix}
+f_0\\
+f_1\\
+f_2\\
+\vdots\\
+f_n
+\end{bmatrix}
+\left(
+= 
+\begin{bmatrix}
+\omega_n^{0 \cdot 0} & \omega_n^{0 \cdot 1} & \cdots & \omega_n^{0 \cdot (n-1)}\\
+\omega_n^{1 \cdot 0} & \omega_n^{1 \cdot 1} &  \cdots & \omega_n^{1 \cdot (n-1)} \\
+\omega_n^{2 \cdot 0} & \omega_n^{2 \cdot 1} &  \cdots & \omega_n^{2 \cdot (n-1)}\\
+\vdots & \vdots & \ddots & \vdots \\
+\omega_n^{(n-1) \cdot 0} & \omega_n^{(n-1) \cdot 1} & \cdots & \omega_n^{(n-1)^2}\\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+f_0\\
+f_1\\
+f_2\\
+\vdots\\
+f_n
+\end{bmatrix}
+\right)
+\]
+Jeder Eintrag im Ergebnisvektor entsteht, indem man die Zahlen in der Zeile der Matrix 
+mit den Zahlen im Vektor multipliziert und die Produkte zusammenzählt. Deshalb muss 
+jeder Eintrag der Matrix aus $\omega_n$ noch mit $k$, der die Frequenz bestimmt, und 
+der Zählvariable $j$, die über die Zeilen läuft, als Exponent potenziert werden.
+
+Was Cooley und Tukey herausgefunden haben ist, dass man diesen Ausdruck wie so umschreiben 
+kann:
+
+\[\hat{f} = F_N \cdot f = 
+\begin{bmatrix}
+I_{N/2} & D_{N/2} \\
+I_{N/2} & -D_{N/2}
+\end{bmatrix}
+\cdot 
+\begin{bmatrix}
+F_{N/2} & 0 \\
+0 & F_{N/2} \\ 
+\end{bmatrix}
+\cdot 
+\begin{bmatrix}
+f_{gerade} \\
+f_{ungerade}
+\end{bmatrix}
+\]
+$F$ ist die DFT-Matrix, mit der der ursprüngliche Wertevektor $f$ multipliziert wurde. 
+$I_N$ ist die Einheitsmatrix: Alle Einträge außerhalb der Diagonale sind $0$, auf der 
+Diagonale stehen $1$, von links oben nach rechts unten. $D_N$ ist ebenfalls eine Diagonalmatrix 
+wie $I_N$, jedoch bestehen die Diagonaleinträge aus $\omega_N^k$, wobei $k$ von $0$ bis $N-1$ 
+läuft. Der Index der Matrizen gibt jeweils die Anzahl der Zeilen und Spalten an. $f$ wurde den Indizes nach aufgeteilt. 
+
+Wichtig ist, diese Formel funktioniert nur, wenn die Anzahl der Werte der Ausgangsfunktion 
+eine Zweierpotenz ist. Zumal das genau der Grund ist, warum die Umstellung es überhaupt schafft die Laufzeit 
+so drastisch zu reduzieren. Das was diese Formel ausmacht sind eigentlich nur die letzen beiden 
+Faktoren des Produkts. Denn multipliziert man diese Faktoren miteinander, dann fällt auf, dass 
+man diesen Ausdruck erhält:
+\[
+\begin{bmatrix}
+F_{N/2} \cdot f_{gerade} & 0 \\
+0 & F_{N/2} \cdot f_{ungerade} 
+\end{bmatrix}
+\]
+
+Auffällig ist jetzt, dass man zwei mal das Anfangsproblem, in halber Größe erhält. Man könnte 
+zunächst denken, dies mache keinen Unterschied, aber dadurch dass die Berechnung der komplette Matrix, einen
+Aufwand von $O(N^2)$ erfordert, reduziert man mit jeder Anwendung der Formel die Laufzeit für 
+die Berechnung von $F_{N/2} \cdot f$ auf $O((N/2)^2)$. Wendet man diese Formel rekursiv, also 
+immer wieder auf sich selbst, an, bis man Matrizen mit einer Größe von 1 oder 2 erhält, so 
+schafft man es, durch ein zeitsparendes zusammenfügen, die Laufzeit der Berechnung auf 
+$O(N\log N)$ zu kürzen. Die Struktur einer FFT mit 8 Werten, kann man auch so darstellen:
+\\ \\ \\
+\begin{forest}
+  fft tree
+  [
+    {\(F_8\cdot f_8\)\\(ganze DFT)}
+    [
+      {\(F_4\cdot f_4\)\\(gerade)}
+      [
+        {\(F_2\cdot f_2\)\\(gerade)}
+        [\(F_1\cdot f_1\)\\(gerade)]
+        [\(F_1\cdot f_1\)\\(ungerade)]
+      ]
+      [
+        {\(F_2\cdot f_2\)\\(ungerade)}
+        [\(F_1\cdot f_1\)\\(gerade)]
+        [\(F_1\cdot f_1\)\\(ungerade)]
+      ]
+    ]
+    [
+      {\(F_4\cdot f_4\)\\(ungerade)}
+      [
+        {\(F_2\cdot f_2\)\\(gerade)}
+        [\(F_1\cdot f_1\)\\(gerade)]
+        [\(F_1\cdot f_1\)\\(ungerade)]
+      ]
+      [
+        {\(F_2\cdot f_2\)\\(ungerade)}
+        [\(F_1\cdot f_1\)\\(gerade)]
+        [\(F_1\cdot f_1\)\\(ungerade)]
+      ]
+    ]
+  ]
+\end{forest}
+\\ \\ \\ 
+In meinem Programm, zu welchem ich im nächsten Kapitel komme, mit welchem ich eine Audiospur 
+aufnehme und verarbeite, nutze ich eine auf meinem Gerät eine Samplerate von 44800 Samples pro Sekunde. Bedeutet 
+ich nehme pro Sekunde 44800 Datenpunkte auf. Wenn man nun die Laufzeit einer DFT und einer FFT 
+grob skizziert, sieht man, dass die Verarbeitung eines Signals, mit nur einer Sekunde, die DFT mehr 
+als doppelt so lang dauert, als die FFT.  
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+  \begin{axis}[
+    width=12cm, height=8cm,
+    xlabel={Samples $N$},
+    ylabel={Operationen},
+    %title={Vergleich der Laufzeit von DFT und FFT},
+    axis lines=left,
+    clip=false,
+    xmin=0, xmax=45000,
+    ymode=log,
+    legend style={at={(0.02,0.98)},anchor=north west},
+    ytick style={draw=none} % nur Striche entfernen
+  ]
+    % DFT: O(N^2)
+    \addplot[blue, thick, samples=200, domain=100:44800] {x^2};
+    \addlegendentry{DFT ($N^2$)}
+
+    % FFT: O(N log N)
+    \addplot[red, thick, samples=200, domain=100:44800] {x*ln(x)/ln(2)};
+    \addlegendentry{FFT ($N \log_2 N$)}
+  \end{axis}
+\end{tikzpicture}
+%\caption{Vergleich der Laufzeit von DFT und FFT für Sample-Größen $N$ bis 44{,}800}
+\end{figure}
+
+
 
 \section{Fourier-Reihe}
 \subsection{Herleitung der Reihe}
@@ -344,43 +538,44 @@ Eigene Herleitung
         \subsection{Bild}
         Röntgenbild und Moiré-Filterung, Ergebnisse.
         
-        \section{Anhang}
-        \begin{theorem}\label{thm:orthonorm}
-            Die Menge $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ mit $\phi_n:[-\pi, \pi] \to \mathbb{C}, \\ \phi_n(x) = \frac{1}{\sqrt{2\pi}}e^{inx}$ bildet ein Orthonormalsystem.
-        \end{theorem}
+\section{Anhang}
+
+\subsection{Eigene Beweise}
+    \begin{theorem}\label{thm:orthonorm}
+        Die Menge $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ mit $\phi_n:[-\pi, \pi] \to \mathbb{C}, \\ \phi_n(x) = \frac{1}{\sqrt{2\pi}}e^{inx}$ bildet ein Orthonormalsystem.
+    \end{theorem}
         
-        \begin{proof}
-            Ich zeige die Orthonormalität in zwei Schritten: 
+    \begin{proof}
+        Ich zeige die Orthonormalität in zwei Schritten: 
             
-            \textbf{1. Orthogonalität:}  
-            Für $m \neq n$ gilt
-            $$\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi}{\phi_n(x) \overline{\phi_m(x)}} = \frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx}$$
+        \textbf{1. Orthogonalität:}  
+        Für $m \neq n$ gilt
+        $$\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi}{\phi_n(x) \overline{\phi_m(x)}} = \frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx}$$
             
-            Jetzt definiere ich $l := n-m$
-            \[\frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx} = \frac{1}{2\pi}\int_{-\pi}^\pi{\cos(lx) + i \sin (lx)} dx\] 
+        Jetzt definiere ich $l := n-m$
+        \[\frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx} = \frac{1}{2\pi}\int_{-\pi}^\pi{\cos(lx) + i \sin (lx)} dx\] 
             
-            \[= \frac{1}{2\pi l}\left(\int_{-\pi}^\pi{\cos (lx) dx} + i\int_{-\pi}^\pi{ \sin (lx) dx} \right)  = \frac{1}{2\pi l} \left(\sin(lx)\big|_{-l\pi}^{l\pi} - i\cos(lx)\big|_{-l\pi}^{l\pi} \right)\]
+        \[= \frac{1}{2\pi l}\left(\int_{-\pi}^\pi{\cos (lx) dx} + i\int_{-\pi}^\pi{ \sin (lx) dx} \right)  = \frac{1}{2\pi l} \left(\sin(lx)\big|_{-l\pi}^{l\pi} - i\cos(lx)\big|_{-l\pi}^{l\pi} \right)\]
             
-            \[= \frac{1}{2\pi l} \cdot \left(\sin(l^2\pi) - \sin(-l^2\pi) - i\left(\cos(l^2\pi) - \cos(-l^2\pi)\right)\right) \]
+        \[= \frac{1}{2\pi l} \cdot \left(\sin(l^2\pi) - \sin(-l^2\pi) - i\left(\cos(l^2\pi) - \cos(-l^2\pi)\right)\right) \]
             
-            Da $l\in \mathbb{Z}$ ist $l^2 \in \mathbb{Z}$. Ein ganzzahliges Vielfaches von $\pi$
-            eingesetzt im Sinus ist zudem immer 0. Denn der Sinus ist eine $2\pi$ periodische Funktion, und da
-            sowohl $\sin(0) = 0$, als auch $\sin (\pi) = 0$ ist, ist jedes ganzzahliges Vielfaches von $\pi$ eingesetzt 
-            im Sinus 0. Hinzu kommt, dass der Kosinus Achsensymmetrisch bezüglich der Y-Achse ist, also gilt:
-            $\cos (x) =  \cos (-x)$. Daraus folgt:
-            \[= \frac{1}{2\pi l} \cdot (0 - 0 - i\cdot(\cos(l\pi) - \cos(l\pi))) = \frac{1}{2\pi l} \cdot 0 = 0\]
+        Da $l\in \mathbb{Z}$ ist $l^2 \in \mathbb{Z}$. Ein ganzzahliges Vielfaches von $\pi$
+        eingesetzt im Sinus ist zudem immer 0. Denn der Sinus ist eine $2\pi$ periodische Funktion, und da
+        sowohl $\sin(0) = 0$, als auch $\sin (\pi) = 0$ ist, ist jedes ganzzahliges Vielfaches von $\pi$ eingesetzt 
+        im Sinus 0. Hinzu kommt, dass der Kosinus Achsensymmetrisch bezüglich der Y-Achse ist, also gilt:
+        $\cos (x) =  \cos (-x)$. Daraus folgt:
+        \[= \frac{1}{2\pi l} \cdot (0 - 0 - i\cdot(\cos(l\pi) - \cos(l\pi))) = \frac{1}{2\pi l} \cdot 0 = 0\]
             
             
-            \textbf{2. Normierung:}  
-            Für $m = n$ gilt
+        \textbf{2. Normiertheit:}  
+        Für $m = n$ gilt
             
-            \[\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi} \phi_n(x) \overline{\phi_n(x)} \, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i(n -n) x}\, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i\cdot0} \, dx\]
+        \[\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi} \phi_n(x) \overline{\phi_n(x)} \, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i(n -n) x}\, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i\cdot0} \, dx\]
             
-            \[= \frac{1}{2\pi} \int_{-\pi}^{\pi} 1 \, dx = \frac{1}{2\pi} \cdot x \Big|_{-\pi}^{\pi} = \frac{1}{2\pi} \cdot (\pi-(-\pi)) = 1\]
+        \[= \frac{1}{2\pi} \int_{-\pi}^{\pi} 1 \, dx = \frac{1}{2\pi} \cdot x \Big|_{-\pi}^{\pi} = \frac{1}{2\pi} \cdot (\pi-(-\pi)) = 1\]
             
-            Damit ist gezeigt, dass $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ ein Orthonormalsystem bildet.
+        Damit ist gezeigt, dass $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ ein Orthonormalsystem bildet.
         \end{proof}
-\subsection{Stärken und Grenzen}
 \subsection{Bedeutung im größeren Kontext}
         
 
@@ -424,7 +619,6 @@ Eigene Herleitung
 \node at (9,-2.3) {\footnotesize Fläche Trapez: $A = \tfrac{1}{2} (x_{n+1}-x_n)\,(f(n)+f(n+1))$};
 
 \end{tikzpicture}
-\caption{Diskrete Werte einer Sinuskurve (Amplitude 2) — 1{,}5 Perioden über 0 bis 14.}
 \end{figure}
 
                 
