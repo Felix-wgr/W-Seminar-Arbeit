@@ -4,7 +4,7 @@
 \usepackage{lmodern} 
 \usepackage[german]{babel}  
 \usepackage{csquotes} 
-
+\usepackage[margin=2.5cm]{geometry}
 
 \pgfplotsset{compat=1.18}
 
@@ -173,7 +173,7 @@ $$c_k = \frac{1}{2L}\int_{-L}^{L}{f(x)e^{-i\omega_kx}dx} = \frac{1}{2L}\int_{-L}
 Die Fourierreihe erlaubt es uns, periodische Signale als Summe von Sinus- und Kosinusfunktionen oder komplexen Exponentialfunktionen darzustellen. Doch viele Signale in der Praxis sind nicht-periodisch. Um auch diese Signale in ihre Frequenzanteile zerlegen zu können, verallgemeinern wir das Konzept der Fourierreihe zur Fouriertransformation. Mit der Fouriertransformation werden wir so eine Funktion erhalten, welche uns sagen wird wie groß der Anteil einer Frequenz oder Periodenlänge in einem Signal ist. Dazu nehmen wir die Fourierreihe einer Funktion $f$ mit der Periode $2L$ und der Frequenz $\omega_k$: 
 $$f(x) = \sum_{k = -\infty}^{\infty}{c_k e^{i\omega_k x} }, \quad c_k = \frac{1}{2L}\int_{-L}^L{f(x) e^{-i\omega_k x} dx}$$
 Dazu definieren wir eine Hilfsfunktion $F(\xi)$: 
-$$F:\mathbb{R} \to \mathbb{C}, \quad F(\xi) = \int_{-L}^{L}{f(x) e^{-i \xi x} dx}$$
+$$F:\mathbb{K} \to \mathbb{C}, \quad F(\xi) = \int_{-L}^{L}{f(x) e^{-i \xi x} dx}$$
 damit gilt
 $$ c_k = \frac{1}{2L} F(\omega_k)$$
 Setzt man den neu gewonnen Ausdruck für $c_k$ in die Fourierreihe ein, so erhält man 
@@ -357,10 +357,10 @@ $O(N\log N)$ zu kürzen. Die Struktur einer FFT mit 8 Werten, kann man auch so d
 \end{forest}
 \\ \\ \\ 
 In meinem Programm, zu welchem ich im nächsten Kapitel komme, mit welchem ich eine Audiospur 
-aufnehme und verarbeite, nutze ich eine auf meinem Gerät eine Samplerate von 44800 Samples pro Sekunde. Bedeutet 
+aufnehme und verarbeite, nutze ich eine auf meinem Gerät eine Samplerate von 44800. Bedeutet 
 ich nehme pro Sekunde 44800 Datenpunkte auf. Wenn man nun die Laufzeit einer DFT und einer FFT 
-grob skizziert, sieht man, dass die Verarbeitung eines Signals, mit nur einer Sekunde, die DFT mehr 
-als doppelt so lang dauert, als die FFT.  
+grob skizziert, sieht man, dass bei der Verarbeitung eines Signals, mit nur einer Sekunde, bei 
+meinem Programm die DFT mehr als doppelt so lang dauert, wie die FFT.  
 
 \begin{figure}[!h]
 \centering
@@ -379,11 +379,11 @@ als doppelt so lang dauert, als die FFT.
   ]
     % DFT: O(N^2)
     \addplot[blue, thick, samples=200, domain=100:44800] {x^2};
-    \addlegendentry{DFT ($N^2$)}
+    \addlegendentry{DFT O($N^2$)}
 
     % FFT: O(N log N)
     \addplot[red, thick, samples=200, domain=100:44800] {x*ln(x)/ln(2)};
-    \addlegendentry{FFT ($N \log_2 N$)}
+    \addlegendentry{FFT O($N \log_2 N$)}
   \end{axis}
 \end{tikzpicture}
 %\caption{Vergleich der Laufzeit von DFT und FFT für Sample-Größen $N$ bis 44{,}800}
@@ -391,8 +391,139 @@ als doppelt so lang dauert, als die FFT.
 
 
 
-\section{Fourier-Reihe}
-\subsection{Herleitung der Reihe}
+\section{Von der Theorie zu Praxis: Eigenentwicklung eines Audioanalyzers mit C++}
+Nachdem im vorherigen Kapitel die mathematischen Grundlagen der Fouriertransformation und 
+ihrer diskreten Varianten vorgestellt wurden, möchte ich nun zeigen, wie ich diese Konzepte 
+praktisch umgesetzt habe. Angefangen hat alles mit der Idee einen eigenen Audioanalyzer zu 
+programmieren. Dieser soll live ein Audiosignal aufnehmen, dieses Visualisieren und anschließend 
+die Frequenzanteile, die in dem Signal enthalten sind, anzeigen. Somit könnte ich mithilfe 
+meines eigenen Programms Musik genauer unter die Lupe nehmen, die Funktion der Fouriertransformation 
+so manipulieren, dass Rauschen unterdrückt wird, Töne von Tieren oder Instrumenten erkennen 
+oder auch Raumresonanzen sichtbar machen. Als ich mit dem Programmieren begann und alles 
+zur Liveaufnahme eines Audiosignals implementiert hatte, stieß ich auf eine erste Schwierigkeit. 
+Mein Problem war der Übergang von der Theorie der Fouriertransformation zur Praxis. Denn 
+ich hatte ein Signal in Form einer Liste von Zahlen, wodurch die normale Formel für die 
+Fouriertransformation durch das Integral nicht anwendbar war. Da ich zum damaligen Zeitpunkt 
+die diskrete Fouriertransformation nicht kannte, versuchte ich eigenständig eine Approximation 
+der Formel für endliche Werte zu finden. Im folgenden Abschnitt zeige ich also, wie ich 
+eigenständig die DFT mit einer minimalen Abweichung hergeleitet habe.
+\subsection{Eigenständige Herleitung der DFT}
+Da ich, wie zuvor erwähnt, die DFT noch nicht kannte, versuchte ich zunächst aus den Punkten, 
+also die Daten der Audioaufnahme, eine Funktion zu erstellen, auf welche die Formel anwendbar 
+ist. Ein Hauptkriterium, um die Formel zu realisieren ist, dass die Funktion integrierbar ist. 
+Natürlich kann man ausgehend von den Punkten viele Rechtecke nutzen und diese als Approximation 
+für die Fläche des Integrals zu benutzen. Das sähe so aus:
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[>=stealth]
+
+% Achsen
+\draw[->] (-0.5,0) -- (15.5,0) node[right] {$n$};
+\draw[->] (0,-2.5) -- (0,2.5) node[above] {$f(n)$};
+
+% Winkel pro Einheit (in Grad) sodass 1.5 Perioden auf [0,14] liegen
+\pgfmathsetmacro{\degPerUnit}{180*3/14} % = 38.5714286...
+
+% Diskrete Punkte f(n) (aus der Sinusfunktion)
+\foreach \x in {0,...,14} {
+    \pgfmathsetmacro{\yy}{2*sin(\degPerUnit*\x)} % sin erwartet hier Grad
+    \fill[red] (\x,\yy) circle (2pt);
+    \node[red, above, font=\scriptsize] at (\x,\yy) {$f(\pgfmathprintnumber{\x})$};
+    \draw[dashed, gray!60] (\x,0) -- (\x,\yy);
+}
+
+% Rechteckflächen (linke Riemann-Summe)
+\foreach \i in {0,...,13} {
+    \pgfmathsetmacro{\y}{2*sin(\degPerUnit*\i)} % Höhe = f(n)
+    \fill[blue!20, opacity=0.5] (\i,0) rectangle (\i+1,\y);
+}
+
+% (Optional) kontinuierliche Referenz-Sinuskurve mit gleicher Frequenz
+\draw[domain=0:14, smooth, samples=300, thin, red!70] plot(\x,{2*sin(\degPerUnit*\x)});
+
+% Beschriftung Rechteckformel
+\node at (9,-2.3) {\footnotesize Fläche Rechteck: $A = (x_{n+1}-x_n)\,f(n)$};
+
+\end{tikzpicture}
+\end{figure}
+
+Im Prinzip ist dies nichts anders als die Treppenfunktion einer Funktion, wobei man im nicht 
+die Ober- oder Untersumme der Funktion nimmt, also $\sup{\{f(x) | x \in I_n\}}$ oder 
+$\inf{\{f(x) | x\in I_n\}}$ als obere Grenze der Rechtecke Intervall $I_n = [f(n), f(n+1))$ 
+wählt, sondern eine Art Mischung aus beidem. 
+\\ \\
+Wenn man eine große Menge an Datenpunkten hat und diese sehr nah aneinander liegen, dann ist 
+diese Methode eine gute Approximation des tatsächlichen Integrals. Trotzdem habe ich mich dazu entschieden, 
+die Punkte durch eine jeweilige stetige Fortsetzung zu verbinden und dann das Integral davon zu 
+bilden, um die Approximation noch etwas genauer zu gestalten. Meine stetige Fortsetzng besteht aus 
+geraden Linien, welche die Puntkte zu einer stetigen Funktion am Ende verbinden. Bei wenigen Punkten 
+wie in meinem Beispiel ist der Unterschied zwischen den zwei Approximationen gut zu erkennen.
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[>=stealth]
+
+% Achsen
+\draw[->] (-0.5,0) -- (15.5,0) node[right] {$n$};
+\draw[->] (0,-2.5) -- (0,2.5) node[above] {$f(n)$};
+
+% Winkel pro Einheit (in Grad) sodass 1.5 Perioden auf [0,14] liegen
+\pgfmathsetmacro{\degPerUnit}{180*3/14} % = 38.5714286...
+
+% Diskrete Punkte f(n) (aus der Sinusfunktion)
+\foreach \x in {0,...,14} {
+    \pgfmathsetmacro{\yy}{2*sin(\degPerUnit*\x)} % sin erwartet hier Grad
+    \fill[red] (\x,\yy) circle (2pt);
+    \node[red, above, font=\scriptsize] at (\x,\yy) {$f(\pgfmathprintnumber{\x})$};
+    \draw[dashed, gray!60] (\x,0) -- (\x,\yy);
+}
+
+% Linien zwischen Punkten (Stückweise verbunden)
+\draw[thick, blue] (0,{2*sin(0)})
+\foreach \x in {1,...,14} {
+   -- (\x,{2*sin(\degPerUnit*\x)})
+};
+
+% Trapezflächen (je zwei aufeinanderfolgende Punkte)
+\foreach \i in {0,...,13} {
+    \pgfmathsetmacro{\yone}{2*sin(\degPerUnit*\i)}
+    \pgfmathsetmacro{\ytwo}{2*sin(\degPerUnit*(\i+1))}
+    \pgfmathsetmacro{\xnext}{\i+1}
+    \fill[blue!20, opacity=0.5] (\i,0) -- (\i,\yone) -- (\xnext,\ytwo) -- (\xnext,0) -- cycle;
+}
+
+% (Optional) kontinuierliche Referenz-Sinuskurve mit gleicher Frequenz
+\draw[domain=0:14, smooth, samples=300, thin, red!70] plot(\x,{2*sin(\degPerUnit*\x)});
+
+% Beschriftung Trapezformel
+\node at (9,-2.3) {\footnotesize Fläche Trapez: $A = \tfrac{1}{2} (x_{n+1}-x_n)\,(f(n)+f(n+1))$};
+
+\end{tikzpicture}
+\end{figure}
+\\ \\ \\ \\ \\ \\ \\
+Die Funktionenfolge, die ich dabei als Fortsetzung für die jeweiligen Punkte genutzt habe ist folgende:
+$$\left(g_n(x)\right)_{n\in \mathbb{N}_0} = \frac{f(n+1) - f(n)}{n+1 -n } \cdot x + \frac{nf(n+1) - (n+1)f(n)}{n+1 -n} \quad \text{mit } x\in\mathbb{R} $$
+Die Nenner der beiden Brüche fallen weg, doch ich habe sie hier da gelassen, damit man sieht, dass 
+die Steigung beispielsweise der Differenzenquotient zweier Punkte ist. 
+\\ 
+Um auch sicherzustellen, dass meine resultierende Funktion wirklich stetig ist, habe ich es bewiesen. 
+Da man es bei einem Punkt jeweils von zwei Seiten zeigen muss, dass die Funktion dort stetig ist, habe ich die 
+Stetigkeit auf zwei Arten bewiesen. Einmal über das Epsilon-Delta-Kriterium und einmal über die Folgenstetigkeit. 
+Die Beweise findet man beide im Anhang (LÜCKE). Da ich die Funktion $a(x)$ bestehend aus den Daten und der Funktionen folge $g_n$ 
+aber noch mit dem Faktor $e^{-i\omega x}$ multiplizieren muss, habe ich dazu noch bewiesen, dass dieser Ausdruck stetig ist. 
+Dazu musste ich nur beweisen, dass das Produkt aus zwei stetigen Funktionen auch stetig ist. Denn es gibt einen 
+Satz aus der komplexen Analysis, welcher besagt, dass eine Komplexe Funktion genau dann stetig ist, 
+wenn ihre Real- und Imaginärteile stetig sind. Und da der Sinus und Kosinus stetige Funktionen sind, 
+ist lediglich zu zeigen, dass das Produkt zweier stetiger Funktionen stetig ist (Anhang LÜCKE). Bedeutet man könnte 
+theoretisch mit einem Stift die Funktion nachzeichnen, ohne diesen abzusetzen. 
+\\ \\
+Anschließend müsste man noch beweisen, dass wenn man die Funktion $a(x)\cdot e^{-i\omega x}$ auf die gleiche Weise 
+fortsetzen kann wie $a(x)$. Das habe ich hier, aber nicht gemacht, da der Beweis sehr ähnlich zum Stetigkeitsbeweis zuvor ist.
+Anschließend bleibt noch die tatsächliche Fläche, also das Integral, der neu gebildeten Funktion zu berechnen. 
+Dazu habe ich zunächst gezeigt, dass die Funktion $z(x)$, eine Zusammensetzung aus $a(x)$ und $e^{-i\omega x}$,
+eine Regelfunktion ist und so auch integrierbar ist. 
+
+
 \subsection{Berechnung der Koeffizienten}
 \subsection{Eigenschaften und Konvergenz}
 
@@ -576,50 +707,151 @@ Eigene Herleitung
             
         Damit ist gezeigt, dass $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ ein Orthonormalsystem bildet.
         \end{proof}
+
+\begin{theorem}\label{Stetigkeit Folgenstetigkeit}
+  Sei eine Funktion $a : \mathbb{R} \to \mathbb{R}$ definiert als 
+  \[
+    a(x) = \begin{cases}
+      f(x) & \text{für } x \in \mathbb{Z} \\
+      f(\lceil x \rceil) - f(\lfloor x \rfloor)\cdot (x - \lfloor x \rfloor) + f(\lfloor x \rfloor) & \text{für } x \notin \mathbb{Z} \:,
+    \end{cases}
+    \]
+    dann ist gilt $\forall$ Folgen $x_n < n$ mit $\lim\limits_{n\to\infty}{x_n} = n \text{ mit } n \in \mathbb{Z}$, 
+    dann gilt $f(x_n)
+    \xrightarrow[n\to\infty]{} f(n)$
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+\begin{aligned}
+a(x_n) &= \big(f(\lceil x_n \rceil) - f(\lfloor x_n \rfloor)\big)\cdot (x_n - \lfloor x_n \rfloor) + f(\lfloor x_n \rfloor) \\
+&= \big(f(\lfloor x_n \rfloor) - f(\lfloor x_n \rfloor)\big)\cdot (x_n - n) + f(\lfloor x_n \rfloor) \\
+&\stackrel{n\to\infty}{=} \big(f(\lceil n \rceil) - f(\lfloor n \rfloor)\big)\cdot (n - n) + f(\lfloor n \rfloor) \\
+&= f(n) = a(n)
+\end{aligned}
+\end{equation*}
+Damit ist die Funktion auf den Intervallen $I_n = (n; n+1]$ stetig. 
+\end{proof}
+
+\begin{theorem}\label{Stetigkeit}
+ Sei $x \in \mathbb{R}$. Sei $\varepsilon > 0$. Wählen wir 
+$$
+\delta = \frac{\varepsilon}{|f(n+1) - f(n)|} - 2,
+$$
+dann gilt für alle $x \in \mathbb{R}$ mit $x-n \leq \delta$ und mit $n \in \mathbb{Z}$:
+\end{theorem}
+\begin{proof}
+\begin{align*}
+|a(x) - a(n)| 
+&= \big| (f(n+1) - f(n)) \cdot (x-n+1) + f(n+1) - f(n) \big| \\[6pt]
+&= \big| (f(n+1) - f(n)) - (n+1) \cdot (f(n+1) - f(n)) + f(n+1) - f(n) \big| \\[6pt]
+&= \big| 2f(n+1) - 2f(n) - (x-n) \cdot (f(n+1) - f(n)) \big| \\[6pt]
+&= \big| 2 \cdot (f(n+1) - f(n)) - (x-n) \cdot (f(n+1) - f(n)) \big| \\[6pt]
+&< \big| 2 \cdot (f(n+1) - f(n)) - (x-n) \cdot (f(n+1) - f(n)) \big| \\[6pt]
+&= \big| (f(n+1) - f(n)) \cdot (2 - (x-n)) \big| \\[6pt]
+&= |f(n+1) - f(n)| \cdot |2 + (-(x-n))| \\[6pt]
+&\underset{\triangle Ugl.}{\leq} |f(n+1) - f(n)| \cdot (|2| + |-(x-n)|) \\[6pt]
+&= |f(n+1) - f(n)| \cdot (2 + |x-n|) \\[6pt]
+&< |f(n+1) - f(n)| \cdot (2 + \delta) \\[6pt]
+&< \varepsilon.
+\end{align*}
+Damit ist die Funktion auf den Intervallen $I_n = [n; n+1)$ stetig. 
+Da Folgenstetigkeit und Stetigkeit auf metrischen Räumen äquivalent sind, (QUELLE) 
+folgt, dass die Funktion $a(x)$ in $\mathbb{R}$ stetig ist. 
+\end{proof}
+
+\begin{theorem}\label{Stetigkeit}
+Sei $f : A \to \mathbb{R}$ mit $A \subseteq \mathbb{R}$ und $g : A \to \mathbb{R}$ mit $A \subseteq \mathbb{R}$ 
+eine stetige Funktion. Dann ist $f \cdot g$ auch stetig.
+\end{theorem}
+
+\begin{proof}
+
+\[
+\forall y \in A \;\; \forall \varepsilon_0 > 0 \;\; \exists \delta > 0 \;\; 
+\text{dann gilt für } |x-y| < \delta_1 : |f(x) - f(y)| < \varepsilon_1
+\]
+
+\[
+\forall y \in A \;\; \forall \varepsilon_0 > 0 \;\; \exists \delta > 0 \;\; 
+\text{dann gilt für } |x-y| < \delta_2 : |g(x) - g(y)| < \varepsilon_2
+\]
+
+\begin{align*}
+|(f \cdot g)(x) - (f \cdot g)(y)| 
+&= | f(x) g(x) - f(y) g(y) | \\[2mm]
+&= | f(x) g(x) - f(x) g(y) + f(x) g(y) - f(y) g(y) | \\[2mm]
+&= | f(x) \cdot (g(x) - g(y)) + (f(x) - f(y)) \cdot g(y) | \\[2mm]
+&\leq | f(x) \cdot (g(x) - g(y)) | + | g(y) \cdot (f(x) - f(y)) | \\[2mm]
+\makebox[0pt][l]{\hspace{-2em}für $\inf\{\delta_1, \delta_2\}$ klein genug} \\[2mm]
+&< | f(x) | \cdot \varepsilon + | g(y) | \cdot \varepsilon  \\[2mm]
+& = \varepsilon \cdot (|f(x)| + |g(y)|).
+\end{align*}
+
+Wähle $\inf\{\delta_1, \delta_2\}$ klein genug, sodass 
+\[
+\vert \varepsilon \vert = \frac{\varepsilon_0}{F + G} \quad,
+\text{mit }
+F := \sup \{ |f(x)| \mid x \in A \}, 
+\text{ und }
+G := \sup \{ |g(x)| \mid x \in A \}.
+\]
+
+Dann gilt $\quad |(f \cdot g)(x) - (f \cdot g)(y)| \leq \varepsilon_0.$ Somit ist für 
+$\vert x-y \vert < \inf\{\delta_1, \delta_2\} \\ \vert(f\cdot g)(x) - (f\cdot g)(y)\vert < \varepsilon_0$. 
+Somit ist das Produkt zweier stetiger Funktionen stetig. 
+
+
+\end{proof}
+
+\begin{theorem}
+Die Funktion 
+\[
+z(x) =
+\begin{cases}
+f(x)\cdot e^{-i\omega x} & \text{für } x \in \mathbb{Z}, \\[6pt]
+e^{-i\omega \lceil x\rceil} \cdot \bigl( f(\lfloor x \rfloor) - e^{i\omega \lfloor x \rfloor} f(\lfloor x \rfloor)(x - \lfloor x \rfloor) \bigr) \cdot e^{-i\omega \lceil x\rceil} & \text{für } x \notin \mathbb{Z}
+\end{cases}
+\]
+ist eine Regelfunktion
+\end{theorem}
+\begin{proof}
+Sei \((c_n(x))_{n \in \mathbb{N}} := \underset{y \in \bigl[x,\, x + \tfrac{1}{n}\bigr)}{\inf} \{z(y)\}\).
+Dann ist 
+\[
+I_n = \bigl[ x,\, x + \tfrac{1}{n} \bigr)
+\]
+eine Intervallschachtelung. Denn \( I_{n+1} \subset I_n \), und sei \(\varepsilon > 0\).  
+Sei \( n > \varepsilon \), dann ist
+\[
+|I_n| = b_n - a_n = \left| x + \tfrac{1}{n} - x \right| = \left| \tfrac{1}{n} \right| < \varepsilon.
+\]
+
+Dadurch, dass \( I_n \) eine Intervallschachtelung ist, gilt:
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = x.
+\]
+
+Also ist
+\[
+\sup_{x \in \mathbb{R}} \left| \inf_{y \in I_n} z(y) - z(x) \right| 
+\;\xrightarrow[n \to \infty]{}\;
+\sup_{x \in \mathbb{R}} \left| \inf \{z(x)\}- z(x) \right|
+= \sup_{x \in \mathbb{R}} \left| z(x) - z(x) \right| 
+= 0.
+\]
+
+\medskip
+
+Somit ist die Funktionenfolge \(c_n\) gleichmäßig stetig mit \(z(x)\).  
+Zudem wurden alle Funktionen der Funktionenfolge \(c_n\) so deklariert, 
+dass sie Treppenfunktionen sind. Das bedeutet: es gibt eine Funktionenfolge an 
+Treppenfunktionen, welche gleichmäßig stetig bezüglich \(z(x)\) ist, und somit 
+ist \(z(x)\) eine Regelfunktion.
+
+\end{proof}
+
 \subsection{Bedeutung im größeren Kontext}
         
-
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[>=stealth]
-
-% Achsen
-\draw[->] (-0.5,0) -- (15.5,0) node[right] {$n$};
-\draw[->] (0,-2.5) -- (0,2.5) node[above] {$f(n)$};
-
-% Winkel pro Einheit (in Grad) sodass 1.5 Perioden auf [0,14] liegen
-\pgfmathsetmacro{\degPerUnit}{180*3/14} % = 38.5714286...
-
-% Diskrete Punkte f(n) (aus der Sinusfunktion)
-\foreach \x in {0,...,14} {
-    \pgfmathsetmacro{\yy}{2*sin(\degPerUnit*\x)} % sin erwartet hier Grad
-    \fill[red] (\x,\yy) circle (2pt);
-    \node[red, above, font=\scriptsize] at (\x,\yy) {$f(\pgfmathprintnumber{\x})$};
-    \draw[dashed, gray!60] (\x,0) -- (\x,\yy);
-}
-
-% Linien zwischen Punkten (Stückweise verbunden)
-\draw[thick, blue] (0,{2*sin(0)})
-\foreach \x in {1,...,14} {
-   -- (\x,{2*sin(\degPerUnit*\x)})
-};
-
-% Trapezflächen (je zwei aufeinanderfolgende Punkte)
-\foreach \i in {0,...,13} {
-    \pgfmathsetmacro{\yone}{2*sin(\degPerUnit*\i)}
-    \pgfmathsetmacro{\ytwo}{2*sin(\degPerUnit*(\i+1))}
-    \pgfmathsetmacro{\xnext}{\i+1}
-    \fill[blue!20, opacity=0.5] (\i,0) -- (\i,\yone) -- (\xnext,\ytwo) -- (\xnext,0) -- cycle;
-}
-
-% (Optional) kontinuierliche Referenz-Sinuskurve mit gleicher Frequenz
-\draw[domain=0:14, smooth, samples=300, thin, red!70] plot(\x,{2*sin(\degPerUnit*\x)});
-
-% Beschriftung Trapezformel
-\node at (9,-2.3) {\footnotesize Fläche Trapez: $A = \tfrac{1}{2} (x_{n+1}-x_n)\,(f(n)+f(n+1))$};
-
-\end{tikzpicture}
-\end{figure}
 
                 
                 

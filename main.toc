@@ -8,20 +8,20 @@
 \contentsline {subsection}{\numberline {3.1}Komplexe Zahlen und die Eulerformel}{3}{}%
 \contentsline {subsection}{\numberline {3.2}Das Skalarprodukt von Funktionen und Orthonormalsysteme}{4}{}%
 \contentsline {subsection}{\numberline {3.3}Die Fourierreihe}{5}{}%
-\contentsline {subsection}{\numberline {3.4}Von der Fourierreihe zur Fouriertranformation}{8}{}%
-\contentsline {subsection}{\numberline {3.5}Die Foureirtransformation in der Praxis: Die DFT}{9}{}%
-\contentsline {subsection}{\numberline {3.6}Die Foureirtransformation in der Praxis: Die FFT}{9}{}%
-\contentsline {section}{\numberline {4}Fourier-Reihe}{12}{}%
-\contentsline {subsection}{\numberline {4.1}Herleitung der Reihe}{12}{}%
+\contentsline {subsection}{\numberline {3.4}Von der Fourierreihe zur Fouriertranformation}{7}{}%
+\contentsline {subsection}{\numberline {3.5}Die Foureirtransformation in der Praxis: Die DFT}{8}{}%
+\contentsline {subsection}{\numberline {3.6}Die Foureirtransformation in der Praxis: Die FFT}{8}{}%
+\contentsline {section}{\numberline {4}Von der Theorie zu Praxis: Eigenentwicklung eines Audioanalyzers mit C++}{10}{}%
+\contentsline {subsection}{\numberline {4.1}Eigenständige Herleitung der DFT}{10}{}%
 \contentsline {subsection}{\numberline {4.2}Berechnung der Koeffizienten}{12}{}%
 \contentsline {subsection}{\numberline {4.3}Eigenschaften und Konvergenz}{12}{}%
 \contentsline {section}{\numberline {5}Von der Reihe zur Fourier-Transformation}{12}{}%
 \contentsline {subsection}{\numberline {5.1}Übergang zum Integral}{12}{}%
 \contentsline {subsection}{\numberline {5.2}Fourier-Transformation und inverse Transformation}{12}{}%
 \contentsline {subsection}{\numberline {5.3}Eigenschaften}{12}{}%
-\contentsline {section}{\numberline {6}Diskrete Fourier-Transformation (DFT)}{13}{}%
-\contentsline {subsection}{\numberline {6.1}Definition und Motivation}{13}{}%
-\contentsline {subsection}{\numberline {6.2}Herleitung aus der Fourier-Transformation}{13}{}%
+\contentsline {section}{\numberline {6}Diskrete Fourier-Transformation (DFT)}{12}{}%
+\contentsline {subsection}{\numberline {6.1}Definition und Motivation}{12}{}%
+\contentsline {subsection}{\numberline {6.2}Herleitung aus der Fourier-Transformation}{12}{}%
 \contentsline {subsection}{\numberline {6.3}Beweise für die Korrektheit}{13}{}%
 \contentsline {subsection}{\numberline {6.4}FFT als effiziente Berechnung}{13}{}%
 \contentsline {section}{\numberline {7}Eigene Beiträge}{13}{}%
@@ -33,9 +33,9 @@
 \contentsline {section}{\numberline {8}Anwendungen}{13}{}%
 \contentsline {subsection}{\numberline {8.1}Audio}{13}{}%
 \contentsline {subsection}{\numberline {8.2}Bild}{13}{}%
-\contentsline {section}{\numberline {9}Anhang}{13}{}%
-\contentsline {subsection}{\numberline {9.1}Eigene Beweise}{13}{}%
-\contentsline {subsection}{\numberline {9.2}Bedeutung im größeren Kontext}{16}{}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{16}{}%
-\contentsline {subsection}{\numberline {10.1}Zusammenfassung der Ergebnisse}{16}{}%
-\contentsline {subsection}{\numberline {10.2}Ausblick: Erweiterungen und Anwendungen}{16}{}%
+\contentsline {section}{\numberline {9}Anhang}{14}{}%
+\contentsline {subsection}{\numberline {9.1}Eigene Beweise}{14}{}%
+\contentsline {subsection}{\numberline {9.2}Bedeutung im größeren Kontext}{17}{}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{17}{}%
+\contentsline {subsection}{\numberline {10.1}Zusammenfassung der Ergebnisse}{17}{}%
+\contentsline {subsection}{\numberline {10.2}Ausblick: Erweiterungen und Anwendungen}{17}{}%
