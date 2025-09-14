@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, amsthm, graphicx, pgfplots, tikz, forest}
+\usepackage{amsmath, amssymb, amsthm, graphicx, pgfplots, tikz, forest, listings, xcolor}
 \usepackage{lmodern} 
 \usepackage[german]{babel}  
 \usepackage{csquotes} 
@@ -38,6 +38,44 @@
   }
 }
 
+\definecolor{BGGray}{RGB}{40,40,40}       % Hintergrund
+\definecolor{KeywordBlue}{RGB}{86,156,214}       % Kontrollstrukturen
+\definecolor{TypeTurquoise}{RGB}{78,201,176}    % Datentypen
+\definecolor{NamespacePurple}{RGB}{180,122,180} % Namespaces/Objekte
+\definecolor{CommentGreen}{RGB}{87,166,74}      % Kommentare
+\definecolor{StringOrange}{RGB}{206,145,120}    % Strings
+\definecolor{NumberGray}{RGB}{181,206,168}      % Zahlen
+\definecolor{TextGray}{RGB}{220,220,220}        % Normale Schrift
+
+% C++ Sprache für Listen
+\lstdefinelanguage{CPPVS}{
+    language=C++,
+    morekeywords=[1]{int, float, double, short, long, char, void, bool},
+    morekeywords=[2]{for, if, else, return, new},
+    morekeywords=[3]{std, complex},
+    sensitive=true,
+    morecomment=[l]{//},
+    morestring=[b]"
+}
+
+\lstdefinestyle{VSStyle}{
+    language=CPPVS,
+    backgroundcolor=\color{BGGray},
+    basicstyle=\ttfamily\small\color{TextGray},
+    keywordstyle=[1]\color{TypeTurquoise}\bfseries,     % Datentypen
+    keywordstyle=[2]\color{KeywordBlue}\bfseries,       % Kontrollstrukturen
+    keywordstyle=[3]\color{NamespacePurple},            % Namespaces/Objekte
+    commentstyle=\color{CommentGreen}\itshape,
+    stringstyle=\color{StringOrange},
+    numberstyle=\tiny\color{NumberGray},
+    numbers=left,
+    numbersep=8pt,
+    stepnumber=1,
+    tabsize=4,
+    breaklines=true,
+    frame=none,          % kein Rahmen
+    showstringspaces=false
+}
 \title{Fourier-Methoden: Theorie und Anwendungen}
 \author{Felix Wager}
 \date{\today}
@@ -536,7 +574,7 @@ Beweise, Theorem 9.5). Die Berechnung des Integrals von $z(x)$ bin ich wiefolgt 
 & =\frac{1}{2} \cdot(z(0)+z(N))+\sum_{j=1}^{N-1} z(j) \\
 & =\frac{1}{2} \cdot\left(f(0) \cdot e^{-i \omega 0}+f(N) \cdot e^{-i \omega N}\right)+\sum_{j=1}^{N-1} f(j) \cdot e^{-i \omega j} \\
 \end{align*}
-Um das $\omega$ noch aufzulösen, fande ich den Weg über die physikalischen Formeln hilfreich, um eine 
+Um das $\omega$ noch aufzulösen, fand ich den Weg über die physikalischen Formeln hilfreich, um eine 
 modelhafte Vorstellung der Mathematik zu haben, und so die Brücke zu den Frequenzen zu finden. In der Mathematik 
 bestimmt man die Periodenlänge über $p = \frac{2\pi}{b}$, mit b als die gewünschte Länge der Streckung. In der Physik 
 berechnet man die Winkelgeschwindigkeit so: $\omega = \frac{2\pi}{T}$, mit T als Zeit für eine Periode einer Schwingung. 
@@ -547,7 +585,7 @@ um näher an die Frequenz zu kommen:
 \begin{align*}
 & =\frac{1}{2} \cdot\left(f(0) \cdot e^{-i 2 \pi f 0}+f(N) \cdot e^{-i 2 \pi f N}\right)+\sum_{j=1}^{N-1} f(j) \cdot e^{-i 2 \pi f j} \\
 \end{align*}
-Um jetzt die Frequenz $f$ aufzulösen, habe ich mein Modell weiter verwendet. In der Physik gilt: 
+Um jetzt die Frequenz $f$ aufzulösen, habe ich mein Modell weiterverwendet. In der Physik gilt: 
 $f = \frac{n}{t}$ mit n als Anzahl der Perioden und t als die vergangene Zeit. Jetzt wieder die Umwandlung 
 zurück in den mathematischen Kontext. Die Zeit ist in der Mathematik die Länge gewesen, also gilt $t \widehat{=} N$
 und die Anzahl der Perioden bestimmt in diesem Fall nicht n, sondern die Variable k, welche schlussendlich 
@@ -558,14 +596,26 @@ die Frequenz bestimmt. Daraus folgt:
 \end{align*}
 Somit ist die Formel 
 $$F(k) = \frac{1}{2} \cdot\left(f(0) +f(N) \cdot e^{-i 2 \pi \frac{k}{N} N}\right)+\sum_{j=1}^{N-1} f(j) \cdot e^{-i 2 \pi \frac{k}{N} j} \quad \text{mit } k\in\mathbb{N}_0 \cap [0, N-1]$$
-mein Ergebnis für die DFT gewesen. Mein Ergebnis lässt sich auch wie folgt umstellen:
+mein Ergebnis für meine DFT. Mein Ergebnis lässt sich auch wie folgt umstellen:
 \begin{align*}
 &F(k) =\frac{1}{2}\left(f(N) \cdot e^{-i 2 \pi h}+f(0)\right)-f(0)+\sum_{j=0}^{N-1} f(j) \cdot e^{-i 2 \pi \frac{k}{N} j} \\
 & =\frac{1}{2} \cdot\left(f(N) \cdot e^{-i 2 \pi k}-f(0)\right)+\sum_{j=0}^{N-1} f(j) \cdot e^{-i 2 \pi \frac{k}{N} j}
 \end{align*}
 Somit ist die tatsächliche Formel der DFT enthalten und der Unterschied zwischen meiner Formel und der tatsächlichen DFT 
 ist lediglich der Summand $\frac{1}{2} \cdot\left(f(N) \cdot e^{-i 2 \pi k}-f(0)\right)$. Der Unterschied kommt daher, dass die 
-tatsächliche DFT die Berechnung über die gleiche Approximation, wie in der ersten Graphik des Abschnitts, führt.
+tatsächliche DFT die Berechnung über die gleiche Approximation, wie die aus der ersten Graphik des Abschnitts, führt. In meinem 
+Programm habe ich schließlich meine DFT wie folgt implementiert:
+\\\\
+\begin{center}
+\includegraphics[scale=0.825]{DFT_Code.jpg}
+\end{center}
+In meinem Code entspricht die Liste audioFunction der Funktion $f(x)$, also meinen Datenpunkten. resultFunction ist dabei 
+die Ergebnisfunktion. Mit der ersten for-Schleife durchlaufe ich alle Frequenzen die berechenbar sind. 
+Innerhalb dieser Schleife erkennt man die eigentliche Formel, welche ich hergeleitet habe. Die zweite 
+und dritte Zeile in der ersten for-Schleife ist dabei die Berechnung des Vorsummanden, während die zweite 
+for-Schleife innerhalb der for-Schleife den Ausdruck $\sum_{j=0}^{N-1} f(j) \cdot e^{-i 2 \pi \frac{k}{N} j}$ 
+berechnet. Mit den zwei inneinander geschachtelten for-Schleifen, welche beide von $0$ bis $N-1$ laufen, 
+erkennt man ein weiteres mal, warum die Laufzeit dieser Berechnung $O(N^2)$ beträgt.  
 
 
 \subsection{Berechnung der Koeffizienten}

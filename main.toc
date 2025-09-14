@@ -22,19 +22,19 @@
 \contentsline {section}{\numberline {6}Diskrete Fourier-Transformation (DFT)}{14}{}%
 \contentsline {subsection}{\numberline {6.1}Definition und Motivation}{14}{}%
 \contentsline {subsection}{\numberline {6.2}Herleitung aus der Fourier-Transformation}{14}{}%
-\contentsline {subsection}{\numberline {6.3}Beweise für die Korrektheit}{14}{}%
-\contentsline {subsection}{\numberline {6.4}FFT als effiziente Berechnung}{14}{}%
-\contentsline {section}{\numberline {7}Eigene Beiträge}{14}{}%
-\contentsline {subsection}{\numberline {7.1}Eigene Herleitung der DFT}{14}{}%
-\contentsline {subsection}{\numberline {7.2}Beweise}{14}{}%
-\contentsline {subsection}{\numberline {7.3}Eigener FFT-Algorithmus in Python}{14}{}%
-\contentsline {subsection}{\numberline {7.4}Audio-Programm zur Echtzeit-Visualisierung}{14}{}%
-\contentsline {subsection}{\numberline {7.5}Bildverarbeitung: Moiré-Muster entfernen mit 2D-FFT}{14}{}%
-\contentsline {section}{\numberline {8}Anwendungen}{14}{}%
-\contentsline {subsection}{\numberline {8.1}Audio}{14}{}%
-\contentsline {subsection}{\numberline {8.2}Bild}{14}{}%
-\contentsline {section}{\numberline {9}Anhang}{15}{}%
-\contentsline {subsection}{\numberline {9.1}Eigene Beweise}{15}{}%
+\contentsline {subsection}{\numberline {6.3}Beweise für die Korrektheit}{15}{}%
+\contentsline {subsection}{\numberline {6.4}FFT als effiziente Berechnung}{15}{}%
+\contentsline {section}{\numberline {7}Eigene Beiträge}{15}{}%
+\contentsline {subsection}{\numberline {7.1}Eigene Herleitung der DFT}{15}{}%
+\contentsline {subsection}{\numberline {7.2}Beweise}{15}{}%
+\contentsline {subsection}{\numberline {7.3}Eigener FFT-Algorithmus in Python}{15}{}%
+\contentsline {subsection}{\numberline {7.4}Audio-Programm zur Echtzeit-Visualisierung}{15}{}%
+\contentsline {subsection}{\numberline {7.5}Bildverarbeitung: Moiré-Muster entfernen mit 2D-FFT}{15}{}%
+\contentsline {section}{\numberline {8}Anwendungen}{15}{}%
+\contentsline {subsection}{\numberline {8.1}Audio}{15}{}%
+\contentsline {subsection}{\numberline {8.2}Bild}{15}{}%
+\contentsline {section}{\numberline {9}Anhang}{16}{}%
+\contentsline {subsection}{\numberline {9.1}Eigene Beweise}{16}{}%
 \contentsline {subsection}{\numberline {9.2}Bedeutung im größeren Kontext}{19}{}%
 \contentsline {section}{\numberline {10}Fazit und Ausblick}{19}{}%
 \contentsline {subsection}{\numberline {10.1}Zusammenfassung der Ergebnisse}{19}{}%
