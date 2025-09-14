@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.6)  13 SEP 2025 19:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.6)  14 SEP 2025 13:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -585,7 +585,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'german'.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 44.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 45.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (main.aux
@@ -595,20 +595,20 @@ LaTeX Warning: Label `Stetigkeit' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count343
@@ -664,29 +664,29 @@ Package pgfplots notification 'compat/show suggested version=true': document has
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 46.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 47.
 (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 46.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 47.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 46.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 47.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 46.
+(Font)              <14.4> on input line 47.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 46.
+(Font)              <10> on input line 47.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 46.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 46.
+(Font)              <7> on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (main.toc
@@ -706,105 +706,109 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 <eulerformel.jpg, id=14, 223.13362pt x 205.06613pt>
 File: eulerformel.jpg Graphic file (type jpg)
 <use eulerformel.jpg>
-Package pdftex.def Info: eulerformel.jpg  used on input line 83.
+Package pdftex.def Info: eulerformel.jpg  used on input line 84.
 (pdftex.def)             Requested size: 167.3498pt x 153.79921pt.
  [3{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}] [4{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc} <./eulerformel.jpg>] [5] [6]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 196.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 197.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [7{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
-Overfull \hbox (20.40764pt too wide) detected at line 275
+Overfull \hbox (20.40764pt too wide) detected at line 276
 [] \OT1/lmr/m/n/12 = [] \OMS/lmsy/m/n/12 ^^A [] []
  []
 
 [8]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 357.
+(Font)              <5> on input line 358.
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--364
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 318--364
+Underfull \hbox (badness 10000) in paragraph at lines 319--365
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--364
+Underfull \hbox (badness 10000) in paragraph at lines 319--365
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--364
+Underfull \hbox (badness 10000) in paragraph at lines 319--365
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 319--365
 
  []
 
 [9]
-Package pgfplots info on input line 379: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
+Package pgfplots info on input line 380: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
 
-Overfull \hbox (16.34842pt too wide) in paragraph at lines 448--449
+Overfull \hbox (16.34842pt too wide) in paragraph at lines 449--450
  [][] 
  []
 
 [10]
-Overfull \hbox (16.34842pt too wide) in paragraph at lines 501--502
+Overfull \hbox (16.34842pt too wide) in paragraph at lines 502--503
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--505
+Underfull \hbox (badness 10000) in paragraph at lines 452--506
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--505
+Underfull \hbox (badness 10000) in paragraph at lines 452--506
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--505
+Underfull \hbox (badness 10000) in paragraph at lines 452--506
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--505
+Underfull \hbox (badness 10000) in paragraph at lines 452--506
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--505
+Underfull \hbox (badness 10000) in paragraph at lines 452--506
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--505
+Underfull \hbox (badness 10000) in paragraph at lines 452--506
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--505
+Underfull \hbox (badness 10000) in paragraph at lines 452--506
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 505--525
+Underfull \hbox (badness 10000) in paragraph at lines 506--527
 
  []
 
+[12] [13]
 PGFPlots: reading {fft_bench5.dat}
 PGFPlots: reading {fft_bench5.dat}
 PGFPlots: reading {fft_bench5.dat}
 PGFPlots: reading {fft_bench5.dat}
 PGFPlots: reading {fft_bench5.dat}
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 589.
-[12]
+(Font)              <10.95> on input line 633.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 PGFPlots: reading {fft_bench_small.dat}
 PGFPlots: reading {fft_bench_small.dat}
 PGFPlots: reading {fft_bench_small.dat}
 
-Overfull \hbox (18.87326pt too wide) in paragraph at lines 628--629
+Overfull \hbox (18.87326pt too wide) in paragraph at lines 672--673
  [][] 
  []
 
@@ -816,7 +820,7 @@ PGFPlots: reading {fft_bench_big.dat}
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[13] [14] [15] [16] [17] (main.aux)
+[14] [15] [16] [17] [18] [19] (main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -829,15 +833,15 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  38742 strings out of 474486
  1005342 string characters out of 5743756
- 1965542 words of memory out of 5000000
+ 1971542 words of memory out of 5000000
  60500 multiletter control sequences out of 15000+600000
  618487 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  127i,19n,119p,1672b,2226s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (17 pages, 410318 bytes).
+Output written on main.pdf (19 pages, 416634 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
+ 161 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

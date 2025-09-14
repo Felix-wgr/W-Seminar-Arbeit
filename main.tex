@@ -11,6 +11,7 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Korollar}
+\allowdisplaybreaks
 
 
 \theoremstyle{definition}
@@ -517,11 +518,54 @@ wenn ihre Real- und Imaginärteile stetig sind. Und da der Sinus und Kosinus ste
 ist lediglich zu zeigen, dass das Produkt zweier stetiger Funktionen stetig ist (Anhang LÜCKE). Bedeutet man könnte 
 theoretisch mit einem Stift die Funktion nachzeichnen, ohne diesen abzusetzen. 
 \\ \\
-Anschließend müsste man noch beweisen, dass wenn man die Funktion $a(x)\cdot e^{-i\omega x}$ auf die gleiche Weise 
-fortsetzen kann wie $a(x)$. Das habe ich hier, aber nicht gemacht, da der Beweis sehr ähnlich zum Stetigkeitsbeweis zuvor ist.
-Anschließend bleibt noch die tatsächliche Fläche, also das Integral, der neu gebildeten Funktion zu berechnen. 
-Dazu habe ich zunächst gezeigt, dass die Funktion $z(x)$, eine Zusammensetzung aus $a(x)$ und $e^{-i\omega x}$,
-eine Regelfunktion ist und so auch integrierbar ist. 
+Anschließend müsste man noch beweisen, dass man die Funktion $a(x)\cdot e^{-i\omega x}$ auf die gleiche Weise 
+fortsetzen kann wie $a(x)$, un so die Funktion $z(x)$ zu erhalten. Das habe ich hier, aber nicht gemacht, da der 
+Beweis sehr ähnlich zum Stetigkeitsbeweis zuvor ist. Anschließend bleibt noch die tatsächliche Fläche, also das 
+Integral, der neu gebildeten Funktion $z(x)$ zu berechnen. Dazu habe ich zunächst gezeigt, dass die Funktion $z(x)$, eine 
+Zusammensetzung aus $a(x)$ und $e^{-i\omega x}$, eine Regelfunktion ist und so auch integrierbar ist (Anhang, Eigene 
+Beweise, Theorem 9.5). Die Berechnung des Integrals von $z(x)$ bin ich wiefolgt angegangen:
+
+\begin{align*}
+& \int_{-\infty}^\infty{f(x)e^{-i\omega x} dx} \approx \int_{-\infty}^\infty{z(x) dx}\\ 
+&\text{Einschränkung der Integralgrenzen auf den Definitionsbereich von $z(x)$: }\\
+& =\int_{-N}^{N}{z(x)dx} = \int_{0}^{N}{z(x)dx} \\
+&= \sum_{k = 0}^{N-1}{\frac{1}{2}(x_{j+1}-x_j)(z(j) + z(j+1))} \qquad y:= (x_{j+1}-x_j)\\
+& =\frac{1}{2} y \sum_{j=0}^{N-1} z(j)+z(j+1) \qquad \text{in unserem Fall ist $y$, unabhängig von $j$, gleich $1$} \\
+& =\frac{1}{2} \sum_{j=0}^{N-1} z(j)+z(j+1) \\
+& =\frac{1}{2} \cdot\left(z(0)+z(N)+\sum_{j=1}^{N-1} 2 \cdot z(j)\right) \\
+& =\frac{1}{2} \cdot(z(0)+z(N))+\sum_{j=1}^{N-1} z(j) \\
+& =\frac{1}{2} \cdot\left(f(0) \cdot e^{-i \omega 0}+f(N) \cdot e^{-i \omega N}\right)+\sum_{j=1}^{N-1} f(j) \cdot e^{-i \omega j} \\
+\end{align*}
+Um das $\omega$ noch aufzulösen, fande ich den Weg über die physikalischen Formeln hilfreich, um eine 
+modelhafte Vorstellung der Mathematik zu haben, und so die Brücke zu den Frequenzen zu finden. In der Mathematik 
+bestimmt man die Periodenlänge über $p = \frac{2\pi}{b}$, mit b als die gewünschte Länge der Streckung. In der Physik 
+berechnet man die Winkelgeschwindigkeit so: $\omega = \frac{2\pi}{T}$, mit T als Zeit für eine Periode einer Schwingung. 
+Wie man sieht sind beide Formeln sehr ähnlich, da die physikalische auch von der Mathematik abhängt. Deshalb 
+habe ich vereinfacht mit der physikalischen Formel für ein einfacheres Verständnis gearbeitet. Und in der Physik 
+gilt auch, dass $\omega = 2\pi f$ ist, da $T = \frac{1}{f}$ gilt. Diese Formel habe ich nun für $\omega$ eingesetzt, 
+um näher an die Frequenz zu kommen:
+\begin{align*}
+& =\frac{1}{2} \cdot\left(f(0) \cdot e^{-i 2 \pi f 0}+f(N) \cdot e^{-i 2 \pi f N}\right)+\sum_{j=1}^{N-1} f(j) \cdot e^{-i 2 \pi f j} \\
+\end{align*}
+Um jetzt die Frequenz $f$ aufzulösen, habe ich mein Modell weiter verwendet. In der Physik gilt: 
+$f = \frac{n}{t}$ mit n als Anzahl der Perioden und t als die vergangene Zeit. Jetzt wieder die Umwandlung 
+zurück in den mathematischen Kontext. Die Zeit ist in der Mathematik die Länge gewesen, also gilt $t \widehat{=} N$
+und die Anzahl der Perioden bestimmt in diesem Fall nicht n, sondern die Variable k, welche schlussendlich 
+die Frequenz bestimmt. Daraus folgt: 
+\begin{align*}
+& \frac{1}{2} \cdot\left(f(0) \cdot e^{-i 2 \pi f 0}+f(N) \cdot e^{-i 2 \pi f N}\right)+\sum_{j=1}^{N-1} f(j) \cdot e^{-i 2 \pi f j} \\
+& =\frac{1}{2} \cdot\left(f(0) \cdot e^{-i 2 \pi \frac{k}{N} \cdot 0}+f(N) \cdot e^{-i 2 \pi \frac{k}{N} N}\right)+\sum_{j=1}^{N-1} f(j) \cdot e^{-i 2 \pi \frac{k}{N} j} \\
+\end{align*}
+Somit ist die Formel 
+$$F(k) = \frac{1}{2} \cdot\left(f(0) +f(N) \cdot e^{-i 2 \pi \frac{k}{N} N}\right)+\sum_{j=1}^{N-1} f(j) \cdot e^{-i 2 \pi \frac{k}{N} j} \quad \text{mit } k\in\mathbb{N}_0 \cap [0, N-1]$$
+mein Ergebnis für die DFT gewesen. Mein Ergebnis lässt sich auch wie folgt umstellen:
+\begin{align*}
+&F(k) =\frac{1}{2}\left(f(N) \cdot e^{-i 2 \pi h}+f(0)\right)-f(0)+\sum_{j=0}^{N-1} f(j) \cdot e^{-i 2 \pi \frac{k}{N} j} \\
+& =\frac{1}{2} \cdot\left(f(N) \cdot e^{-i 2 \pi k}-f(0)\right)+\sum_{j=0}^{N-1} f(j) \cdot e^{-i 2 \pi \frac{k}{N} j}
+\end{align*}
+Somit ist die tatsächliche Formel der DFT enthalten und der Unterschied zwischen meiner Formel und der tatsächlichen DFT 
+ist lediglich der Summand $\frac{1}{2} \cdot\left(f(N) \cdot e^{-i 2 \pi k}-f(0)\right)$. Der Unterschied kommt daher, dass die 
+tatsächliche DFT die Berechnung über die gleiche Approximation, wie in der ersten Graphik des Abschnitts, führt.
 
 
 \subsection{Berechnung der Koeffizienten}
