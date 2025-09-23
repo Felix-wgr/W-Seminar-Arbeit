@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1757871240.09543 "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" "main.pdf" "main" 1757871245.32743 0
-  "C:/Users/fwage/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1757851269 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
+["pdflatex"] 1758662869.93749 "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" "main.pdf" "main" 1758662873.88833 0
+  "C:/Users/fwage/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1758098378 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/fwage/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1757189825 24225045 ca69744484c6b1c889b80a64d302fbe4 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc" 1256929440 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc" 1256929440 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -54,6 +54,7 @@
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb" 1256929440 122174 a2d5e73f396ddbeb3bdf5c79aea0993d ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb" 1256929440 109265 e6c7d377db6dfccd4a123fb26da8cffb ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb" 1256929440 27863 09ce3735688ffde955e72da27c95b61a ""
+  "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb" 1256929440 28109 6d61305ed3d0eb794ebe36f15cf44aa0 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb" 1256929440 27802 5c876bb2c4040caaf035d60bd74a86bd ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty" 1704647332 150008 7a05b0fdc0167c04e192003e780ab195 ""
@@ -235,14 +236,14 @@
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/trimspaces/trimspaces.sty" 1253169183 1380 971a51b00a14503ddf754cab24c3f209 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "DFT_Code.jpg" 1757867112 63554 aaba2f11d774c186164a1baf927cfc55 ""
-  "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" 1757871239 49120 671454c43c065118c5b3d0f98b6eb626 ""
+  "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" 1758662869 52466 53fc658663450e6986e210e5c443968d ""
   "eulerformel.jpg" 1757246340 27049 282ee59c29c9f41d219945e1297854e8 ""
   "fft_bench5.dat" 1757358414 2640 be9743c3a8754ddf3766b3fd0a2a6417 ""
   "fft_bench_big.dat" 1757186258 1859 d590f92188ae2e651f507a5dc555d625 ""
   "fft_bench_small.dat" 1757179211 7825 0715e6c1df79cf3e5d9a96decb28823e ""
-  "main.aux" 1757871244 5592 8370b59822b928e733f91b5726383340 "pdflatex"
-  "main.tex" 1757871239 49120 671454c43c065118c5b3d0f98b6eb626 ""
-  "main.toc" 1757871244 3206 ff25aa64249c94d0838cd61d84760129 "pdflatex"
+  "main.aux" 1758662873 5584 0468eb23b449fa90e45b976bc153b15c "pdflatex"
+  "main.tex" 1758662869 52466 53fc658663450e6986e210e5c443968d ""
+  "main.toc" 1758662873 3198 fa7fd318609460ac31fa25c2ab904b4a "pdflatex"
   (generated)
   "main.aux"
   "main.log"
