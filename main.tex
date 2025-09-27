@@ -1,17 +1,25 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, amsthm, graphicx, pgfplots, tikz, forest, xcolor, listings}
+\usepackage{amsmath, amssymb, amsthm, graphicx, pgfplots, tikz, forest, xcolor, lstlinebgrd, mdframed}
 \usepackage{lmodern} 
+\usepackage[T1]{fontenc}
 \usepackage[german]{babel}  
 \usepackage{csquotes} 
 \usepackage[margin=2.5cm]{geometry}
+\usepackage{marginnote}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{listings,skins}
 % \usepackage[a4paper, top=2cm, bottom=2cm, left=3cm, right=3cm, marginparwidth = 1.75cm]{geometry}
 
 % \usepackage[onehalfspacing]{setspace}
 %   \renewcommand{\baselinestretch}{1.55}
+\newcommand{\markstep}[2]{\colorbox{marker}{#1}\marginnote{\textbf{(#2)}}}
 
+\tcbuselibrary{listings,skins}
 
 \pgfplotsset{compat=1.18}
+
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -43,44 +51,64 @@
   }
 }
 
-\definecolor{BGGray}{RGB}{40,40,40}       % Hintergrund
-\definecolor{KeywordBlue}{RGB}{86,156,214}       % Kontrollstrukturen
-\definecolor{TypeTurquoise}{RGB}{78,201,176}    % Datentypen
-\definecolor{NamespacePurple}{RGB}{180,122,180} % Namespaces/Objekte
-\definecolor{CommentGreen}{RGB}{87,166,74}      % Kommentare
-\definecolor{StringOrange}{RGB}{206,145,120}    % Strings
-\definecolor{NumberGray}{RGB}{181,206,168}      % Zahlen
-\definecolor{TextGray}{RGB}{220,220,220}        % Normale Schrift
+\definecolor{marker1}{RGB}{255, 255, 128} % Gelb
+\definecolor{marker2}{RGB}{144, 238, 144} % Hellgrün
+\definecolor{marker3}{RGB}{173, 216, 230} % Hellblau
 
-% C++ Sprache für Listen
-\lstdefinelanguage{CPPVS}{
-    language=C++,
-    morekeywords=[1]{int, float, double, short, long, char, void, bool},
-    morekeywords=[2]{for, if, else, return, new},
-    morekeywords=[3]{std, complex},
-    sensitive=true,
-    morecomment=[l]{//},
-    morestring=[b]"
+\lstdefinelanguage{C++}{
+  language=C++,
+  moredelim=**[is][\markerA]{`}{`}
 }
 
-\lstdefinestyle{VSStyle}{
-    language=CPPVS,
-    backgroundcolor=\color{BGGray},
-    basicstyle=\ttfamily\small\color{TextGray},
-    keywordstyle=[1]\color{TypeTurquoise}\bfseries,     % Datentypen
-    keywordstyle=[2]\color{KeywordBlue}\bfseries,       % Kontrollstrukturen
-    keywordstyle=[3]\color{NamespacePurple},            % Namespaces/Objekte
-    commentstyle=\color{CommentGreen}\itshape,
-    stringstyle=\color{StringOrange},
-    numberstyle=\tiny\color{NumberGray},
-    numbers=left,
-    numbersep=8pt,
-    stepnumber=1,
-    tabsize=4,
-    breaklines=true,
-    frame=none,          % kein Rahmen
-    showstringspaces=false
+\lstset{
+  language=C++,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  columns=fullflexible,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  breaklines=true,
+  keepspaces=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  framexrightmargin=2pt,
+  frame=single,
+  tabsize=4,
+  escapeinside={(*@}{@*)},
+  moredelim=[is][\color{yellow}]{@y@}{@y@},       % rot
+  moredelim=[is][\color{blue}]{|b|}{|b|},      % blau
+  moredelim=[is][\color{green}]{@g@}{@g@},
+  literate={Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+           {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 {ß}{{\ss}}1 
+           literate={\{}{{\{}}1 {\}}{{\}}}1
+           {1)}{{\textcolor{green}{1)}}}1
+           {2)}{{\textcolor{yellow}{2)}}}1
+           {3)}{{\textcolor{blue}{3)}}}1
 }
+
+\lstdefinestyle{mystyle}{ 
+  language=C++, 
+  basicstyle=\ttfamily\small, 
+  keywordstyle=\color{blue}, 
+  commentstyle=\color{gray}, 
+  stringstyle=\color{red}, 
+  columns=fullflexible, 
+  numbers=left, 
+  numberstyle=\tiny, 
+  stepnumber=1, 
+  breaklines=true, 
+  keepspaces=true, 
+  breakatwhitespace=true, 
+  showstringspaces=false, 
+  frame=single, 
+  tabsize=2, 
+  literate={Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 {ß}{{\ss}}1
+}
+
+
 \title{Fourier-Methoden: Theorie und Anwendungen}
 \author{Felix Wager}
 \date{\today}
@@ -614,9 +642,28 @@ ist lediglich der Summand $\frac{1}{2} \cdot\left(f(N) \cdot e^{-i 2 \pi k}-f(0)
 tatsächliche DFT die Berechnung über die gleiche Approximation, wie die aus der ersten Graphik des Abschnitts, führt. In meinem 
 Programm habe ich schließlich meine DFT wie folgt implementiert:
 \\\\
-\begin{center}
-\includegraphics[scale=0.825]{DFT_Code.jpg}
-\end{center}
+\begin{lstlisting}[style=mystyle, language=C++, caption={Diskrete Fouriertransformation}]
+std::complex<float>* FourierTransform::discreteFourierTransform
+(float** audioFunction, long functionLength, short channel) {
+
+  std::complex<float>* resultFunction = new std::complex<float>[functionLength];
+  std::complex<float> imaginary(0.f, 1.f);
+  float N = static_cast<float>(functionLength) - 1.f;
+
+  for (int k = 0; k < N; k++) {
+    resultFunction[k] = 0;
+		resultFunction[k] += (0.5f * (audioFunction[channel][0] + 
+    audioFunction[channel][(int)N]));
+    for (int n = 1; n < N; n++) {
+      resultFunction[k] += audioFunction[channel][n] * 
+      std::exp(-2 * PI_F * imaginary * static_cast<float>(k * n) / N);
+    }
+  }
+  return resultFunction;
+}
+\end{lstlisting}
+
+
 In meinem Code entspricht die Liste audioFunction der Funktion $f(x)$, also meinen Datenpunkten. resultFunction ist dabei 
 die Ergebnisfunktion. Mit der ersten for-Schleife durchlaufe ich alle Frequenzen die berechenbar sind. 
 Innerhalb dieser Schleife erkennt man die eigentliche Formel, welche ich hergeleitet habe. Die zweite 
@@ -648,9 +695,55 @@ der mathematischen Formeln überflüssig. Zudem ermöglicht diese Aufteilung, be
 verwenden, die jeweils nur halb so groß wie die ursprüngliche Liste sind. Dies führt zu einer Vereinfachung des Faktors 2 im 
 Exponenten der Basis $e$. So wird die Formel im Programm verwendet: 
 \[
-\sum_{j=0}^{N-1}{f(j)\cdot e^{-i\omega j}} = e^{-i\omega}\sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i \omega j}} + \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i \omega j}}
+\sum_{j=0}^{N-1}{f(j)\cdot e^{-i\omega j}} = e^{-i\omega}\sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i \omega j}} + \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i \omega j}} \quad \text{mit $N_{\text{Neu}} := N/2$ }
 \]
 \\
+Setzt man für $\omega$ die bekannte Beziehung $\omega=\tfrac{2\pi k}{N}$ ein, so erhält man genau die Darstellung der 
+Fouriertransformierten, wie sie in der Implementierung der FFT in meinem Programm vorkommt.
+
+\[
+\sum_{j=0}^{N-1}{f(j)\cdot e^{-i \frac{2\pi k}{N} j}} = e^{-i \frac{2\pi k}{N_{\text{neu}}}} \sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}} + \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}}
+\]
+
+
+
+\begin{lstlisting}[style=mystyle, language=C++, caption={Funktion fastFourierTransform}]
+std::vector<std::complex<float>> FourierTransform::fftHelper
+(std::vector<float>& function, int size) {
+
+  std::vector<std::complex<float>> result(size);
+	std::complex<float> imaginary(0.f, 1.f);
+
+  (*@\textcolor{teal}{1)}@*)
+  (*@\colorbox{teal!30}{if (size <= 2) \{\hspace*{11,5em}}@*)
+  (*@\colorbox{teal!30}{  result.resize(2); \hspace*{10em}}@*)
+  (*@\colorbox{teal!30}{  result[0] = function[0] + function[1];}@*)
+  (*@\colorbox{teal!30}{  result[1] = function[0] - function[1];}@*)
+  (*@\colorbox{teal!30}{  return result;\hspace*{12em}}@*)
+  (*@\colorbox{teal!30}{\}\hspace*{19em}}@*)
+
+  (*@\textcolor{orange}{2)}@*)
+  (*@\colorbox{orange!30}{std::vector<float> funEven(size/2);\hspace*{1em}}@*)
+  (*@\colorbox{orange!30}{std::vector<float> funOdd(size/2); \hspace*{1em}}@*)
+  (*@\colorbox{orange!30}{for (int i = 0; i < size / 2; i++) \{ }@*)
+  (*@\colorbox{orange!30}{  funEven[i] = function[2*i]; \hspace*{4em}}@*)
+  (*@\colorbox{orange!30}{  funOdd[i] = function[2*i+1]; \hspace*{3,5em}}@*)
+  (*@\colorbox{orange!30}{\} \hspace*{17,5em}}@*)
+
+  (*@\textcolor{blue}{3)}@*)
+	(*@\colorbox{blue!30}{std::vector<std::complex<float>> even = fftHelper(funEven,size/2);}@*)
+	(*@\colorbox{blue!30}{std::vector<std::complex<float>> odd = fftHelper(funOdd, size/2);\hspace*{0,5em}}@*)
+  (*@\colorbox{blue!30}{for (int k = 0; k < size / 2; ++k) \{\hspace*{14,5em}}@*)
+  (*@\colorbox{blue!30}{std::complex<float> twiddle = \hspace*{17,5em}}@*)
+  (*@\colorbox{blue!30}{std::exp(-2.0f * PI\_F * imaginary * (float)k / (float)size);\hspace*{2,5em}}@*)
+  (*@\colorbox{blue!30}{result[k] = even[k] + twiddle * odd[k];\hspace*{13em}}@*)
+  (*@\colorbox{blue!30}{result[k + size / 2] = even[k] - twiddle * odd[k];\hspace*{7,5em}}@*)
+  (*@\colorbox{blue!30}{\}\hspace*{32em}}@*)
+
+  return result;
+}
+\end{lstlisting}
+
 
 \subsection{Eigenschaften und Konvergenz}
 
