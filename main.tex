@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, amsthm, graphicx, pgfplots, tikz, forest, xcolor, lstlinebgrd, mdframed}
+\usepackage{amsmath, amssymb, amsthm, pdflscape, graphicx, pgfplots, tikz, forest, xcolor, lstlinebgrd, mdframed}
 \usepackage{lmodern} 
 \usepackage[T1]{fontenc}
 \usepackage[german]{babel}  
@@ -692,20 +692,20 @@ Alle Funktionswerte werden in meinem Programm in einer Liste gespeichert, wobei 
 der Liste angibt. Auf dieser Grundlage lassen sich die ursprünglichen Audiowerte in zwei Listen aufteilen: eine mit den geraden 
 und eine mit den ungeraden Elementen. Dadurch wird die explizite Trennung in gerade ($2j$) und ungerade ($2j+1$) Indizes innerhalb 
 der mathematischen Formeln überflüssig. Zudem ermöglicht diese Aufteilung, bei der Summation die Länge der neuen Listen zu 
-verwenden, die jeweils nur halb so groß wie die ursprüngliche Liste sind. Dies führt zu einer Vereinfachung des Faktors 2 im 
-Exponenten der Basis $e$. So wird die Formel im Programm verwendet: 
+verwenden, die jeweils nur halb so groß wie die ursprüngliche Liste sind. So wird die Formel im Programm verwendet: 
 \[
-\sum_{j=0}^{N-1}{f(j)\cdot e^{-i\omega j}} = e^{-i\omega}\sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i \omega j}} + \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i \omega j}} \quad \text{mit $N_{\text{Neu}} := N/2$ }
+\sum_{j=0}^{N-1}{f(j)\cdot e^{-i\omega j}} = e^{-i\omega}\sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i 2\omega j}} + \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i 2\omega j}} \quad \text{mit $N_{\text{Neu}} := N/2$ }
 \]
 \\
 Setzt man für $\omega$ die bekannte Beziehung $\omega=\tfrac{2\pi k}{N}$ ein, so erhält man genau die Darstellung der 
 Fouriertransformierten, wie sie in der Implementierung der FFT in meinem Programm vorkommt.
 
 \[
-\sum_{j=0}^{N-1}{f(j)\cdot e^{-i \frac{2\pi k}{N} j}} = e^{-i \frac{2\pi k}{N_{\text{neu}}}} \sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}} + \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}}
+\sum_{j=0}^{N-1}{f(j)\cdot e^{-i \frac{2\pi k}{N} j}} = e^{-i \frac{2\pi k}{N}} \sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}} + \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}}
 \]
-
-
+\\
+Das hier ist der Quellcode in Form einer Methode, die in meinem Programm für diese Formel verantwortlich ist. Eine Methode ist 
+dabei ein Programmteil, der eine bestimmte Aufgabe erfüllt und mehrfach aufgerufen werden kann.
 
 \begin{lstlisting}[style=mystyle, language=C++, caption={Funktion fastFourierTransform}]
 std::vector<std::complex<float>> FourierTransform::fftHelper
@@ -734,16 +734,80 @@ std::vector<std::complex<float>> FourierTransform::fftHelper
 	(*@\colorbox{blue!30}{std::vector<std::complex<float>> even = fftHelper(funEven,size/2);}@*)
 	(*@\colorbox{blue!30}{std::vector<std::complex<float>> odd = fftHelper(funOdd, size/2);\hspace*{0,5em}}@*)
   (*@\colorbox{blue!30}{for (int k = 0; k < size / 2; ++k) \{\hspace*{14,5em}}@*)
-  (*@\colorbox{blue!30}{std::complex<float> twiddle = \hspace*{17,5em}}@*)
-  (*@\colorbox{blue!30}{std::exp(-2.0f * PI\_F * imaginary * (float)k / (float)size);\hspace*{2,5em}}@*)
-  (*@\colorbox{blue!30}{result[k] = even[k] + twiddle * odd[k];\hspace*{13em}}@*)
-  (*@\colorbox{blue!30}{result[k + size / 2] = even[k] - twiddle * odd[k];\hspace*{7,5em}}@*)
+  (*@\colorbox{blue!30}{  std::complex<float> twiddle = \hspace*{17em}}@*)
+  (*@\colorbox{blue!30}{  std::exp(-2.0f * PI\_F * imaginary * (float)k / (float)size);\hspace*{2em}}@*)
+  (*@\colorbox{blue!30}{  result[k] = even[k] + twiddle * odd[k];\hspace*{12,5em}}@*)
+  (*@\colorbox{blue!30}{  \textcolor{red}{result[k + size / 2] = even[k] - twiddle * odd[k];}\hspace{7em}}@*)
   (*@\colorbox{blue!30}{\}\hspace*{32em}}@*)
 
   return result;
 }
 \end{lstlisting}
 
+Die Methode erhält Audiodaten in Form einer Liste, die in der Formel der Funktion \(f\) entspricht, sowie die Größe dieser Liste, 
+die dem \(N\) entspricht. Als Ergebnis gibt die Methode die Fouriertransformation ebenfalls in Form einer Liste zurück. 
+
+Im Abschnitt 2) werden die Audiodaten in gerade und ungerade Indizes aufgeteilt. Im Abschnitt 3) ruft die Methode sich rekursiv 
+mit den beiden Teillisten auf, bis jeweils eine Liste mit nur zwei Audiodaten übrig bleibt. Für diese Basisfälle wird die 
+Transformation direkt berechnet und zurückgegeben. Anschließend werden im restlichen Teil von Abschnitt 3) die Transformationen der 
+geraden und ungeraden Teillisten wieder zusammengeführt. 
+
+Strukturell ergibt sich daraus für acht Audiodaten der folgende Ablauf:
+\\
+\begin{forest}
+for tree={
+    draw,
+    rounded corners,
+    node options={align=center, font=\footnotesize},
+    edge={->, thick},
+    grow'=0,       % Baum wächst nach unten
+    parent anchor=east,
+    child anchor=west,
+    s sep=2em,     % horizontaler Abstand
+    l sep=2em,     % vertikaler Abstand
+    calign=center
+}
+[fftHelper({\(\text{size}=8\)}), fill=purple!10
+    [fftHelper({\(\text{size}=4\)}), fill=purple!5, label=above:{gerade (even)}
+        [fftHelper({\(\text{size}=2\)}), fill=green!20, label=above:{gerade (even)}
+            [Basisfall\\{\(\color{green}{f(0)+f(1)}\)}\\{\(\color{green}{f(0)-f(1)}\)}]
+        ]
+        [fftHelper({\(\text{size}=2\)}), fill=yellow!20, label=above:{ungerade (odd)}
+            [Basisfall\\{\(\color{orange}{f(2)+f(3)}\)}\\{\(\color{orange}{f(2)-f(3)}\)}]
+        ]
+        [Zusammenfügen\\{\(E(k)+W_4^k O(k)\)}\\{\(E(k)-W_4^k O(k)\)}, fill=gray!10]
+    ]
+    [fftHelper({\(\text{size}=4\)}), fill=purple!5, label=above:{ungerade (odd)}
+        [fftHelper({\(\text{size}=2\)}), fill=green!20, label=above:{gerade (even)}
+            [Basisfall\\{\(\color{green}{f(4)+f(5)}\)}\\{\(\color{green}{f(4)-f(5)}\)}]
+        ]
+        [fftHelper({\(\text{size}=2\)}), fill=yellow!20, label=above:{ungerade (odd)}
+            [Basisfall\\{\(\color{orange}{f(6)+f(7)}\)}\\{\(\color{orange}{f(6)-f(7)}\)}]
+        ]
+        [Zusammenfügen\\{\(E(k)+W_4^k O(k)\)}\\{\(E(k)-W_4^k O(k)\)}, fill=gray!10]
+    ]
+    [Zusammenfügen\\{\(E(k)+W_8^k O(k)\)}\\{\(E(k)-W_8^k O(k)\)}, fill=gray!20]
+]
+\end{forest}
+\\\\
+Die rot markierte Zeile (Zeile 30) ist dabei ein Zusatz zu der Formel des Programms. Denn beim Erstellen des Codes, 
+fiel mir erst auf, dass ich um alle Frequenzen abzudecken eine mathematische Ergänzung brauche, da meine neuen Listen 
+nur die Hälfte der Frequenzen abdeckten. Wenn man also größere Frequenzen als $\frac{N}{2}$ einsetzen möchte, so ändert 
+sich die Formel. 
+
+\begin{align*}
+&\text{Für $k <= N_{neu}$:}\\
+&F(k) = \sum_{j=0}^{N-1}{f(j)\cdot e^{-i \frac{2\pi k}{N} j}} = e^{-i \frac{2\pi k}{N}} \sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}} + \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}}\\
+&\text{Mit: }\\
+&e^{-i \frac{2\pi(k+N_{neu})}{N}} = e^{-i \frac{2\pi k}{N}} \cdot e^{-i \frac{N{neu}}{N}} = e^{-i \frac{2\pi k}{N}} \cdot e^{-i\pi} = -e^{-i \frac{2\pi k}{N}}\\
+&e^{-i \frac{2\pi(k+N_{neu})}{N_{neu}}} = e^{-i \frac{2\pi k}{N_{neu}}} \cdot e^{-i \frac{N{neu}}{N_{neu}}} = e^{-i \frac{2\pi k}{N_{neu}}} \cdot e^{-i2\pi} = e^{-i  \frac{2\pi k}{N}}\\
+&\text{Daraus folgt: }\\
+&F(k+N_{neu}) = \sum_{j=0}^{N-1}{f(j)\cdot e^{-i \frac{2\pi k}{N} j}} = -e^{-i \frac{2\pi k}{N}} \sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}} + \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}}\\
+&= \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}} - e^{-i \frac{2\pi k}{N}} \sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}} \\
+\end{align*}
+
+Die sich daraus ergebende Formel entspricht der im Programm umgesetzten Berechnung, die durch die rot markierte Zeile 
+dargestellt wird.
 
 \subsection{Eigenschaften und Konvergenz}
 

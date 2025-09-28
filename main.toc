@@ -14,28 +14,28 @@
 \contentsline {section}{\numberline {4}Von der Theorie zu Praxis: Eigenentwicklung eines Audioanalyzers mit C++}{10}{}%
 \contentsline {subsection}{\numberline {4.1}Eigenständige Herleitung der DFT}{10}{}%
 \contentsline {subsection}{\numberline {4.2}Erweiterung auf die FFT}{14}{}%
-\contentsline {subsection}{\numberline {4.3}Eigenschaften und Konvergenz}{16}{}%
-\contentsline {section}{\numberline {5}Anwendung einer Mehrdimensionalen FFT}{16}{}%
-\contentsline {subsection}{\numberline {5.1}Übergang zum Integral}{16}{}%
-\contentsline {subsection}{\numberline {5.2}Fourier-Transformation und inverse Transformation}{16}{}%
-\contentsline {subsection}{\numberline {5.3}Eigenschaften}{16}{}%
-\contentsline {section}{\numberline {6}Diskrete Fourier-Transformation (DFT)}{16}{}%
-\contentsline {subsection}{\numberline {6.1}Definition und Motivation}{16}{}%
-\contentsline {subsection}{\numberline {6.2}Herleitung aus der Fourier-Transformation}{16}{}%
-\contentsline {subsection}{\numberline {6.3}Beweise für die Korrektheit}{17}{}%
-\contentsline {subsection}{\numberline {6.4}FFT als effiziente Berechnung}{17}{}%
-\contentsline {section}{\numberline {7}Eigene Beiträge}{17}{}%
-\contentsline {subsection}{\numberline {7.1}Eigene Herleitung der DFT}{17}{}%
-\contentsline {subsection}{\numberline {7.2}Beweise}{17}{}%
-\contentsline {subsection}{\numberline {7.3}Eigener FFT-Algorithmus in Python}{17}{}%
-\contentsline {subsection}{\numberline {7.4}Audio-Programm zur Echtzeit-Visualisierung}{17}{}%
-\contentsline {subsection}{\numberline {7.5}Bildverarbeitung: Moiré-Muster entfernen mit 2D-FFT}{17}{}%
-\contentsline {section}{\numberline {8}Anwendungen}{17}{}%
-\contentsline {subsection}{\numberline {8.1}Audio}{17}{}%
+\contentsline {subsection}{\numberline {4.3}Eigenschaften und Konvergenz}{17}{}%
+\contentsline {section}{\numberline {5}Anwendung einer Mehrdimensionalen FFT}{17}{}%
+\contentsline {subsection}{\numberline {5.1}Übergang zum Integral}{17}{}%
+\contentsline {subsection}{\numberline {5.2}Fourier-Transformation und inverse Transformation}{17}{}%
+\contentsline {subsection}{\numberline {5.3}Eigenschaften}{17}{}%
+\contentsline {section}{\numberline {6}Diskrete Fourier-Transformation (DFT)}{17}{}%
+\contentsline {subsection}{\numberline {6.1}Definition und Motivation}{17}{}%
+\contentsline {subsection}{\numberline {6.2}Herleitung aus der Fourier-Transformation}{17}{}%
+\contentsline {subsection}{\numberline {6.3}Beweise für die Korrektheit}{18}{}%
+\contentsline {subsection}{\numberline {6.4}FFT als effiziente Berechnung}{18}{}%
+\contentsline {section}{\numberline {7}Eigene Beiträge}{18}{}%
+\contentsline {subsection}{\numberline {7.1}Eigene Herleitung der DFT}{18}{}%
+\contentsline {subsection}{\numberline {7.2}Beweise}{18}{}%
+\contentsline {subsection}{\numberline {7.3}Eigener FFT-Algorithmus in Python}{18}{}%
+\contentsline {subsection}{\numberline {7.4}Audio-Programm zur Echtzeit-Visualisierung}{18}{}%
+\contentsline {subsection}{\numberline {7.5}Bildverarbeitung: Moiré-Muster entfernen mit 2D-FFT}{18}{}%
+\contentsline {section}{\numberline {8}Anwendungen}{18}{}%
+\contentsline {subsection}{\numberline {8.1}Audio}{18}{}%
 \contentsline {subsection}{\numberline {8.2}Bild}{18}{}%
-\contentsline {section}{\numberline {9}Anhang}{18}{}%
-\contentsline {subsection}{\numberline {9.1}Eigene Beweise}{18}{}%
-\contentsline {subsection}{\numberline {9.2}Bedeutung im größeren Kontext}{21}{}%
-\contentsline {section}{\numberline {10}Fazit und Ausblick}{21}{}%
-\contentsline {subsection}{\numberline {10.1}Zusammenfassung der Ergebnisse}{21}{}%
-\contentsline {subsection}{\numberline {10.2}Ausblick: Erweiterungen und Anwendungen}{21}{}%
+\contentsline {section}{\numberline {9}Anhang}{19}{}%
+\contentsline {subsection}{\numberline {9.1}Eigene Beweise}{19}{}%
+\contentsline {subsection}{\numberline {9.2}Bedeutung im größeren Kontext}{22}{}%
+\contentsline {section}{\numberline {10}Fazit und Ausblick}{22}{}%
+\contentsline {subsection}{\numberline {10.1}Zusammenfassung der Ergebnisse}{22}{}%
+\contentsline {subsection}{\numberline {10.2}Ausblick: Erweiterungen und Anwendungen}{22}{}%
