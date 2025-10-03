@@ -9,6 +9,7 @@
 \usepackage{marginnote}
 \usepackage{listings}
 \usepackage[most]{tcolorbox}
+\usetikzlibrary{trees}
 \tcbuselibrary{listings,skins}
 % \usepackage[a4paper, top=2cm, bottom=2cm, left=3cm, right=3cm, marginparwidth = 1.75cm]{geometry}
 
@@ -151,7 +152,7 @@ $$\bar{}\;:\mathbb{C}\;\to\mathbb{C},\; z = x+iy \mapsto \bar{z} := x-iy$$
 
 Mithilfe von komplexen Zahlen und den Taylorreihen von Sinus, Cosinus und der Exponentialfunktion $e^x$ kann man nun die Eulerformel herleiten. 
 
-% $$e^{ix} = \cos{x} + i\sin{x}$$
+ $$e^{ix} = \cos{x} + i\sin{x}$$
 
 Wenn man den Betrag dieses Ausdrucks bildet, so fällt auf, dass hier das Ergebnis, unabhängig von $x$, 1 ist. Dies bedeutet, dass $e^{ix}$ als ein gegen den Uhrzeigersinn rotierender Vektor, für steigende Werte für $x$, gesehen werden kann. Im vorher genannten Koordinatensystem, welches man auch die Gaußsche Zahlenebene nennt, sieht das so aus:
 \begin{center}
@@ -522,11 +523,9 @@ für die Fläche des Integrals zu benutzen. Das sähe so aus:
       
     \end{tikzpicture}
   \end{figure}
-
-Im Prinzip ist dies nichts anders als die Treppenfunktion einer Funktion, wobei man im nicht 
-die Ober- oder Untersumme der Funktion nimmt, also $\sup{\{f(x) | x \in I_n\}}$ oder 
-$\inf{\{f(x) | x\in I_n\}}$ als obere Grenze der Rechtecke Intervall $I_n = [f(n), f(n+1))$ 
-wählt, sondern eine Art Mischung aus beidem. 
+Das Bild zeigt, wie man eine gekrümmte Fläche (die Sinuskurve) durch eine Abfolge von Rechtecken 
+annähert. Man benutzt dazu die Funktionswerte an den ganzzahligen Stellen – also so, als würde 
+man die Kurve in kleine Treppenstufen „übersetzen“. 
 \\ \\
 Wenn man eine große Menge an Datenpunkten hat und diese sehr nah aneinander liegen, dann ist 
 diese Methode eine gute Approximation des tatsächlichen Integrals. Trotzdem habe ich mich dazu entschieden, 
@@ -808,71 +807,122 @@ sich die Formel.
 
 Die sich daraus ergebende Formel entspricht der im Programm umgesetzten Berechnung, die durch die rot markierte Zeile 
 dargestellt wird.
+\subsection{Implementierung der FFT auf der GPU}
+Stand jetzt findet die Berechnung der Fouriertransformation ausschließlich auf der CPU (Central Processing Unit), dem Hauptprozessor eines Computers, statt.
+Die CPU ist dabei so konstruiert, dass sie Befehle hintereinander schnell ausführen kann. Doch da die schnelle Fouriertransformation 
+ein aus vielen sehr einfachen Berechnungen aufgebaut ist, passt sie nicht perfekt in das Aufgabenspektrum einer CPU. Stattdessen 
+eignet sich hier die GPU (Graphics Processing Unit) besser. Diese ist wurde ursprünglich für die Bildverarbeitung innerhalb eines Computers entwickelt. 
+Zwar kann eine GPU einzelne Operationen langsamer ausführen als eine CPU, doch durch die große Anzahl an Rechenkernen kann 
+sie eine Vielzahl einfacher Berechnungen parallel abarbeiten. Dadurch passt die GPU perfekt, um schnelle Fouriertransformationen mit großen Daten 
+zu berechnen, weil viele einfache Berechnungen notwendig sind. Deswegen war es mein Ziel diesen Algorithmus auf die GPU zu 
+übertragen. Aber damit meine FFT überhaupt auf die GPU übertragbar ist, darf sie nicht rekursiv sein. Bedeutet die Methode, 
+welche die Transformation durchführt darf sich nicht selbst aufrufen. 
 
-\subsection{Eigenschaften und Konvergenz}
+Um den Algorithmus also in eine iterative, also in eine sich wiederholende, Form zu bringen, habe ich mich am, durch die 
+FFT entstehenden, Baum orientiert:
+\\\\  
+\begin{forest}
+for tree={
+  rounded corners=2pt,
+  inner sep=1pt,
+  align=center,
+  draw,
+  rectangle,
+  minimum width=10mm,
+  minimum height=6mm,
+  font=\scriptsize,
+  l sep=9mm, % vertikaler Abstand zwischen Ebenen
+  s sep=6mm, % horizontaler Abstand zwischen Geschwistern
+  alias/.wrap pgfmath arg={l-#1}{level} % erzeugt Alias-Namen l-0, l-1, ...
+}
+% --- FFT-Baum (N=8) ---
+[{Anfang  \\(Gr. 8)}
+  [{G (Gr. 4) \\ Paket 1}
+    [{GG (Gr. 2) \\ Paket 1}
+      [0]
+      [4]
+    ]
+    [{GU (Gr. 2) \\ Paket 2}
+      [2]
+      [6]
+    ]
+  ]
+  [{U (Gr. 4) \\ Paket 2}
+    [{UG (Gr. 2) \\ Paket 3}
+      [1]
+      [5]
+    ]
+    [{UU (Gr. 2) \\ Paket 4}
+      [3]
+      [7]
+    ]
+  ]
+]
+% --- Ebene-Labels links neben den jeweiligen Leveln ---
+\node[left=64mm] at (l-0) {\textbf{Ebene 0}};
+\node[left=96mm] at (l-1) {\textbf{Ebene 1}};
+\node[left=112mm] at (l-2) {\textbf{Ebene 2}};
+\node[left=120mm] at (l-3) {\textbf{Ebene 3}};
+\end{forest}
+\\\\
+Mein iterativer Algorithmus durchläuft den Baum der Berechnung von unten nach oben. Auf jeder Ebene werden alle darin enthaltenen 
+Pakete mithilfe der Werte aus der nächsttieferen Ebene berechnet. Dieser Ablauf wiederholt sich so lange, bis die oberste Ebene, 
+also Ebene 0, erreicht ist. Eine wichtige Voraussetzung ist dabei, dass die Ausgangsliste, auf der die Transformation durchgeführt 
+wird, zunächst in eine bestimmte Reihenfolge gebracht werden muss. Der Grund dafür ist, dass die Grundlage der schnellen Fouriertransformation 
+(FFT) die Aufteilung der Daten in gerade und ungerade Indizes ist. In der Darstellung des Berechnungsbaums wird deutlich, wie sich 
+dadurch die Reihenfolge der ursprünglichen Liste, im Beispiel mit den Indizes von 0 bis 7, verändert. Um diese Reihenfolge korrekt 
+herzustellen, habe ich die Indizes in Binärzahlen umgewandelt und anschließend die Ziffern von der Mitte aus gespiegelt.
+\\\\
+Durch die iterative Implementierung der FFT ist der Algorithmus nun auf die GPU übertragbar. Dazu musste ich lediglich den Quellcode 
+der iterativen Variante der schnellen Fouriertransformation so anpassen, dass er GPU-kompatibel ist. Um die Parallelität der GPU 
+auszunutzen, habe ich sowohl die einzelnen Pakete als auch die Berechnungen innerhalb der Pakete auf Threads verteilt. Ein Thread ist 
+in diesem Zusammenhang ein Strang von Anweisungen, der einen Teil der Gesamtrechnung übernimmt. Je nach Alter und Leistungsfähigkeit 
+einer GPU können so gleichzeitig zwischen einigen tausend und über hunderttausend Threads ausgeführt werden.
 
-\section{Anwendung einer Mehrdimensionalen FFT}
-\subsection{Übergang zum Integral}
-\subsection{Fourier-Transformation und inverse Transformation}
-\subsection{Eigenschaften}
-Linearität, Verschiebung, Faltung.
-
-\section{Diskrete Fourier-Transformation (DFT)}
-\subsection{Definition und Motivation}
-\subsection{Herleitung aus der Fourier-Transformation}
-Eigene Herleitung
-\subsection{Beweise für die Korrektheit}
-\subsection{FFT als effiziente Berechnung}
-
-\section{Eigene Beiträge}
-\subsection{Eigene Herleitung der DFT}
-\subsection{Beweise}
-\subsection{Eigener FFT-Algorithmus in Python}
-\subsection{Audio-Programm zur Echtzeit-Visualisierung}
-
+\subsection{Vergleich der verschiedenen FFT-Varianten}
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}
-  \begin{axis}[
-    width=\textwidth,
-    height=8cm,
-    xlabel={Zeit [s]},
-    ylabel={Zeit [s]},
-    grid=major,
-    major grid style={gray!30},
-    legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
-    label style={font=\large},
-    tick label style={font=\small},
-    line width=1pt,
-    no markers,
-    cycle list={
-      {blue},
-      {red},
-      {brown},
-      {black},
-      {teal}
-      }
-      ]
+\begin{axis}[
+  width=\textwidth,
+  height=8cm,
+  xlabel={Zeit [s]},
+  ylabel={Zeit [s]},
+  grid=major,
+  major grid style={gray!30},
+  legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
+  label style={font=\large},
+  tick label style={font=\small},
+  line width=1pt,
+  no markers,
+  cycle list={
+    {blue},
+    {red},
+    {brown},
+    {black},
+    {teal}
+  }
+]
       
-      \addplot table[x index=1, y expr=\thisrowno{2}/1000] {fft_bench5.dat};
-      \addlegendentry{Rekursive FFT}
+\addplot table[x index=1, y expr=\thisrowno{2}/1000] {fft_bench5.dat};
+\addlegendentry{Rekursive FFT}
       
-      \addplot table[x index=1, y expr=\thisrowno{3}/1000] {fft_bench5.dat};
-      \addlegendentry{Iterative FFT}
+\addplot table[x index=1, y expr=\thisrowno{3}/1000] {fft_bench5.dat};
+\addlegendentry{Iterative FFT}
       
-      \addplot table[x index=1, y expr=\thisrowno{4}/1000] {fft_bench5.dat};
-      \addlegendentry{Iterative FFT auf GPU}
+\addplot table[x index=1, y expr=\thisrowno{4}/1000] {fft_bench5.dat};
+\addlegendentry{Iterative FFT auf GPU}
       
-      \addplot table[x index=1, y expr=\thisrowno{5}/1000] {fft_bench5.dat};
-      \addlegendentry{cuFFT-Bibliothek (GPU)}
+\addplot table[x index=1, y expr=\thisrowno{5}/1000] {fft_bench5.dat};
+\addlegendentry{cuFFT-Bibliothek (GPU)}
       
-      \addplot table[x index=1, y expr=\thisrowno{6}/1000] {fft_bench5.dat};
-      \addlegendentry{FFTW-Bibliothek (CPU)}
+\addplot table[x index=1, y expr=\thisrowno{6}/1000] {fft_bench5.dat};
+\addlegendentry{FFTW-Bibliothek (CPU)}
       
       
-    \end{axis}
-  \end{tikzpicture}
-  \caption{Vergleich der FFT-Methoden anhand der Benchmarks.}
+\end{axis}
+\end{tikzpicture}
+\caption{Vergleich der FFT-Methoden anhand der Benchmarks.}
 \end{figure}
 
 \begin{figure}[h!]
@@ -944,6 +994,27 @@ Eigene Herleitung
           \end{tikzpicture}
             \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
         \end{figure}
+
+\section{Anwendung einer Mehrdimensionalen FFT}
+\subsection{Übergang zum Integral}
+\subsection{Fourier-Transformation und inverse Transformation}
+\subsection{Eigenschaften}
+Linearität, Verschiebung, Faltung.
+
+\section{Diskrete Fourier-Transformation (DFT)}
+\subsection{Definition und Motivation}
+\subsection{Herleitung aus der Fourier-Transformation}
+Eigene Herleitung
+\subsection{Beweise für die Korrektheit}
+\subsection{FFT als effiziente Berechnung}
+
+\section{Eigene Beiträge}
+\subsection{Eigene Herleitung der DFT}
+\subsection{Beweise}
+\subsection{Eigener FFT-Algorithmus in Python}
+\subsection{Audio-Programm zur Echtzeit-Visualisierung}
+
+
         
         \subsection{Bildverarbeitung: Moiré-Muster entfernen mit 2D-FFT}
         
@@ -953,60 +1024,56 @@ Eigene Herleitung
         \subsection{Bild}
         Röntgenbild und Moiré-Filterung, Ergebnisse.
         
-        \section{Anhang}
+\section{Anhang}
         
-        \subsection{Eigene Beweise}
-        \begin{theorem}\label{thm:orthonorm}
-        Die Menge $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ mit $\phi_n:[-\pi, \pi] \to \mathbb{C}, \\ \phi_n(x) = \frac{1}{\sqrt{2\pi}}e^{inx}$ bildet ein Orthonormalsystem.
-      \end{theorem}
+\subsection{Eigene Beweise}
+\begin{theorem}\label{thm:orthonorm}
+Die Menge $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ mit $\phi_n:[-\pi, \pi] \to \mathbb{C}, \\ \phi_n(x) = \frac{1}{\sqrt{2\pi}}e^{inx}$ bildet ein Orthonormalsystem.
+\end{theorem}
         
-      \begin{proof}
-        Ich zeige die Orthonormalität in zwei Schritten: 
+\begin{proof}
+Ich zeige die Orthonormalität in zwei Schritten: 
             
-        \textbf{1. Orthogonalität:}  
-        Für $m \neq n$ gilt
-        $$\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi}{\phi_n(x) \overline{\phi_m(x)}} = \frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx}$$
+\textbf{1. Orthogonalität:}  
+Für $m \neq n$ gilt
+$$\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi}{\phi_n(x) \overline{\phi_m(x)}} = \frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx}$$
         
-        Jetzt definiere ich $l := n-m$
-        \[\frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx} = \frac{1}{2\pi}\int_{-\pi}^\pi{\cos(lx) + i \sin (lx)} dx\] 
+Jetzt definiere ich $l := n-m$
+\[\frac{1}{2\pi}\int_{-\pi}^\pi{e^{i(n-m)x}dx} = \frac{1}{2\pi}\int_{-\pi}^\pi{\cos(lx) + i \sin (lx)} dx\] 
+\[= \frac{1}{2\pi l}\left(\int_{-\pi}^\pi{\cos (lx) dx} + i\int_{-\pi}^\pi{ \sin (lx) dx} \right)  = \frac{1}{2\pi l} \left(\sin(lx)\big|_{-l\pi}^{l\pi} - i\cos(lx)\big|_{-l\pi}^{l\pi} \right)\]
+\[= \frac{1}{2\pi l} \cdot \left(\sin(l^2\pi) - \sin(-l^2\pi) - i\left(\cos(l^2\pi) - \cos(-l^2\pi)\right)\right) \]
         
-        \[= \frac{1}{2\pi l}\left(\int_{-\pi}^\pi{\cos (lx) dx} + i\int_{-\pi}^\pi{ \sin (lx) dx} \right)  = \frac{1}{2\pi l} \left(\sin(lx)\big|_{-l\pi}^{l\pi} - i\cos(lx)\big|_{-l\pi}^{l\pi} \right)\]
+Da $l\in \mathbb{Z}$ ist $l^2 \in \mathbb{Z}$. Ein ganzzahliges Vielfaches von $\pi$
+eingesetzt im Sinus ist zudem immer 0. Denn der Sinus ist eine $2\pi$ periodische Funktion, und da
+sowohl $\sin(0) = 0$, als auch $\sin (\pi) = 0$ ist, ist jedes ganzzahliges Vielfaches von $\pi$ eingesetzt 
+im Sinus 0. Hinzu kommt, dass der Kosinus Achsensymmetrisch bezüglich der Y-Achse ist, also gilt:
+$\cos (x) =  \cos (-x)$. Daraus folgt:
+\[= \frac{1}{2\pi l} \cdot (0 - 0 - i\cdot(\cos(l\pi) - \cos(l\pi))) = \frac{1}{2\pi l} \cdot 0 = 0\]      
         
-        \[= \frac{1}{2\pi l} \cdot \left(\sin(l^2\pi) - \sin(-l^2\pi) - i\left(\cos(l^2\pi) - \cos(-l^2\pi)\right)\right) \]
+\textbf{2. Normiertheit:}  
+Für $m = n$ gilt
         
-        Da $l\in \mathbb{Z}$ ist $l^2 \in \mathbb{Z}$. Ein ganzzahliges Vielfaches von $\pi$
-        eingesetzt im Sinus ist zudem immer 0. Denn der Sinus ist eine $2\pi$ periodische Funktion, und da
-        sowohl $\sin(0) = 0$, als auch $\sin (\pi) = 0$ ist, ist jedes ganzzahliges Vielfaches von $\pi$ eingesetzt 
-        im Sinus 0. Hinzu kommt, dass der Kosinus Achsensymmetrisch bezüglich der Y-Achse ist, also gilt:
-        $\cos (x) =  \cos (-x)$. Daraus folgt:
-        \[= \frac{1}{2\pi l} \cdot (0 - 0 - i\cdot(\cos(l\pi) - \cos(l\pi))) = \frac{1}{2\pi l} \cdot 0 = 0\]
+\[\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi} \phi_n(x) \overline{\phi_n(x)} \, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i(n -n) x}\, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i\cdot0} \, dx\]        
+\[= \frac{1}{2\pi} \int_{-\pi}^{\pi} 1 \, dx = \frac{1}{2\pi} \cdot x \Big|_{-\pi}^{\pi} = \frac{1}{2\pi} \cdot (\pi-(-\pi)) = 1\]
         
-        
-        \textbf{2. Normiertheit:}  
-        Für $m = n$ gilt
-        
-        \[\langle \phi_n, \phi_m \rangle = \int_{-\pi}^{\pi} \phi_n(x) \overline{\phi_n(x)} \, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i(n -n) x}\, dx = \frac{1}{2\pi} \int_{-\pi}^{\pi} e^{i\cdot0} \, dx\]
-        
-        \[= \frac{1}{2\pi} \int_{-\pi}^{\pi} 1 \, dx = \frac{1}{2\pi} \cdot x \Big|_{-\pi}^{\pi} = \frac{1}{2\pi} \cdot (\pi-(-\pi)) = 1\]
-        
-        Damit ist gezeigt, dass $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ ein Orthonormalsystem bildet.
-      \end{proof}
+Damit ist gezeigt, dass $\{\phi_n(x)\}_{n\in\mathbb{Z}}$ ein Orthonormalsystem bildet.
+\end{proof}
 
-      \begin{theorem}\label{Stetigkeit Folgenstetigkeit}
-  Sei eine Funktion $a : \mathbb{R} \to \mathbb{R}$ definiert als 
-  \[
-    a(x) = \begin{cases}
-      f(x) & \text{für } x \in \mathbb{Z} \\
-      f(\lceil x \rceil) - f(\lfloor x \rfloor)\cdot (x - \lfloor x \rfloor) + f(\lfloor x \rfloor) & \text{für } x \notin \mathbb{Z} \:,
-      \end{cases}
-      \]
-      dann ist gilt $\forall$ Folgen $x_n < n$ mit $\lim\limits_{n\to\infty}{x_n} = n \text{ mit } n \in \mathbb{Z}$, 
-      dann gilt $f(x_n)
-      \xrightarrow[n\to\infty]{} f(n)$
-    \end{theorem}
+\begin{theorem}\label{Stetigkeit Folgenstetigkeit}
+Sei eine Funktion $a : \mathbb{R} \to \mathbb{R}$ definiert als 
+\[
+a(x) = \begin{cases}
+f(x) & \text{für } x \in \mathbb{Z} \\
+f(\lceil x \rceil) - f(\lfloor x \rfloor)\cdot (x - \lfloor x \rfloor) + f(\lfloor x \rfloor) & \text{für } x \notin \mathbb{Z} \:,
+\end{cases}
+\]
+dann ist gilt $\forall$ Folgen $x_n < n$ mit $\lim\limits_{n\to\infty}{x_n} = n \text{ mit } n \in \mathbb{Z}$, 
+dann gilt $f(x_n)
+\xrightarrow[n\to\infty]{} f(n)$
+\end{theorem}
 \begin{proof}
 \begin{equation*}
-  \begin{aligned}
+\begin{aligned}
 a(x_n) &= \big(f(\lceil x_n \rceil) - f(\lfloor x_n \rfloor)\big)\cdot (x_n - \lfloor x_n \rfloor) + f(\lfloor x_n \rfloor) \\
 &= \big(f(\lfloor x_n \rfloor) - f(\lfloor x_n \rfloor)\big)\cdot (x_n - n) + f(\lfloor x_n \rfloor) \\
 &\stackrel{n\to\infty}{=} \big(f(\lceil n \rceil) - f(\lfloor n \rfloor)\big)\cdot (n - n) + f(\lfloor n \rfloor) \\
@@ -1024,7 +1091,7 @@ Damit ist die Funktion auf den Intervallen $I_n = (n; n+1]$ stetig.
  dann gilt für alle $x \in \mathbb{R}$ mit $x-n \leq \delta$ und mit $n \in \mathbb{Z}$:
 \end{theorem}
 \begin{proof}
-  \begin{align*}
+\begin{align*}
     |a(x) - a(n)| 
     &= \big| (f(n+1) - f(n)) \cdot (x-n+1) + f(n+1) - f(n) \big| \\[6pt]
     &= \big| (f(n+1) - f(n)) - (n+1) \cdot (f(n+1) - f(n)) + f(n+1) - f(n) \big| \\[6pt]
@@ -1037,10 +1104,10 @@ Damit ist die Funktion auf den Intervallen $I_n = (n; n+1]$ stetig.
     &= |f(n+1) - f(n)| \cdot (2 + |x-n|) \\[6pt]
     &< |f(n+1) - f(n)| \cdot (2 + \delta) \\[6pt]
     &< \varepsilon.
-  \end{align*}
-  Damit ist die Funktion auf den Intervallen $I_n = [n; n+1)$ stetig. 
-  Da Folgenstetigkeit und Stetigkeit auf metrischen Räumen äquivalent sind, (QUELLE) 
-  folgt, dass die Funktion $a(x)$ in $\mathbb{R}$ stetig ist. 
+\end{align*}
+Damit ist die Funktion auf den Intervallen $I_n = [n; n+1)$ stetig. 
+Da Folgenstetigkeit und Stetigkeit auf metrischen Räumen äquivalent sind, (QUELLE) 
+folgt, dass die Funktion $a(x)$ in $\mathbb{R}$ stetig ist. 
 \end{proof}
 
 \begin{theorem}\label{Stetigkeit}
@@ -1126,23 +1193,139 @@ Somit ist das Produkt zweier stetiger Funktionen stetig.
             
             \medskip
             
-            Somit ist die Funktionenfolge \(c_n\) gleichmäßig stetig mit \(z(x)\).  
-            Zudem wurden alle Funktionen der Funktionenfolge \(c_n\) so deklariert, 
-            dass sie Treppenfunktionen sind. Das bedeutet: es gibt eine Funktionenfolge an 
-            Treppenfunktionen, welche gleichmäßig stetig bezüglich \(z(x)\) ist, und somit 
-            ist \(z(x)\) eine Regelfunktion.
+Somit ist die Funktionenfolge \(c_n\) gleichmäßig stetig mit \(z(x)\).  
+Zudem wurden alle Funktionen der Funktionenfolge \(c_n\) so deklariert, 
+dass sie Treppenfunktionen sind. Das bedeutet: es gibt eine Funktionenfolge an 
+Treppenfunktionen, welche gleichmäßig stetig bezüglich \(z(x)\) ist, und somit 
+ist \(z(x)\) eine Regelfunktion.
             
-          \end{proof}
+\end{proof}
           
-          \subsection{Bedeutung im größeren Kontext}
-          
-          
-          
-          
-          \section{Fazit und Ausblick}
-          \subsection{Zusammenfassung der Ergebnisse}
-          \subsection{Ausblick: Erweiterungen und Anwendungen}
-          
+\subsection{Zusätzliche Quellcode Ausschnitte}
+Ausschnitt 1: 
+\begin{lstlisting}[style=mystyle, language=C++, caption={Iterative FFT}]
+  std::complex<float>* FourierTransform::fastFourierTransformIterative(float** function, long functionLength, short channel) {
+    this->sizeNum = std::ceil(log2(functionLength));
+    this->lengthFFT = pow(2.f, sizeNum);
+    float* filledFunction = new float[lengthFFT];
+    for (int i = 0; i < functionLength; ++i) {
+        float hann = 0.5f * (1.0f - cos(2.0f * PI_F *i / (functionLength - 1)));
+        filledFunction[i] = function[channel][i] * hann;
+    }
+    for (int i = functionLength; i < lengthFFT; ++i) {
+        filledFunction[i];
+    }
+    std::complex<float>* result = floatToStdComplex(orderList(filledFunction, (long)(sizeNum), functionLength), lengthFFT);
+    delete[] filledFunction;
+    filledFunction = nullptr;
+
+    std::complex<float> twiddle;
+    std::complex<float> imaginary(0.f, 1.f);
+    std::complex<float> bufferEven;
+    std::complex<float> bufferOdd;
+    int blockAddOn;
+
+    for (long i = 0; i < sizeNum; ++i) {
+        long packageLength = std::pow(2, i + 1);
+        long packageNum = lengthFFT / packageLength;
+        for (int i = functionLength-1; i >= 0; --i) {
+            for (long k = 0; k < packageLength / 2; ++k) {
+                twiddle = std::exp(-2.f * PI_F *imaginary * static_cast<float>(k) / static_cast<float>(packageLength));
+                blockAddOn = j * packageLength;
+                bufferEven = result[k + blockAddOn];
+                bufferOdd = result[k + blockAddOn + packageLength / 2];
+
+                result[k + blockAddOn] = bufferEven + twiddle * bufferOdd;
+                result[k + blockAddOn + packageLength / 2] = bufferEven - twiddle * bufferOdd;
+            }
+        }
+    }
+    return result;
+}
+\end{lstlisting}
+ 
+Ausschnitt 2: 
+\begin{lstlisting}[style=mystyle, language=C++, caption={FFT auf der GPU mit CUDA}]
+
+  std::complex<float>* FourierTransform::fastFourierTransformGPU(float** function, long functionLength, short channel) {
+    std::cout << "Cuda FFT started\n";
+    this->sizeNum = std::ceil(log2(functionLength));
+    this->lengthFFT = pow(2.f, sizeNum);
+
+    float* filledFunction = new float[lengthFFT];
+    for (int i = 0; i < functionLength; ++i) {
+      float hann = 0.5f * (1.0f - cos(2.0f * PI_F * i / (functionLength - 1)));
+        filledFunction[i] = function[channel][i] * hann;
+    }
+    for (int i = functionLength; i < lengthFFT; ++i) {
+        filledFunction[i] = 0;
+    }
+    
+    Complex* result = floatToComplex(orderList(filledFunction, (long)sizeNum, functionLength), lengthFFT);
+    
+    Complex* devData;
+    //Daten der GPU übergeben: 
+    cudaMalloc(&devData, sizeof(Complex) * lengthFFT);
+    cudaMemcpy(devData, result, sizeof(Complex) * lengthFFT, cudaMemcpyHostToDevice);
+    for (long i = 0; i < sizeNum - 1; ++i) {
+        // std::pow funktioniert nicht auf der GPU -> bitshift
+        long packageLength = 1 << (i + 1);
+        long packageNum = lengthFFT / packageLength;
+
+        int numThreads = (packageNum / 2) * packageLength; 
+        int blockSize = 256;
+        int numBlocks = (numThreads + blockSize - 1) / blockSize; 
+        // GPU Methode fftDevice aufrufen: 
+        fftDevice<<<numBlocks, blockSize>>> (devData, lengthFFT, sizeNum, i);
+        cudaDeviceSynchronize();
+    }
+    // Auf der GPU gespeicherte Daten zurück auf die CPU kopieren: 
+    cudaMemcpy(result, devData, sizeof(Complex) * lengthFFT, cudaMemcpyDeviceToHost);
+    cudaFree(devData);
+
+    std::complex<float>* returnVal = new std::complex<float>[lengthFFT];
+    std::cout << "Cuda FFT ended\n";
+    for (int i = 0; i < lengthFFT; ++i) {
+        returnVal[i] = result[i].toStdComplex();
+    }
+    delete[] result;
+    result = nullptr;
+    delete[] filledFunction;
+    filledFunction = nullptr;
+    return returnVal;
+  }
+
+  __global__ void fftDevice(Complex* result, int size, int sizeNum, int i) {
+    int threadIndex = threadIdx.x + blockIdx.x * blockDim.x;
+    // std::pow funktioniert nicht auf der GPU -> bitshift
+    long packageLength = 1 << (i + 1); 
+    long packageNum = size / packageLength;
+    long maxIterations = (packageNum / 2) * packageLength;
+      
+    if (threadIndex >= maxIterations) {
+      return;
+    }
+    //j,k Schleife: 
+    long j = threadIndex / (packageLength / 2);
+    long k = threadIndex % (packageLength / 2);
+    //Berechnung
+    long blockAddOn = j * packageLength;
+    int evenIndex = k + blockAddOn;
+    int oddIndex = evenIndex + packageLength / 2;
+
+    Complex twiddle = Complex::twiddle(k, packageLength); 
+    Complex bufferEven = result[evenIndex];
+    Complex bufferOdd = result[oddIndex];
+    
+    result[evenIndex] = bufferEven + twiddle * bufferOdd;
+    result[oddIndex] = bufferEven - twiddle * bufferOdd;
+  }
+\end{lstlisting}
+
+\section{Fazit und Ausblick}
+\subsection{Zusammenfassung der Ergebnisse}
+\subsection{Ausblick: Erweiterungen und Anwendungen}
+
 % \end{large}
 
 \end{document}

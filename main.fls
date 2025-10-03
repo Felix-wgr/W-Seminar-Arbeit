@@ -380,6 +380,8 @@ INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgf
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\generic\pgf\libraries\pgflibraryfadings.code.tex
 OUTPUT main.pdf
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\latex\tcolorbox\tcbposter.code.tex
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytrees.code.tex
+INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytrees.code.tex
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
