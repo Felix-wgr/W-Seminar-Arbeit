@@ -1,7 +1,7 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, amsthm, pdflscape, graphicx, pgfplots, tikz, forest, xcolor, lstlinebgrd, mdframed}
-\usepackage{lmodern} 
+\usepackage{amsmath, amssymb, amsthm, float, pdflscape, graphicx, pgfplots, tikz, forest, xcolor, lstlinebgrd, mdframed}
+\usepackage{lmodern, caption} 
 \usepackage[T1]{fontenc}
 \usepackage[german]{babel}  
 \usepackage{csquotes} 
@@ -21,6 +21,7 @@
 
 \pgfplotsset{compat=1.18}
 
+\captionsetup[figure]{labelformat=empty}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -117,14 +118,65 @@
 
 
 \begin{document}
-% \begin{large}
 
-\maketitle
+\thispagestyle{empty}
+\begin{center}
+
+\vspace*{1cm}
+
+\begin{tabular}{p{7cm}p{7cm}}
+\textbf{Willibald-Gluck-Gymnasium} & \hfill \textbf{Oberstufenjahrgang 2024/26} \\
+Neumarkt in der Oberpfalz & \\
+\end{tabular}
+
+\vspace{3cm}
+
+\textbf{\Large S E M I N A R A R B E I T}\\[0.3cm]
+aus dem W-Seminar\\[0.3cm]
+\textit{„Mathematik ist überall“}
+
+\vspace{2cm}
+\begin{flushleft}
+Thema der Seminararbeit:
+\end{flushleft}
+\begin{center}
+\textbf{Analysis:}\\
+Die Fouriertransformation ...
+\end{center}
+
+\vspace{2cm}
+
+\begin{flushleft}
+\textbf{Verfasser:} \hspace{2cm} Felix Wager\\[0.3cm]
+\textbf{Kursleiter:} \hspace{2.5cm} OSR Albert Thumann\\[0.3cm]
+\textbf{Abgabetermin:} \hspace{1.6cm} 11.\ November\ 2025
+\end{flushleft}
+
+\vspace{2cm}
+
+\begin{flushleft}
+\begin{tabular}{@{}l l l l@{}}
+\textbf{Bewertung der schriftlichen Arbeit:} & \rule{1cm}{0.4pt} & Punkte & in Worten: \rule{3cm}{0.4pt} \\[0.4cm]
+\textbf{Bewertung der Präsentation:} & \rule{1cm}{0.4pt} & Punkte & in Worten: \rule{3cm}{0.4pt} \\[0.4cm]
+\textbf{Gesamtbewertung} ($\frac{3 \; \cdot \text{ schriftlich } + \; 1 \; \cdot \text{ mündlich}}{2}$): & \rule{1cm}{0.4pt} & Punkte & \\
+\end{tabular}
+
+\vspace{0.8cm}
+
+\textbf{Abgabe bei der Oberstufenkoordinatorin am:} 11.\ November\ 2025
+\end{flushleft}
+
+\vfill
+
+\begin{flushright}
+\rule{5cm}{0.4pt}\\
+Unterschrift des Kursleiters
+\end{flushright}
+
+\end{center}
 
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
 \tableofcontents
-\newpage
-
 
 \section{Abstract}
 
@@ -156,7 +208,7 @@ Mithilfe von komplexen Zahlen und den Taylorreihen von Sinus, Cosinus und der Ex
 
 Wenn man den Betrag dieses Ausdrucks bildet, so fällt auf, dass hier das Ergebnis, unabhängig von $x$, 1 ist. Dies bedeutet, dass $e^{ix}$ als ein gegen den Uhrzeigersinn rotierender Vektor, für steigende Werte für $x$, gesehen werden kann. Im vorher genannten Koordinatensystem, welches man auch die Gaußsche Zahlenebene nennt, sieht das so aus:
 \begin{center}
-\includegraphics[scale=0.75]{eulerformel.jpg}
+\includegraphics[scale=0.75]{Bilder/eulerformel.jpg}
 \end{center}
 
 \subsection{Das Skalarprodukt von Funktionen und Orthonormalsysteme}
@@ -878,151 +930,216 @@ der iterativen Variante der schnellen Fouriertransformation so anpassen, dass er
 auszunutzen, habe ich sowohl die einzelnen Pakete als auch die Berechnungen innerhalb der Pakete auf Threads verteilt. Ein Thread ist 
 in diesem Zusammenhang ein Strang von Anweisungen, der einen Teil der Gesamtrechnung übernimmt. Je nach Alter und Leistungsfähigkeit 
 einer GPU können so gleichzeitig zwischen einigen tausend und über hunderttausend Threads ausgeführt werden.
+\\\\
+Als letzter wichtiger Schritt folgt die Überprüfung der Richtigkeit meiner Algorithmen. Diese habe ich auf zwei Arten durchgeführt.
+Zum einen habe ich die Ausgaben der drei von mir implementierten Varianten der schnellen Fouriertransformation graphisch miteinander 
+verglichen. Dabei zeigte sich, dass alle Versionen identische Ergebnisse lieferten. Zusätzlich habe ich diese Resultate mit denen der 
+FFTW-Bibliothek, einer am MIT entwickelten Fouriertransformation, verglichen. Auch hier ergaben sich keinerlei 
+Abweichungen.
 
-\subsection{Vergleich der verschiedenen FFT-Varianten}
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-  width=\textwidth,
-  height=8cm,
-  xlabel={Zeit [s]},
-  ylabel={Zeit [s]},
-  grid=major,
-  major grid style={gray!30},
-  legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
-  label style={font=\large},
-  tick label style={font=\small},
-  line width=1pt,
-  no markers,
-  cycle list={
-    {blue},
-    {red},
-    {brown},
-    {black},
-    {teal}
-  }
-]
+Zum anderen habe ich mehrere automatisch generierte Testfälle, die mithilfe von GitHub Copilot, einer auf künstlicher Intelligenz 
+basierenden Entwicklungsumgebung, erstellt wurden, auf meine Implementationen angewendet. Alle Tests wurden erfolgreich bestanden. 
+Daher ist davon auszugehen, dass die Ergebnisse meiner Algorithmen korrekt sind.
+
+\subsection{Vergleich der implementierten FFT-Varianten}
+Um zu sehen, ob meine neue Ausführung der schnellen Fouriertransformation schneller ist als die vorherigen, habe ich all meine FFT 
+Algorithmen zeitlich verglichen. Hierzu habe ich an Stelle des Audiosignals eine Sinuskurve mit einer Abtastrate von 44800 verwendet. 
+Somit entsprechen 44800 Sinuswerte ungefähr der Anzahl an Werten, welche ein übliche CD pro Sekunde aufnehmen kann. Die Ergebnisse der 
+Messungen habe ich in einem Graphen visualisiert. Die X-Achse entspricht dabei der Menge an Daten, angegeben in Sekunden. Die Y-Achse 
+gibt an wie lange der jeweilige FFT-Algorithmus gebraucht hat. 
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+  \begin{axis}[
+    width=\textwidth,
+    height=8cm,
+    xlabel={Zeit [s]},
+    ylabel={Zeit [s]},
+    grid=major,
+    major grid style={gray!30},
+    legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
+    label style={font=\large},
+    tick label style={font=\small},
+    line width=1pt,
+    no markers,
+    cycle list={
+      {blue},
+      {red},
+      {brown},
+      {black},
+      {teal}
+    }
+  ]
       
-\addplot table[x index=1, y expr=\thisrowno{2}/1000] {fft_bench5.dat};
-\addlegendentry{Rekursive FFT}
-      
-\addplot table[x index=1, y expr=\thisrowno{3}/1000] {fft_bench5.dat};
-\addlegendentry{Iterative FFT}
-      
-\addplot table[x index=1, y expr=\thisrowno{4}/1000] {fft_bench5.dat};
-\addlegendentry{Iterative FFT auf GPU}
-      
-\addplot table[x index=1, y expr=\thisrowno{5}/1000] {fft_bench5.dat};
-\addlegendentry{cuFFT-Bibliothek (GPU)}
-      
-\addplot table[x index=1, y expr=\thisrowno{6}/1000] {fft_bench5.dat};
-\addlegendentry{FFTW-Bibliothek (CPU)}
-      
-      
-\end{axis}
-\end{tikzpicture}
-\caption{Vergleich der FFT-Methoden anhand der Benchmarks.}
+  \addplot table[x index=1, y expr=\thisrowno{2}/1000] {fft_bench5.dat};
+  \addlegendentry{Rekursive FFT (CPU)}
+  \addplot table[x index=1, y expr=\thisrowno{3}/1000] {fft_bench5.dat};
+  \addlegendentry{Iterative FFT (CPU)}
+  \addplot table[x index=1, y expr=\thisrowno{4}/1000] {fft_bench5.dat};
+  \addlegendentry{Iterative FFT (GPU)}
+  % \addplot table[x index=1, y expr=\thisrowno{5}/1000] {fft_bench5.dat};
+  % \addlegendentry{cuFFT-Bibliothek (GPU)}    
+  % \addplot table[x index=1, y expr=\thisrowno{6}/1000] {fft_bench5.dat};
+  % \addlegendentry{FFTW-Bibliothek (CPU)}
+
+  \end{axis}
+  \end{tikzpicture}
+  \caption{Vergleich der FFT-Methoden anhand der Benchmarks.}
 \end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-      \begin{axis}[
-        width=\textwidth,
-        height=8cm,
-        xlabel={Zeit [ms]},
-        ylabel={Zeit [ms]},
-        grid=major,
-        major grid style={gray!30},
-        legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
-        label style={font=\large},
-        tick label style={font=\small},
-        line width=1pt,
-            no markers,
-            cycle list={
-              {blue},
-              {red},
-              {brown},
-              {black},
-              {teal}
-              }
-              ]
+Wenn man jetzt das Ergebnis am Graphen sieht, so stechen zwei Dinge sofort ins Auge. Zum einen ist auffällig, dass der Graph der, auf 
+der GPU laufenden FFT, deutlich flacher verläuft als die beiden Versionen des Algorithmus auf der CPU. Zum anderen kann man immer wiederkehrende 
+Sprünge erkennen. Wenn man hier genau hinschaut, bemerkt man auch eine weitere Besonderheit. Wenn man die Graphen von links nach rechts betrachtet, 
+dann gilt: Je mehr Stufen die Graphen hinter sich haben, desto größer ist der Abstand zwischen den Implementierungen auf der CPU und der GPU. Das 
+heißt je großer die zu transformierende Datenmenge, desto schneller ist die iterative Variante der FFT auf der GPU. 
+\\\\
+Um das beobachtete Verhalten zu verstehen, muss man sich den Algorithmus der FFT etwas genauer ansehen. Denn wie zuvor schon erwähnt, ist es 
+für die FFT vorausgesetzt, dass die Anzahl der zu transformierenden Daten eine Zweierpotenz ist. Sonst würde die wiederholte Aufspaltung in halb so 
+große Fouriertransformationen nicht funktionieren. Um diese Bedingung zu erfüllen, habe ich in meinem Programm meine aufgenommenen Daten bis zur 
+nächstgrößeren Zweierpotenz mit Nullen aufgefüllt. Diese ändern das Ergebnis der FFT nicht, denn schaut man sich noch einmal die Formel der 
+Fouriertransformation an ($F(\omega) = \int_{-\infty}^{\infty}{f(x) e^{-i\omega x} dx}$), so sieht man, dass man, aufgrund des Integrals, mit den 
+aufgefüllten Nullen lediglich Summanden des Werts 0 hinzufügt. 
+
+Genau dieses Auffüllen ist der Grund für die Sprünge in den Graphen. Denn genau hier passiert es, dass die Anzahl der Daten die bisherige nächstgrößere 
+Zweierpotenz überschreitet. Also wird ab hier bis zur darauffolgenden Zweierpotenz mit Nullen aufgefüllt, wodurch die zu verarbeiteten Daten verdoppelt 
+werden. Durch die neue deutlich größere Menge an zu verarbeiteten Daten, entsteht der sprunghafte Anstieg. Bestätigt wird die Erklärung auch von den 
+Abständen der Versätze. Denn die Abstände zwischen den starken Anstiegen verdoppeln sich immer, entsprechend einer Zweierpotenz. Im Übrigen ist die FFT 
+trotz dessen auch bei mir noch um einiges schneller als meine diskrete Fouriertransformation. In den Abschnitten selbst verlaufen die Graphen ungefähr 
+gerade, als hätten sie keine Steigung, was auch zeigt, dass die Anzahl der Berechnungen hier konstant geblieben ist. Unebenheiten im Graphen lassen sich 
+zudem dadurch erklären, dass ich die Messung an meinem eigenen Laptop durchgeführt habe und so keine totale Kontrolle über Hintergrundprozesse habe, welche 
+die Messung beeinflussen. 
+\\
+Der große Unterschied zwischen den Algorithmen auf der CPU und GPU ist, dass der Anstieg der Sprünge bei der GPU geringer ist, also der bei der CPU. 
+Der Grund hierfür ist die Architektur der beiden Verarbeitungseinheiten. Die Verarbeitung innerhalb der beiden Einheiten ist, der Einfachheit halber, vergleichbar 
+mit dem Transport von Personen zum Arbeitsplatz. Vereinfacht hat dabei jede Person zwei Möglichkeiten zu fahren, entweder mit der S-Bahn oder mit dem Auto. Würde 
+nur eine Person fahren, so wäre diese mit dem Auto schneller als mit dem Zug. Doch wollen jetzt extrem viele Leute gleichzeitig zur Arbeit fahren, so bildet 
+sich auf den Straßen ein Stau und der Zug wird immer effizienter, da seine Kapazität komplett ausgenutzt wird. Genau das ist was hier passiert, mit mehr Daten, 
+also mehr Personen auf dem Weg zur Arbeit, wird die CPU, der Transport über das Auto, langsamer als die GPU, dementsprechend der Transport mit der S-Bahn. Im 
+großen Ganzen betrachtet werden so mehr Daten schneller verarbeitet. 
+\\\\
+Betrachtet man kleinere Datensätze, so wird das noch einmal besser klar.
+
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+  \begin{axis}[
+    width=\textwidth,
+    height=8cm,
+    xlabel={Zeit [ms]},
+    ylabel={Zeit [ms]},
+    grid=major,
+    major grid style={gray!30},
+    legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
+    label style={font=\large},
+    tick label style={font=\small},
+    line width=1pt,
+    no markers,
+    cycle list={
+      {blue},
+      {red},
+      {brown},
+      {black},
+      {teal}
+    }
+  ]
               
-              \addplot table[x expr=\thisrowno{1}*1000, y index=2] {fft_bench_small.dat};
-              \addlegendentry{Rekursive FFT}
+  \addplot table[x expr=\thisrowno{1}*1000, y index=2] {fft_bench_small.dat};
+  \addlegendentry{Rekursive FFT}            
+  \addplot table[x expr=\thisrowno{1}*1000, y index=3] {fft_bench_small.dat};
+  \addlegendentry{Iterative FFT}            
+  \addplot table[x expr=\thisrowno{1}*1000, y index=4] {fft_bench_small.dat};
+  \addlegendentry{Iterative FFT auf GPU}
               
-              \addplot table[x expr=\thisrowno{1}*1000, y index=3] {fft_bench_small.dat};
-              \addlegendentry{Iterative FFT}
-              
-              \addplot table[x expr=\thisrowno{1}*1000, y index=4] {fft_bench_small.dat};
-              \addlegendentry{Iterative FFT auf GPU}
-              
-            \end{axis}
-          \end{tikzpicture}
-          \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
-        \end{figure}
+  \end{axis}
+  \end{tikzpicture}
+  \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
+\end{figure}
     
-        \begin{figure}[h!]
-        \centering
-        \begin{tikzpicture}
-          \begin{axis}[
-            width=\textwidth,
-            height=8cm,
-            xlabel={Zeit [min]},
-            ylabel={Zeit [s]},
-            grid=major,
-            major grid style={gray!30},
-            legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
-            label style={font=\large},
-            tick label style={font=\small},
-            line width=1pt,
-            no markers,
-            cycle list={
-              {black},
-              {teal}
-              }
-              ]
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+  \begin{axis}[
+    width=\textwidth,
+    height=8cm,
+    xlabel={Zeit [min]},
+    ylabel={Zeit [s]},
+    grid=major,
+    major grid style={gray!30},
+    legend style={at={(0.5,-0.2)}, anchor=north, legend columns=2, font=\small},
+    label style={font=\large},
+    tick label style={font=\small},
+    line width=1pt,
+    no markers,
+    cycle list={
+      {black},
+      {teal}
+    }
+  ]
+  \addplot table[x expr=\thisrowno{1}/60, y expr=\thisrowno{2}/1000] {fft_bench_big.dat};
+  \addlegendentry{cuFFT-Bibliothek (GPU)}            
+  \addplot table[x expr=\thisrowno{1}/60, y expr=\thisrowno{3}/1000] {fft_bench_big.dat};
+  \addlegendentry{FFTW-Bibliothek (CPU)}
               
-              \addplot table[x expr=\thisrowno{1}/60, y expr=\thisrowno{2}/1000] {fft_bench_big.dat};
-              \addlegendentry{cuFFT-Bibliothek (GPU)}
-              
-              \addplot table[x expr=\thisrowno{1}/60, y expr=\thisrowno{3}/1000] {fft_bench_big.dat};
-              \addlegendentry{FFTW-Bibliothek (CPU)}
-              
-            \end{axis}
-          \end{tikzpicture}
-            \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
-        \end{figure}
+  \end{axis}
+  \end{tikzpicture}
+  \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
+\end{figure}
 
 \section{Anwendung einer Mehrdimensionalen FFT}
-\subsection{Übergang zum Integral}
-\subsection{Fourier-Transformation und inverse Transformation}
-\subsection{Eigenschaften}
-Linearität, Verschiebung, Faltung.
+\subsection{Das Moiré Muster}
+\subsection{Filterung von Moiré-Mustern in Röntgenaufnahmen mittels FFT}
 
-\section{Diskrete Fourier-Transformation (DFT)}
-\subsection{Definition und Motivation}
-\subsection{Herleitung aus der Fourier-Transformation}
-Eigene Herleitung
-\subsection{Beweise für die Korrektheit}
-\subsection{FFT als effiziente Berechnung}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Bilder/original.png}
+    \caption{Erstes Bild}
+    \label{fig:bild1}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Bilder/original_zoomed.png}
+    \caption{Zweites Bild}
+    \label{fig:bild2}
+  \end{minipage}
+\end{figure}
 
-\section{Eigene Beiträge}
-\subsection{Eigene Herleitung der DFT}
-\subsection{Beweise}
-\subsection{Eigener FFT-Algorithmus in Python}
-\subsection{Audio-Programm zur Echtzeit-Visualisierung}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Bilder/fft_original.png}
+    \caption{Erstes Bild}
+    \label{fig:bild1}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Bilder/fft_edited.png}
+    \caption{Zweites Bild}
+    \label{fig:bild2}
+  \end{minipage}
+\end{figure}
 
-
-        
-        \subsection{Bildverarbeitung: Moiré-Muster entfernen mit 2D-FFT}
-        
-        \section{Anwendungen}
-        \subsection{Audio}
-        Echtzeitaufnahme und Visualisierung, Tonhöhenerkennung oder Noise Cancelling, Ergebnisse.
-        \subsection{Bild}
-        Röntgenbild und Moiré-Filterung, Ergebnisse.
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Bilder/edited.png}
+    \caption{Erstes Bild}
+    \label{fig:bild1}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Bilder/edited_zoomed.png}
+    \caption{Zweites Bild}
+    \label{fig:bild2}
+  \end{minipage}
+\end{figure}
         
 \section{Anhang}
         
@@ -1321,12 +1438,6 @@ Ausschnitt 2:
     result[oddIndex] = bufferEven - twiddle * bufferOdd;
   }
 \end{lstlisting}
-
-\section{Fazit und Ausblick}
-\subsection{Zusammenfassung der Ergebnisse}
-\subsection{Ausblick: Erweiterungen und Anwendungen}
-
-% \end{large}
 
 \end{document}
         

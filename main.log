@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.27)  3 OCT 2025 23:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.27)  12 OCT 2025 15:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -111,6 +111,13 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@postskip=\skip55
 \thm@headsep=\skip56
 \dth@everypar=\toks29
+) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count295
+\float@exts=\toks30
+\float@box=\box55
+\@float@everytoks=\toks31
+\@floatcapt=\box56
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
@@ -135,18 +142,18 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks30
+\KV@toks@=\toks32
 )
 \Gin@req@height=\dimen158
 \Gin@req@width=\dimen159
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/pgfplots\pgfplots.sty (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
-\pgfutil@everybye=\toks31
+\pgfutil@everybye=\toks33
 \pgfutil@tempdima=\dimen160
 \pgfutil@tempdimb=\dimen161
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
-\pgfutil@abb=\box55
+\pgfutil@abb=\box57
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
 Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
 ))
@@ -154,10 +161,10 @@ Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
 Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks32
-\pgfkeys@temptoks=\toks33
+\pgfkeys@pathtoks=\toks34
+\pgfkeys@temptoks=\toks35
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks34
+\pgfkeys@tmptoks=\toks36
 ))
 \pgf@x=\dimen162
 \pgf@y=\dimen163
@@ -171,14 +178,14 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@yd=\dimen171
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count295
-\c@pgf@countb=\count296
-\c@pgf@countc=\count297
-\c@pgf@countd=\count298
-\t@pgf@toka=\toks35
-\t@pgf@tokb=\toks36
-\t@pgf@tokc=\toks37
-\pgf@sys@id@count=\count299
+\c@pgf@counta=\count296
+\c@pgf@countb=\count297
+\c@pgf@countc=\count298
+\c@pgf@countd=\count299
+\t@pgf@toka=\toks37
+\t@pgf@tokb=\toks38
+\t@pgf@tokc=\toks39
+\pgf@sys@id@count=\count300
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
 File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
@@ -189,8 +196,8 @@ File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
 File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
 ))) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfsyssoftpath@smallbuffer@items=\count300
-\pgfsyssoftpath@bigbuffer@items=\count301
+\pgfsyssoftpath@smallbuffer@items=\count301
+\pgfsyssoftpath@bigbuffer@items=\count302
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
@@ -213,13 +220,13 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
 \pgfmath@dimen=\dimen172
-\pgfmath@count=\count302
-\pgfmath@box=\box56
-\pgfmath@toks=\toks38
-\pgfmath@stack@operand=\toks39
-\pgfmath@stack@operation=\toks40
+\pgfmath@count=\count303
+\pgfmath@box=\box58
+\pgfmath@toks=\toks40
+\pgfmath@stack@operand=\toks41
+\pgfmath@stack@operation=\toks42
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count303
+\c@pgfmathroundto@lastzeros=\count304
 )) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@picminx=\dimen173
@@ -246,10 +253,10 @@ File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@shorten@start@additional=\dimen190
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfpic=\box57
-\pgf@hbox=\box58
-\pgf@layerbox@main=\box59
-\pgf@picture@serial@count=\count304
+\pgfpic=\box59
+\pgf@hbox=\box60
+\pgf@layerbox@main=\box61
+\pgf@picture@serial@count=\count305
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgflinewidth=\dimen191
@@ -270,13 +277,13 @@ File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@max=\dimen196
-\pgf@sys@shading@range@num=\count305
-\pgf@shadingcount=\count306
+\pgf@sys@shading@range@num=\count306
+\pgf@shadingcount=\count307
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfexternal@startupbox=\box60
+\pgfexternal@startupbox=\box62
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
@@ -287,7 +294,7 @@ File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfnodeparttextbox=\box61
+\pgfnodeparttextbox=\box63
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
@@ -300,13 +307,13 @@ Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
 Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
 \pgffor@iter=\dimen199
 \pgffor@skip=\dimen256
-\pgffor@stack=\toks41
-\pgffor@toks=\toks42
+\pgffor@stack=\toks43
+\pgffor@toks=\toks44
 )) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
 Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@plot@mark@count=\count307
+\pgf@plot@mark@count=\count308
 \pgfplotmarksize=\dimen257
 )
 \tikz@lastx=\dimen258
@@ -317,55 +324,55 @@ File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \tikz@lastmovetoy=\dimen263
 \tikzleveldistance=\dimen264
 \tikzsiblingdistance=\dimen265
-\tikz@figbox=\box62
-\tikz@figbox@bg=\box63
-\tikz@tempbox=\box64
-\tikz@tempbox@bg=\box65
-\tikztreelevel=\count308
-\tikznumberofchildren=\count309
-\tikznumberofcurrentchild=\count310
-\tikz@fig@count=\count311
+\tikz@figbox=\box64
+\tikz@figbox@bg=\box65
+\tikz@tempbox=\box66
+\tikz@tempbox@bg=\box67
+\tikztreelevel=\count309
+\tikznumberofchildren=\count310
+\tikznumberofcurrentchild=\count311
+\tikz@fig@count=\count312
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfmatrixcurrentrow=\count312
-\pgfmatrixcurrentcolumn=\count313
-\pgf@matrix@numberofcolumns=\count314
+\pgfmatrixcurrentrow=\count313
+\pgfmatrixcurrentcolumn=\count314
+\pgf@matrix@numberofcolumns=\count315
 )
-\tikz@expandcount=\count315
+\tikz@expandcount=\count316
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotscore.code.tex
-\t@pgfplots@toka=\toks43
-\t@pgfplots@tokb=\toks44
-\t@pgfplots@tokc=\toks45
+\t@pgfplots@toka=\toks45
+\t@pgfplots@tokb=\toks46
+\t@pgfplots@tokc=\toks47
 \pgfplots@tmpa=\dimen266
-\c@pgfplots@coordindex=\count316
-\c@pgfplots@scanlineindex=\count317
+\c@pgfplots@coordindex=\count317
+\c@pgfplots@scanlineindex=\count318
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgfplotssysgeneric.code.tex)) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\pgfplotslibrary.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_loader.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryfpu.code.tex)
 Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks46
-\t@pgf@tokb=\toks47
-\t@pgf@tokc=\toks48
+\t@pgf@toka=\toks48
+\t@pgf@tokb=\toks49
+\t@pgf@tokc=\toks50
 (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsutil.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsliststructure.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsliststructureext.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count318
+\c@pgfplotsarray@tmp=\count319
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsmatrix.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/numtable\pgfplotstableshared.code.tex
-\c@pgfplotstable@counta=\count319
-\t@pgfplotstable@a=\toks49
+\c@pgfplotstable@counta=\count320
+\t@pgfplotstable@a=\toks51
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsdeque.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsbinary.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsbinary.data.code.tex)) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsutil.verb.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\pgflibrarypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count320
+\c@pgfplotslibrarysurf@no=\count321
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotscolormap.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotscolor.code.tex)) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsstackedplots.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsplothandlers.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsmeshplothandler.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsmeshplotimage.code.tex))) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.scaling.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotscoordprocessing.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.errorbars.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.markers.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsticks.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.paths.code.tex) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduledecorations.code.tex
 \pgfdecoratedcompleteddistance=\dimen267
 \pgfdecoratedremainingdistance=\dimen268
 \pgfdecoratedinputsegmentcompleteddistance=\dimen269
 \pgfdecoratedinputsegmentremainingdistance=\dimen270
 \pgf@decorate@distancetomove=\dimen271
-\pgf@decorate@repeatstate=\count321
+\pgf@decorate@repeatstate=\count322
 \pgfdecorationsegmentamplitude=\dimen272
 \pgfdecorationsegmentlength=\dimen273
 )
-\tikz@lib@dec@box=\box66
+\tikz@lib@dec@box=\box68
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathmorphing.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathmorphing.code.tex)) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathreplacing.code.tex)) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\tikzlibrarypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count322
+\pgfplots@numplots=\count323
 \pgfplots@xmin@reg=\dimen274
 \pgfplots@xmax@reg=\dimen275
 \pgfplots@ymin@reg=\dimen276
@@ -400,39 +407,39 @@ File: pgflibraryshapes.arrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 File: tikzlibraryshapes.multipart.code.tex 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.multipart.code.tex
 File: pgflibraryshapes.multipart.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfnodepartlowerbox=\box67
-\pgfnodeparttwobox=\box68
-\pgfnodepartthreebox=\box69
-\pgfnodepartfourbox=\box70
-\pgfnodeparttwentybox=\box71
-\pgfnodepartnineteenbox=\box72
-\pgfnodeparteighteenbox=\box73
-\pgfnodepartseventeenbox=\box74
-\pgfnodepartsixteenbox=\box75
-\pgfnodepartfifteenbox=\box76
-\pgfnodepartfourteenbox=\box77
-\pgfnodepartthirteenbox=\box78
-\pgfnodeparttwelvebox=\box79
-\pgfnodepartelevenbox=\box80
-\pgfnodeparttenbox=\box81
-\pgfnodepartninebox=\box82
-\pgfnodeparteightbox=\box83
-\pgfnodepartsevenbox=\box84
-\pgfnodepartsixbox=\box85
-\pgfnodepartfivebox=\box86
+\pgfnodepartlowerbox=\box69
+\pgfnodeparttwobox=\box70
+\pgfnodepartthreebox=\box71
+\pgfnodepartfourbox=\box72
+\pgfnodeparttwentybox=\box73
+\pgfnodepartnineteenbox=\box74
+\pgfnodeparteighteenbox=\box75
+\pgfnodepartseventeenbox=\box76
+\pgfnodepartsixteenbox=\box77
+\pgfnodepartfifteenbox=\box78
+\pgfnodepartfourteenbox=\box79
+\pgfnodepartthirteenbox=\box80
+\pgfnodeparttwelvebox=\box81
+\pgfnodepartelevenbox=\box82
+\pgfnodeparttenbox=\box83
+\pgfnodepartninebox=\box84
+\pgfnodeparteightbox=\box85
+\pgfnodepartsevenbox=\box86
+\pgfnodepartsixbox=\box87
+\pgfnodepartfivebox=\box88
 ))) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryfit.code.tex
 File: tikzlibraryfit.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryintersections.code.tex
-\pgf@intersect@solutions=\count323
+\pgf@intersect@solutions=\count324
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/pgfopts\pgfopts.sty
 Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
-\pgfopts@list@add@a@toks=\toks50
-\pgfopts@list@add@b@toks=\toks51
+\pgfopts@list@add@a@toks=\toks52
+\pgfopts@list@add@b@toks=\toks53
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count324
+\etb@tempcnta=\count325
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/elocalloc\elocalloc.sty
 Package: elocalloc 2016/12/15 v0.03 local allocation for LaTeX 2015+ (DPC)
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/environ\environ.sty
@@ -443,82 +450,82 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 Package: expl3 2025-09-02 L3 programming layer (loader) 
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count325
+\l__color_backend_stack_int=\count326
 ))
 Package: xparse 2024-08-16 L3 Experimental document command parser
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/inlinedef\inlinedef.sty
 Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
-\ID@toks=\toks52
-\ID@count=\count326
+\ID@toks=\toks54
+\ID@count=\count327
 )
-\ID@usercommands=\toks53
-\safeloop@depth=\count327
-\safeRKloop@depth=\count328
+\ID@usercommands=\toks55
+\safeloop@depth=\count328
+\safeRKloop@depth=\count329
 \forest@temp@dimen=\dimen280
-\forest@temp@count=\count329
-\forest@n=\count330
-\forest@temp@global@count=\count331
-\forest@temp@toks=\toks54
-\forest@temparray@M=\count332
-\forest@temparray@N=\count333
-\forest@global@temparray@M=\count334
-\forest@global@temparray@N=\count335
-\forest@isnum@count=\count336
-\forest@isdim@nonintpart=\count337
+\forest@temp@count=\count330
+\forest@n=\count331
+\forest@temp@global@count=\count332
+\forest@temp@toks=\toks56
+\forest@temparray@M=\count333
+\forest@temparray@N=\count334
+\forest@global@temparray@M=\count335
+\forest@global@temparray@N=\count336
+\forest@isnum@count=\count337
+\forest@isdim@nonintpart=\count338
 \forest@isdim@dimen=\dimen281
-\forest@sort@m=\count338
-\forest@sort@k=\count339
-\forest@sort@p=\count340
-\bracket@content=\toks55
-\bracket@afterthought=\toks56
-\forest@node@maxid=\count341
-\forest@process@left@M=\count342
-\forest@process@left@N=\count343
-\forest@process@right@M=\count344
-\forest@process@right@N=\count345
-\forest@process@saved@M=\count346
-\forest@process@saved@N=\count347
-\forest@process@result@M=\count348
-\forest@process@result@N=\count349
-\forest@process@n=\count350
-\forest@nodewalk@branch@toks=\toks57
-\forest@nodewalk@shortsteps@resolution=\toks58
-\forest@do@dynamics=\toks59
-\forest@box=\box87
+\forest@sort@m=\count339
+\forest@sort@k=\count340
+\forest@sort@p=\count341
+\bracket@content=\toks57
+\bracket@afterthought=\toks58
+\forest@node@maxid=\count342
+\forest@process@left@M=\count343
+\forest@process@left@N=\count344
+\forest@process@right@M=\count345
+\forest@process@right@N=\count346
+\forest@process@saved@M=\count347
+\forest@process@saved@N=\count348
+\forest@process@result@M=\count349
+\forest@process@result@N=\count350
+\forest@process@n=\count351
+\forest@nodewalk@branch@toks=\toks59
+\forest@nodewalk@shortsteps@resolution=\toks60
+\forest@do@dynamics=\toks61
+\forest@box=\box89
 \forest@xg=\dimen282
 \forest@yg=\dimen283
 \forest@xs=\dimen284
 \forest@ys=\dimen285
-\forest@pi@toks=\toks60
-\forest@segment@toks=\toks61
-\forest@PIi@toks=\toks62
-\forest@PIii@toks=\toks63
+\forest@pi@toks=\toks62
+\forest@segment@toks=\toks63
+\forest@PIi@toks=\toks64
+\forest@PIii@toks=\toks65
 \forest@copy@in=\read3
 \forest@copy@out=\write4
-\forest@externalize@max@outer@n=\count351
-\forest@externalize@inner@n=\count352
+\forest@externalize@max@outer@n=\count352
+\forest@externalize@inner@n=\count353
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lstaddons\lstlinebgrd.sty
 Package: lstlinebgrd 2014/08/18 v0.2 Provides 'listings' options to color the background of lines
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count353
-\lst@gtempboxa=\box88
-\lst@token=\toks64
-\lst@length=\count354
+\lst@mode=\count354
+\lst@gtempboxa=\box90
+\lst@token=\toks66
+\lst@length=\count355
 \lst@currlwidth=\dimen286
-\lst@column=\count355
-\lst@pos=\count356
+\lst@column=\count356
+\lst@pos=\count357
 \lst@lostspace=\dimen287
 \lst@width=\dimen288
-\lst@newlines=\count357
-\lst@lineno=\count358
+\lst@newlines=\count358
+\lst@lineno=\count359
 \lst@maxwidth=\dimen289
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count359
-\lst@skipnumbers=\count360
-\lst@framebox=\box89
+\c@lstnumber=\count360
+\lst@skipnumbers=\count361
+\lst@framebox=\box91
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
@@ -553,13 +560,13 @@ Package zref Info: New property list: main on input line 767.
 Package zref Info: New property: default on input line 768.
 Package zref Info: New property: page on input line 769.
 )
-\c@abspage=\count361
+\c@abspage=\count362
 Package zref Info: New property: abspage on input line 67.
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/needspace\needspace.sty
 Package: needspace 2025/03/13 v1.3e reserve vertical space
 )
 \mdf@templength=\skip57
-\c@mdf@globalstyle@cnt=\count362
+\c@mdf@globalstyle@cnt=\count363
 \mdf@skipabove@length=\skip58
 \mdf@skipbelow@length=\skip59
 \mdf@leftmargin@length=\skip60
@@ -602,11 +609,11 @@ Package: needspace 2025/03/13 v1.3e reserve vertical space
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/mdframed\md-frame-0.mdf
 File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 )
-\mdf@frametitlebox=\box90
-\mdf@footnotebox=\box91
-\mdf@splitbox@one=\box92
-\mdf@splitbox@two=\box93
-\mdf@splitbox@save=\box94
+\mdf@frametitlebox=\box92
+\mdf@footnotebox=\box93
+\mdf@splitbox@one=\box94
+\mdf@splitbox@two=\box95
+\mdf@splitbox@save=\box96
 \mdfsplitboxwidth=\skip97
 \mdfsplitboxtotalwidth=\skip98
 \mdfsplitboxheight=\skip99
@@ -634,16 +641,16 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 \mdf@horizontalspaceofbox=\skip121
 \mdfsubtitleheight=\skip122
 \mdfsubsubtitleheight=\skip123
-\c@mdfcountframes=\count363
+\c@mdfcountframes=\count364
 
 ****** mdframed patching \endmdf@trivlist
 
 ****** -- success******
 
-\mdf@envdepth=\count364
-\c@mdf@env@i=\count365
-\c@mdf@env@ii=\count366
-\c@mdf@zref@counter=\count367
+\mdf@envdepth=\count365
+\c@mdf@env@i=\count366
+\c@mdf@env@ii=\count367
+\c@mdf@zref@counter=\count368
 Package zref Info: New property: mdf@pagevalue on input line 895.
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
 Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
@@ -679,6 +686,24 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen290
+\captionmargin=\dimen291
+\caption@leftmargin=\dimen292
+\caption@rightmargin=\dimen293
+\caption@width=\dimen294
+\caption@indent=\dimen295
+\caption@parindent=\dimen296
+\caption@hangindent=\dimen297
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count369
+\c@continuedfloat=\count370
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 116.
@@ -686,7 +711,7 @@ LaTeX Font Info:    Trying to load font information for T1+lmr on input line 116
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2025/08/03 v25.12 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
-\babel@savecnt=\count368
+\babel@savecnt=\count371
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2045.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2047.
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2049.
@@ -694,11 +719,11 @@ LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line
 LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2051.
 LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2053.
 LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2078.
-\U@D=\dimen290
+\U@D=\dimen298
 \l@unhyphenated=\language79
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read4
-\bbl@dirlevel=\count369
+\bbl@dirlevel=\count372
 
 *************************************
 * Local config file bblopts.cfg used
@@ -715,13 +740,13 @@ Language: germanb 2024/12/10 v2.15 German support for babel (pre-1996 orthograph
 Package babel Info: Making " an active character on input line 139.
 ))) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.sty
 Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
-\csq@reset=\count370
-\csq@gtype=\count371
-\csq@glevel=\count372
-\csq@qlevel=\count373
-\csq@maxlvl=\count374
-\csq@tshold=\count375
-\csq@ltx@everypar=\toks65
+\csq@reset=\count373
+\csq@gtype=\count374
+\csq@glevel=\count375
+\csq@qlevel=\count376
+\csq@maxlvl=\count377
+\csq@tshold=\count378
+\csq@ltx@everypar=\toks67
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.def
 File: csquotes.def 2024-04-04 v5.2o csquotes generic definitions (JAW)
 )
@@ -734,48 +759,48 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count376
-\Gm@cntv=\count377
-\c@Gm@tempcnt=\count378
-\Gm@bindingoffset=\dimen291
-\Gm@wd@mp=\dimen292
-\Gm@odd@mp=\dimen293
-\Gm@even@mp=\dimen294
-\Gm@layoutwidth=\dimen295
-\Gm@layoutheight=\dimen296
-\Gm@layouthoffset=\dimen297
-\Gm@layoutvoffset=\dimen298
-\Gm@dimlist=\toks66
+\Gm@cnth=\count379
+\Gm@cntv=\count380
+\c@Gm@tempcnt=\count381
+\Gm@bindingoffset=\dimen299
+\Gm@wd@mp=\dimen300
+\Gm@odd@mp=\dimen301
+\Gm@even@mp=\dimen302
+\Gm@layoutwidth=\dimen303
+\Gm@layoutheight=\dimen304
+\Gm@layouthoffset=\dimen305
+\Gm@layoutvoffset=\dimen306
+\Gm@dimlist=\toks68
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/marginnote\marginnote.sty
 Package: marginnote 2018/08/09 1.4b non floating margin notes for LaTeX
-\c@mn@abspage=\count379
+\c@mn@abspage=\count382
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
 Package: tcolorbox 2025/09/09 version 6.8.0 text color boxes
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
 Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks67
-\verbatim@line=\toks68
+\every@verbatim=\toks69
+\verbatim@line=\toks70
 \verbatim@in@stream=\read5
 )
-\tcb@titlebox=\box95
-\tcb@upperbox=\box96
-\tcb@lowerbox=\box97
-\tcb@phantombox=\box98
-\c@tcbbreakpart=\count380
-\c@tcblayer=\count381
-\c@tcolorbox@number=\count382
-\l__tcobox_tmpa_box=\box99
-\l__tcobox_tmpa_dim=\dimen299
-\tcb@temp=\box100
-\tcb@temp=\box101
+\tcb@titlebox=\box97
+\tcb@upperbox=\box98
+\tcb@lowerbox=\box99
+\tcb@phantombox=\box100
+\c@tcbbreakpart=\count383
+\c@tcblayer=\count384
+\c@tcolorbox@number=\count385
+\l__tcobox_tmpa_box=\box101
+\l__tcobox_tmpa_dim=\dimen307
 \tcb@temp=\box102
 \tcb@temp=\box103
+\tcb@temp=\box104
+\tcb@temp=\box105
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbraster.code.tex
 Library (tcolorbox): 'tcbraster.code.tex' version '6.8.0'
-\c@tcbrastercolumn=\count383
-\c@tcbrasterrow=\count384
-\c@tcbrasternum=\count385
-\c@tcbraster=\count386
+\c@tcbrastercolumn=\count386
+\c@tcbrasterrow=\count387
+\c@tcbrasternum=\count388
+\c@tcbraster=\count389
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskins.code.tex
 Library (tcolorbox): 'tcbskins.code.tex' version '6.8.0'
 (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzfill.image.sty
@@ -784,7 +809,7 @@ Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
 Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzlibraryfill.image.code.tex
 File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
-\l__tikzfill_img_box=\box104
+\l__tikzfill_img_box=\box106
 )) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskinsjigsaw.code.tex
 Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.8.0'
 )) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbbreakable.code.tex
@@ -793,19 +818,19 @@ Library (tcolorbox): 'tcbbreakable.code.tex' version '6.8.0'
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 )
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box105
-\tcb@totalupperbox=\box106
-\tcb@totallowerbox=\box107
+\tcb@testbox=\box107
+\tcb@totalupperbox=\box108
+\tcb@totallowerbox=\box109
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbhooks.code.tex
 Library (tcolorbox): 'tcbhooks.code.tex' version '6.8.0'
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbtheorems.code.tex
 Library (tcolorbox): 'tcbtheorems.code.tex' version '6.8.0'
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbfitting.code.tex
 Library (tcolorbox): 'tcbfitting.code.tex' version '6.8.0'
-\tcbfitdim=\dimen300
-\tcb@lowerfitdim=\dimen301
-\tcb@upperfitdim=\dimen302
-\tcb@cur@hbadness=\count387
+\tcbfitdim=\dimen308
+\tcb@lowerfitdim=\dimen309
+\tcb@upperfitdim=\dimen310
+\tcb@cur@hbadness=\count390
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistingsutf8.code.tex
 Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.8.0'
 (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcblistings.code.tex
@@ -815,7 +840,7 @@ Library (tcolorbox): 'tcblistingscore.code.tex' version '6.8.0'
 (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbprocessing.code.tex
 Library (tcolorbox): 'tcbprocessing.code.tex' version '6.8.0'
 )
-\c@tcblisting=\count388
+\c@tcblisting=\count391
 )) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/listingsutf8\listingsutf8.sty
 Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
@@ -837,7 +862,7 @@ Library (tcolorbox): 'tcbposter.code.tex' version '6.8.0'
 )) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytrees.code.tex
 File: tikzlibrarytrees.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
-\c@theorem=\count389
+\c@theorem=\count392
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
@@ -854,38 +879,50 @@ Package babel Info: 'german' activates 'german' shorthands.
 (babel)             Reported on input line 6.
 
 
+LaTeX Warning: Label `fig:bild1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bild2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bild1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bild2' multiply defined.
+
+
 LaTeX Warning: Label `Stetigkeit' multiply defined.
 
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count390
-\scratchdimen=\dimen303
-\scratchbox=\box108
-\nofMPsegments=\count391
-\nofMParguments=\count392
-\everyMPshowfont=\toks69
-\MPscratchCnt=\count393
-\MPscratchDim=\dimen304
-\MPnumerator=\count394
-\makeMPintoPDFobject=\count395
-\everyMPtoPDFconversion=\toks70
+\scratchcounter=\count393
+\scratchdimen=\dimen311
+\scratchbox=\box110
+\nofMPsegments=\count394
+\nofMParguments=\count395
+\everyMPshowfont=\toks71
+\MPscratchCnt=\count396
+\MPscratchDim=\dimen312
+\MPnumerator=\count397
+\makeMPintoPDFobject=\count398
+\everyMPtoPDFconversion=\toks72
 ) (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -894,7 +931,9 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-\c@lstlisting=\count396
+\c@lstlisting=\count399
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -929,74 +968,72 @@ Package pgfplots notification 'compat/show suggested version=true': document has
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 122.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 127.
 (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 122.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 127.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 122.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 127.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 122.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 127.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 122.
+(Font)              <12> on input line 127.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 122.
+(Font)              <8> on input line 127.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 122.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 122.
+(Font)              <6> on input line 127.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 127.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 122.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 127.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (main.toc
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 4.
+)
+Overfull \hbox (21.66405pt too wide) in paragraph at lines 158--163
+[]  
+ []
 
+(main.toc
 
 [1
 
-{C:/Users/fwage/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}])
+{C:/Users/fwage/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
 
 
 [2]
-<eulerformel.jpg, id=50, 223.13362pt x 205.06613pt>
-File: eulerformel.jpg Graphic file (type jpg)
-<use eulerformel.jpg>
-Package pdftex.def Info: eulerformel.jpg  used on input line 159.
+<Bilder/eulerformel.jpg, id=53, 223.13362pt x 205.06613pt>
+File: Bilder/eulerformel.jpg Graphic file (type jpg)
+<use Bilder/eulerformel.jpg>
+Package pdftex.def Info: Bilder/eulerformel.jpg  used on input line 211.
 (pdftex.def)             Requested size: 167.3498pt x 153.79921pt.
 
 
-[3{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
+[3{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
 
-[4{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc} <./eulerformel.jpg>]
+[4{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc} <./Bilder/eulerformel.jpg>]
 
 [5]
 
 [6]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 272.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 324.
  (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
 [7{C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
-Overfull \hbox (20.40764pt too wide) detected at line 351
+Overfull \hbox (20.40764pt too wide) detected at line 403
 [] \OT1/lmr/m/n/12 = [] \OMS/lmsy/m/n/12 ^^A [] []
  []
 
@@ -1004,80 +1041,84 @@ Overfull \hbox (20.40764pt too wide) detected at line 351
 
 [8]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 433.
+(Font)              <5> on input line 485.
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--440
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 394--440
+Underfull \hbox (badness 10000) in paragraph at lines 446--492
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--440
+Underfull \hbox (badness 10000) in paragraph at lines 446--492
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--440
+Underfull \hbox (badness 10000) in paragraph at lines 446--492
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 446--492
 
  []
 
 
 
 [9]
-Package pgfplots info on input line 455: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
+Package pgfplots info on input line 507: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 574.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 574.
 
-Overfull \hbox (16.34842pt too wide) in paragraph at lines 524--525
+Overfull \hbox (16.34842pt too wide) in paragraph at lines 576--577
  [][] 
  []
 
 
 
 [10]
-Overfull \hbox (16.34842pt too wide) in paragraph at lines 575--576
+Overfull \hbox (16.34842pt too wide) in paragraph at lines 627--628
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--579
+Underfull \hbox (badness 10000) in paragraph at lines 578--631
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--579
+Underfull \hbox (badness 10000) in paragraph at lines 578--631
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--579
+Underfull \hbox (badness 10000) in paragraph at lines 578--631
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--579
+Underfull \hbox (badness 10000) in paragraph at lines 578--631
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--579
+Underfull \hbox (badness 10000) in paragraph at lines 578--631
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--579
+Underfull \hbox (badness 10000) in paragraph at lines 578--631
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--579
+Underfull \hbox (badness 10000) in paragraph at lines 578--631
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 579--600
+Underfull \hbox (badness 10000) in paragraph at lines 631--652
 
  []
 
@@ -1086,58 +1127,63 @@ Underfull \hbox (badness 10000) in paragraph at lines 579--600
 [11]
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 638--644
+Underfull \hbox (badness 10000) in paragraph at lines 690--696
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 638--644
+Underfull \hbox (badness 10000) in paragraph at lines 690--696
 
  []
 
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 644.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 696.
 (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
 [13]
-Overfull \hbox (22.88527pt too wide) detected at line 688
+Overfull \hbox (22.88527pt too wide) detected at line 740
 [] [] \OT1/lmr/m/n/12 + [] [] = \OML/lmm/m/it/12 e[] [] [] \OT1/lmr/m/n/12 + [] []
  []
 
 
 
 [14]
-Overfull \hbox (13.57738pt too wide) detected at line 697
+Overfull \hbox (13.57738pt too wide) detected at line 749
 [] [] \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 e[] [] [] \OT1/lmr/m/n/12 + [] [] []
  []
 
 
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 754--796
+Underfull \hbox (badness 10000) in paragraph at lines 806--848
 
  []
 
 
-Overfull \hbox (43.71472pt too wide) detected at line 806
+Overfull \hbox (43.71472pt too wide) detected at line 858
 []
  []
 
 
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 821--881
+Underfull \hbox (badness 10000) in paragraph at lines 873--939
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 821--881
+Underfull \hbox (badness 10000) in paragraph at lines 873--939
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 821--881
+Underfull \hbox (badness 10000) in paragraph at lines 873--939
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 873--939
 
  []
 
@@ -1147,41 +1193,72 @@ Underfull \hbox (badness 10000) in paragraph at lines 821--881
 PGFPlots: reading {fft_bench5.dat}
 PGFPlots: reading {fft_bench5.dat}
 PGFPlots: reading {fft_bench5.dat}
-PGFPlots: reading {fft_bench5.dat}
-PGFPlots: reading {fft_bench5.dat}
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 923.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-PGFPlots: reading {fft_bench_small.dat}
-PGFPlots: reading {fft_bench_small.dat}
-PGFPlots: reading {fft_bench_small.dat}
-
-Overfull \hbox (18.87326pt too wide) in paragraph at lines 962--963
- [][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-PGFPlots: reading {fft_bench_big.dat}
-PGFPlots: reading {fft_bench_big.dat}
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+(Font)              <10.95> on input line 985.
 
 
 [18]
+Underfull \hbox (badness 10000) in paragraph at lines 990--1002
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1003--1021
+
+ []
+
+
 
 [19]
+PGFPlots: reading {fft_bench_small.dat}
+PGFPlots: reading {fft_bench_small.dat}
+PGFPlots: reading {fft_bench_small.dat}
+
+Overfull \hbox (18.87326pt too wide) in paragraph at lines 1055--1056
+ [][] 
+ []
+
+PGFPlots: reading {fft_bench_big.dat}
+PGFPlots: reading {fft_bench_big.dat}
+
 
 [20]
+<Bilder/original.png, id=128, 542.025pt x 537.6888pt>
+File: Bilder/original.png Graphic file (type png)
+<use Bilder/original.png>
+Package pdftex.def Info: Bilder/original.png  used on input line 1097.
+(pdftex.def)             Requested size: 223.07211pt x 221.29068pt.
+<Bilder/original_zoomed.png, id=130, 535.5207pt x 536.2434pt>
+File: Bilder/original_zoomed.png Graphic file (type png)
+<use Bilder/original_zoomed.png>
+Package pdftex.def Info: Bilder/original_zoomed.png  used on input line 1104.
+(pdftex.def)             Requested size: 223.07211pt x 223.37146pt.
+<Bilder/fft_original.png, id=131, 327.3831pt x 317.988pt>
+File: Bilder/fft_original.png Graphic file (type png)
+<use Bilder/fft_original.png>
+Package pdftex.def Info: Bilder/fft_original.png  used on input line 1114.
+(pdftex.def)             Requested size: 223.07211pt x 216.67052pt.
+<Bilder/fft_edited.png, id=132, 327.3831pt x 318.7107pt>
+File: Bilder/fft_edited.png Graphic file (type png)
+<use Bilder/fft_edited.png>
+Package pdftex.def Info: Bilder/fft_edited.png  used on input line 1121.
+(pdftex.def)             Requested size: 223.07211pt x 217.16293pt.
 
-[21]
 
-[22]
+[21 <./Bilder/original.png> <./Bilder/original_zoomed.png>]
+<Bilder/edited.png, id=138, 539.1342pt x 535.5207pt>
+File: Bilder/edited.png Graphic file (type png)
+<use Bilder/edited.png>
+Package pdftex.def Info: Bilder/edited.png  used on input line 1131.
+(pdftex.def)             Requested size: 223.07211pt x 221.57506pt.
+<Bilder/edited_zoomed.png, id=139, 539.1342pt x 537.6888pt>
+File: Bilder/edited_zoomed.png Graphic file (type png)
+<use Bilder/edited_zoomed.png>
+Package pdftex.def Info: Bilder/edited_zoomed.png  used on input line 1138.
+(pdftex.def)             Requested size: 223.07211pt x 222.47212pt.
+
+
+[22 <./Bilder/fft_original.png> <./Bilder/fft_edited.png> <./Bilder/edited.png> <./Bilder/edited_zoomed.png>]
 
 [23]
 
@@ -1189,7 +1266,11 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [25]
 
-[26] (main.aux)
+[26]
+
+[27]
+
+[28] (main.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -1200,17 +1281,17 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 48173 strings out of 468130
- 1225578 string characters out of 5430633
- 2181638 words of memory out of 5000000
- 76073 multiletter control sequences out of 15000+600000
- 712205 words of font info for 101 fonts, out of 8000000 for 9000
+ 49508 strings out of 468130
+ 1251739 string characters out of 5430633
+ 2208064 words of memory out of 5000000
+ 77398 multiletter control sequences out of 15000+600000
+ 705173 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 130i,19n,131p,1672b,2224s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (26 pages, 507821 bytes).
+ 130i,20n,131p,1681b,2272s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (28 pages, 1287489 bytes).
 PDF statistics:
- 242 PDF objects out of 1000 (max. 8388607)
+ 256 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 162 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 192 words of extra memory for PDF output out of 10000 (max. 10000000)
 
