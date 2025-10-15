@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1760274122.72769 "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" "main.pdf" "main" 1760274127.85243 0
+["pdflatex"] 1760518377.06178 "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" "main.pdf" "main" 1760518386.01428 0
   "Bilder/edited.png" 1759912318 218784 b53162e48486e00ac542058f632fc833 ""
   "Bilder/edited_zoomed.png" 1759912238 55475 48c4caea385e046164d1b3c608585c98 ""
   "Bilder/eulerformel.jpg" 1757246340 27049 282ee59c29c9f41d219945e1297854e8 ""
@@ -47,6 +47,9 @@
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/lmsy6.tfm" 1256929440 1300 b0605d44c16c22d99dc001808e4f24ea ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/lmsy7.tfm" 1256929440 1304 32f22a15acc296b2a4e15698403dcb88 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/lmsy8.tfm" 1256929440 1304 cdc9a17df9ef0d2dc320eff37bbab1c4 ""
+  "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/rm-lmbx12.tfm" 1256929440 11880 ea60d06924270684e6f852f3141c992b ""
+  "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/rm-lmbx6.tfm" 1256929440 11852 eda7061aa4cc8552ba736dae866e4460 ""
+  "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/rm-lmbx8.tfm" 1256929440 11868 731e03b24d399279cf9609d002110394 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/rm-lmr10.tfm" 1256929440 11868 4f81e9b6033c032bdaf9884f4d7ef412 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/rm-lmr12.tfm" 1256929440 11888 6841b91e46b65cf41a49b160e6e74130 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/rm-lmr5.tfm" 1256929440 11804 aefb10c002e6492c25236524a447f969 ""
@@ -56,6 +59,7 @@
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ts1-lmr12.tfm" 1256929440 1596 1d4548788e389ded56d0b01b28377882 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 870c211f62cb72718a00e353f14f254d ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb" 1256929440 116908 9a7a12d1e4df280ea0ab4aad83cdef88 ""
+  "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb" 1256929440 125241 791aeb35ceacc2764a175b32709cc6a9 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb" 1256929440 23055 2e5b42921de910eaa97b85df04ca4891 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb" 1256929440 30388 702fae6a5f0e6e9c48a1d872b442ffcf ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb" 1256929440 30696 3da7e46ecf5615eedebd9f27dab4d9d7 ""
@@ -305,13 +309,13 @@
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1750428951 2269 2de6c7a5fd634dfef00a960544463a38 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1750428951 20785 198a9cb2e04238d92c320d0d9edbd76a ""
-  "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" 1760274122 75214 ad2fea4092b742c7a4fdfd8ed09784d7 ""
+  "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" 1760518375 76684 6fd369516004922865c06b2330eb6ee3 ""
   "fft_bench5.dat" 1757358414 2640 be9743c3a8754ddf3766b3fd0a2a6417 ""
   "fft_bench_big.dat" 1757186258 1859 d590f92188ae2e651f507a5dc555d625 ""
   "fft_bench_small.dat" 1757179211 7825 0715e6c1df79cf3e5d9a96decb28823e ""
-  "main.aux" 1760274127 5210 26d5f2422d32d6974f6944d2080e89cb "pdflatex"
-  "main.tex" 1760274122 75214 ad2fea4092b742c7a4fdfd8ed09784d7 ""
-  "main.toc" 1760274127 1919 399e1af40ddc440ec71021af19fbeb27 "pdflatex"
+  "main.aux" 1760518385 5210 97f0c1e1016d00433fe8c4c4be4505d6 "pdflatex"
+  "main.tex" 1760518375 76684 6fd369516004922865c06b2330eb6ee3 ""
+  "main.toc" 1760518385 1919 05df258fc760b3eb933b7b2f44c513e3 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

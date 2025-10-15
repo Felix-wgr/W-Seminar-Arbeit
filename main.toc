@@ -18,7 +18,7 @@
 \contentsline {subsection}{\numberline {4.4}Vergleich der implementierten FFT-Varianten}{19}{}%
 \contentsline {section}{\numberline {5}Anwendung einer Mehrdimensionalen FFT}{21}{}%
 \contentsline {subsection}{\numberline {5.1}Das Moiré Muster}{21}{}%
-\contentsline {subsection}{\numberline {5.2}Filterung von Moiré-Mustern in Röntgenaufnahmen mittels FFT}{21}{}%
-\contentsline {section}{\numberline {6}Anhang}{22}{}%
-\contentsline {subsection}{\numberline {6.1}Eigene Beweise}{22}{}%
-\contentsline {subsection}{\numberline {6.2}Zusätzliche Quellcode Ausschnitte}{25}{}%
+\contentsline {subsection}{\numberline {5.2}Filterung von Moiré-Mustern in Röntgenaufnahmen mittels FFT}{22}{}%
+\contentsline {section}{\numberline {6}Anhang}{23}{}%
+\contentsline {subsection}{\numberline {6.1}Eigene Beweise}{23}{}%
+\contentsline {subsection}{\numberline {6.2}Zusätzliche Quellcode Ausschnitte}{26}{}%

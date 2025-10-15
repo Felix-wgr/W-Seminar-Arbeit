@@ -987,38 +987,29 @@ gibt an wie lange der jeweilige FFT-Algorithmus gebraucht hat.
   \caption{Vergleich der FFT-Methoden anhand der Benchmarks.}
 \end{figure}
 
-Wenn man jetzt das Ergebnis am Graphen sieht, so stechen zwei Dinge sofort ins Auge. Zum einen ist auffällig, dass der Graph der, auf 
-der GPU laufenden FFT, deutlich flacher verläuft als die beiden Versionen des Algorithmus auf der CPU. Zum anderen kann man immer wiederkehrende 
-Sprünge erkennen. Wenn man hier genau hinschaut, bemerkt man auch eine weitere Besonderheit. Wenn man die Graphen von links nach rechts betrachtet, 
-dann gilt: Je mehr Stufen die Graphen hinter sich haben, desto größer ist der Abstand zwischen den Implementierungen auf der CPU und der GPU. Das 
-heißt je großer die zu transformierende Datenmenge, desto schneller ist die iterative Variante der FFT auf der GPU. 
-\\\\
-Um das beobachtete Verhalten zu verstehen, muss man sich den Algorithmus der FFT etwas genauer ansehen. Denn wie zuvor schon erwähnt, ist es 
-für die FFT vorausgesetzt, dass die Anzahl der zu transformierenden Daten eine Zweierpotenz ist. Sonst würde die wiederholte Aufspaltung in halb so 
-große Fouriertransformationen nicht funktionieren. Um diese Bedingung zu erfüllen, habe ich in meinem Programm meine aufgenommenen Daten bis zur 
-nächstgrößeren Zweierpotenz mit Nullen aufgefüllt. Diese ändern das Ergebnis der FFT nicht, denn schaut man sich noch einmal die Formel der 
-Fouriertransformation an ($F(\omega) = \int_{-\infty}^{\infty}{f(x) e^{-i\omega x} dx}$), so sieht man, dass man, aufgrund des Integrals, mit den 
-aufgefüllten Nullen lediglich Summanden des Werts 0 hinzufügt. 
+Beim Betrachten des Graphen fallen zwei Dinge sofort auf: Die GPU-basierte FFT verläuft deutlich flacher als die beiden CPU-Varianten, 
+und es treten wiederkehrende Sprünge auf. Eine genauere Analyse zeigt, dass der Abstand zwischen CPU- und GPU-Implementierungen mit 
+zunehmender Datenmenge wächst. Das bedeutet: Je größer die zu transformierenden Daten, desto schneller arbeitet die iterative FFT auf 
+der GPU im Vergleich zur CPU.
 
-Genau dieses Auffüllen ist der Grund für die Sprünge in den Graphen. Denn genau hier passiert es, dass die Anzahl der Daten die bisherige nächstgrößere 
-Zweierpotenz überschreitet. Also wird ab hier bis zur darauffolgenden Zweierpotenz mit Nullen aufgefüllt, wodurch die zu verarbeiteten Daten verdoppelt 
-werden. Durch die neue deutlich größere Menge an zu verarbeiteten Daten, entsteht der sprunghafte Anstieg. Bestätigt wird die Erklärung auch von den 
-Abständen der Versätze. Denn die Abstände zwischen den starken Anstiegen verdoppeln sich immer, entsprechend einer Zweierpotenz. Im Übrigen ist die FFT 
-trotz dessen auch bei mir noch um einiges schneller als meine diskrete Fouriertransformation. In den Abschnitten selbst verlaufen die Graphen ungefähr 
-gerade, als hätten sie keine Steigung, was auch zeigt, dass die Anzahl der Berechnungen hier konstant geblieben ist. Unebenheiten im Graphen lassen sich 
-zudem dadurch erklären, dass ich die Messung an meinem eigenen Laptop durchgeführt habe und so keine totale Kontrolle über Hintergrundprozesse habe, welche 
-die Messung beeinflussen. 
-\\
-Der große Unterschied zwischen den Algorithmen auf der CPU und GPU ist, dass der Anstieg der Sprünge bei der GPU geringer ist, also der bei der CPU. 
-Der Grund hierfür ist die Architektur der beiden Verarbeitungseinheiten. Die Verarbeitung innerhalb der beiden Einheiten ist, der Einfachheit halber, vergleichbar 
-mit dem Transport von Personen zum Arbeitsplatz. Vereinfacht hat dabei jede Person zwei Möglichkeiten zu fahren, entweder mit der S-Bahn oder mit dem Auto. Würde 
-nur eine Person fahren, so wäre diese mit dem Auto schneller als mit dem Zug. Doch wollen jetzt extrem viele Leute gleichzeitig zur Arbeit fahren, so bildet 
-sich auf den Straßen ein Stau und der Zug wird immer effizienter, da seine Kapazität komplett ausgenutzt wird. Genau das ist was hier passiert, mit mehr Daten, 
-also mehr Personen auf dem Weg zur Arbeit, wird die CPU, der Transport über das Auto, langsamer als die GPU, dementsprechend der Transport mit der S-Bahn. Im 
-großen Ganzen betrachtet werden so mehr Daten schneller verarbeitet. 
-\\\\
-Betrachtet man kleinere Datensätze, so wird das noch einmal besser klar.
+Um dieses Verhalten zu verstehen, muss man sich die Funktionsweise der FFT ansehen. Wie zuvor erwähnt, erfordert die FFT, dass die 
+Anzahl der Daten eine Zweierpotenz ist. Um dies zu gewährleisten, habe ich die aufgenommenen Daten auf die nächsthöhere Zweierpotenz 
+mit Nullen aufgefüllt. Diese Auffüllung beeinflusst das Ergebnis der FFT nicht, da das Hinzufügen von Nullen im Integral der 
+Fouriertransformation lediglich Summanden von 0 erzeugt.
 
+Die Sprünge im Graphen entstehen genau an den Punkten, an denen die Datenmenge die bisherige nächsthöhere Zweierpotenz überschreitet und 
+zusätzliche Nullen hinzugefügt werden. Dadurch verdoppelt sich die zu verarbeitende Datenmenge sprunghaft. Die Abstände zwischen den Sprüngen 
+bestätigen dies: Sie verdoppeln sich jeweils, entsprechend dem Zweierpotenz-Verhalten. Abgesehen von diesen Sprüngen verlaufen die Graphen 
+innerhalb einer Potenzstufe nahezu gerade, was zeigt, dass die Anzahl der Berechnungen konstant bleibt. Kleinere Unebenheiten lassen sich 
+durch Hintergrundprozesse auf dem Laptop erklären, die die Messung leicht beeinflussen.
+
+Der Unterschied zwischen CPU und GPU wird durch die jeweilige Architektur der Verarbeitungseinheiten erklärt. Die CPU arbeitet mit wenigen, 
+leistungsstarken Kernen, vergleichbar mit dem Transport einzelner Personen mit dem Auto. Bei kleinen Datenmengen ist die CPU sehr schnell. 
+Bei großen Datenmengen entsteht jedoch ein „Stau“ auf den CPU-Kernen. Die GPU hingegen verfügt über viele parallele Kerne, vergleichbar mit 
+einer voll ausgelasteten S-Bahn. Sie kann eine große Anzahl von Daten gleichzeitig verarbeiten und skaliert daher bei großen Datensätzen 
+deutlich besser. 
+
+Betrachtet man kleinere Datensätze, erkennt man den Unterschied noch etwas genauer:
 
 \begin{figure}[H]
   \centering
@@ -1055,7 +1046,14 @@ Betrachtet man kleinere Datensätze, so wird das noch einmal besser klar.
   \end{tikzpicture}
   \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
 \end{figure}
-    
+
+Hier sieht man, dass für die ersten 30 Millisekunden die GPU etwas langsamer als die CPU bei der Berechnung der FFT ist. 
+Aber pro Sprung wird die GPU effizienter als die CPU, weil mehr Berechnungen durchgeführt werden. Als letztes habe ich mir 
+noch angeschaut, wie es bei FFT-Algorithmen aussieht, welche optimiert sind, um schnell zu sein. Dabei habe ich eine FFT 
+vom MIT (FFTW), welche auf der CPU läuft und eine FFT von NVIDIA (cuFFT), welche über die GPU funktioniert verglichen. Es ist schwierig 
+hier wirklich konkrete Schlüsse zu ziehen, da beide Fouriertransformationen erheblich komplexer programmiert sind als meine,
+aber man kann erkennen, dass die GPU Variante für größere Datenmengen etwas konstanter verläuft.
+
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -1088,6 +1086,29 @@ Betrachtet man kleinere Datensätze, so wird das noch einmal besser klar.
 
 \section{Anwendung einer Mehrdimensionalen FFT}
 \subsection{Das Moiré Muster}
+Bis jetzt habe ich die Fouriertransformation nur im eindimensionalen Raum betrachtet. Bedeutet ich habe eine nur aufeinanderfolgende Werte, 
+wobei die Werte bis jetzt ausschließlich Zahlen sind. Man kann das Ganze aber auch erweitern, indem man aus zwei Zahlen einen Wert für die 
+Funktion bildet. Das kann prinzipiell unendlich weiter führen. Am Ende hat man pro Wert, welchen die Fouriertransformation bekommt, N Zahlen.
+Dieses N gibt dabei die Anzahl der Dimensionen an. Aber die jetztige Formel der Fouriertranformation reicht nur für die Dimension 1 aus. Die 
+Erweiterung auf N Dimensionen sieht wie folgt aus. 
+
+$$F(\mathbf{k}) = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} {f(\mathbf{x}) e^{-i2\pi \mathbf{k} \cdot \mathbf{x}} \mathbf{dx}}$$
+\begin{itemize}
+  \item $\mathbf{x} = (x_1, x_2, \ldots, x_N)$ ist der Ortsvektor
+  \item $\mathbf{k} = (k_1, k_2, \ldots, k_N)$ ist der Frequenzvektor
+  \item $\mathbf{k} \cdot \mathbf{x} = k_1x_1 + \dots + k_Nx_N$ ist hier das Skalarprodukt
+  \item $\mathbf{dx}$ steht dabei für $dx_1, dx_2, ..., dx_N$
+\end{itemize}
+
+Man sieht die Formel hat Ähnlichkeit, mit der der eindimensionalen Fouriertransformation. Die größten Änderungen sind nur, dass man über alle 
+Dimmensionen integriert und dass alle Variablen zu Vektoren werden. Als Ergebnis, erhält man eine Funktion mit N Dimensionen . Für die folgende 
+Anwendung ist der Fall mit 2 Dimensionen wichtig, da ich die Fouriertransformation auf ein Bild anwende. Wenn ich die 2D Fouriertransformation 
+auf ein Bild anwende, so erhalte ich als Ergebnis eine 2D Funktion, also wieder ein Bild. Wenn man nun das Bild in einem Koordinatensystem betrachtet,
+dann sind an der X-Achse, also der Breite des Bildes, die Frequenzen für eine horizontale Welle angetragen. Je weiter rechts man sich im Bild befindet,
+desto größer ist die horizontale Frequenz. Die Höhe macht das gleiche, bloß für vertikale Wellen. Die Mitte bildet dabei den Ursprung, hier sind beide 
+Frequenzen 0. Durch die Kombination der beiden Achsen kann man Wellen in allen Richtungen, abhängig von den Frequenzen erkennen. Der Wert der Fouriertransformation an der Stelle $(x\,|\,)$ gibt an wie Dominat diese 
+Frequenz in dem Bild ist. 
+
 \subsection{Filterung von Moiré-Mustern in Röntgenaufnahmen mittels FFT}
 
 \begin{figure}[H]
