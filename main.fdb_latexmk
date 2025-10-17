@@ -1,10 +1,12 @@
 # Fdb version 4
-["pdflatex"] 1760518377.06178 "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" "main.pdf" "main" 1760518386.01428 0
+["pdflatex"] 1760734341.37713 "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" "main.pdf" "main" 1760734350.84283 0
   "Bilder/edited.png" 1759912318 218784 b53162e48486e00ac542058f632fc833 ""
   "Bilder/edited_zoomed.png" 1759912238 55475 48c4caea385e046164d1b3c608585c98 ""
   "Bilder/eulerformel.jpg" 1757246340 27049 282ee59c29c9f41d219945e1297854e8 ""
   "Bilder/fft_edited.png" 1759912744 126348 cd56d519979eeb42b3e369757e42bfca ""
   "Bilder/fft_original.png" 1759912696 126798 86911e4c4354bd7462f9d167e21a4402 ""
+  "Bilder/moiré.png" 1759913005 271771 76cb8df117c30221ce0170d55eb489d2 ""
+  "Bilder/moiré_fft.png" 1759913030 65418 bc782afe963390a46cb17a56477f7fa0 ""
   "Bilder/original.png" 1759912284 224149 6569a8ca7c31d1a78a01366ddb22a90b ""
   "Bilder/original_zoomed.png" 1759912182 54687 45a3d73d2b1b0c8b3b7d043fb13c6584 ""
   "C:/Users/fwage/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1759914361 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
@@ -309,13 +311,13 @@
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1750428951 2269 2de6c7a5fd634dfef00a960544463a38 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1750428951 20785 198a9cb2e04238d92c320d0d9edbd76a ""
-  "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" 1760518375 76684 6fd369516004922865c06b2330eb6ee3 ""
+  "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" 1760734340 79955 469696f801494b90d62c504f7014d910 ""
   "fft_bench5.dat" 1757358414 2640 be9743c3a8754ddf3766b3fd0a2a6417 ""
   "fft_bench_big.dat" 1757186258 1859 d590f92188ae2e651f507a5dc555d625 ""
   "fft_bench_small.dat" 1757179211 7825 0715e6c1df79cf3e5d9a96decb28823e ""
-  "main.aux" 1760518385 5210 97f0c1e1016d00433fe8c4c4be4505d6 "pdflatex"
-  "main.tex" 1760518375 76684 6fd369516004922865c06b2330eb6ee3 ""
-  "main.toc" 1760518385 1919 05df258fc760b3eb933b7b2f44c513e3 "pdflatex"
+  "main.aux" 1760734350 5723 2f938c4efe81a443c1bfd5d317fff402 "pdflatex"
+  "main.tex" 1760734340 79955 469696f801494b90d62c504f7014d910 ""
+  "main.toc" 1760734350 2036 98873ba4e5f9bdd236ed9d1b218077de "pdflatex"
   (generated)
   "main.aux"
   "main.log"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.27)  15 OCT 2025 10:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.27)  17 OCT 2025 22:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -891,6 +891,12 @@ LaTeX Warning: Label `fig:bild1' multiply defined.
 LaTeX Warning: Label `fig:bild2' multiply defined.
 
 
+LaTeX Warning: Label `fig:bild1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bild2' multiply defined.
+
+
 LaTeX Warning: Label `Stetigkeit' multiply defined.
 
 )
@@ -1215,43 +1221,55 @@ PGFPlots: reading {fft_bench_big.dat}
 [20]
 
 [21]
-<Bilder/original.png, id=133, 542.025pt x 537.6888pt>
+<Bilder/moiré.png, id=133, 332.442pt x 333.1647pt>
+File: Bilder/moiré.png Graphic file (type png)
+<use Bilder/moiré.png>
+Package pdftex.def Info: Bilder/moiré.png  used on input line 1120.
+(pdftex.def)             Requested size: 223.07211pt x 223.5547pt.
+<Bilder/moiré_fft.png, id=135, 333.8874pt x 332.442pt>
+File: Bilder/moiré_fft.png Graphic file (type png)
+<use Bilder/moiré_fft.png>
+Package pdftex.def Info: Bilder/moiré_fft.png  used on input line 1127.
+(pdftex.def)             Requested size: 223.07211pt x 222.11104pt.
+
+
+[22 <./Bilder/moiré.png> <./Bilder/moiré_fft.png>]
+<Bilder/original.png, id=141, 542.025pt x 537.6888pt>
 File: Bilder/original.png Graphic file (type png)
 <use Bilder/original.png>
-Package pdftex.def Info: Bilder/original.png  used on input line 1118.
+Package pdftex.def Info: Bilder/original.png  used on input line 1212.
 (pdftex.def)             Requested size: 223.07211pt x 221.29068pt.
-<Bilder/original_zoomed.png, id=135, 535.5207pt x 536.2434pt>
+<Bilder/original_zoomed.png, id=142, 535.5207pt x 536.2434pt>
 File: Bilder/original_zoomed.png Graphic file (type png)
 <use Bilder/original_zoomed.png>
-Package pdftex.def Info: Bilder/original_zoomed.png  used on input line 1125.
+Package pdftex.def Info: Bilder/original_zoomed.png  used on input line 1219.
 (pdftex.def)             Requested size: 223.07211pt x 223.37146pt.
-<Bilder/fft_original.png, id=136, 327.3831pt x 317.988pt>
+<Bilder/fft_original.png, id=143, 327.3831pt x 317.988pt>
 File: Bilder/fft_original.png Graphic file (type png)
 <use Bilder/fft_original.png>
-Package pdftex.def Info: Bilder/fft_original.png  used on input line 1135.
+Package pdftex.def Info: Bilder/fft_original.png  used on input line 1229.
 (pdftex.def)             Requested size: 223.07211pt x 216.67052pt.
-<Bilder/fft_edited.png, id=137, 327.3831pt x 318.7107pt>
+<Bilder/fft_edited.png, id=144, 327.3831pt x 318.7107pt>
 File: Bilder/fft_edited.png Graphic file (type png)
 <use Bilder/fft_edited.png>
-Package pdftex.def Info: Bilder/fft_edited.png  used on input line 1142.
+Package pdftex.def Info: Bilder/fft_edited.png  used on input line 1236.
 (pdftex.def)             Requested size: 223.07211pt x 217.16293pt.
-<Bilder/edited.png, id=138, 539.1342pt x 535.5207pt>
+
+
+[23 <./Bilder/original.png> <./Bilder/original_zoomed.png>]
+<Bilder/edited.png, id=150, 539.1342pt x 535.5207pt>
 File: Bilder/edited.png Graphic file (type png)
 <use Bilder/edited.png>
-Package pdftex.def Info: Bilder/edited.png  used on input line 1152.
+Package pdftex.def Info: Bilder/edited.png  used on input line 1246.
 (pdftex.def)             Requested size: 223.07211pt x 221.57506pt.
-<Bilder/edited_zoomed.png, id=139, 539.1342pt x 537.6888pt>
+<Bilder/edited_zoomed.png, id=151, 539.1342pt x 537.6888pt>
 File: Bilder/edited_zoomed.png Graphic file (type png)
 <use Bilder/edited_zoomed.png>
-Package pdftex.def Info: Bilder/edited_zoomed.png  used on input line 1159.
+Package pdftex.def Info: Bilder/edited_zoomed.png  used on input line 1253.
 (pdftex.def)             Requested size: 223.07211pt x 222.47212pt.
 
 
-[22 <./Bilder/original.png> <./Bilder/original_zoomed.png> <./Bilder/fft_original.png> <./Bilder/fft_edited.png>]
-
-[23 <./Bilder/edited.png> <./Bilder/edited_zoomed.png>]
-
-[24]
+[24 <./Bilder/fft_original.png> <./Bilder/fft_edited.png> <./Bilder/edited.png> <./Bilder/edited_zoomed.png>]
 
 [25]
 
@@ -1259,7 +1277,11 @@ Package pdftex.def Info: Bilder/edited_zoomed.png  used on input line 1159.
 
 [27]
 
-[28] (main.aux)
+[28]
+
+[29]
+
+[30] (main.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -1270,17 +1292,17 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 49514 strings out of 468130
- 1251807 string characters out of 5430633
- 2203064 words of memory out of 5000000
- 77401 multiletter control sequences out of 15000+600000
+ 49544 strings out of 468130
+ 1252469 string characters out of 5430633
+ 2208064 words of memory out of 5000000
+ 77431 multiletter control sequences out of 15000+600000
  714001 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  130i,20n,131p,1681b,2272s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (28 pages, 1312539 bytes).
+Output written on main.pdf (30 pages, 1645410 bytes).
 PDF statistics:
- 264 PDF objects out of 1000 (max. 8388607)
+ 274 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 192 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 202 words of extra memory for PDF output out of 10000 (max. 10000000)
 

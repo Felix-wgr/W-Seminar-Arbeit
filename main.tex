@@ -1084,8 +1084,8 @@ aber man kann erkennen, dass die GPU Variante für größere Datenmengen etwas k
   \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
 \end{figure}
 
-\section{Anwendung einer Mehrdimensionalen FFT}
-\subsection{Das Moiré Muster}
+\section{Anwendung einer Mehrdimensionalen FFT an einem Röntgenbild}
+\subsection{Die Mehrdimensionale Fouriertransformation}
 Bis jetzt habe ich die Fouriertransformation nur im eindimensionalen Raum betrachtet. Bedeutet ich habe eine nur aufeinanderfolgende Werte, 
 wobei die Werte bis jetzt ausschließlich Zahlen sind. Man kann das Ganze aber auch erweitern, indem man aus zwei Zahlen einen Wert für die 
 Funktion bildet. Das kann prinzipiell unendlich weiter führen. Am Ende hat man pro Wert, welchen die Fouriertransformation bekommt, N Zahlen.
@@ -1101,15 +1101,109 @@ $$F(\mathbf{k}) = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} {f(\mat
 \end{itemize}
 
 Man sieht die Formel hat Ähnlichkeit, mit der der eindimensionalen Fouriertransformation. Die größten Änderungen sind nur, dass man über alle 
-Dimmensionen integriert und dass alle Variablen zu Vektoren werden. Als Ergebnis, erhält man eine Funktion mit N Dimensionen . Für die folgende 
+Dimensionen integriert und dass alle Variablen zu Vektoren werden. Als Ergebnis, erhält man eine Funktion mit N Dimensionen. Für die folgende 
 Anwendung ist der Fall mit 2 Dimensionen wichtig, da ich die Fouriertransformation auf ein Bild anwende. Wenn ich die 2D Fouriertransformation 
 auf ein Bild anwende, so erhalte ich als Ergebnis eine 2D Funktion, also wieder ein Bild. Wenn man nun das Bild in einem Koordinatensystem betrachtet,
 dann sind an der X-Achse, also der Breite des Bildes, die Frequenzen für eine horizontale Welle angetragen. Je weiter rechts man sich im Bild befindet,
 desto größer ist die horizontale Frequenz. Die Höhe macht das gleiche, bloß für vertikale Wellen. Die Mitte bildet dabei den Ursprung, hier sind beide 
-Frequenzen 0. Durch die Kombination der beiden Achsen kann man Wellen in allen Richtungen, abhängig von den Frequenzen erkennen. Der Wert der Fouriertransformation an der Stelle $(x\,|\,)$ gibt an wie Dominat diese 
-Frequenz in dem Bild ist. 
+Frequenzen 0. Durch die Kombination der beiden Achsen kann man Wellen in allen Richtungen, abhängig von den Frequenzen erkennen. Der Wert der 
+Fouriertransformation an der Stelle $(x\,|\,y)$ gibt an wie Dominat diese Frequenz in dem Bild ist. 
+\subsection{Das Moiré Muster}
+Am besten wird die 2D Variante der Fouriertransformation an einem Beispiel klar. Hierzu nehme ich ein Moiré Muster her. Der Moiré-Effekt, welcher 
+das Muster erzeugt ist dabei ein optischer Effekt, bei dem durch Überlagerung von regelmäßigen Rastern ein wiederum periodisches Raster entsteht.
+Um die einzelnen Perioden zu erkennen, hilft hier dann auch die 2D Fouriertransformation.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Bilder/moiré.png}
+    \caption{Moiré-Muster}
+    \label{fig:bild1}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Bilder/moiré_fft.png}
+    \caption{Fouriertransformation des Moiré-Musters}
+    \label{fig:bild2}
+  \end{minipage}
+\end{figure}
+
+Das rechte Bild ist ein Moiré Muster und das linke die dazugehörige Fouriertransformation. Den Werten der Funktion der Fouriertransformation, werden 
+je nach Größe Farben zwischen schwarz und weiß zugeordnet. Dementsprechend sind die weißen Kreuze, die im Moiré-Muster dominanten Frequenzen. 
 
 \subsection{Filterung von Moiré-Mustern in Röntgenaufnahmen mittels FFT}
+
+Solche Moiré-Muster können nahezu überall in der echten Welt auftreten. Zum Beispiel auch bei Röntgengeräten. 
+
+\begin{tikzpicture}[scale=1]
+
+% Röntgenquelle (links)
+\draw[fill=yellow] (0.5,2.5) circle (0.2);
+\node[left] at (0,2.5) {Röntgenquelle};
+
+% Strahlen
+\foreach \y in {1.5,2,2.5,3,3.5} {
+    \draw[orange, thick,->] (0.5,2.5) -- (6,\y);
+}
+
+% Stahl-Linie (Objekt)
+\draw[thick, gray] (3,1.8) -- (3,3.2);
+\node[above right] at (2.2,3.2) {Mensch};
+
+% Streustrahlenraster (von der Seite, rote Linie)
+\draw[red, thick] (4.5,1) -- (4.5,4);
+\node[right] at (4.5,4) {Raster};
+
+% Detektorfläche
+\draw[fill=blue!20] (6,1) rectangle (6.2,4);
+\node[right] at (6.2,4) {Detektor};
+
+% Hilfslinien von Strahlen auf Raster und Detektor
+\foreach \y in {1.5,2,2.5,3,3.5} {
+    % projiziere Strahlen auf Raster
+    \draw[dashed, orange] (6,\y) -- (4.5,{\y-0.1}); % Schnittpunkt Raster leicht versetzt
+}
+
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[scale=0.8]
+
+% Detektor-Pixelmatrix mit schwarzen Trennlinien
+\foreach \x in {0,0.5,...,5} {
+    \foreach \y in {0,0.5,...,5} {
+        \fill[blue!20] (\x,\y) rectangle (\x+0.5,\y+0.5);
+        \draw[black] (\x,\y) rectangle (\x+0.5,\y+0.5);
+    }
+}
+
+% Vertikales Streustrahlenraster (zentriert, leicht gedreht)
+\begin{scope}[shift={(0.25,0.25)}, rotate=5] % Verschiebung, damit Raster mittig ist
+\foreach \x in {0,0.5,...,5} {
+    \draw[red, line width=0.8pt] (\x,0) -- (\x,5);
+}
+\end{scope}
+
+% Horizontales Streustrahlenraster (zentriert, leicht gedreht)
+\begin{scope}[shift={(0.25,0.25)}, rotate=5]
+\foreach \y in {0,0.5,...,5} {
+    \draw[red, line width=0.8pt] (0,\y) -- (5,\y);
+}
+\end{scope}
+
+% Legende rechts außerhalb mit mehr Abstand
+\draw[fill=blue!20] (6.5,4) rectangle (7,4.5);
+\node[right] at (7,4.25) {Detektor-Pixel};
+
+\draw[red, line width=0.8pt] (6.5,3) -- (7,3);
+\node[right] at (7,3) {Streustrahlenraster};
+
+\node at (2.5,-0.5) {Schematische Darstellung: Moiré-Muster durch Rasterüberlagerung};
+
+\end{tikzpicture}
+
 
 \begin{figure}[H]
   \centering
