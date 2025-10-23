@@ -3,6 +3,7 @@
 \providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
 \@nameuse{bbl@beforestart}
 \catcode `"\active 
+\providecommand \oddpage@label [2]{}
 \babel@aux{german}{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Abstract}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Einleitung}{2}{}\protected@file@percent }
@@ -26,33 +27,31 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Vergleich der FFT-Methoden anhand der Benchmarks.}}{19}{}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Vergleich der FFT-Methoden für die zweite Messreihe.}}{20}{}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Vergleich der FFT-Methoden für die zweite Messreihe.}}{21}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Anwendung einer Mehrdimensionalen FFT an einem Röntgenbild}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Mehrdimensionale FFTs und die Anwendung an einem Röntgenbild}{21}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Die Mehrdimensionale Fouriertransformation}{21}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Das Moiré Muster}{22}{}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Moiré-Muster}}{22}{}\protected@file@percent }
 \newlabel{fig:bild1}{{4}{22}{}{figure.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Fouriertransformation des Moiré-Musters}}{22}{}\protected@file@percent }
 \newlabel{fig:bild2}{{5}{22}{}{figure.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Filterung von Moiré-Mustern in Röntgenaufnahmen mittels FFT}{22}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Erstes Bild}}{23}{}\protected@file@percent }
-\newlabel{fig:bild1}{{6}{23}{}{figure.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Zweites Bild}}{23}{}\protected@file@percent }
-\newlabel{fig:bild2}{{7}{23}{}{figure.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Erstes Bild}}{24}{}\protected@file@percent }
-\newlabel{fig:bild1}{{8}{24}{}{figure.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Zweites Bild}}{24}{}\protected@file@percent }
-\newlabel{fig:bild2}{{9}{24}{}{figure.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Erstes Bild}}{24}{}\protected@file@percent }
-\newlabel{fig:bild1}{{10}{24}{}{figure.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Zweites Bild}}{24}{}\protected@file@percent }
-\newlabel{fig:bild2}{{11}{24}{}{figure.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Anhang}{24}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Eigene Beweise}{24}{}\protected@file@percent }
-\newlabel{thm:orthonorm}{{6.1}{24}{}{theorem.6.1}{}}
-\newlabel{Stetigkeit Folgenstetigkeit}{{6.2}{25}{}{theorem.6.2}{}}
-\newlabel{Stetigkeit}{{6.3}{25}{}{theorem.6.3}{}}
-\newlabel{Stetigkeit}{{6.4}{26}{}{theorem.6.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Zusätzliche Quellcode Ausschnitte}{27}{}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces Iterative FFT}}{27}{}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces FFT auf der GPU mit CUDA}}{28}{}\protected@file@percent }
-\gdef \@abspage@last{30}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Streustrahlenraster \hskip 1em\relax \hskip 1em\relax \hskip 1em\relax \hskip 1em\relax \hskip 1em\relax \hskip 1em\relax Detektor mit Streustrahlenrastern (unten)}}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Entwicklung einer eigenen 2D FFT mit Python}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Filterung von Moiré-Mustern in Röntgenaufnahmen}{25}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Aufgenommenes Röntgenbild}}{25}{}\protected@file@percent }
+\newlabel{fig:bild1}{{7}{25}{}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Röntgenbild vergrößert}}{25}{}\protected@file@percent }
+\newlabel{fig:bild2}{{8}{25}{}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Bearbeitetes Röntgenbild}}{27}{}\protected@file@percent }
+\newlabel{fig:bild1}{{9}{27}{}{figure.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Bearbeitetes Röntgenbild vergrößert}}{27}{}\protected@file@percent }
+\newlabel{fig:bild2}{{10}{27}{}{figure.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Anhang}{27}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Eigene Beweise}{27}{}\protected@file@percent }
+\newlabel{thm:orthonorm}{{6.1}{27}{}{theorem.6.1}{}}
+\newlabel{Stetigkeit Folgenstetigkeit}{{6.2}{28}{}{theorem.6.2}{}}
+\newlabel{Stetigkeit}{{6.3}{28}{}{theorem.6.3}{}}
+\newlabel{Stetigkeit}{{6.4}{29}{}{theorem.6.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Zusätzliche Quellcode Ausschnitte}{30}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces Iterative FFT}}{30}{}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces FFT auf der GPU mit CUDA}}{31}{}\protected@file@percent }
+\gdef \@abspage@last{32}

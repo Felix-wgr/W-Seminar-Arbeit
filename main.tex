@@ -1,7 +1,7 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb, amsthm, float, pdflscape, graphicx, pgfplots, tikz, forest, xcolor, lstlinebgrd, mdframed}
-\usepackage{lmodern, caption} 
+\usepackage{lmodern, caption, subcaption, adjustbox} 
 \usepackage[T1]{fontenc}
 \usepackage[german]{babel}  
 \usepackage{csquotes} 
@@ -110,6 +110,26 @@
   literate={Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 {ß}{{\ss}}1
 }
 
+\lstdefinestyle{pythonstyle}{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  columns=fullflexible,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  breaklines=true,
+  keepspaces=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  frame=single,
+  tabsize=4,
+  escapeinside={(*@}{@*)},   
+  literate={Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+           {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 {ß}{{\ss}}1
+}
 
 \title{Fourier-Methoden: Theorie und Anwendungen}
 \author{Felix Wager}
@@ -1084,7 +1104,7 @@ aber man kann erkennen, dass die GPU Variante für größere Datenmengen etwas k
   \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
 \end{figure}
 
-\section{Anwendung einer Mehrdimensionalen FFT an einem Röntgenbild}
+\section{Mehrdimensionale FFTs und die Anwendung an einem Röntgenbild}
 \subsection{Die Mehrdimensionale Fouriertransformation}
 Bis jetzt habe ich die Fouriertransformation nur im eindimensionalen Raum betrachtet. Bedeutet ich habe eine nur aufeinanderfolgende Werte, 
 wobei die Werte bis jetzt ausschließlich Zahlen sind. Man kann das Ganze aber auch erweitern, indem man aus zwei Zahlen einen Wert für die 
@@ -1092,7 +1112,7 @@ Funktion bildet. Das kann prinzipiell unendlich weiter führen. Am Ende hat man 
 Dieses N gibt dabei die Anzahl der Dimensionen an. Aber die jetztige Formel der Fouriertranformation reicht nur für die Dimension 1 aus. Die 
 Erweiterung auf N Dimensionen sieht wie folgt aus. 
 
-$$F(\mathbf{k}) = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} {f(\mathbf{x}) e^{-i2\pi \mathbf{k} \cdot \mathbf{x}} \mathbf{dx}}$$
+$$F(\mathbf{k}) = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} {f(\mathbf{x}) \, e^{-i2\pi \mathbf{k} \cdot \mathbf{x}} \mathbf{dx}} \quad \text{mit } f:\mathbb{R}^n \to \mathbb{R}$$
 \begin{itemize}
   \item $\mathbf{x} = (x_1, x_2, \ldots, x_N)$ ist der Ortsvektor
   \item $\mathbf{k} = (k_1, k_2, \ldots, k_N)$ ist der Frequenzvektor
@@ -1132,27 +1152,42 @@ Um die einzelnen Perioden zu erkennen, hilft hier dann auch die 2D Fouriertransf
 
 Das rechte Bild ist ein Moiré Muster und das linke die dazugehörige Fouriertransformation. Den Werten der Funktion der Fouriertransformation, werden 
 je nach Größe Farben zwischen schwarz und weiß zugeordnet. Dementsprechend sind die weißen Kreuze, die im Moiré-Muster dominanten Frequenzen. 
+\\\\
+In der Praxis entstehen Moiré Muster zum Beispiel bei Röntgengeräten, genauer bei dessen Detektor. Denn bei vielen Röntgengeräten wird vor dem Detektor 
+ein Streustrahlenraster angebracht, um den Einfall von Streustrahlen, welche zum Beispiel durch menschliche Knochen entstehen können, zu reduzieren. 
+Da das Streustrahlenraster die Wirkung eines zweidimensionalen Gitters hat, müssen die Detektoren perfekt auf die Raster abgestimmt sein, sodass jeder 
+Aufnahmepunkt die gleiche Dosis erhält. In der Realität sieht das Bauteil mit dem Detektor so aus:
 
-\subsection{Filterung von Moiré-Mustern in Röntgenaufnahmen mittels FFT}
+\begin{figure}[ht]
+    \centering
+    % Querformat-Bild
+    \includegraphics[width=0.30\textwidth]{Bilder/Raster.jpg}%
+    \hspace{0.03\textwidth}%
+    % Hochformat-Bild drehen, oben bündig
+    \raisebox{0pt}[0pt][0pt]{\adjustbox{angle=90,width=0.62\textwidth}{\includegraphics{Bilder/Detektor.jpg}}}
+    \caption{Streustrahlenraster \quad \quad \quad \quad \quad \quad  Detektor mit Streustrahlenrastern (unten)}
+\end{figure}
 
-Solche Moiré-Muster können nahezu überall in der echten Welt auftreten. Zum Beispiel auch bei Röntgengeräten. 
-
+Stark vereinfacht kann man das im Modell wiefolgt skizzieren:
+\\\\
+\noindent
+\begin{figure}[ht]
+\centering
 \begin{tikzpicture}[scale=1]
-
 % Röntgenquelle (links)
 \draw[fill=yellow] (0.5,2.5) circle (0.2);
 \node[left] at (0,2.5) {Röntgenquelle};
 
-% Strahlen
+% Primärstrahlen
 \foreach \y in {1.5,2,2.5,3,3.5} {
-    \draw[orange, thick,->] (0.5,2.5) -- (6,\y);
+    \draw[green!70!black, thick,->] (0.5,2.5) -- (6,\y);
 }
 
-% Stahl-Linie (Objekt)
+% Mensch (Objekt)
 \draw[thick, gray] (3,1.8) -- (3,3.2);
 \node[above right] at (2.2,3.2) {Mensch};
 
-% Streustrahlenraster (von der Seite, rote Linie)
+% Streustrahlenraster (rote Linie)
 \draw[red, thick] (4.5,1) -- (4.5,4);
 \node[right] at (4.5,4) {Raster};
 
@@ -1160,18 +1195,26 @@ Solche Moiré-Muster können nahezu überall in der echten Welt auftreten. Zum B
 \draw[fill=blue!20] (6,1) rectangle (6.2,4);
 \node[right] at (6.2,4) {Detektor};
 
-% Hilfslinien von Strahlen auf Raster und Detektor
-\foreach \y in {1.5,2,2.5,3,3.5} {
-    % projiziere Strahlen auf Raster
-    \draw[dashed, orange] (6,\y) -- (4.5,{\y-0.1}); % Schnittpunkt Raster leicht versetzt
+% Streustrahlung vom Mensch zum Raster (wellig, grün)
+\foreach \y in {1.9,2.2,2.6,2.9,3.1} {
+    % Wellig bis Raster
+    \draw[green!70!black, decorate, decoration={snake, amplitude=0.05cm, segment length=0.2cm}, ->] 
+        (3,\y) -- (4.5,{\y+0.05});
+        
+    % Gerade nach Raster geordnet zum Detektor
+    \pgfmathsetmacro{\yRaster}{round((\y+0.05-1)/0.5)*0.5 + 1} % Auf Rasterlinien runden
+    \draw[green!70!black, thick, ->] (4.5,{\y+0.05}) -- (6,\yRaster);
 }
-
 \end{tikzpicture}
+\end{figure}
 
-
+Wenn die Streustrahlenraster nicht perfekt mit dem Detektor abgestimmt sind, dann erhält man eine Überlagerung von regelmäßigen Strukturen. 
+Dadurch können Moiré Muster entstehen. Stark vereinfacht kann man sich das so vorstellen: 
+\noindent
+\begin{figure}[ht]
+\centering
 \begin{tikzpicture}[scale=0.8]
-
-% Detektor-Pixelmatrix mit schwarzen Trennlinien
+% Detektor-Pixelmatrix
 \foreach \x in {0,0.5,...,5} {
     \foreach \y in {0,0.5,...,5} {
         \fill[blue!20] (\x,\y) rectangle (\x+0.5,\y+0.5);
@@ -1179,83 +1222,146 @@ Solche Moiré-Muster können nahezu überall in der echten Welt auftreten. Zum B
     }
 }
 
-% Vertikales Streustrahlenraster (zentriert, leicht gedreht)
-\begin{scope}[shift={(0.25,0.25)}, rotate=5] % Verschiebung, damit Raster mittig ist
+% Vertikales Streustrahlenraster
+\begin{scope}[shift={(0.25,0.25)}, rotate=5]
 \foreach \x in {0,0.5,...,5} {
     \draw[red, line width=0.8pt] (\x,0) -- (\x,5);
 }
 \end{scope}
 
-% Horizontales Streustrahlenraster (zentriert, leicht gedreht)
+% Horizontales Streustrahlenraster
 \begin{scope}[shift={(0.25,0.25)}, rotate=5]
 \foreach \y in {0,0.5,...,5} {
     \draw[red, line width=0.8pt] (0,\y) -- (5,\y);
 }
 \end{scope}
 
-% Legende rechts außerhalb mit mehr Abstand
+% Legende
 \draw[fill=blue!20] (6.5,4) rectangle (7,4.5);
 \node[right] at (7,4.25) {Detektor-Pixel};
-
 \draw[red, line width=0.8pt] (6.5,3) -- (7,3);
 \node[right] at (7,3) {Streustrahlenraster};
-
-\node at (2.5,-0.5) {Schematische Darstellung: Moiré-Muster durch Rasterüberlagerung};
-
 \end{tikzpicture}
+\end{figure}
 
+
+\subsection{Entwicklung einer eigenen 2D FFT mit Python}
+Bevor man Moiré Muster und andere Bilder analysieren kann, benötigt man die Erweiterung hin zur zweidimensionalen Fouriertransformation. Hierzu 
+habe ich mir die Formel der mehrdimensionalen Fouriertransformation für zwei Dimensionen angeschaut. 
+\[
+F(\mathbf{\omega}) = \iint\limits_{\mathbb{R}^2} f(\mathbf{x}) \, e^{-i2\pi \mathbf{\omega} \cdot \mathbf{x}} \,\mathbf{dx}
+\Leftrightarrow F(\omega_x, \omega_y) = \iint\limits_{\mathbb{R}^2} f(x, y) \, e^{-i2\pi (x \omega_x + y \omega_y)} \, dx \, dy
+\]
+Multipliziert man im Exponenten aus und vereinfacht so erhält man 
+\[
+F(\omega_x, \omega_y) = \iint\limits_{\mathbb{R}^2} f(x, y) \, e^{-i2\pi x \omega_x} \, e^{-i2\pi y \omega_y} \, dx \, dy
+\]
+Dadurch, dass zuerst über $x$ integriert wird, können Faktoren, die nicht von $x$ abhängen, aufgrund des Distributivgesetzes aus dem Integral ausgeklammert werden. Es folgt also:
+\[
+F(\omega_x, \omega_y) = \int\limits_{\mathbb{R}} e^{-i2\pi y \omega_y} \int\limits_{\mathbb{R}} f(x, y) \, e^{-i2\pi x \omega_x} \, dx \, dy
+\]
+Da ich die Formel auf diskrete Werte in der Realität anwende, muss ich die Integrale ähnlich wie bei der DFT approximieren. Um die entstehende Fläche zu 
+berechnen nutze ich hier Rechtecke anstatt Trapeze.
+\[
+F_{\omega_x, \omega_y} = \sum_{y=0}^{N-1} {e^{-i2\pi \omega_y y} \sum_{x=0}^{M-1}{f_{x, y} \, e^{-i2\pi \omega_x x}}} 
+\]
+Noch die bekannte Formel für die Winkelgeschwindigkeit $\omega$ einsetzen und man erhält die Formel 
+\[
+F_{k_x, k_y} = \sum_{y=0}^{N-1} {e^{-i2\pi \frac{k_y}{N} y} \sum_{x=0}^{M-1}{f_{x, y} \, e^{-i2\pi \frac{k_x}{M} x}}}
+\]
+Schaut man sich jetzt die Summe genauer an, zum Beispiel was bei der Iteration $y=0$ passiert, so stellt man fest, dass $f(x,0)$ eine eindimensionale Funktion 
+wird. Mit der Kenntnis der Formel der DFT ($X_k = \sum_{j = 0}^{N-1}{x_n e^{-i2\pi \frac{kj}{N}}}$), bemerkt man, dass die innere Summe hier genau dieser Formel 
+entspricht. Andersherum verhält es sich genauso. Nimmt man beispielsweiße $x=0$, dann wird die zweite Summe zu einer Liste mit einem Faktor und man kann über y 
+die Formel der DFT anwenden. Deshalb habe ich zunächst die eindimensionale FFT auf alle entstehenden Folgen an Werten für jedes y angewendet. Auf das Ergebnis 
+davon habe ich anschließend die FFT für jedes x angewendet. Somit habe ich die 2D FFT mithilfe von meiner schon bestehenden FFT programmieren können. So sieht 
+der dazugehörige Quellcode in Python aus.
+\\\\
+\begin{lstlisting}[style=pythonstyle]
+def do2DFFT(self):
+    self.height_filled = 2 ** int(np.ceil(np.log2(self.lengthY)))
+    self.width_filled  = 2 ** int(np.ceil(np.log2(self.lengthX)))
+
+    self.filledData = np.zeros((self.height_filled, self.width_filled))
+    self.filledData[:self.lengthY, :self.lengthX] = self.data
+
+    self.result = np.zeros_like(self.filledData, dtype=complex)
+
+    for y in range(self.height_filled):
+        self.result[:, y] = self.fft_1d(self.filledData[:, y])
+    
+    for x in range(self.width_filled):
+        self.result[x, :] = self.fft_1d(self.result[x, :])
+
+    return self.result
+\end{lstlisting}
+
+Die ersten Zeilen der Funktion, die meine zweidimensionale FFT ausführt, sind nur dazu da das Bild mit Nullen aufzufüllen, damit sowohl 
+die Breite als auch die Höhe eine Potenz von 2 ist. Denn das ist die Vorraussetzung um eien FFT anzuwenden. In Zeile 10 bis 14 ist die eigentliche Formel, wie ich sie 
+hergeleitet habe, als Programm geschrieben.  
+
+\subsection{Filterung von Moiré-Mustern in Röntgenaufnahmen}
+Wie zuvor erwähnt, können Moiré Muster bei Röntgenbildern auftreten, wenn Streustrahlenraster und Detektor nicht gut aufeinander abgestimmt sind. Ein Beispiel 
+dafür ist das kommende Röntgenbild. Zunächst sieht das Bild normal aus, aber wenn man hineinzoomt kommt das Moiré Muster, in Form von regelmäßigen Streifen von 
+unten links nach oben rechts, zum Vorschein. 
 
 \begin{figure}[H]
   \centering
   \begin{minipage}{0.49\textwidth}
     \centering
     \includegraphics[width=\linewidth]{Bilder/original.png}
-    \caption{Erstes Bild}
+    \caption{Aufgenommenes Röntgenbild}
     \label{fig:bild1}
   \end{minipage}
   \hfill
   \begin{minipage}{0.49\textwidth}
     \centering
     \includegraphics[width=\linewidth]{Bilder/original_zoomed.png}
-    \caption{Zweites Bild}
+    \caption{Röntgenbild vergrößert}
     \label{fig:bild2}
   \end{minipage}
 \end{figure}
 
+Mit den Moiré Muster, also den Strichen im Bild, ist dieses Röntgenbild für einen Arzt nicht zu gebrauchen. Da die Streifen in gleichmäßigen Abständen wiederkehren,
+ist die Fouriertransformation eine gute Möglichkeit diese Streifen vom restlichen Bild herauszulösen. Deshalb habe ich meine zweidimensionale FFT auf dieses Bild angewendet. 
+
 \begin{figure}[H]
-  \centering
-  \begin{minipage}{0.49\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{Bilder/fft_original.png}
-    \caption{Erstes Bild}
-    \label{fig:bild1}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.49\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{Bilder/fft_edited.png}
-    \caption{Zweites Bild}
-    \label{fig:bild2}
-  \end{minipage}
+\centering
+\includegraphics[width=0.6\textwidth]{Bilder/fft_original.png}
 \end{figure}
+
+Die Fouriertransformation sieht vorerst ungefähr so aus wie man sie erwarten würde. In der Mitte das Kreuz, was daran liegt, dass die Frequenzachsen in der jeweiligen Mitte 
+des Bildes verlaufen. Dazu ein Farbverlauf von der Mitte ausgehend, welcher zeigt, dass das Bild vermehrt aus kleinen Frequenzen aufgebaut ist. Jedoch stechen zwei 
+helle Punkte ungefähr bei den Koordinaten $\left(350 \vert 450\right)$ und $\left(1050 \vert 900\right)$ heraus, welche zueinander punktsymmetrisch bezüglich des Ursprungs sind. 
+
+Es liegt also nahe, dass die beiden Punkte genau die Frequenzen im Bild sind, welche für das Moiré Muster verantwortlich sind. Um das Moiré Muster herauszufiltern, habe ich deshalb diese 
+Punkte entfernt, indem ich den Bereich der Punkte mit dem bezüglich der X-Achse gespiegelten Bereich der Punkte ersetzt habe. Das Ergebnis sieht so aus:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{Bilder/fft_edited.png}
+\end{figure}
+
+Anschließend habe ich das bearbeitete Bild zurücktransformatiert und habe dieses Bild erhalten:
 
 \begin{figure}[H]
   \centering
   \begin{minipage}{0.49\textwidth}
     \centering
     \includegraphics[width=\linewidth]{Bilder/edited.png}
-    \caption{Erstes Bild}
+    \caption{Bearbeitetes Röntgenbild}
     \label{fig:bild1}
   \end{minipage}
   \hfill
   \begin{minipage}{0.49\textwidth}
     \centering
     \includegraphics[width=\linewidth]{Bilder/edited_zoomed.png}
-    \caption{Zweites Bild}
+    \caption{Bearbeitetes Röntgenbild vergrößert}
     \label{fig:bild2}
   \end{minipage}
 \end{figure}
         
+Beim hereingezoomten Bild erkennt man nun keine diagonalen Streifen mehr. 
+
 \section{Anhang}
         
 \subsection{Eigene Beweise}
