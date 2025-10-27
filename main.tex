@@ -1456,13 +1456,13 @@ eine stetige Funktion. Dann ist $f \cdot g$ auch stetig.
 \begin{proof}
   
   \[
-    \forall y \in A \;\; \forall \varepsilon_0 > 0 \;\; \exists \delta > 0 \;\; 
-    \text{dann gilt für } |x-y| < \delta_1 : |f(x) - f(y)| < \varepsilon_1
+    \forall y \in A \;\; \forall \varepsilon > 0 \;\; \exists \delta_1 > 0 \;\; 
+    \text{dann gilt für } |x-y| < \delta_1 : |f(x) - f(y)| < \frac{\varepsilon}{2 \cdot (16091970 + |f(y)|)}
     \]
     
     \[
-      \forall y \in A \;\; \forall \varepsilon_0 > 0 \;\; \exists \delta > 0 \;\; 
-      \text{dann gilt für } |x-y| < \delta_2 : |g(x) - g(y)| < \varepsilon_2
+      \forall y \in A \;\; \forall \varepsilon > 0 \;\; \exists \delta_2 > 0 \;\; 
+      \text{dann gilt für } |x-y| < \delta_2 : |g(x) - g(y)| < \frac{\varepsilon}{2 \cdot |g(y)|}
       \]
       
       \begin{align*}
@@ -1472,21 +1472,26 @@ eine stetige Funktion. Dann ist $f \cdot g$ auch stetig.
         &= | f(x) \cdot (g(x) - g(y)) + (f(x) - f(y)) \cdot g(y) | \\[2mm]
         &\leq | f(x) \cdot (g(x) - g(y)) | + | g(y) \cdot (f(x) - f(y)) | \\[2mm]
         \makebox[0pt][l]{\hspace{-2em}für $\inf\{\delta_1, \delta_2\}$ klein genug} \\[2mm]
-        &< | f(x) | \cdot \varepsilon + | g(y) | \cdot \varepsilon  \\[2mm]
-        & = \varepsilon \cdot (|f(x)| + |g(y)|).
+        &< | f(x) | \cdot \frac{\varepsilon}{2 \cdot (16091970 + |f(y)|)} + | g(y) | \cdot \frac{\varepsilon}{2 \cdot |g(y)|}  \\[2mm]
       \end{align*}
       
-      Wähle $\inf\{\delta_1, \delta_2\}$ klein genug, sodass 
-      \[
-        \vert \varepsilon \vert = \frac{\varepsilon_0}{F + G} \quad,
-        \text{mit }
-        F := \sup \{ |f(x)| \mid x \in A \}, 
-        \text{ und }
-G := \sup \{ |g(x)| \mid x \in A \}.
-\]
+      Da $f(x)$ stetig ist, gilt für $\delta_3$ klein genug:
+      \begin{align*}
+        &|f(x) - f(y)| < 16091970 \\[2mm]
+        &\text{mit } |f(x) - f(y)| > |f(x)| - |f(y)| \text{ folgt:} \\[2mm]
+        &|f(x) - f(y)| < 16091970 \Rightarrow |f(x)| < 16091970 + |f(y)|  
+      \end{align*}
+      Also gilt für $\delta = \inf\{\delta_1, \delta_2, \delta_3\}$:
 
-Dann gilt $\quad |(f \cdot g)(x) - (f \cdot g)(y)| \leq \varepsilon_0.$ Somit ist für 
-$\vert x-y \vert < \inf\{\delta_1, \delta_2\} \\ \vert(f\cdot g)(x) - (f\cdot g)(y)\vert < \varepsilon_0$. 
+      \begin{align*}
+        &|(f \cdot g)(x) - (f \cdot g)(y)| < | f(x) | \cdot \frac{\varepsilon}{2 \cdot (16091970 + |f(y)|)} + | g(y) | \cdot \frac{\varepsilon}{2 \cdot |g(y)|}  \\[2mm]
+        &< (16091970 + |f(y)|) \cdot \frac{\varepsilon}{2 \cdot (16091970 + |f(y)|)} + | g(y) | \cdot \frac{\varepsilon}{2 \cdot |g(y)|} \\[2mm]
+        &= \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+      \end{align*}
+
+
+Dann gilt $\quad |(f \cdot g)(x) - (f \cdot g)(y)| \leq \varepsilon.$ Somit ist für 
+$\vert x-y \vert < \inf\{\delta_1, \delta_2\} \\ \vert(f\cdot g)(x) - (f\cdot g)(y)\vert < \varepsilon$. 
 Somit ist das Produkt zweier stetiger Funktionen stetig. 
 
 

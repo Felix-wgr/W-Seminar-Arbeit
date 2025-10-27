@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1761253039.78013 "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" "main.pdf" "main" 1761253049.71045 0
+["pdflatex"] 1761580668.58489 "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" "main.pdf" "main" 1761580675.67919 0
   "Bilder/Detektor.jpg" 1761239671 328186 d69798e354c351b75cb03aec0a22d73e ""
   "Bilder/Raster.jpg" 1761240633 54165 2485be4ba4ed73ea14db91d203e7c160 ""
   "Bilder/edited.png" 1759912318 218784 b53162e48486e00ac542058f632fc833 ""
@@ -324,13 +324,13 @@
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1750428951 2269 2de6c7a5fd634dfef00a960544463a38 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1750428951 20785 198a9cb2e04238d92c320d0d9edbd76a ""
-  "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" 1761253031 87059 624803843e741e22889e44dfc23f0ceb ""
+  "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" 1761580667 87649 dfab4856ba6588323de06562a285726a ""
   "fft_bench5.dat" 1757358414 2640 be9743c3a8754ddf3766b3fd0a2a6417 ""
   "fft_bench_big.dat" 1757186258 1859 d590f92188ae2e651f507a5dc555d625 ""
   "fft_bench_small.dat" 1757179211 7825 0715e6c1df79cf3e5d9a96decb28823e ""
-  "main.aux" 1761253049 5900 bb1bcaa76b0d53cd95d6ebae36250d13 "pdflatex"
-  "main.tex" 1761253031 87059 624803843e741e22889e44dfc23f0ceb ""
-  "main.toc" 1761253049 2122 42b47fdc569d985110d021bd2eefba99 "pdflatex"
+  "main.aux" 1761580675 5900 cd7d0015290fa648a023bce1d04b1ab0 "pdflatex"
+  "main.tex" 1761580667 87649 dfab4856ba6588323de06562a285726a ""
+  "main.toc" 1761580675 2122 42b47fdc569d985110d021bd2eefba99 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
