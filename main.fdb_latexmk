@@ -1,9 +1,11 @@
 # Fdb version 4
-["pdflatex"] 1761580668.58489 "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" "main.pdf" "main" 1761580675.67919 0
+["pdflatex"] 1761854801.41992 "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" "main.pdf" "main" 1761854808.86321 0
   "Bilder/Detektor.jpg" 1761239671 328186 d69798e354c351b75cb03aec0a22d73e ""
   "Bilder/Raster.jpg" 1761240633 54165 2485be4ba4ed73ea14db91d203e7c160 ""
+  "Bilder/bomb.jpg" 1761847072 35232 f38e077e919c9a7cb4d466392c3f08a4 ""
   "Bilder/edited.png" 1759912318 218784 b53162e48486e00ac542058f632fc833 ""
   "Bilder/edited_zoomed.png" 1759912238 55475 48c4caea385e046164d1b3c608585c98 ""
+  "Bilder/eq.jpg" 1761847053 43412 13f1a2442cf668e5fc11e845edc3c5bd ""
   "Bilder/eulerformel.jpg" 1757246340 27049 282ee59c29c9f41d219945e1297854e8 ""
   "Bilder/fft_edited.png" 1759912744 126348 cd56d519979eeb42b3e369757e42bfca ""
   "Bilder/fft_original.png" 1759912696 126798 86911e4c4354bd7462f9d167e21a4402 ""
@@ -324,13 +326,13 @@
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1750428951 2269 2de6c7a5fd634dfef00a960544463a38 ""
   "C:/Users/fwage/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1750428951 20785 198a9cb2e04238d92c320d0d9edbd76a ""
-  "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" 1761580667 87649 dfab4856ba6588323de06562a285726a ""
+  "c:/Users/fwage/OneDrive/Dokumente/Schule/Mathematik/W-Seminar/Endarbeit/main.tex" 1761854793 90318 3b196a4bbea4af6b0fc9fce1cf06c0ab ""
   "fft_bench5.dat" 1757358414 2640 be9743c3a8754ddf3766b3fd0a2a6417 ""
   "fft_bench_big.dat" 1757186258 1859 d590f92188ae2e651f507a5dc555d625 ""
   "fft_bench_small.dat" 1757179211 7825 0715e6c1df79cf3e5d9a96decb28823e ""
-  "main.aux" 1761580675 5900 cd7d0015290fa648a023bce1d04b1ab0 "pdflatex"
-  "main.tex" 1761580667 87649 dfab4856ba6588323de06562a285726a ""
-  "main.toc" 1761580675 2122 42b47fdc569d985110d021bd2eefba99 "pdflatex"
+  "main.aux" 1761854808 6024 71395eecadf4dc5adcda54f0dc4d8880 "pdflatex"
+  "main.tex" 1761854793 90318 3b196a4bbea4af6b0fc9fce1cf06c0ab ""
+  "main.toc" 1761854808 1946 8412364e2d5e0132a08bc107fe5f4198 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

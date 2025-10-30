@@ -168,7 +168,7 @@ Die Fouriertransformation ...
 
 \begin{flushleft}
 \textbf{Verfasser:} \hspace{2cm} Felix Wager\\[0.3cm]
-\textbf{Kursleiter:} \hspace{2.5cm} OSR Albert Thumann\\[0.3cm]
+\textbf{Kursleiter:} \hspace{2.5cm} StD Albert Thumann\\[0.3cm]
 \textbf{Abgabetermin:} \hspace{1.6cm} 11.\ November\ 2025
 \end{flushleft}
 
@@ -198,27 +198,60 @@ Unterschrift des Kursleiters
 \renewcommand{\contentsname}{Inhaltsverzeichnis}
 \tableofcontents
 
+\newpage
+
 \section{Abstract}
 
 \section{Einleitung}
-\subsection{Motivation}
-Warum Fourier-Methoden heute so wichtig sind.
-\subsection{Zielsetzung der Arbeit}
-\subsection{Aufbau der Arbeit}
+10.10.1955, Mitten im kalten Krieg, das Datum an welchem der Limited Test Ban Treaty, kurz LTBT, in Kraft trat. Inhalt 
+dieses Vertrags ist das Verbot von Kernwaffenversuchen in der Atmosphäre, im Weltraum und unter Wasser. Motiviert durch 
+die alarmierende Radioaktivität in der Erdatmosphäre, wurde dieser Vertrag zwischen den Atommächten USA, Großbritannien 
+und der Sowjetunion abgeschlossen. Durch den Test einer Atomwaffe, wird bei der Explosion so viel Energie freigesetzt, 
+dass es zu einer Bodenbewegung kommt, welche man auch in größeren Distanzen bezüglich des Messorts feststellen kann. Diese 
+Bodenbewegungen dienten zur damaligen Zeit zur Überprüfung, ob der zuvor genannte Vertrag eingehalten wird. Wenn man jedoch 
+die Bodenbewegung zwischen einer Atombombe und einem Erdbeben vergleicht, fällt folgendes auf:
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Bilder/bomb.jpg}
+    % \caption{Erstes Bild}
+    \label{fig:bild1}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Bilder/eq.jpg}
+    % \caption{Zweites Bild}
+    \label{fig:bild2}
+\end{subfigure}
+\label{fig:zwei_bilder}
+\end{figure}
+Es fällt auf, dass die beiden Ereignisse nur durch die Erzeugte Schwingung des Bodens fast nicht zu unterscheiden sind, da 
+man nicht wissen kann, wie stark eine Atomwaffe oder ein Erdbeben in der Realität ist. Dass, was eine Bombe von restlichen 
+Ereignissen charakteristisch abgrenzt, sind plötzliche hohe Frequenzen, aufgrund des Impulses der Explosion. Deshalb wurde 
+hier schon ein Algorithmus verwendet, welcher die Anteile von Frequenzen an einem periodischen Signal anzeigt: Die Fourier-Transformation. 
+Diese geht auf Jean-Baptiste Joseph Fourier zurück, der sie Anfang des 19. Jahrhunderts im Rahmen seiner Untersuchungen zur Wärmeleitung entwickelte. 
+Doch nicht nur zur Eindämmung von Radioaktivität ist die Fourier-Transformation unerlässlich, sie findet auch heute noch ein 
+sehr großes Spektrum an Verwendungen. Deswegen möchte ich in dieser Arbeit nicht nur zeigen, wie die Fourier-Transformation 
+funktioniert, sondern auch, wie sie in vielen verschiedenen Bereichen angewendet wird und so auch heute noch eine zentrale 
+Rolle sowohl im Alltag, als auch in der Wissenschaft und Technik spielt.
 
-\section{Mathematische Grundlagen}
+\section{Mathematische Grundlagen der Fourier-Transformation}
+Doch um die Fourier-Transformation zu verstehen, sind einige mathematische Grundlagen notwendig. Deswegen werde ich in diesem 
+Kapitel die wichtigsten Grundlagen erklären, damit man die Fourier-Transformation auch wirklich nachvollziehen kann.
 \subsection{Komplexe Zahlen und die Eulerformel}
-Um sich die Arbeit mit Fourier Transformationen, Reihen und sonstigem erheblich zu erleichtern ist es sehr sinnvoll mit komplexen Zahlen zu arbeiten. Doch was sind komplexe Zahlen? 
-Komplexe Zahlen sind prinzipiell nichts anderes, als eine Erweiterung der Menge der Reellen Zahlen, welche es ermöglicht die Wurzel von negativen Zahlen zu ziehen. Dafür wird die Wurzel von $-1$ als die imaginäre Einheit $i$ definiert. Mathematisch korrekt sieht das wie folgt aus:
+Damit man sich die Arbeit mit Fourier-Transformationen, Reihen und sonstigem erheblich erleichtert, ist es sehr sinnvoll, mit komplexen Zahlen zu arbeiten. Doch was sind komplexe Zahlen? 
+Komplexe Zahlen sind prinzipiell nichts anderes, als eine Erweiterung der Menge der reellen Zahlen, welche es ermöglicht, die Wurzel von negativen Zahlen zu ziehen. Dafür wird die Wurzel von $-1$ als die imaginäre Einheit $i$ definiert. Mathematisch korrekt sieht das wie folgt aus:
 $$i^2 := -1$$
 Die Menge der komplexen Zahlen wird mit dem Symbol $\mathbb{C}$ abgekürzt. Eine typische komplexe Zahl hat in der algebraischen Schreibweise die Form:
 $$ z = a + ib \quad \text{mit} \quad a,b \in \mathbb{R} $$
 $a$ ist hierbei der Realteil $\Re(z)$ und $b$ der Imaginärteil $\Im(z)$ von $z$. \vspace{1em}
 
-Um mit komplexen Zahlen bei Fourier Reihen zu arbeiten, benötigt man auch ein paar Rechenoperationen. Die wichtigsten beiden sind hier der Betrag und das komplex konjugierte einer komplexen Zahl. Eine komplexe Zahl lässt sich auch als Vektor im $\mathbb{R}^2$ betrachtet, so ist dann der Betrag als euklidische Norm dieses Vektors definiert. 
+Um mit komplexen Zahlen bei Fourier Reihen zu arbeiten, benötigt man auch ein paar Rechenoperationen. Die wichtigsten beiden sind hier der Betrag und das komplex Konjugierte einer komplexen Zahl. Eine komplexe Zahl lässt sich auch als Vektor im $\mathbb{R}^2$ betrachten, so ist dann der Betrag als euklidische Norm dieses Vektors definiert. 
 $$\vert{z}\vert := \|z\| = \sqrt{ a^2 + b^2}$$
 Bedeutet in einem Koordinatensystem, bei dem der Real- und Imaginärteil einer Zahl auf den x- und y-Achsen festgehalten wird, ist der Betrag die Länge vom Ursprung bis zum Punkt im Koordinatensystem dieser Zahl. 
-Und das komplex konjugierte einer Zahl ist eine Abbildung, welche lediglich den Imaginärteil mit $-1$ multipliziert:
+Und das komplex Konjugierte einer Zahl ist eine Abbildung, welche lediglich den Imaginärteil mit $-1$ multipliziert:
 
 $$\bar{}\;:\mathbb{C}\;\to\mathbb{C},\; z = x+iy \mapsto \bar{z} := x-iy$$
 
@@ -232,11 +265,11 @@ Wenn man den Betrag dieses Ausdrucks bildet, so fällt auf, dass hier das Ergebn
 \end{center}
 
 \subsection{Das Skalarprodukt von Funktionen und Orthonormalsysteme}
-Des Weiteren spielen Orthonormalsysteme eine große Rolle, wenn man sich mit der Fourier Analyse beschäftigt. 
+Des Weiteren spielen Orthonormalsysteme eine große Rolle, wenn man sich mit der Fourier-Analyse beschäftigt. 
 Allgemein lässt sich sagen, dass ein Orthonormalsystem eine Menge von Vektoren oder Funktionen, aus einem Vektorraum mit Skalarprodukt, 
-sind, welche sowohl orthogonal zueinander, aber auch normiert zu sich selbst sind. 
-Orthogonal sind sie, wenn das Skalarprodukt zweier unterschiedlicher Vektoren 0 ergibt und normiert, wenn das Skalarprodukt eines Vektors mit sich selbst 1 ergibt.
-Für alle Vektoren $v_n$ im $\mathbb{R}^n$ muss also folgendes gelten, damit die Menge der Vektoren ein Orthonormalsystem bildet: 
+sind, welche sowohl orthogonal zueinander, als auch normiert zu sich selbst sind. 
+Orthogonal sind sie, wenn das Skalarprodukt zweier unterschiedlicher Vektoren 0 ergibt, und normiert, wenn das Skalarprodukt eines Vektors mit sich selbst 1 ergibt.
+Für alle Vektoren $v_n$ im $\mathbb{R}^n$ muss also Folgendes gelten, damit die Menge der Vektoren ein Orthonormalsystem bildet: 
 $$\text{1. Orthogonalität: } \langle v_i, v_j\rangle = 0 \quad \forall \:i \neq j $$
 $$\text{2. Normiertheit: } \langle v_i, v_j\rangle = \sum_{i=1}^{n}v_i^2 = \|v_i\|^2 = 1 \quad \text{mit} \: i = j$$
 $$\left( \text{Skalarprodukt: } \langle v, w\rangle := \sum_{i = 1}^{n}v_i * w_i\right)$$
@@ -247,36 +280,36 @@ Hierfür definiert man die Normiertheit und die Orthogonalität auch, exakt glei
 $$\langle v, w \rangle := \int_a^bv{(x)*w(x)dx} \quad \text{für} \: v,w : [a,b] \to \mathbb{R} $$
 Falls eine Menge von Funktionen Orthogonalität und Normiertheit erfüllt, ist diese Menge auch ein Orthogonalsystem. 
 Anschaulich kann man sich die Funktionen v(x) und w(x) noch als zwei Vektoren mit unendlich 
-vielen Dimensionen vorstellen, wobei der x Wert angibt in welcher Dimension man sich befindet. 
+vielen Dimensionen vorstellen, wobei der x-Wert angibt, in welcher Dimension man sich befindet. 
 Da das Skalarprodukt die jeweiligen Dimensionen von Vektoren multipliziert und diese 
-schließlich aufsummiert, macht es Sinn, dass man bei Funktionen ähnlich vorgeht. 
-So lässt sich also die Erweiterung der Summe zum Integral erklären.  Die Formel für die 
+schließlich aufsummiert, ergibt es Sinn, dass man bei Funktionen ähnlich vorgeht. 
+So lässt sich also die Erweiterung der Summe zum Integral erklären. Die Formel für die 
 Norm von Funktionen $\left( \|f\| = \sqrt{\int_a^b{\vert f(x)\vert^2 dx}} \right)$ ergibt sich, wenn man das für Funktionen definierte Skalarprodukt 
 ähnlich wie bei Vektoren auf die Funktion selbst anwendet. Im komplexen Fall wird das Skalarprodukt leicht angepasst, 
 indem der zweite Faktor komplex konjugiert wird:
 $$\langle v,w \rangle := \int_a^b{v(x)*\overline{w(x)}dx} \quad \text{für} \: v,w : [a,b] \to \mathbb{C}$$
 
 \subsection{Die Fourierreihe}
-Der erste große Schritt, um die Fourier Transformation herzuleiten, ist die Fourier Reihe. 
-Eine Reihe selbst ist in der Mathematik ist ein Begriff für eine unendliche Summe von Termen. 
-Die Fourier Reihe ist hierbei eine besondere Reihe. Ihr Sinn ist es periodische Funktionen 
-mithilfe von Sinus- und Kosinustermen zu approximieren.  Joseph Fourier hat in seinem Werk 
+Der erste große Schritt, um die Fourier Transformation herzuleiten, ist die Fourier-Reihe. 
+Eine Reihe selbst ist in der Mathematik ein Begriff für eine unendliche Summe von Termen. 
+Die Fourier-Reihe ist hierbei eine besondere Reihe. Ihr Sinn ist es, periodische Funktionen 
+mithilfe von Sinus- und Kosinustermen zu approximieren. Joseph Fourier hat in seinem Werk 
 „Théorie analytique de la chaleur“ schließlich auch beweisen, dass jede periodische Funktion 
 auf diese Weise dargestellt werden kann. Die Approximation selbst geschieht durch 
 trigonometrische Polynome, mit welchen man später die Fourierreihe einer Funktion bildet. 
 Ein trigonometrisches Polynom ist hier eine Funktion der Form: 
 $$p(x) = a_0 + \sum_{k=1}^n{a_k \cos(kx) + b_k \sin(kx)}  \quad a_k,b_k \in \mathbb{R}$$
-Ziel ist es nun die Faktoren $a_k$ und $b_k$ in Abhängigkeit zur anzunähernden Funktion zu 
+Ziel ist es nun, die Faktoren $a_k$ und $b_k$ in Abhängigkeit zur anzunähernden Funktion zu 
 bestimmen. Denn durch die Zählervariable k, welche die Periodenlänge der Sinus- und 
-Kosinusterme bestimmt, kann man durch die Faktoren $a_k$ und $b_k$ festlegen wie dominant 
-die Anteile der Sinus und Kosinusterme, mit der jeweiligen Periodenlänge, in der zu 
+Kosinusterme bestimmt, kann man durch die Faktoren $a_k$ und $b_k$ festlegen, wie dominant 
+die Anteile der Sinus- und Kosinusterme, mit der jeweiligen Periodenlänge, in der zu 
 approximierende Funktion sind. Um die Berechnung der Faktoren kompakter zu gestalten, 
 kann man mit dem Zusammenhang $2\cos{x} = e^{ix} -e^{-ix}$ und $2i\sin{x} = e^{ix}+e^{-ix}$, 
 einer Umstellung der Eulerformel, nun das trigonometrische Polynom zu dem komplexen 
 trigonometrischen Polynom zusammenfassen: 
 $$p(x) = \sum_{k=-n}^n{c_k \, e^{ikx}} \quad \text{für geeignete} \: c_k \in \mathbb{C}$$
-Um jetzt den komplexen Faktor $c_k$, zunächst für $2\pi$ periodische Funktionen, 
-zu berechnen, verwendet man ein Orthonormalsystem, welches aus den Funktionen $\varphi_n(x)$ besteht:
+Um jetzt den komplexen Faktor $c_k$, zunächst für $2\pi$-periodische Funktionen, 
+zu berechnen verwendet man ein Orthonormalsystem, welches aus den Funktionen $\varphi_n(x)$ besteht:
 $$\phi_n(x):[-\pi,\pi] \to \mathbb{C}, \quad \phi_n(x) = \frac{1}{\sqrt{2\pi}} \, e^{inx} \quad \text{mit} \: n\in \mathbb{Z}$$
 Dass die Menge an Funktionen $\phi_n$ ein Orthonormalsystem ist, habe 
 ich im Anhang gezeigt (Beweis A. 1). Um endlich $c_k$ zu berechnen, setzt man zunächst 
@@ -284,7 +317,7 @@ die zu approximierende Funktion $f$, mit der Periodizität $2\pi$, mit dem
 trigonometrischen Polynom gleich und schränkt sie zudem ein: 
 $$f:[-\pi,\pi]\to \mathbb{C},\quad f(x) = \sqrt{2\pi} * \sum_{k = -n}^n{c_k\phi_k(x)} $$
 Anschließend bildet man das Skalarprodukt von $f$ und $\phi_m$, was möglich ist, da 
-$f$ auf der Definitionsbereich von $f$ und $\phi_m$ gleich ist. 
+$f$ auf dem Definitionsbereich von $f$ und $\phi_m$ gleich ist. 
 $$\langle f, \phi_m \rangle = \int_{-\pi}^\pi {f(x) \overline{\phi_m(x)}dx} = \int_{-\pi}^\pi{\sqrt{2\pi}\sum_{k = -n}^n{c_k\phi_k(x)\overline{\phi_m(x)}}dx}$$
 Da Integral und Summe beide linear sind, darf man die Summe mit dem Integral vertauschen. 
 Zudem hängt $c_k$ nicht von $x$ ab, wodurch der Faktor $c_k$ für das Integral eine Konstante ist. 
@@ -294,43 +327,42 @@ $$\int_{-\pi}^\pi{f(x)\overline{\phi_m(x)} dx} = \sqrt{2\pi}\sum_{k=-n}^{n}{c_k\
 Aufgrund dessen, dass die Menge der Funktionen $\phi_m$ ein Orthonormalsystem ist, ist jeder Summand, außer $k = m$, 0. Durch die Normiertheit des Orthonormalsystems bleibt übrig:
 $$c_m = \frac{1}{\sqrt{2\pi}}\int_{-\pi}^\pi{f(x)\overline{\phi_m(x)}dx} = \frac{1}{2\pi}\int_{-\pi}^\pi{f(x)e^{imx}dx}$$ 
 
-Jetzt ist es möglich mit dieser Formel und dem komplexen trigonometrischem Polynom eine 
-$2\pi$ periodische Funktion zu approximieren. Jedoch wäre es hilfreich, wenn dies für alle 
-Perioden möglich wäre. Um auch Funktionen mit einer Periodizität von $2L$ annähern zu können, 
-muss man den Faktor $c_k$ und das komplexe trigonometrische Polynom auf einer Periodizität von $2L$ ausweiten. 
-Damit das trigonometrische Polynom $2L$ periodisch wird muss folgendes gelten: 
+Jetzt ist es möglich, mit dieser Formel und dem komplexen trigonometrischen Polynom eine 
+$2\pi$-periodische Funktion zu approximieren. Jedoch wäre es hilfreich, wenn dies für alle 
+Perioden möglich wären. Um auch Funktionen mit einer Periodizität von $2L$ annähern zu können, 
+muss man den Faktor $c_k$ und das komplexe trigonometrische Polynom auf eine Periodizität von $2L$ ausweiten. 
+Damit das trigonometrische Polynom $2L$ periodisch wird, muss Folgendes gelten: 
 $$e^{i\omega x} = e^{i\omega(x+2L)}$$
 $\omega$ gilt es dabei herauszufinden, damit das trigonometrische Polynom $2L$ periodisch wird:
 $$e^{i\omega x} = e^{i\omega(x+2L)} \Leftrightarrow e^{i\omega 2L} = 1 \Leftrightarrow \omega 2L = 2\pi k \Leftrightarrow \omega_k = \frac{k\pi}{L}$$
 Das neue trigonometrische Polynom sieht also so aus:
 $$\sum_{k=-n}^n{c_k e^{i\omega_kx}} \Leftrightarrow \sum_{k=-n}^n{c_k e^{i\frac{k\pi}{L}x}}$$
-Um $c_k$ zu berechen, nimmt man sich eine $2L$ periodische Funktion $f$ und definiert sich eine $2\pi$ periodische 
+Um $c_k$ zu berechnen, nimmt man sich eine $2L$-periodische Funktion $f$ und definiert sich eine $2\pi$-periodische 
 Hilfsfunktion $g$ in Abhängigkeit von $f$ wie folgt:
 $$g(t) := f\left(\frac{L}{\pi}t\right) $$
 Da $g$ eine $2\pi$ periodische Funktion ist, kann man mit der hergeleiteten Formel $c_k$ 
 von $g$ berechnen. Um die Formel für $2L$ periodische Funktionen zu erhalten, ist das 
-Ziel die Formel über $g$ auf $f$ auszuweiten. Das funktioniert über die Substitutionsregel 
-bei Integralen. Um sie anzuwenden, führen wir die Ableitung der inneren Funktion von $f$, 
+Ziel die Formel über $g$ auf $f$ auszuweiten. Das funktioniert über die Substitutionsregel. Um sie anzuwenden, fügen wir die Ableitung der inneren Funktion von $f$, 
 also $\frac{L}{\pi}$ in Form einer $1$ ein und erhalten die Formel für $c_k$, für die 
 Periodizität $2L$: 
 $$c_k = \frac{1}{2\pi} \int_{-\pi}^\pi{g(t)e^{-ikt}dt} \Leftrightarrow c_k = \frac{1}{2\pi}*\frac{\pi}{L} \int_{-\pi}^{\pi}{\frac{L}{\pi}f\left(\frac{L}{\pi}t\right)e^{-i\omega_kt} dt}$$
 Wendet man jetzt die Substitutionsregel an, erhält man: 
 $$c_k = \frac{1}{2L}\int_{-L}^{L}{f(x)e^{-i\omega_kx}dx} = \frac{1}{2L}\int_{-L}^{L}{f(x)e^{-i\frac{k\pi}{L}x}dx}$$
 
-\subsection{Von der Fourierreihe zur Fouriertranformation}
-Die Fourierreihe erlaubt es uns, periodische Signale als Summe von Sinus- und Kosinusfunktionen oder komplexen Exponentialfunktionen darzustellen. Doch viele Signale in der Praxis sind nicht-periodisch. Um auch diese Signale in ihre Frequenzanteile zerlegen zu können, verallgemeinern wir das Konzept der Fourierreihe zur Fouriertransformation. Mit der Fouriertransformation werden wir so eine Funktion erhalten, welche uns sagen wird wie groß der Anteil einer Frequenz oder Periodenlänge in einem Signal ist. Dazu nehmen wir die Fourierreihe einer Funktion $f$ mit der Periode $2L$ und der Frequenz $\omega_k$: 
+\subsection{Von der Fourierreihe zur Fouriertransformation}
+Die Fourierreihe erlaubt es uns, periodische Signale als Summe von Sinus- und Kosinusfunktionen oder komplexen Exponentialfunktionen darzustellen. Doch viele Signale in der Praxis sind nichtperiodisch. Um auch diese Signale in ihre Frequenzanteile zerlegen zu können, verallgemeinern wir das Konzept der Fourierreihe zur Fouriertransformation. Mit der Fouriertransformation werden wir so eine Funktion erhalten, welche uns sagen wird, wie groß der Anteil einer Frequenz oder Periodenlänge in einem Signal ist. Dazu nehmen wir die Fourierreihe einer Funktion $f$ mit der Periode $2L$ und der Frequenz $\omega_k$: 
 $$f(x) = \sum_{k = -\infty}^{\infty}{c_k e^{i\omega_k x} }, \quad c_k = \frac{1}{2L}\int_{-L}^L{f(x) e^{-i\omega_k x} dx}$$
 Dazu definieren wir eine Hilfsfunktion $F(\xi)$: 
 $$F:\mathbb{K} \to \mathbb{C}, \quad F(\xi) = \int_{-L}^{L}{f(x) e^{-i \xi x} dx}$$
 damit gilt
 $$ c_k = \frac{1}{2L} F(\omega_k)$$
-Setzt man den neu gewonnen Ausdruck für $c_k$ in die Fourierreihe ein, so erhält man 
+Setzt man den neu gewonnenen Ausdruck für $c_k$ in die Fourierreihe ein, so erhält man 
 $$ f(x) = \sum_{n = -\infty}^{\infty}{F(\omega) e^{i\omega x}}$$
 Anschließend bildet man $\Delta \omega$ aus $\omega_k$:
 $$\omega_k = k \frac{\pi}{L} \Rightarrow \Delta \omega = \frac{\pi}{L} \Rightarrow \frac{1}{2L} = \frac{\Delta \omega} {2\pi}$$
 Und setzt die Gleichung auch in die Fourierreihe ein: 
 $$\frac{1}{2\pi} \sum_{k=-\infty}^{\infty}{F(\omega_k) e^{i \omega_k x} \Delta \omega}$$
-Dies ist eine Riemann Summe. Lässt man nun $L \to \infty$ laufen, erhält man ein Integral, welches die inverse Fouriertransformation ist:
+Dies ist eine Riemann-Summe. Lässt man nun $L \to \infty$ laufen, erhält man ein Integral, welches die inverse Fouriertransformation ist:
 $$\lim_{L\to\infty} {\frac{1}{2\pi}\sum_{n = -\infty}^\infty{F(\omega_k) e^{i \omega_k x}\Delta \omega}} = \frac {1}{2\pi} \int_{-\infty}^{\infty}{F(\omega)e^{i \omega x} d\omega}$$
 Die Funktion $F(\omega)$ selbst ist die Fouriertransformation von $f$:
 $$F(\omega) = \int_{-\infty}^{\infty}{f(x) e^{-i\omega x} dx}$$
@@ -349,7 +381,7 @@ Dieses Produkt misst, wie stark die Frequenz $\omega$ in $f(x)$ enthalten ist:
 So zeigt die Fouriertransformation, wie groß der Anteil jeder einzelnen Frequenz $\omega$ 
 in der Funktion $f$ ist.
 
-\subsection{Die Foureirtransformation in der Praxis: Die DFT}
+\subsection{Die Fouriertransformation in der Praxis: Die DFT}
 In der Praxis arbeitet man selten mit kontinuierlichen Funktionen, sondern mit diskreten Messwerten, zum Beispiel bei Audiosignalen oder digitalen Bildern. Um diese Signale in ihre Frequenzanteile zu zerlegen, verwendet man die diskrete Fouriertransformation (DFT).
 Formell lässt sich die DFT für eine endliche Folge von N Messwerten
 $$x_0, x_1,..., x_{N-1}$$
@@ -361,16 +393,15 @@ Nyquist-Theorems lediglich Spiegelungen der tieferen Frequenzen und enthalten ke
 Informationen. Warum das so ist, werde ich hier nicht näher eingehen. Wie man die Formel für 
 die DFT herleitet, erkläre ich im nächsten Kapitel.
 
-\subsection{Die Foureirtransformation in der Praxis: Die FFT}
+\subsection{Die Fouriertransformation in der Praxis: Die FFT}
 Obwohl die DFT so in der Praxis anwendbar ist, ist sie heutzutage in fast keinem Programm oder 
-Algorithmus zu finden. Denn will man eine Funktion oder Signal mit $N$ Werten komplett 
-transformieren, dann muss man für $N$ verschiedene Frequenzen den Wert über die obere Formel 
-berechnen. Also sind es insgesamt $N^2$ Berechnungen, die man durchführen muss. In der Informatik 
-spricht man für den Abschnitt der DFT in einem Programm von einer Laufzeit von:   $O(N^2)$
+Algorithmus zu finden. Denn will man eine Funktion oder ein Signal mit $N$ Werten komplett 
+transformieren, so sind für $N$ unterschiedliche Frequenzen jeweils die entsprechenden Werte gemäß der oben angegebenen Formel zu bestimmen. 
+Also sind es insgesamt $N^2$ Berechnungen, die man durchführen muss. In der Informatik 
+spricht man für den Abschnitt der DFT in einem Programm von einer Laufzeit von $O(N^2)$
 
-Im Jahre 1965 aber, entdeckte James W. Cooley und John W. Tukey eine neue Art die DFT zu 
-berechnen, was die Laufzeit auf $O(N\log N)$ verringerte. Somit konnte man die DFT erheblich 
-schneller berechnen. Daher kommt auch der Name FFT für den neuen Algorithmus, was für Fast Fourier 
+Im Jahre 1965 entdeckten James W. Cooley und John W. Tukey eine neue Art, die DFT zu berechnen, was die Laufzeit auf $O(N\log N)$ verringerte. 
+Somit konnte man die DFT erheblich schneller berechnen. Daher kommt auch der Name FFT für den neuen Algorithmus, was für Fast Fourier 
 Transform, also schnelle Fouriertransformation, steht. Um die Umformung gut zu sehen, kann man die 
 diskrete Fouriertransformation etwas umschreiben. Dafür definiere ich die Folge $(\omega_n)_{n\in\mathbb{N}}$ 
 wie folgt:
@@ -426,7 +457,7 @@ mit den Zahlen im Vektor multipliziert und die Produkte zusammenzählt. Deshalb 
 jeder Eintrag der Matrix aus $\omega_n$ noch mit $k$, der die Frequenz bestimmt, und 
 der Zählvariable $j$, die über die Zeilen läuft, als Exponent potenziert werden.
 
-Was Cooley und Tukey herausgefunden haben ist, dass man diesen Ausdruck wie so umschreiben 
+Was Cooley und Tukey herausgefunden haben, ist, dass man diesen Ausdruck so umschreiben 
 kann:
 
 \[\hat{f} = F_N \cdot f = 
@@ -451,9 +482,9 @@ Diagonale stehen $1$, von links oben nach rechts unten. $D_N$ ist ebenfalls eine
 wie $I_N$, jedoch bestehen die Diagonaleinträge aus $\omega_N^k$, wobei $k$ von $0$ bis $N-1$ 
 läuft. Der Index der Matrizen gibt jeweils die Anzahl der Zeilen und Spalten an. $f$ wurde den Indizes nach aufgeteilt. 
 
-Wichtig ist, diese Formel funktioniert nur, wenn die Anzahl der Werte der Ausgangsfunktion 
-eine Zweierpotenz ist. Zumal das genau der Grund ist, warum die Umstellung es überhaupt schafft die Laufzeit 
-so drastisch zu reduzieren. Das was diese Formel ausmacht sind eigentlich nur die letzen beiden 
+Wichtig ist: Diese Formel funktioniert nur, wenn die Anzahl der Werte der Ausgangsfunktion 
+eine Zweierpotenz ist. Zumal das genau der Grund ist, warum die Umstellung es überhaupt schafft, die Laufzeit 
+so drastisch zu reduzieren. Das, was diese Formel ausmacht, sind eigentlich nur die letzten beiden 
 Faktoren des Produkts. Denn multipliziert man diese Faktoren miteinander, dann fällt auf, dass 
 man diesen Ausdruck erhält:
 \[
@@ -463,12 +494,12 @@ F_{N/2} \cdot f_{gerade} & 0 \\
 \end{bmatrix}
 \]
 
-Auffällig ist jetzt, dass man zwei mal das Anfangsproblem, in halber Größe erhält. Man könnte 
-zunächst denken, dies mache keinen Unterschied, aber dadurch dass die Berechnung der komplette Matrix, einen
+Auffällig ist jetzt, dass man zweimal das Anfangsproblem, in halber Größe erhält. Man könnte 
+zunächst denken, dies mache keinen Unterschied, aber dadurch, dass die Berechnung der kompletten Matrix, einen
 Aufwand von $O(N^2)$ erfordert, reduziert man mit jeder Anwendung der Formel die Laufzeit für 
 die Berechnung von $F_{N/2} \cdot f$ auf $O((N/2)^2)$. Wendet man diese Formel rekursiv, also 
 immer wieder auf sich selbst, an, bis man Matrizen mit einer Größe von 1 oder 2 erhält, so 
-schafft man es, durch ein zeitsparendes zusammenfügen, die Laufzeit der Berechnung auf 
+schafft man es, durch ein zeitsparendes Zusammenfügen, die Laufzeit der Berechnung auf 
 $O(N\log N)$ zu kürzen. Die Struktur einer FFT mit 8 Werten, kann man auch so darstellen:
 \\ \\ \\
 \begin{forest}
@@ -505,7 +536,7 @@ $O(N\log N)$ zu kürzen. Die Struktur einer FFT mit 8 Werten, kann man auch so d
               \end{forest}
 \\ \\ \\ 
 In meinem Programm, zu welchem ich im nächsten Kapitel komme, mit welchem ich eine Audiospur 
-aufnehme und verarbeite, nutze ich eine auf meinem Gerät eine Samplerate von 44800. Bedeutet 
+aufnehme und verarbeite, nutze ich auf meinem Gerät eine Samplerate von 44800. Bedeutet 
 ich nehme pro Sekunde 44800 Datenpunkte auf. Wenn man nun die Laufzeit einer DFT und einer FFT 
 grob skizziert, sieht man, dass bei der Verarbeitung eines Signals, mit nur einer Sekunde, bei 
 meinem Programm die DFT mehr als doppelt so lang dauert, wie die FFT.  
@@ -539,11 +570,11 @@ meinem Programm die DFT mehr als doppelt so lang dauert, wie die FFT.
 
 
 
-\section{Von der Theorie zu Praxis: Eigenentwicklung eines Audioanalyzers mit C++}
+\section{Von der Theorie zur Praxis: Eigenentwicklung eines Audioanalyzers mit C++}
 Nachdem im vorherigen Kapitel die mathematischen Grundlagen der Fouriertransformation und 
 ihrer diskreten Varianten vorgestellt wurden, möchte ich nun zeigen, wie ich diese Konzepte 
-praktisch umgesetzt habe. Angefangen hat alles mit der Idee einen eigenen Audioanalyzer zu 
-programmieren. Dieser soll live ein Audiosignal aufnehmen, dieses Visualisieren und anschließend 
+praktisch umgesetzt habe. Angefangen hat alles mit der Idee, einen eigenen Audioanalyzer zu 
+programmieren. Dieser soll live ein Audiosignal aufnehmen, dieses visualisieren und anschließend 
 die Frequenzanteile, die in dem Signal enthalten sind, anzeigen. Somit könnte ich mithilfe 
 meines eigenen Programms Musik genauer unter die Lupe nehmen, die Funktion der Fouriertransformation 
 so manipulieren, dass Rauschen unterdrückt wird, Töne von Tieren oder Instrumenten erkennen 
@@ -558,7 +589,7 @@ eigenständig die DFT mit einer minimalen Abweichung hergeleitet habe.
 \subsection{Eigenständige Herleitung der DFT}
 Da ich, wie zuvor erwähnt, die DFT noch nicht kannte, versuchte ich zunächst aus den Punkten, 
 also die Daten der Audioaufnahme, eine Funktion zu erstellen, auf welche die Formel anwendbar 
-ist. Ein Hauptkriterium, um die Formel zu realisieren ist, dass die Funktion integrierbar ist. 
+ist. Ein Hauptkriterium, um die Formel zu realisieren, ist, dass die Funktion integrierbar ist. 
 Natürlich kann man ausgehend von den Punkten viele Rechtecke nutzen und diese als Approximation 
 für die Fläche des Integrals zu benutzen. Das sähe so aus:
 
@@ -602,8 +633,8 @@ man die Kurve in kleine Treppenstufen „übersetzen“.
 Wenn man eine große Menge an Datenpunkten hat und diese sehr nah aneinander liegen, dann ist 
 diese Methode eine gute Approximation des tatsächlichen Integrals. Trotzdem habe ich mich dazu entschieden, 
 die Punkte durch eine jeweilige stetige Fortsetzung zu verbinden und dann das Integral davon zu 
-bilden, um die Approximation noch etwas genauer zu gestalten. Meine stetige Fortsetzng besteht aus 
-geraden Linien, welche die Puntkte zu einer stetigen Funktion am Ende verbinden. Bei wenigen Punkten 
+bilden, um die Approximation noch etwas genauer zu gestalten. Meine stetige Fortsetzung besteht aus 
+geraden Linien, welche die Punkte zu einer stetigen Funktion am Ende verbinden. Bei wenigen Punkten 
 wie in meinem Beispiel ist der Unterschied zwischen den zwei Approximationen gut zu erkennen.
 \begin{figure}[h!]
 \centering
@@ -647,28 +678,28 @@ wie in meinem Beispiel ist der Unterschied zwischen den zwei Approximationen gut
       \end{tikzpicture}
     \end{figure}
 \\ \\ \\ \\ \\ \\ \\
-Die Funktionenfolge, die ich dabei als Fortsetzung für die jeweiligen Punkte genutzt habe ist folgende:
+Die Funktionenfolge, die ich dabei als Fortsetzung für die jeweiligen Punkte genutzt habe, ist folgende:
 $$\left(g_n(x)\right)_{n\in \mathbb{N}_0} = \frac{f(n+1) - f(n)}{n+1 -n } \cdot x + \frac{nf(n+1) - (n+1)f(n)}{n+1 -n} \quad \text{mit } x\in\mathbb{R} $$
-Die Nenner der beiden Brüche fallen weg, doch ich habe sie hier da gelassen, damit man sieht, dass 
+Die Nenner der beiden Brüche fallen weg, doch ich habe sie hier dagelassen, damit man sieht, dass 
 die Steigung beispielsweise der Differenzenquotient zweier Punkte ist. 
 \\ 
 Um auch sicherzustellen, dass meine resultierende Funktion wirklich stetig ist, habe ich es bewiesen. 
 Da man es bei einem Punkt jeweils von zwei Seiten zeigen muss, dass die Funktion dort stetig ist, habe ich die 
 Stetigkeit auf zwei Arten bewiesen. Einmal über das Epsilon-Delta-Kriterium und einmal über die Folgenstetigkeit. 
-Die Beweise findet man beide im Anhang (LÜCKE). Da ich die Funktion $a(x)$ bestehend aus den Daten und der Funktionen folge $g_n$ 
+Die Beweise findet man beide im Anhang (LÜCKE). Da ich die Funktion $a(x)$ bestehend aus den Daten und der Funktionenfolge $g_n$ 
 aber noch mit dem Faktor $e^{-i\omega x}$ multiplizieren muss, habe ich dazu noch bewiesen, dass dieser Ausdruck stetig ist. 
 Dazu musste ich nur beweisen, dass das Produkt aus zwei stetigen Funktionen auch stetig ist. Denn es gibt einen 
-Satz aus der komplexen Analysis, welcher besagt, dass eine Komplexe Funktion genau dann stetig ist, 
+Satz aus der komplexen Analysis, welcher besagt, dass eine komplexe Funktion genau dann stetig ist, 
 wenn ihre Real- und Imaginärteile stetig sind. Und da der Sinus und Kosinus stetige Funktionen sind, 
-ist lediglich zu zeigen, dass das Produkt zweier stetiger Funktionen stetig ist (Anhang LÜCKE). Bedeutet man könnte 
+ist lediglich zu zeigen, dass das Produkt zweier stetiger Funktionen stetig ist (Anhang LÜCKE). Bedeutet: Man könnte 
 theoretisch mit einem Stift die Funktion nachzeichnen, ohne diesen abzusetzen. 
 \\ \\
 Anschließend müsste man noch beweisen, dass man die Funktion $a(x)\cdot e^{-i\omega x}$ auf die gleiche Weise 
-fortsetzen kann wie $a(x)$, un so die Funktion $z(x)$ zu erhalten. Das habe ich hier, aber nicht gemacht, da der 
+fortsetzen kann wie $a(x)$, um so die Funktion $z(x)$ zu erhalten. Das habe ich hier, aber nicht gemacht, da der 
 Beweis sehr ähnlich zum Stetigkeitsbeweis zuvor ist. Anschließend bleibt noch die tatsächliche Fläche, also das 
 Integral, der neu gebildeten Funktion $z(x)$ zu berechnen. Dazu habe ich zunächst gezeigt, dass die Funktion $z(x)$, eine 
 Zusammensetzung aus $a(x)$ und $e^{-i\omega x}$, eine Regelfunktion ist und so auch integrierbar ist (Anhang, Eigene 
-Beweise, Theorem 9.5). Die Berechnung des Integrals von $z(x)$ bin ich wiefolgt angegangen:
+Beweise, Theorem 9.5). Die Berechnung des Integrals von $z(x)$ bin ich wie folgt angegangen:
 
 \begin{align*}
 & \int_{-\infty}^\infty{f(x)e^{-i\omega x} dx} \approx \int_{-\infty}^\infty{z(x) dx}\\ 
@@ -682,18 +713,18 @@ Beweise, Theorem 9.5). Die Berechnung des Integrals von $z(x)$ bin ich wiefolgt 
 & =\frac{1}{2} \cdot\left(f(0) \cdot e^{-i \omega 0}+f(N) \cdot e^{-i \omega N}\right)+\sum_{j=1}^{N-1} f(j) \cdot e^{-i \omega j} \\
 \end{align*}
 Um das $\omega$ noch aufzulösen, fand ich den Weg über die physikalischen Formeln hilfreich, um eine 
-modelhafte Vorstellung der Mathematik zu haben, und so die Brücke zu den Frequenzen zu finden. In der Mathematik 
-bestimmt man die Periodenlänge über $p = \frac{2\pi}{b}$, mit b als die gewünschte Länge der Streckung. In der Physik 
+modellhafte Vorstellung der Mathematik zu haben, und so die Brücke zu den Frequenzen zu finden. In der Mathematik 
+bestimmt man die Periodenlänge über $p = \frac{2\pi}{b}$, mit b als der gewünschten Länge der Streckung. In der Physik 
 berechnet man die Winkelgeschwindigkeit so: $\omega = \frac{2\pi}{T}$, mit T als Zeit für eine Periode einer Schwingung. 
-Wie man sieht sind beide Formeln sehr ähnlich, da die physikalische auch von der Mathematik abhängt. Deshalb 
-habe ich vereinfacht mit der physikalischen Formel für ein einfacheres Verständnis gearbeitet. Und in der Physik 
+Wie man sieht, sind beide Formeln sehr ähnlich, da die physikalische auch von der Mathematik abhängt. Darum habe ich zur Vereinfachung 
+auf die physikalische Formel zurückgegriffen, um die Verständlichkeit zu erhöhen. Und in der Physik 
 gilt auch, dass $\omega = 2\pi f$ ist, da $T = \frac{1}{f}$ gilt. Diese Formel habe ich nun für $\omega$ eingesetzt, 
 um näher an die Frequenz zu kommen:
 \begin{align*}
 & =\frac{1}{2} \cdot\left(f(0) \cdot e^{-i 2 \pi f 0}+f(N) \cdot e^{-i 2 \pi f N}\right)+\sum_{j=1}^{N-1} f(j) \cdot e^{-i 2 \pi f j} \\
 \end{align*}
 Um jetzt die Frequenz $f$ aufzulösen, habe ich mein Modell weiterverwendet. In der Physik gilt: 
-$f = \frac{n}{t}$ mit n als Anzahl der Perioden und t als die vergangene Zeit. Jetzt wieder die Umwandlung 
+$f = \frac{n}{t}$ mit $n$ als Anzahl der Perioden und $t$ als die vergangene Zeit. Jetzt wieder die Umwandlung 
 zurück in den mathematischen Kontext. Die Zeit ist in der Mathematik die Länge gewesen, also gilt $t \widehat{=} N$
 und die Anzahl der Perioden bestimmt in diesem Fall nicht n, sondern die Variable k, welche schlussendlich 
 die Frequenz bestimmt. Daraus folgt: 
@@ -710,7 +741,7 @@ mein Ergebnis für meine DFT. Mein Ergebnis lässt sich auch wie folgt umstellen
 \end{align*}
 Somit ist die tatsächliche Formel der DFT enthalten und der Unterschied zwischen meiner Formel und der tatsächlichen DFT 
 ist lediglich der Summand $\frac{1}{2} \cdot\left(f(N) \cdot e^{-i 2 \pi k}-f(0)\right)$. Der Unterschied kommt daher, dass die 
-tatsächliche DFT die Berechnung über die gleiche Approximation, wie die aus der ersten Graphik des Abschnitts, führt. In meinem 
+tatsächliche DFT die Berechnung über die gleiche Approximation, wie die aus der ersten Grafik des Abschnitts, führt. In meinem 
 Programm habe ich schließlich meine DFT wie folgt implementiert:
 \\\\
 \begin{lstlisting}[style=mystyle, language=C++, caption={Diskrete Fouriertransformation}]
@@ -736,17 +767,17 @@ std::complex<float>* FourierTransform::discreteFourierTransform
 
 
 In meinem Code entspricht die Liste audioFunction der Funktion $f(x)$, also meinen Datenpunkten. resultFunction ist dabei 
-die Ergebnisfunktion. Mit der ersten for-Schleife durchlaufe ich alle Frequenzen die berechenbar sind. 
+die Ergebnisfunktion. Mit der ersten for-Schleife durchlaufe ich alle Frequenzen, die berechenbar sind. 
 Innerhalb dieser Schleife erkennt man die eigentliche Formel, welche ich hergeleitet habe. Die zweite 
 und dritte Zeile in der ersten for-Schleife ist dabei die Berechnung des Vorsummanden, während die zweite 
 for-Schleife innerhalb der for-Schleife den Ausdruck $\sum_{j=0}^{N-1} f(j) \cdot e^{-i 2 \pi \frac{k}{N} j}$ 
-berechnet. Mit den zwei inneinander geschachtelten for-Schleifen, welche beide von $0$ bis $N-1$ laufen, 
-erkennt man ein weiteres mal, warum die Laufzeit dieser Berechnung $O(N^2)$ beträgt.  
+berechnet. Mit den zwei ineinandergeschachtelten for-Schleifen, welche beide von $0$ bis $N-1$ laufen, 
+erkennt man ein weiteres Mal, warum die Laufzeit dieser Berechnung $O(N^2)$ beträgt.  
 
 \subsection{Erweiterung auf die FFT}
 Nach der praktischen Umsetzung der diskreten Fouriertransformation in meinem Programm zeigte sich, dass diese Methode 
 sehr rechenintensiv ist. So benötigte die Transformation einer lediglich 30 Sekunden langen Audiodatei bereits mehrere 
-Minuten. Dieses Effizienzproblem war der Anlass, mich mit der Fast Fourier Transformation (FFT) zu beschäftigen, die dasselbe 
+Minuten. Dieses Effizienzproblem war der Anlass, mich mit der Fast-Fourier-Transformation (FFT) zu beschäftigen, die dasselbe 
 Ergebnis deutlich schneller berechnen kann. Für die Implementierung der FFT in meinem Programm habe ich die Formel der diskreten 
 Fouriertransformation entsprechend der Idee von Cooley und Tukey in gerade und ungerade Indizes aufgespalten. Dies geschah 
 folgendermaßen:
@@ -769,7 +800,7 @@ verwenden, die jeweils nur halb so groß wie die ursprüngliche Liste sind. So w
 \]
 \\
 Setzt man für $\omega$ die bekannte Beziehung $\omega=\tfrac{2\pi k}{N}$ ein, so erhält man genau die Darstellung der 
-Fouriertransformierten, wie sie in der Implementierung der FFT in meinem Programm vorkommt.
+Fourier-Transformation, wie sie in der Implementierung der FFT in meinem Programm vorkommt.
 
 \[
 \sum_{j=0}^{N-1}{f(j)\cdot e^{-i \frac{2\pi k}{N} j}} = e^{-i \frac{2\pi k}{N}} \sum_{j=0}^{N_{\text{Neu}}-1}{f_{\text{ungerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}} + \sum_{j=0}^{N_{Neu}-1}{f_{\text{gerade}}(j)\cdot e^{-i \frac{2\pi k}{N_{\text{neu}}} j}}
@@ -862,7 +893,7 @@ for tree={
 \end{forest}
 \\\\
 Die rot markierte Zeile (Zeile 30) ist dabei ein Zusatz zu der Formel des Programms. Denn beim Erstellen des Codes, 
-fiel mir erst auf, dass ich um alle Frequenzen abzudecken eine mathematische Ergänzung brauche, da meine neuen Listen 
+fiel mir erst auf, dass ich, um alle Frequenzen abzudecken, eine mathematische Ergänzung brauche, da meine neuen Listen 
 nur die Hälfte der Frequenzen abdeckten. Wenn man also größere Frequenzen als $\frac{N}{2}$ einsetzen möchte, so ändert 
 sich die Formel. 
 
@@ -886,9 +917,9 @@ ein aus vielen sehr einfachen Berechnungen aufgebaut ist, passt sie nicht perfek
 eignet sich hier die GPU (Graphics Processing Unit) besser. Diese ist wurde ursprünglich für die Bildverarbeitung innerhalb eines Computers entwickelt. 
 Zwar kann eine GPU einzelne Operationen langsamer ausführen als eine CPU, doch durch die große Anzahl an Rechenkernen kann 
 sie eine Vielzahl einfacher Berechnungen parallel abarbeiten. Dadurch passt die GPU perfekt, um schnelle Fouriertransformationen mit großen Daten 
-zu berechnen, weil viele einfache Berechnungen notwendig sind. Deswegen war es mein Ziel diesen Algorithmus auf die GPU zu 
+zu berechnen, weil viele einfache Berechnungen notwendig sind. Deswegen war es mein Ziel, diesen Algorithmus auf die GPU zu 
 übertragen. Aber damit meine FFT überhaupt auf die GPU übertragbar ist, darf sie nicht rekursiv sein. Bedeutet die Methode, 
-welche die Transformation durchführt darf sich nicht selbst aufrufen. 
+welche die Transformation durchführt, darf sich nicht selbst aufrufen. 
 
 Um den Algorithmus also in eine iterative, also in eine sich wiederholende, Form zu bringen, habe ich mich am, durch die 
 FFT entstehenden, Baum orientiert:
@@ -946,13 +977,13 @@ dadurch die Reihenfolge der ursprünglichen Liste, im Beispiel mit den Indizes v
 herzustellen, habe ich die Indizes in Binärzahlen umgewandelt und anschließend die Ziffern von der Mitte aus gespiegelt.
 \\\\
 Durch die iterative Implementierung der FFT ist der Algorithmus nun auf die GPU übertragbar. Dazu musste ich lediglich den Quellcode 
-der iterativen Variante der schnellen Fouriertransformation so anpassen, dass er GPU-kompatibel ist. Um die Parallelität der GPU 
+der iterativen Variante der schnellen Fouriertransformation so anpassen, dass der Code GPU-kompatibel ist. Um die Parallelität der GPU 
 auszunutzen, habe ich sowohl die einzelnen Pakete als auch die Berechnungen innerhalb der Pakete auf Threads verteilt. Ein Thread ist 
 in diesem Zusammenhang ein Strang von Anweisungen, der einen Teil der Gesamtrechnung übernimmt. Je nach Alter und Leistungsfähigkeit 
 einer GPU können so gleichzeitig zwischen einigen tausend und über hunderttausend Threads ausgeführt werden.
 \\\\
 Als letzter wichtiger Schritt folgt die Überprüfung der Richtigkeit meiner Algorithmen. Diese habe ich auf zwei Arten durchgeführt.
-Zum einen habe ich die Ausgaben der drei von mir implementierten Varianten der schnellen Fouriertransformation graphisch miteinander 
+Zum einen habe ich die Ausgaben der drei von mir implementierten Varianten der schnellen Fouriertransformation grafisch miteinander 
 verglichen. Dabei zeigte sich, dass alle Versionen identische Ergebnisse lieferten. Zusätzlich habe ich diese Resultate mit denen der 
 FFTW-Bibliothek, einer am MIT entwickelten Fouriertransformation, verglichen. Auch hier ergaben sich keinerlei 
 Abweichungen.
@@ -963,10 +994,10 @@ Daher ist davon auszugehen, dass die Ergebnisse meiner Algorithmen korrekt sind.
 
 \subsection{Vergleich der implementierten FFT-Varianten}
 Um zu sehen, ob meine neue Ausführung der schnellen Fouriertransformation schneller ist als die vorherigen, habe ich all meine FFT 
-Algorithmen zeitlich verglichen. Hierzu habe ich an Stelle des Audiosignals eine Sinuskurve mit einer Abtastrate von 44800 verwendet. 
-Somit entsprechen 44800 Sinuswerte ungefähr der Anzahl an Werten, welche ein übliche CD pro Sekunde aufnehmen kann. Die Ergebnisse der 
+Algorithmen zeitlich verglichen. Hierzu habe ich anstelle des Audiosignals eine Sinuskurve mit einer Abtastrate von 44800 verwendet. 
+Somit entsprechen 44800 Sinuswerte ungefähr der Anzahl an Werten, welche eine übliche CD pro Sekunde aufnehmen kann. Die Ergebnisse der 
 Messungen habe ich in einem Graphen visualisiert. Die X-Achse entspricht dabei der Menge an Daten, angegeben in Sekunden. Die Y-Achse 
-gibt an wie lange der jeweilige FFT-Algorithmus gebraucht hat. 
+gibt an, wie lange der jeweilige FFT-Algorithmus gebraucht hat. 
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -1068,10 +1099,10 @@ Betrachtet man kleinere Datensätze, erkennt man den Unterschied noch etwas gena
 \end{figure}
 
 Hier sieht man, dass für die ersten 30 Millisekunden die GPU etwas langsamer als die CPU bei der Berechnung der FFT ist. 
-Aber pro Sprung wird die GPU effizienter als die CPU, weil mehr Berechnungen durchgeführt werden. Als letztes habe ich mir 
+Aber pro Sprung wird die GPU effizienter als die CPU, weil mehr Berechnungen durchgeführt werden. Als Letztes habe ich mir 
 noch angeschaut, wie es bei FFT-Algorithmen aussieht, welche optimiert sind, um schnell zu sein. Dabei habe ich eine FFT 
-vom MIT (FFTW), welche auf der CPU läuft und eine FFT von NVIDIA (cuFFT), welche über die GPU funktioniert verglichen. Es ist schwierig 
-hier wirklich konkrete Schlüsse zu ziehen, da beide Fouriertransformationen erheblich komplexer programmiert sind als meine,
+vom MIT (FFTW), welche auf der CPU läuft, und eine FFT von NVIDIA (cuFFT), welche über die GPU funktioniert, verglichen. Es ist hier
+jedoch schwierig für mich, wirklich konkrete Schlüsse zu ziehen, da beide Fouriertransformationen erheblich komplexer programmiert sind als meine,
 aber man kann erkennen, dass die GPU Variante für größere Datenmengen etwas konstanter verläuft.
 
 \begin{figure}[H]
@@ -1105,12 +1136,12 @@ aber man kann erkennen, dass die GPU Variante für größere Datenmengen etwas k
 \end{figure}
 
 \section{Mehrdimensionale FFTs und die Anwendung an einem Röntgenbild}
-\subsection{Die Mehrdimensionale Fouriertransformation}
-Bis jetzt habe ich die Fouriertransformation nur im eindimensionalen Raum betrachtet. Bedeutet ich habe eine nur aufeinanderfolgende Werte, 
+\subsection{Die mehrdimensionale Fouriertransformation}
+Bis jetzt habe ich die Fouriertransformation nur im eindimensionalen Raum betrachtet. Bedeutet: Ich habe eine nur aufeinanderfolgende Werte, 
 wobei die Werte bis jetzt ausschließlich Zahlen sind. Man kann das Ganze aber auch erweitern, indem man aus zwei Zahlen einen Wert für die 
-Funktion bildet. Das kann prinzipiell unendlich weiter führen. Am Ende hat man pro Wert, welchen die Fouriertransformation bekommt, N Zahlen.
-Dieses N gibt dabei die Anzahl der Dimensionen an. Aber die jetztige Formel der Fouriertranformation reicht nur für die Dimension 1 aus. Die 
-Erweiterung auf N Dimensionen sieht wie folgt aus. 
+Funktion bildet. Das kann prinzipiell unendlich weitergeführt werden. Am Ende hat man pro Wert, welchen die Fouriertransformation bekommt, N Zahlen.
+Dieses N gibt dabei die Anzahl der Dimensionen an. Aber die jetzige Formel der Fourier-Transformation reicht nur für die erste Dimension aus. Die 
+Erweiterung auf N Dimensionen sieht wie folgt aus: 
 
 $$F(\mathbf{k}) = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} {f(\mathbf{x}) \, e^{-i2\pi \mathbf{k} \cdot \mathbf{x}} \mathbf{dx}} \quad \text{mit } f:\mathbb{R}^n \to \mathbb{R}$$
 \begin{itemize}
@@ -1120,18 +1151,18 @@ $$F(\mathbf{k}) = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} {f(\mat
   \item $\mathbf{dx}$ steht dabei für $dx_1, dx_2, ..., dx_N$
 \end{itemize}
 
-Man sieht die Formel hat Ähnlichkeit, mit der der eindimensionalen Fouriertransformation. Die größten Änderungen sind nur, dass man über alle 
+Man erkennt: Die Formel hat Ähnlichkeit, mit der der eindimensionalen Fouriertransformation. Die größten Änderungen sind nur, dass man über alle 
 Dimensionen integriert und dass alle Variablen zu Vektoren werden. Als Ergebnis, erhält man eine Funktion mit N Dimensionen. Für die folgende 
-Anwendung ist der Fall mit 2 Dimensionen wichtig, da ich die Fouriertransformation auf ein Bild anwende. Wenn ich die 2D Fouriertransformation 
-auf ein Bild anwende, so erhalte ich als Ergebnis eine 2D Funktion, also wieder ein Bild. Wenn man nun das Bild in einem Koordinatensystem betrachtet,
+Anwendung ist der Fall mit 2 Dimensionen wichtig, da ich die Fouriertransformation auf ein Bild anwende. Wenn ich die 2D-Fouriertransformation 
+auf ein Bild anwende, so erhalte ich als Ergebnis eine 2D-Funktion, also wieder ein Bild. Wenn man nun das Bild in einem Koordinatensystem betrachtet,
 dann sind an der X-Achse, also der Breite des Bildes, die Frequenzen für eine horizontale Welle angetragen. Je weiter rechts man sich im Bild befindet,
-desto größer ist die horizontale Frequenz. Die Höhe macht das gleiche, bloß für vertikale Wellen. Die Mitte bildet dabei den Ursprung, hier sind beide 
-Frequenzen 0. Durch die Kombination der beiden Achsen kann man Wellen in allen Richtungen, abhängig von den Frequenzen erkennen. Der Wert der 
-Fouriertransformation an der Stelle $(x\,|\,y)$ gibt an wie Dominat diese Frequenz in dem Bild ist. 
-\subsection{Das Moiré Muster}
-Am besten wird die 2D Variante der Fouriertransformation an einem Beispiel klar. Hierzu nehme ich ein Moiré Muster her. Der Moiré-Effekt, welcher 
+desto größer ist die horizontale Frequenz. Die Höhe macht das Gleiche, aber stattdessen für vertikale Wellen. Die Mitte bildet dabei den Ursprung, hier sind beide 
+Frequenzen 0. Durch die Kombination der beiden Achsen kann man Wellen in allen Richtungen, abhängig von den Frequenzen, erkennen. Der Wert der 
+Fourier-Transformation an der Stelle $(x\,|\,y)$ gibt, an wie dominant diese Frequenz in dem Bild ist. 
+\subsection{Das Moiré-Muster}
+Am besten wird die 2D-Variante der Fourier-Transformation an einem Beispiel klar. Hierzu nehme ich ein Moiré-Muster her. Der Moiré-Effekt, welcher 
 das Muster erzeugt ist dabei ein optischer Effekt, bei dem durch Überlagerung von regelmäßigen Rastern ein wiederum periodisches Raster entsteht.
-Um die einzelnen Perioden zu erkennen, hilft hier dann auch die 2D Fouriertransformation.
+Um die einzelnen Perioden zu erkennen, hilft hier dann auch die 2D-Fouriertransformation.
 
 \begin{figure}[H]
   \centering
@@ -1150,10 +1181,10 @@ Um die einzelnen Perioden zu erkennen, hilft hier dann auch die 2D Fouriertransf
   \end{minipage}
 \end{figure}
 
-Das rechte Bild ist ein Moiré Muster und das linke die dazugehörige Fouriertransformation. Den Werten der Funktion der Fouriertransformation, werden 
-je nach Größe Farben zwischen schwarz und weiß zugeordnet. Dementsprechend sind die weißen Kreuze, die im Moiré-Muster dominanten Frequenzen. 
+Das rechte Bild ist ein Moiré-Muster und das linke die dazugehörige Fouriertransformation. Den Werten der Funktion der Fouriertransformation, werden 
+je nach Größe Farben zwischen Schwarz und Weiß zugeordnet. Dementsprechend sind die weißen Kreuze, die im Moiré-Muster dominanten Frequenzen. 
 \\\\
-In der Praxis entstehen Moiré Muster zum Beispiel bei Röntgengeräten, genauer bei dessen Detektor. Denn bei vielen Röntgengeräten wird vor dem Detektor 
+In der Praxis entstehen Moiré-Muster zum Beispiel bei Röntgengeräten, genauer bei deren Detektor. Denn bei vielen Röntgengeräten wird vor dem Detektor 
 ein Streustrahlenraster angebracht, um den Einfall von Streustrahlen, welche zum Beispiel durch menschliche Knochen entstehen können, zu reduzieren. 
 Da das Streustrahlenraster die Wirkung eines zweidimensionalen Gitters hat, müssen die Detektoren perfekt auf die Raster abgestimmt sein, sodass jeder 
 Aufnahmepunkt die gleiche Dosis erhält. In der Realität sieht das Bauteil mit dem Detektor so aus:
@@ -1168,7 +1199,7 @@ Aufnahmepunkt die gleiche Dosis erhält. In der Realität sieht das Bauteil mit 
     \caption{Streustrahlenraster \quad \quad \quad \quad \quad \quad  Detektor mit Streustrahlenrastern (unten)}
 \end{figure}
 
-Stark vereinfacht kann man das im Modell wiefolgt skizzieren:
+Stark vereinfacht kann man das im Modell wie folgt skizzieren:
 \\\\
 \noindent
 \begin{figure}[ht]
@@ -1245,14 +1276,14 @@ Dadurch können Moiré Muster entstehen. Stark vereinfacht kann man sich das so 
 \end{figure}
 
 
-\subsection{Entwicklung einer eigenen 2D FFT mit Python}
-Bevor man Moiré Muster und andere Bilder analysieren kann, benötigt man die Erweiterung hin zur zweidimensionalen Fouriertransformation. Hierzu 
+\subsection{Entwicklung einer eigenen 2D-FFT mit Python}
+Bevor man Moiré-Muster und andere Bilder analysieren kann, benötigt man die Erweiterung hin zur zweidimensionalen Fouriertransformation. Hierzu 
 habe ich mir die Formel der mehrdimensionalen Fouriertransformation für zwei Dimensionen angeschaut. 
 \[
 F(\mathbf{\omega}) = \iint\limits_{\mathbb{R}^2} f(\mathbf{x}) \, e^{-i2\pi \mathbf{\omega} \cdot \mathbf{x}} \,\mathbf{dx}
 \Leftrightarrow F(\omega_x, \omega_y) = \iint\limits_{\mathbb{R}^2} f(x, y) \, e^{-i2\pi (x \omega_x + y \omega_y)} \, dx \, dy
 \]
-Multipliziert man im Exponenten aus und vereinfacht so erhält man 
+Multipliziert man im Exponenten aus und vereinfacht, so erhält man 
 \[
 F(\omega_x, \omega_y) = \iint\limits_{\mathbb{R}^2} f(x, y) \, e^{-i2\pi x \omega_x} \, e^{-i2\pi y \omega_y} \, dx \, dy
 \]
@@ -1271,9 +1302,9 @@ F_{k_x, k_y} = \sum_{y=0}^{N-1} {e^{-i2\pi \frac{k_y}{N} y} \sum_{x=0}^{M-1}{f_{
 \]
 Schaut man sich jetzt die Summe genauer an, zum Beispiel was bei der Iteration $y=0$ passiert, so stellt man fest, dass $f(x,0)$ eine eindimensionale Funktion 
 wird. Mit der Kenntnis der Formel der DFT ($X_k = \sum_{j = 0}^{N-1}{x_n e^{-i2\pi \frac{kj}{N}}}$), bemerkt man, dass die innere Summe hier genau dieser Formel 
-entspricht. Andersherum verhält es sich genauso. Nimmt man beispielsweiße $x=0$, dann wird die zweite Summe zu einer Liste mit einem Faktor und man kann über y 
+entspricht. Andersherum verhält es sich genauso. Nimmt man beispielsweise $x=0$, dann wird die zweite Summe zu einer Liste mit einem Faktor und man kann über y 
 die Formel der DFT anwenden. Deshalb habe ich zunächst die eindimensionale FFT auf alle entstehenden Folgen an Werten für jedes y angewendet. Auf das Ergebnis 
-davon habe ich anschließend die FFT für jedes x angewendet. Somit habe ich die 2D FFT mithilfe von meiner schon bestehenden FFT programmieren können. So sieht 
+davon habe ich anschließend die FFT für jedes x angewendet. Somit habe ich die 2D-FFT mithilfe meiner schon bestehenden FFT programmieren können. So sieht 
 der dazugehörige Quellcode in Python aus.
 \\\\
 \begin{lstlisting}[style=pythonstyle]
@@ -1295,13 +1326,13 @@ def do2DFFT(self):
     return self.result
 \end{lstlisting}
 
-Die ersten Zeilen der Funktion, die meine zweidimensionale FFT ausführt, sind nur dazu da das Bild mit Nullen aufzufüllen, damit sowohl 
-die Breite als auch die Höhe eine Potenz von 2 ist. Denn das ist die Vorraussetzung um eien FFT anzuwenden. In Zeile 10 bis 14 ist die eigentliche Formel, wie ich sie 
+Die ersten Zeilen der Funktion, die meine zweidimensionale FFT ausführt, sind nur dazu da, das Bild mit Nullen aufzufüllen, damit sowohl 
+die Breite als auch die Höhe eine Potenz von 2 ist. Denn das ist die Voraussetzung, um eine FFT anzuwenden. In den Zeilen 10 bis 14 ist die eigentliche Formel, wie ich sie 
 hergeleitet habe, als Programm geschrieben.  
 
 \subsection{Filterung von Moiré-Mustern in Röntgenaufnahmen}
 Wie zuvor erwähnt, können Moiré Muster bei Röntgenbildern auftreten, wenn Streustrahlenraster und Detektor nicht gut aufeinander abgestimmt sind. Ein Beispiel 
-dafür ist das kommende Röntgenbild. Zunächst sieht das Bild normal aus, aber wenn man hineinzoomt kommt das Moiré Muster, in Form von regelmäßigen Streifen von 
+dafür ist das kommende Röntgenbild. Zunächst sieht das Bild normal aus, aber wenn man hineinzoomt, kommt das Moiré-Muster, in Form von regelmäßigen Streifen von 
 unten links nach oben rechts, zum Vorschein. 
 
 \begin{figure}[H]
@@ -1321,15 +1352,15 @@ unten links nach oben rechts, zum Vorschein.
   \end{minipage}
 \end{figure}
 
-Mit den Moiré Muster, also den Strichen im Bild, ist dieses Röntgenbild für einen Arzt nicht zu gebrauchen. Da die Streifen in gleichmäßigen Abständen wiederkehren,
-ist die Fouriertransformation eine gute Möglichkeit diese Streifen vom restlichen Bild herauszulösen. Deshalb habe ich meine zweidimensionale FFT auf dieses Bild angewendet. 
+Mit dem Moiré-Muster, also den Strichen im Bild, ist dieses Röntgenbild für einen Arzt nicht zu gebrauchen. Da die Streifen in gleichmäßigen Abständen wiederkehren,
+ist die Fouriertransformation eine gute Möglichkeit, diese Streifen vom restlichen Bild herauszulösen. Deshalb habe ich meine zweidimensionale FFT auf dieses Bild angewendet. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{Bilder/fft_original.png}
 \end{figure}
 
-Die Fouriertransformation sieht vorerst ungefähr so aus wie man sie erwarten würde. In der Mitte das Kreuz, was daran liegt, dass die Frequenzachsen in der jeweiligen Mitte 
+Die Fourier-Transformation sieht vorerst ungefähr so aus, wie man sie erwarten würde. In der Mitte das Kreuz, was daran liegt, dass die Frequenzachsen in der jeweiligen Mitte 
 des Bildes verlaufen. Dazu ein Farbverlauf von der Mitte ausgehend, welcher zeigt, dass das Bild vermehrt aus kleinen Frequenzen aufgebaut ist. Jedoch stechen zwei 
 helle Punkte ungefähr bei den Koordinaten $\left(350 \vert 450\right)$ und $\left(1050 \vert 900\right)$ heraus, welche zueinander punktsymmetrisch bezüglich des Ursprungs sind. 
 

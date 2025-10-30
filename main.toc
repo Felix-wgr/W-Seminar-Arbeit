@@ -1,26 +1,23 @@
 \babel@toc {german}{}\relax 
-\contentsline {section}{\numberline {1}Abstract}{2}{}%
-\contentsline {section}{\numberline {2}Einleitung}{2}{}%
-\contentsline {subsection}{\numberline {2.1}Motivation}{2}{}%
-\contentsline {subsection}{\numberline {2.2}Zielsetzung der Arbeit}{3}{}%
-\contentsline {subsection}{\numberline {2.3}Aufbau der Arbeit}{3}{}%
-\contentsline {section}{\numberline {3}Mathematische Grundlagen}{3}{}%
-\contentsline {subsection}{\numberline {3.1}Komplexe Zahlen und die Eulerformel}{3}{}%
-\contentsline {subsection}{\numberline {3.2}Das Skalarprodukt von Funktionen und Orthonormalsysteme}{4}{}%
+\contentsline {section}{\numberline {1}Abstract}{3}{}%
+\contentsline {section}{\numberline {2}Einleitung}{3}{}%
+\contentsline {section}{\numberline {3}Mathematische Grundlagen der Fourier-Transformation}{3}{}%
+\contentsline {subsection}{\numberline {3.1}Komplexe Zahlen und die Eulerformel}{4}{}%
+\contentsline {subsection}{\numberline {3.2}Das Skalarprodukt von Funktionen und Orthonormalsysteme}{5}{}%
 \contentsline {subsection}{\numberline {3.3}Die Fourierreihe}{5}{}%
-\contentsline {subsection}{\numberline {3.4}Von der Fourierreihe zur Fouriertranformation}{7}{}%
-\contentsline {subsection}{\numberline {3.5}Die Foureirtransformation in der Praxis: Die DFT}{8}{}%
-\contentsline {subsection}{\numberline {3.6}Die Foureirtransformation in der Praxis: Die FFT}{8}{}%
-\contentsline {section}{\numberline {4}Von der Theorie zu Praxis: Eigenentwicklung eines Audioanalyzers mit C++}{10}{}%
-\contentsline {subsection}{\numberline {4.1}Eigenständige Herleitung der DFT}{10}{}%
-\contentsline {subsection}{\numberline {4.2}Erweiterung auf die FFT}{14}{}%
-\contentsline {subsection}{\numberline {4.3}Implementierung der FFT auf der GPU}{17}{}%
+\contentsline {subsection}{\numberline {3.4}Von der Fourierreihe zur Fouriertransformation}{7}{}%
+\contentsline {subsection}{\numberline {3.5}Die Fouriertransformation in der Praxis: Die DFT}{8}{}%
+\contentsline {subsection}{\numberline {3.6}Die Fouriertransformation in der Praxis: Die FFT}{9}{}%
+\contentsline {section}{\numberline {4}Von der Theorie zur Praxis: Eigenentwicklung eines Audioanalyzers mit C++}{10}{}%
+\contentsline {subsection}{\numberline {4.1}Eigenständige Herleitung der DFT}{11}{}%
+\contentsline {subsection}{\numberline {4.2}Erweiterung auf die FFT}{15}{}%
+\contentsline {subsection}{\numberline {4.3}Implementierung der FFT auf der GPU}{18}{}%
 \contentsline {subsection}{\numberline {4.4}Vergleich der implementierten FFT-Varianten}{19}{}%
-\contentsline {section}{\numberline {5}Mehrdimensionale FFTs und die Anwendung an einem Röntgenbild}{21}{}%
-\contentsline {subsection}{\numberline {5.1}Die Mehrdimensionale Fouriertransformation}{21}{}%
-\contentsline {subsection}{\numberline {5.2}Das Moiré Muster}{22}{}%
-\contentsline {subsection}{\numberline {5.3}Entwicklung einer eigenen 2D FFT mit Python}{23}{}%
+\contentsline {section}{\numberline {5}Mehrdimensionale FFTs und die Anwendung an einem Röntgenbild}{22}{}%
+\contentsline {subsection}{\numberline {5.1}Die mehrdimensionale Fouriertransformation}{22}{}%
+\contentsline {subsection}{\numberline {5.2}Das Moiré-Muster}{22}{}%
+\contentsline {subsection}{\numberline {5.3}Entwicklung einer eigenen 2D-FFT mit Python}{24}{}%
 \contentsline {subsection}{\numberline {5.4}Filterung von Moiré-Mustern in Röntgenaufnahmen}{25}{}%
-\contentsline {section}{\numberline {6}Anhang}{27}{}%
-\contentsline {subsection}{\numberline {6.1}Eigene Beweise}{27}{}%
-\contentsline {subsection}{\numberline {6.2}Zusätzliche Quellcode Ausschnitte}{30}{}%
+\contentsline {section}{\numberline {6}Anhang}{28}{}%
+\contentsline {subsection}{\numberline {6.1}Eigene Beweise}{28}{}%
+\contentsline {subsection}{\numberline {6.2}Zusätzliche Quellcode Ausschnitte}{31}{}%
