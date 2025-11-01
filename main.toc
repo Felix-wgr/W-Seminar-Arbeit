@@ -1,23 +1,26 @@
-\babel@toc {german}{}\relax 
+\babel@toc {ngerman}{}\relax 
 \contentsline {section}{\numberline {1}Abstract}{3}{}%
 \contentsline {section}{\numberline {2}Einleitung}{3}{}%
-\contentsline {section}{\numberline {3}Mathematische Grundlagen der Fourier-Transformation}{3}{}%
+\contentsline {section}{\numberline {3}Mathematische Grundlagen der Fourier-Transformation}{4}{}%
 \contentsline {subsection}{\numberline {3.1}Komplexe Zahlen und die Eulerformel}{4}{}%
 \contentsline {subsection}{\numberline {3.2}Das Skalarprodukt von Funktionen und Orthonormalsysteme}{5}{}%
-\contentsline {subsection}{\numberline {3.3}Die Fourierreihe}{5}{}%
-\contentsline {subsection}{\numberline {3.4}Von der Fourierreihe zur Fouriertransformation}{7}{}%
-\contentsline {subsection}{\numberline {3.5}Die Fouriertransformation in der Praxis: Die DFT}{8}{}%
-\contentsline {subsection}{\numberline {3.6}Die Fouriertransformation in der Praxis: Die FFT}{9}{}%
-\contentsline {section}{\numberline {4}Von der Theorie zur Praxis: Eigenentwicklung eines Audioanalyzers mit C++}{10}{}%
-\contentsline {subsection}{\numberline {4.1}Eigenständige Herleitung der DFT}{11}{}%
-\contentsline {subsection}{\numberline {4.2}Erweiterung auf die FFT}{15}{}%
-\contentsline {subsection}{\numberline {4.3}Implementierung der FFT auf der GPU}{18}{}%
-\contentsline {subsection}{\numberline {4.4}Vergleich der implementierten FFT-Varianten}{19}{}%
-\contentsline {section}{\numberline {5}Mehrdimensionale FFTs und die Anwendung an einem Röntgenbild}{22}{}%
-\contentsline {subsection}{\numberline {5.1}Die mehrdimensionale Fouriertransformation}{22}{}%
-\contentsline {subsection}{\numberline {5.2}Das Moiré-Muster}{22}{}%
-\contentsline {subsection}{\numberline {5.3}Entwicklung einer eigenen 2D-FFT mit Python}{24}{}%
-\contentsline {subsection}{\numberline {5.4}Filterung von Moiré-Mustern in Röntgenaufnahmen}{25}{}%
-\contentsline {section}{\numberline {6}Anhang}{28}{}%
-\contentsline {subsection}{\numberline {6.1}Eigene Beweise}{28}{}%
-\contentsline {subsection}{\numberline {6.2}Zusätzliche Quellcode Ausschnitte}{31}{}%
+\contentsline {subsection}{\numberline {3.3}Die Fourierreihe}{6}{}%
+\contentsline {subsection}{\numberline {3.4}Von der Fourierreihe zur Fouriertransformation}{8}{}%
+\contentsline {subsection}{\numberline {3.5}Die Fourier-Transformation in der Praxis: Die DFT}{9}{}%
+\contentsline {subsection}{\numberline {3.6}Die Fourier-Transformation in der Praxis: Die FFT}{9}{}%
+\contentsline {section}{\numberline {4}Von der Theorie zur Praxis: Eigenentwicklung eines Audioanalyzers mit C++}{12}{}%
+\contentsline {subsection}{\numberline {4.1}Eigenständige Herleitung der DFT}{12}{}%
+\contentsline {subsection}{\numberline {4.2}Erweiterung auf die FFT}{16}{}%
+\contentsline {subsection}{\numberline {4.3}Implementierung der FFT auf der GPU}{19}{}%
+\contentsline {subsection}{\numberline {4.4}Vergleich der implementierten FFT-Varianten}{20}{}%
+\contentsline {subsection}{\numberline {4.5}Vergleich einer männlichen und weiblichen menschlichen Stimme mittels meines Programms}{22}{}%
+\contentsline {section}{\numberline {5}Mehrdimensionale FFTs und die Anwendung an einem Röntgenbild}{24}{}%
+\contentsline {subsection}{\numberline {5.1}Die mehrdimensionale Fouriertransformation}{24}{}%
+\contentsline {subsection}{\numberline {5.2}Das Moiré-Muster}{25}{}%
+\contentsline {subsection}{\numberline {5.3}Entwicklung einer eigenen 2D-FFT mit Python}{27}{}%
+\contentsline {subsection}{\numberline {5.4}Filterung von Moiré-Mustern in Röntgenaufnahmen}{28}{}%
+\contentsline {section}{\numberline {6}Schlussbemerkung}{31}{}%
+\contentsline {section}{\numberline {7}Danksagung}{31}{}%
+\contentsline {section}{\numberline {8}Anhang}{31}{}%
+\contentsline {subsection}{\numberline {8.1}Eigene Beweise}{31}{}%
+\contentsline {subsection}{\numberline {8.2}Zusätzliche Quellcode Ausschnitte}{34}{}%

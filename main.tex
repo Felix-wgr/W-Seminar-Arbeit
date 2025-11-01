@@ -3,7 +3,7 @@
 \usepackage{amsmath, amssymb, amsthm, float, pdflscape, graphicx, pgfplots, tikz, forest, xcolor, lstlinebgrd, mdframed}
 \usepackage{lmodern, caption, subcaption, adjustbox} 
 \usepackage[T1]{fontenc}
-\usepackage[german]{babel}  
+\usepackage[ngerman]{babel}  
 \usepackage{csquotes} 
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{marginnote}
@@ -21,7 +21,7 @@
 
 \pgfplotsset{compat=1.18}
 
-\captionsetup[figure]{labelformat=empty}
+% \captionsetup[figure]{labelformat=empty}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -34,6 +34,8 @@
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Bemerkung}
+
+\captionsetup{font=small}
 
 \forestset{
   fft tree/.style={
@@ -201,6 +203,11 @@ Unterschrift des Kursleiters
 \newpage
 
 \section{Abstract}
+Diese Arbeit leitet die Fouriertransformation von den mathematischen Grundlagen (DFT) bis zur optimierten Schnellen 
+Fouriertransformation (FFT) her. Die Theorie wird praktisch umgesetzt durch die Eigenentwicklung eines Audioanalyzers 
+in C++, wobei die Geschwindigkeitsvorteile einer GPU-basierten FFT gegenüber einer CPU-Implementierung demonstriert 
+werden. Abschließend wird das Konzept auf zwei Dimensionen erweitert, um mittels einer 2D-FFT Moiré-Muster als 
+Störfrequenzen in Röntgenbildern erfolgreich zu identifizieren und zu filtern.
 
 \section{Einleitung}
 10.10.1955, Mitten im kalten Krieg, das Datum an welchem der Limited Test Ban Treaty, kurz LTBT, in Kraft trat. Inhalt 
@@ -225,6 +232,7 @@ die Bodenbewegung zwischen einer Atombombe und einem Erdbeben vergleicht, fällt
     % \caption{Zweites Bild}
     \label{fig:bild2}
 \end{subfigure}
+\caption{Seismogramm einer Atomwaffenexplosion (links) und eines Erdbebens (rechts)}
 \label{fig:zwei_bilder}
 \end{figure}
 Es fällt auf, dass die beiden Ereignisse nur durch die Erzeugte Schwingung des Bodens fast nicht zu unterscheiden sind, da 
@@ -260,9 +268,11 @@ Mithilfe von komplexen Zahlen und den Taylorreihen von Sinus, Cosinus und der Ex
  $$e^{ix} = \cos{x} + i\sin{x}$$
 
 Wenn man den Betrag dieses Ausdrucks bildet, so fällt auf, dass hier das Ergebnis, unabhängig von $x$, 1 ist. Dies bedeutet, dass $e^{ix}$ als ein gegen den Uhrzeigersinn rotierender Vektor, für steigende Werte für $x$, gesehen werden kann. Im vorher genannten Koordinatensystem, welches man auch die Gaußsche Zahlenebene nennt, sieht das so aus:
-\begin{center}
+\begin{figure}[H]
+\centering 
 \includegraphics[scale=0.75]{Bilder/eulerformel.jpg}
-\end{center}
+\caption[scale=1]{Eulerformel}
+\end{figure}
 
 \subsection{Das Skalarprodukt von Funktionen und Orthonormalsysteme}
 Des Weiteren spielen Orthonormalsysteme eine große Rolle, wenn man sich mit der Fourier-Analyse beschäftigt. 
@@ -364,10 +374,10 @@ Und setzt die Gleichung auch in die Fourierreihe ein:
 $$\frac{1}{2\pi} \sum_{k=-\infty}^{\infty}{F(\omega_k) e^{i \omega_k x} \Delta \omega}$$
 Dies ist eine Riemann-Summe. Lässt man nun $L \to \infty$ laufen, erhält man ein Integral, welches die inverse Fouriertransformation ist:
 $$\lim_{L\to\infty} {\frac{1}{2\pi}\sum_{n = -\infty}^\infty{F(\omega_k) e^{i \omega_k x}\Delta \omega}} = \frac {1}{2\pi} \int_{-\infty}^{\infty}{F(\omega)e^{i \omega x} d\omega}$$
-Die Funktion $F(\omega)$ selbst ist die Fouriertransformation von $f$:
+Die Funktion $F(\omega)$ selbst ist die Fourier-Transformation von $f$:
 $$F(\omega) = \int_{-\infty}^{\infty}{f(x) e^{-i\omega x} dx}$$
 
-Man kann das Integral in der Fouriertransformation am besten verstehen, wenn man es 
+Man kann das Integral in der Fourier-Transformation am besten verstehen, wenn man es 
 als eine Art Durchschnitt betrachtet. Ähnlich wie beim Berechnen eines Mittelwerts 
 summiert das Integral nicht nur eine endliche Anzahl von Werten auf, sondern unendlich viele, 
 unendlich kleine Beiträge von $f(x)$. Im Integral steht dabei das Produkt $f(x) \cdot e^{-i\omega x}$.
@@ -378,13 +388,21 @@ Dieses Produkt misst, wie stark die Frequenz $\omega$ in $f(x)$ enthalten ist:
     \item Enthält $f(x)$ diese Frequenz nicht, heben sich die positiven und negativen Anteile 
     im Integral weitgehend auf und $F(\omega)$ wird klein.
   \end{itemize}
-So zeigt die Fouriertransformation, wie groß der Anteil jeder einzelnen Frequenz $\omega$ 
+So zeigt die Fourier-Transformation, wie groß der Anteil jeder einzelnen Frequenz $\omega$ 
 in der Funktion $f$ ist.
 
-\subsection{Die Fouriertransformation in der Praxis: Die DFT}
+Verbildlicht, kann eine Fourier-Transformationen so aussehen: 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{Bilder/fourier_vis.jpg}
+\caption{Visualisierung der Fourier-Transformation (links: Ausgangsfunktion, rechts: Fourier-Transformierte)}
+\end{figure}
+
+
+\subsection{Die Fourier-Transformation in der Praxis: Die DFT}
 In der Praxis arbeitet man selten mit kontinuierlichen Funktionen, sondern mit diskreten Messwerten, zum Beispiel bei Audiosignalen oder digitalen Bildern. Um diese Signale in ihre Frequenzanteile zu zerlegen, verwendet man die diskrete Fouriertransformation (DFT).
 Formell lässt sich die DFT für eine endliche Folge von N Messwerten
-$$x_0, x_1,..., x_{N-1}$$
+$$x_0, x_1, ..., x_{N-1}$$
 durch die folgende Formel darstellen:
 $$X_k = \sum_{j = 0}^{N-1}{x_n e^{-i2\pi \frac{kj}{N}}} \quad \text{mit } k\in[0, N-1]$$
 Anzumerken ist aber noch, dass es eine Besonderheit gibt. Wenn das Eingangssignal reell ist, 
@@ -393,7 +411,7 @@ Nyquist-Theorems lediglich Spiegelungen der tieferen Frequenzen und enthalten ke
 Informationen. Warum das so ist, werde ich hier nicht näher eingehen. Wie man die Formel für 
 die DFT herleitet, erkläre ich im nächsten Kapitel.
 
-\subsection{Die Fouriertransformation in der Praxis: Die FFT}
+\subsection{Die Fourier-Transformation in der Praxis: Die FFT}
 Obwohl die DFT so in der Praxis anwendbar ist, ist sie heutzutage in fast keinem Programm oder 
 Algorithmus zu finden. Denn will man eine Funktion oder ein Signal mit $N$ Werten komplett 
 transformieren, so sind für $N$ unterschiedliche Frequenzen jeweils die entsprechenden Werte gemäß der oben angegebenen Formel zu bestimmen. 
@@ -402,8 +420,8 @@ spricht man für den Abschnitt der DFT in einem Programm von einer Laufzeit von 
 
 Im Jahre 1965 entdeckten James W. Cooley und John W. Tukey eine neue Art, die DFT zu berechnen, was die Laufzeit auf $O(N\log N)$ verringerte. 
 Somit konnte man die DFT erheblich schneller berechnen. Daher kommt auch der Name FFT für den neuen Algorithmus, was für Fast Fourier 
-Transform, also schnelle Fouriertransformation, steht. Um die Umformung gut zu sehen, kann man die 
-diskrete Fouriertransformation etwas umschreiben. Dafür definiere ich die Folge $(\omega_n)_{n\in\mathbb{N}}$ 
+Transform, also schnelle Fourier-Transformation, steht. Um die Umformung gut zu sehen, kann man die 
+diskrete Fourier-Transformation etwas umschreiben. Dafür definiere ich die Folge $(\omega_n)_{n\in\mathbb{N}}$ 
 wie folgt:
 $$\omega_n := e^{-2\pi i /n}$$
 Schreibt man jetzt die Werte der Ausgangsfunktion $f$ als Vektor, kann man aufgrund der Struktur 
@@ -532,8 +550,8 @@ $O(N\log N)$ zu kürzen. Die Struktur einer FFT mit 8 Werten, kann man auch so d
                 [\(F_1\cdot f_1\)\\(ungerade)]
                 ]
                 ]
-                ]
-              \end{forest}
+            ]
+\end{forest}
 \\ \\ \\ 
 In meinem Programm, zu welchem ich im nächsten Kapitel komme, mit welchem ich eine Audiospur 
 aufnehme und verarbeite, nutze ich auf meinem Gerät eine Samplerate von 44800. Bedeutet 
@@ -541,7 +559,7 @@ ich nehme pro Sekunde 44800 Datenpunkte auf. Wenn man nun die Laufzeit einer DFT
 grob skizziert, sieht man, dass bei der Verarbeitung eines Signals, mit nur einer Sekunde, bei 
 meinem Programm die DFT mehr als doppelt so lang dauert, wie die FFT.  
 
-\begin{figure}[!h]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}
   \begin{axis}[
@@ -565,7 +583,7 @@ meinem Programm die DFT mehr als doppelt so lang dauert, wie die FFT.
     \addlegendentry{FFT O($N \log_2 N$)}
   \end{axis}
   \end{tikzpicture}
-%\caption{Vergleich der Laufzeit von DFT und FFT für Sample-Größen $N$ bis 44{,}800}
+\caption{Vergleich der Laufzeit von DFT und FFT für Sample-Größen $N$ bis 44{,}800}
 \end{figure}
 
 
@@ -593,7 +611,7 @@ ist. Ein Hauptkriterium, um die Formel zu realisieren, ist, dass die Funktion in
 Natürlich kann man ausgehend von den Punkten viele Rechtecke nutzen und diese als Approximation 
 für die Fläche des Integrals zu benutzen. Das sähe so aus:
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[>=stealth]
 
@@ -624,8 +642,9 @@ für die Fläche des Integrals zu benutzen. Das sähe so aus:
       % Beschriftung Rechteckformel
       \node at (9,-2.3) {\footnotesize Fläche Rechteck: $A = (x_{n+1}-x_n)\,f(n)$};
       
-    \end{tikzpicture}
-  \end{figure}
+\end{tikzpicture}
+\caption{Rechteckapproximation eines Integrals}
+\end{figure}
 Das Bild zeigt, wie man eine gekrümmte Fläche (die Sinuskurve) durch eine Abfolge von Rechtecken 
 annähert. Man benutzt dazu die Funktionswerte an den ganzzahligen Stellen – also so, als würde 
 man die Kurve in kleine Treppenstufen „übersetzen“. 
@@ -636,7 +655,7 @@ die Punkte durch eine jeweilige stetige Fortsetzung zu verbinden und dann das In
 bilden, um die Approximation noch etwas genauer zu gestalten. Meine stetige Fortsetzung besteht aus 
 geraden Linien, welche die Punkte zu einer stetigen Funktion am Ende verbinden. Bei wenigen Punkten 
 wie in meinem Beispiel ist der Unterschied zwischen den zwei Approximationen gut zu erkennen.
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[>=stealth]
   
@@ -675,9 +694,10 @@ wie in meinem Beispiel ist der Unterschied zwischen den zwei Approximationen gut
         % Beschriftung Trapezformel
         \node at (9,-2.3) {\footnotesize Fläche Trapez: $A = \tfrac{1}{2} (x_{n+1}-x_n)\,(f(n)+f(n+1))$};
         
-      \end{tikzpicture}
-    \end{figure}
-\\ \\ \\ \\ \\ \\ \\
+\end{tikzpicture}
+\caption{Trapezapproximation eines Integrals}
+\end{figure}
+% \\ \\ \\ \\ \\ \\ \\
 Die Funktionenfolge, die ich dabei als Fortsetzung für die jeweiligen Punkte genutzt habe, ist folgende:
 $$\left(g_n(x)\right)_{n\in \mathbb{N}_0} = \frac{f(n+1) - f(n)}{n+1 -n } \cdot x + \frac{nf(n+1) - (n+1)f(n)}{n+1 -n} \quad \text{mit } x\in\mathbb{R} $$
 Die Nenner der beiden Brüche fallen weg, doch ich habe sie hier dagelassen, damit man sieht, dass 
@@ -1135,6 +1155,73 @@ aber man kann erkennen, dass die GPU Variante für größere Datenmengen etwas k
   \caption{Vergleich der FFT-Methoden für die zweite Messreihe.}
 \end{figure}
 
+\subsection{Vergleich einer männlichen und weiblichen menschlichen Stimme mittels meines Programms}
+Nachdem die Entwicklung, Implementierung und der Performanzvergleich des Audioanalyzers abgeschlossen sind, folgt nun die praktische Anwendung des 
+Programms. Das fertiggestellte Werkzeug wird nun eingesetzt, um reale Audiosignale – konkret eine männliche und eine weibliche Stimme – zu analysieren. 
+Ziel ist es, die charakteristischen Unterschiede in den Frequenzspektren, die der Audioanalyzer visualisiert, aufzuzeigen und zu vergleichen.
+Dazu wurden zwei Audios durch mein Programm aufgenommen: eine männlichen Stimme und eine weiblichen Stimme, welche beide einen einfachen Text sprechen. 
+Beide Aufnahmen wurden unter ähnlichen Bedingungen durchgeführt, um eine faire Vergleichsbasis zu gewährleisten. Nach der Analyse der Aufnahme, zeigt 
+mein Programm sowohl die Amplituden, also die Lautstärke, zu jedem Zeitpunkt der Aufnahme an, als auch die Frequenzverteilung über die gesamte Aufnahmezeit. 
+Zur Einordnung, ein Audio-Signal hat ungefähr folgende Form: 
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=1\textwidth]{Bilder/Amplituden.png}}
+  \caption{Beispiel eines durch mein Programm visualisiertes Audiosignal}
+\end{figure}
+Dazu muss gesagt werden, dass solche Bilder immer abhängig von der Abtastrate ist, also wie viele Messpunkte pro Sekunde aufgenommen werden. In diesem 
+Fall sind es 44800 Messpunkte pro Sekunde. Dadurch zeigt das Bild einen Bruchteil einer Sekunde, wodurch die einzelnen Sinus- und Kosinuswellen sichtbar 
+werden. 
+\\\\
+Unabhängig davon sind das die Ergebnisser der Fourier-Transformationen der beiden Stimmen:
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=\linewidth]{Bilder/weiblich_10.png}}
+  \caption{Frequenzspektrum einer weiblichen Stimme}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=\linewidth]{Bilder/männlich_10.png}}
+  \caption{Frequenzspektrum einer männlichen Stimme}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+    \node[anchor=south west, inner sep=0] (image) at (0,0) 
+        {\fbox{\includegraphics[width=\textwidth]{Bilder/weiblich_amp.png}}};
+    \begin{scope}[
+        x={($ (image.south east) - (image.south west) $)},
+        y={($ (image.north west) - (image.south west) $)}
+    ]
+        \coordinate (C) at (0.3, 0.1); 
+        \coordinate (D) at (0.585, 0.9); 
+        
+        \fill[yellow, opacity=0.2, draw=black, line width=1pt] (C) rectangle (D);
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+\caption{Ausschnitt aus dem Wort \enquote{Hallo} in der weiblichen Stimme}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+    \node[anchor=south west, inner sep=0] (image) at (0,0) 
+        {\fbox{\includegraphics[width=\textwidth]{Bilder/männlich_amp.png}}};
+    \begin{scope}[
+        x={($ (image.south east) - (image.south west) $)},
+        y={($ (image.north west) - (image.south west) $)}
+    ]
+        \coordinate (A) at (0.08, 0.1); 
+        \coordinate (B) at (0.57, 0.9);    
+        \fill[yellow, opacity=0.2, draw=black, line width=1pt] (A) rectangle (B);
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+\caption{Ausschnitt aus dem Wort \enquote{Hallo} in der männlichen Stimme}
+\end{figure}
+
 \section{Mehrdimensionale FFTs und die Anwendung an einem Röntgenbild}
 \subsection{Die mehrdimensionale Fouriertransformation}
 Bis jetzt habe ich die Fouriertransformation nur im eindimensionalen Raum betrachtet. Bedeutet: Ich habe eine nur aufeinanderfolgende Werte, 
@@ -1176,7 +1263,7 @@ Um die einzelnen Perioden zu erkennen, hilft hier dann auch die 2D-Fouriertransf
   \begin{minipage}{0.49\textwidth}
     \centering
     \includegraphics[width=\linewidth]{Bilder/moiré_fft.png}
-    \caption{Fouriertransformation des Moiré-Musters}
+    \caption{FFT des Moiré-Musters}
     \label{fig:bild2}
   \end{minipage}
 \end{figure}
@@ -1196,7 +1283,7 @@ Aufnahmepunkt die gleiche Dosis erhält. In der Realität sieht das Bauteil mit 
     \hspace{0.03\textwidth}%
     % Hochformat-Bild drehen, oben bündig
     \raisebox{0pt}[0pt][0pt]{\adjustbox{angle=90,width=0.62\textwidth}{\includegraphics{Bilder/Detektor.jpg}}}
-    \caption{Streustrahlenraster \quad \quad \quad \quad \quad \quad  Detektor mit Streustrahlenrastern (unten)}
+    \caption{Links: Streustrahlenraster; Rechts: Detektor mit Streustrahlenrastern (unten)}
 \end{figure}
 
 Stark vereinfacht kann man das im Modell wie folgt skizzieren:
@@ -1237,6 +1324,7 @@ Stark vereinfacht kann man das im Modell wie folgt skizzieren:
     \draw[green!70!black, thick, ->] (4.5,{\y+0.05}) -- (6,\yRaster);
 }
 \end{tikzpicture}
+\caption{Vereinfachtes Modell eines Röntgengeräts mit Streustrahlenraster und Detektor}
 \end{figure}
 
 Wenn die Streustrahlenraster nicht perfekt mit dem Detektor abgestimmt sind, dann erhält man eine Überlagerung von regelmäßigen Strukturen. 
@@ -1273,6 +1361,7 @@ Dadurch können Moiré Muster entstehen. Stark vereinfacht kann man sich das so 
 \draw[red, line width=0.8pt] (6.5,3) -- (7,3);
 \node[right] at (7,3) {Streustrahlenraster};
 \end{tikzpicture}
+\caption{Vereinfachte Darstellung eines Detektors mit schlecht ausgerichtetem Streustrahlenraster}
 \end{figure}
 
 
@@ -1340,16 +1429,16 @@ unten links nach oben rechts, zum Vorschein.
   \begin{minipage}{0.49\textwidth}
     \centering
     \includegraphics[width=\linewidth]{Bilder/original.png}
-    \caption{Aufgenommenes Röntgenbild}
+    % \caption{Aufgenommenes Röntgenbild}
     \label{fig:bild1}
   \end{minipage}
   \hfill
   \begin{minipage}{0.49\textwidth}
     \centering
     \includegraphics[width=\linewidth]{Bilder/original_zoomed.png}
-    \caption{Röntgenbild vergrößert}
     \label{fig:bild2}
   \end{minipage}
+  \caption{Aufgenommenes Röntgenbild (rechts vergrößert)}
 \end{figure}
 
 Mit dem Moiré-Muster, also den Strichen im Bild, ist dieses Röntgenbild für einen Arzt nicht zu gebrauchen. Da die Streifen in gleichmäßigen Abständen wiederkehren,
@@ -1358,6 +1447,7 @@ ist die Fouriertransformation eine gute Möglichkeit, diese Streifen vom restlic
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{Bilder/fft_original.png}
+\caption{Fourier-Transformation des Röntgenbildes}
 \end{figure}
 
 Die Fourier-Transformation sieht vorerst ungefähr so aus, wie man sie erwarten würde. In der Mitte das Kreuz, was daran liegt, dass die Frequenzachsen in der jeweiligen Mitte 
@@ -1370,6 +1460,7 @@ Punkte entfernt, indem ich den Bereich der Punkte mit dem bezüglich der X-Achse
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{Bilder/fft_edited.png}
+\caption{Bearbeitete Fourier-Transformation des Röntgenbildes}  
 \end{figure}
 
 Anschließend habe ich das bearbeitete Bild zurücktransformatiert und habe dieses Bild erhalten:
@@ -1379,19 +1470,22 @@ Anschließend habe ich das bearbeitete Bild zurücktransformatiert und habe dies
   \begin{minipage}{0.49\textwidth}
     \centering
     \includegraphics[width=\linewidth]{Bilder/edited.png}
-    \caption{Bearbeitetes Röntgenbild}
+    % \caption{Bearbeitetes Röntgenbild}
     \label{fig:bild1}
   \end{minipage}
   \hfill
   \begin{minipage}{0.49\textwidth}
     \centering
     \includegraphics[width=\linewidth]{Bilder/edited_zoomed.png}
-    \caption{Bearbeitetes Röntgenbild vergrößert}
     \label{fig:bild2}
   \end{minipage}
+  \caption{Bearbeitetes Röntgenbild (rechts vergrößert)}
 \end{figure}
         
 Beim hereingezoomten Bild erkennt man nun keine diagonalen Streifen mehr. 
+
+\section{Schlussbemerkung}
+\section{Danksagung}
 
 \section{Anhang}
         
