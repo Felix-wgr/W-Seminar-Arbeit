@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.27)  1 NOV 2025 13:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.27)  2 NOV 2025 16:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1291,156 +1291,170 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 1168--1169
 
 
 [22]
-<Bilder/weiblich_10.png, id=139, 1443.89438pt x 756.57657pt>
-File: Bilder/weiblich_10.png Graphic file (type png)
-<use Bilder/weiblich_10.png>
-Package pdftex.def Info: Bilder/weiblich_10.png  used on input line 1178.
-(pdftex.def)             Requested size: 455.24411pt x 238.54222pt.
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 1178--1179
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1171--1180
+Underfull \hbox (badness 10000) in paragraph at lines 1171--1177
 
  []
 
-<Bilder/männlich_10.png, id=140, 1444.64719pt x 760.34062pt>
-File: Bilder/männlich_10.png Graphic file (type png)
-<use Bilder/männlich_10.png>
-Package pdftex.def Info: Bilder/männlich_10.png  used on input line 1184.
-(pdftex.def)             Requested size: 455.24411pt x 239.60138pt.
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 1184--1185
- [][] 
- []
-
-
-
-[23 <./Bilder/Amplituden.png> <./Bilder/weiblich_10.png>]
-<Bilder/weiblich_amp.png, id=146, 1444.64719pt x 178.41656pt>
+<Bilder/weiblich_amp.png, id=139, 1444.64719pt x 178.41656pt>
 File: Bilder/weiblich_amp.png Graphic file (type png)
 <use Bilder/weiblich_amp.png>
-Package pdftex.def Info: Bilder/weiblich_amp.png  used on input line 1192.
+Package pdftex.def Info: Bilder/weiblich_amp.png  used on input line 1182.
 (pdftex.def)             Requested size: 455.24411pt x 56.22328pt.
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 1202--1203
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1192--1193
  [] 
  []
 
-<Bilder/männlich_amp.png, id=147, 1444.64719pt x 255.95625pt>
+<Bilder/männlich_amp.png, id=140, 1444.64719pt x 255.95625pt>
 File: Bilder/männlich_amp.png Graphic file (type png)
 <use Bilder/männlich_amp.png>
-Package pdftex.def Info: Bilder/männlich_amp.png  used on input line 1211.
+Package pdftex.def Info: Bilder/männlich_amp.png  used on input line 1201.
 (pdftex.def)             Requested size: 455.24411pt x 80.65788pt.
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 1220--1221
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1210--1211
  [] 
+ []
+
+<Bilder/weiblich_10.png, id=141, 1443.89438pt x 756.57657pt>
+File: Bilder/weiblich_10.png Graphic file (type png)
+<use Bilder/weiblich_10.png>
+Package pdftex.def Info: Bilder/weiblich_10.png  used on input line 1222.
+(pdftex.def)             Requested size: 455.24411pt x 238.54222pt.
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1222--1223
+ [][] 
  []
 
 
 
-[24 <./Bilder/männlich_10.png> <./Bilder/weiblich_amp.png> <./Bilder/männlich_amp.png>]
-<Bilder/moiré.png, id=154, 332.442pt x 333.1647pt>
-File: Bilder/moiré.png Graphic file (type png)
-<use Bilder/moiré.png>
-Package pdftex.def Info: Bilder/moiré.png  used on input line 1258.
-(pdftex.def)             Requested size: 223.07211pt x 223.5547pt.
-<Bilder/moiré_fft.png, id=155, 333.8874pt x 332.442pt>
-File: Bilder/moiré_fft.png Graphic file (type png)
-<use Bilder/moiré_fft.png>
-Package pdftex.def Info: Bilder/moiré_fft.png  used on input line 1265.
-(pdftex.def)             Requested size: 223.07211pt x 222.11104pt.
+[23 <./Bilder/Amplituden.png> <./Bilder/weiblich_amp.png> <./Bilder/männlich_amp.png>]
+<Bilder/männlich_10.png, id=148, 1444.64719pt x 760.34062pt>
+File: Bilder/männlich_10.png Graphic file (type png)
+<use Bilder/männlich_10.png>
+Package pdftex.def Info: Bilder/männlich_10.png  used on input line 1228.
+(pdftex.def)             Requested size: 455.24411pt x 239.60138pt.
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 1228--1229
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1232--1243
+
+ []
+
+
+
+[24 <./Bilder/weiblich_10.png> <./Bilder/männlich_10.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1245--1261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1245--1261
+
+ []
+
 
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 1271--1278
+<Bilder/moiré.png, id=158, 332.442pt x 333.1647pt>
+File: Bilder/moiré.png Graphic file (type png)
+<use Bilder/moiré.png>
+Package pdftex.def Info: Bilder/moiré.png  used on input line 1296.
+(pdftex.def)             Requested size: 223.07211pt x 223.5547pt.
+<Bilder/moiré_fft.png, id=159, 333.8874pt x 332.442pt>
+File: Bilder/moiré_fft.png Graphic file (type png)
+<use Bilder/moiré_fft.png>
+Package pdftex.def Info: Bilder/moiré_fft.png  used on input line 1303.
+(pdftex.def)             Requested size: 223.07211pt x 222.11104pt.
+
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 1309--1316
 
  []
 
-<Bilder/Raster.jpg, id=162, 310.15875pt x 308.65312pt>
+<Bilder/Raster.jpg, id=165, 310.15875pt x 308.65312pt>
 File: Bilder/Raster.jpg Graphic file (type jpg)
 <use Bilder/Raster.jpg>
-Package pdftex.def Info: Bilder/Raster.jpg  used on input line 1282.
+Package pdftex.def Info: Bilder/Raster.jpg  used on input line 1320.
 (pdftex.def)             Requested size: 136.57462pt x 135.91139pt.
-<Bilder/Detektor.jpg, id=163, 581.17125pt x 1204.5pt>
+<Bilder/Detektor.jpg, id=166, 581.17125pt x 1204.5pt>
 File: Bilder/Detektor.jpg Graphic file (type jpg)
 <use Bilder/Detektor.jpg>
-Package pdftex.def Info: Bilder/Detektor.jpg  used on input line 1285.
+Package pdftex.def Info: Bilder/Detektor.jpg  used on input line 1323.
 (pdftex.def)             Requested size: 581.16983pt x 1204.49707pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1289--1329
+Underfull \hbox (badness 10000) in paragraph at lines 1327--1367
 
  []
 
 
 
-[26 <./Bilder/moiré.png> <./Bilder/moiré_fft.png> <./Bilder/Raster.jpg> <./Bilder/Detektor.jpg>] (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+[27 <./Bilder/moiré.png> <./Bilder/moiré_fft.png> <./Bilder/Raster.jpg> <./Bilder/Detektor.jpg>] (C:\Users\fwage\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
-Underfull \hbox (badness 10000) in paragraph at lines 1391--1399
+Underfull \hbox (badness 10000) in paragraph at lines 1429--1437
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1391--1399
+Underfull \hbox (badness 10000) in paragraph at lines 1429--1437
 
  []
 
-
-
-[27]
-<Bilder/original.png, id=172, 542.025pt x 537.6888pt>
-File: Bilder/original.png Graphic file (type png)
-<use Bilder/original.png>
-Package pdftex.def Info: Bilder/original.png  used on input line 1431.
-(pdftex.def)             Requested size: 223.07211pt x 221.29068pt.
-<Bilder/original_zoomed.png, id=173, 535.5207pt x 536.2434pt>
-File: Bilder/original_zoomed.png Graphic file (type png)
-<use Bilder/original_zoomed.png>
-Package pdftex.def Info: Bilder/original_zoomed.png  used on input line 1438.
-(pdftex.def)             Requested size: 223.07211pt x 223.37146pt.
 
 
 [28]
-<Bilder/fft_original.png, id=177, 327.3831pt x 317.988pt>
+<Bilder/original.png, id=175, 542.025pt x 537.6888pt>
+File: Bilder/original.png Graphic file (type png)
+<use Bilder/original.png>
+Package pdftex.def Info: Bilder/original.png  used on input line 1469.
+(pdftex.def)             Requested size: 223.07211pt x 221.29068pt.
+<Bilder/original_zoomed.png, id=176, 535.5207pt x 536.2434pt>
+File: Bilder/original_zoomed.png Graphic file (type png)
+<use Bilder/original_zoomed.png>
+Package pdftex.def Info: Bilder/original_zoomed.png  used on input line 1476.
+(pdftex.def)             Requested size: 223.07211pt x 223.37146pt.
+
+
+[29]
+<Bilder/fft_original.png, id=180, 327.3831pt x 317.988pt>
 File: Bilder/fft_original.png Graphic file (type png)
 <use Bilder/fft_original.png>
-Package pdftex.def Info: Bilder/fft_original.png  used on input line 1449.
+Package pdftex.def Info: Bilder/fft_original.png  used on input line 1487.
 (pdftex.def)             Requested size: 273.14923pt x 265.3128pt.
 
 
-[29 <./Bilder/original.png> <./Bilder/original_zoomed.png> <./Bilder/fft_original.png>]
-<Bilder/fft_edited.png, id=184, 327.3831pt x 318.7107pt>
+[30 <./Bilder/original.png> <./Bilder/original_zoomed.png> <./Bilder/fft_original.png>]
+<Bilder/fft_edited.png, id=187, 327.3831pt x 318.7107pt>
 File: Bilder/fft_edited.png Graphic file (type png)
 <use Bilder/fft_edited.png>
-Package pdftex.def Info: Bilder/fft_edited.png  used on input line 1462.
+Package pdftex.def Info: Bilder/fft_edited.png  used on input line 1500.
 (pdftex.def)             Requested size: 273.14923pt x 265.91579pt.
-<Bilder/edited.png, id=185, 539.1342pt x 535.5207pt>
+<Bilder/edited.png, id=188, 539.1342pt x 535.5207pt>
 File: Bilder/edited.png Graphic file (type png)
 <use Bilder/edited.png>
-Package pdftex.def Info: Bilder/edited.png  used on input line 1472.
+Package pdftex.def Info: Bilder/edited.png  used on input line 1510.
 (pdftex.def)             Requested size: 223.07211pt x 221.57506pt.
-<Bilder/edited_zoomed.png, id=186, 539.1342pt x 537.6888pt>
+<Bilder/edited_zoomed.png, id=189, 539.1342pt x 537.6888pt>
 File: Bilder/edited_zoomed.png Graphic file (type png)
 <use Bilder/edited_zoomed.png>
-Package pdftex.def Info: Bilder/edited_zoomed.png  used on input line 1479.
+Package pdftex.def Info: Bilder/edited_zoomed.png  used on input line 1517.
 (pdftex.def)             Requested size: 223.07211pt x 222.47212pt.
 
 
-[30 <./Bilder/fft_edited.png>]
+[31 <./Bilder/fft_edited.png>]
 
-[31 <./Bilder/edited.png> <./Bilder/edited_zoomed.png>]
+[32 <./Bilder/edited.png> <./Bilder/edited_zoomed.png>]
 
-[32]
-Overfull \hbox (0.25424pt too wide) detected at line 1586
+[33]
+Overfull \hbox (0.25424pt too wide) detected at line 1624
 \OMS/lmsy/m/n/12 8\OML/lmm/m/it/12 y \OMS/lmsy/m/n/12 2 \OML/lmm/m/it/12 A  \OMS/lmsy/m/n/12 8\OML/lmm/m/it/12 " > \OT1/lmr/m/n/12 0  \OMS/lmsy/m/n/12 9\OML/lmm/m/it/12 ^^N[] > \OT1/lmr/m/n/12 0  []\OMS/lmsy/m/n/12 j\OML/lmm/m/it/12 x \OMS/lmsy/m/n/12 ^^@ \OML/lmm/m/it/12 y\OMS/lmsy/m/n/12 j \OML/lmm/m/it/12 < ^^N[] \OT1/lmr/m/n/12 : \OMS/lmsy/m/n/12 j\OML/lmm/m/it/12 f\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 x\OT1/lmr/m/n/12 ) \OMS/lmsy/m/n/12 ^^@ \OML/lmm/m/it/12 f\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 y\OT1/lmr/m/n/12 )\OMS/lmsy/m/n/12 j \OML/lmm/m/it/12 < []
  []
 
 
-
-[33]
 
 [34]
 
@@ -1448,7 +1462,9 @@ Overfull \hbox (0.25424pt too wide) detected at line 1586
 
 [36]
 
-[37] (main.aux)
+[37]
+
+[38] (main.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -1461,15 +1477,15 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  51055 strings out of 468130
  1279876 string characters out of 5430633
- 2281657 words of memory out of 5000000
+ 2281660 words of memory out of 5000000
  78904 multiletter control sequences out of 15000+600000
  714001 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  130i,20n,131p,1704b,2243s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/fwage/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (37 pages, 2303401 bytes).
+Output written on main.pdf (38 pages, 2307620 bytes).
 PDF statistics:
- 314 PDF objects out of 1000 (max. 8388607)
+ 317 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  252 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1172,18 +1172,8 @@ Dazu muss gesagt werden, dass solche Bilder immer abhängig von der Abtastrate i
 Fall sind es 44800 Messpunkte pro Sekunde. Dadurch zeigt das Bild einen Bruchteil einer Sekunde, wodurch die einzelnen Sinus- und Kosinuswellen sichtbar 
 werden. 
 \\\\
-Unabhängig davon sind das die Ergebnisser der Fourier-Transformationen der beiden Stimmen:
-\begin{figure}[H]
-  \centering
-  \fbox{\includegraphics[width=\linewidth]{Bilder/weiblich_10.png}}
-  \caption{Frequenzspektrum einer weiblichen Stimme}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \fbox{\includegraphics[width=\linewidth]{Bilder/männlich_10.png}}
-  \caption{Frequenzspektrum einer männlichen Stimme}
-\end{figure}
+Bei der Aufnahme der Stimmen wurde jeweils der gleiche Text gesprochen, wodurch man die Unterschiede zwischen den Stimmen gut erkennen kann. Zuerst zeige 
+ich die beiden Amplituden-Diagramme der Stimmen, wobei ich jeweils einen Ausschnitt des Wortes \enquote{Hallo} aufgenommen habe.
 
 \begin{figure}[H]
 \begin{center}
@@ -1221,6 +1211,54 @@ Unabhängig davon sind das die Ergebnisser der Fourier-Transformationen der beid
 \end{center}
 \caption{Ausschnitt aus dem Wort \enquote{Hallo} in der männlichen Stimme}
 \end{figure}
+
+Die beiden Diagramme zeigen auf den ersten Blick deutliche Unterschiede, doch bei genauerer Betrachtung erkennt man auch Gemeinsamkeiten. Denn beide 
+Stimmen weisen ein ähnliches Muster auf, welches ich gelb markiert habe. Zwar stimmen die genauen Tonhöhen nicht perfekt überein, aber die Struktur 
+ist ähnlich, mit dem Unterschied, dass dieses Muster bei der männlichen Stimme über einen längeren Zeitraum andauert. Das weißt darauf hin, dass die 
+männliche Stimme aus kleineren Frequenzen besteht und somit tiefier klingt. Die Fourier-Transformationen beider Aufnahmen bestätigen diesen Eindruck. 
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=\linewidth]{Bilder/weiblich_10.png}}
+  \caption{Frequenzspektrum einer weiblichen Stimme}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=\linewidth]{Bilder/männlich_10.png}}
+  \caption{Frequenzspektrum einer männlichen Stimme}
+\end{figure}
+
+Anhand der beiden Frequenzspektren, oben das einer Frau, unten das eines Mannes, lassen sich nun mehrere Charakteristiken der Stimmen erkennen. Zuerst fällt auf, 
+dass die Grundfrequenz, also die tiefste Frequenz in einem Gemisch harmonischer Frequenzen, bei der männlichen Stimme $(\sim 98,5 \text{Hz})$ deutlich niedriger 
+ist als die der weiblichen Stimme $(\sim 173 \text{Hz})$. Bei beiden Stimmen ist auffällig, dass bei vielfachen Frequenzen der Grundfrequenz erneut starke 
+Ausschläge auftreten. Sie werden als Obertöne bezeichnet und tragen maßgeblich zum Klangcharakter einer Stimme bei. Dadurch, dass die Grundfrequenz der männlichen 
+Stimme niedriger ist, liegen auch die Obertöne in einem tieferen Frequenzbereich und umgekehrt bei Frauen. Die Dominaz der Obertöne bestimmt den Klang der Stimme. 
+Die Höhe der Berge der Obertöne im Frequenzspektum anzupassen, entspricht einer Kompetenz eines Sängers oder einer Sängerin und dient dazu die Klangfarbe zu verändern. 
+\\\\
+Abgesehen von den Stimmen, sind auch ein paar Störgeräusche im Frequenzspektrum enthalten. Beispielsweise ist bei beiden Aufnahmen ein Rauschen wahrzunehmen, 
+denn es ist zu erwarten, dass bei Frequenzen unter 50 Hz keine nennenswerten Anteile in einer menschlichen Stimme vorkommen. Dieses Rauschen kann durch 
+Umgebungsgeräusche oder durch das Mikrofon selbst entstehen. Bei der Aufnahme der weiblichen Stimme wurde zudem eine dominate Frequenz bei ungefähr 23,5 kHz 
+entdeckt, welche vermutlich durch elektronische Störquellen verursacht wurde. 
+
+\subsection{Ausblick und Erweiterungsmöglichkeiten}
+Das von mir entwickelte Programm, bildet nur eine Anwendungsmöglichkeit der Fourier-Transformation ab. Es gibt jedoch zahlreiche Möglichkeiten mein Programm 
+zu erweitern und weitere Anwendungsbereiche zu erschließen. Ein möglicher nächster Schritt wäre es, das Programm mit einer einfachen künstlichen Intelligenz 
+zu verbinden. Mein Ansatz für eine sehr einfache KI wäre es, die dominatesten Frequenzen einer Aufnahme in einem mehrdimensionalen Punkt eines Koordinatensystems 
+zu speichern. Wenn man festlegt, wie viele Werte man speichert, erhält man einen Punkt mit einer festen Anzahl an Koordinaten. Dadurch ist es möglich die Distanz 
+zwischen zwei Punkten mithilfe des Betrags des Differenzenvektors dieser Punkte zu berechnen. Mit dieser Methode lassen sich Aufnahmen mathematisch speichern 
+und anschließend mit anderen Aufnahmen vergleichen. Wenn man mehrere Aufnahmen gespeichert hat, kann man so einer neuen Aufnahme die ähnlichste Aufnahme zuordnen. 
+Somit könnte man beispielsweise eine Stimmerkennung implementieren, welche die Stimme einer Person erkennt, indem der Algorithmus nur überprüft, welche schon 
+gespeicherte Stimme der neuen am ähnlichsten ist. Hierdurch ist dieses einefache KI-Modell auch trainierbar, indem man einfach neue Stimmen hinzufügt und so 
+die Ähnlichkeitsvergleiche verbessert. 
+\\\\
+Je nach Anwendungsbereich könnte man so verschiedene Arten von Audiosignalen der KI füttern. Dadurch könnte man abgesehen von Stimmerkennungssystemen auch 
+Musikerkennungssoftware, ähnlich wie beispielsweise Shazam, Systeme zur Erkennung von Maschinengeräuschen, um Fehler frühzeitig zu erkennen, oder auch ein 
+einfaches Stimmgerät für Musikinstrumente erstellen. 
+\\\\
+Abgesehen davon ist eine weitere interessante Erweiterungsmöglichkeit die Dimensionen der Fourier-Transformation selbst zu erhöhen. Wodurch der Algorithmus 
+auch zum Beispiel auf Bilder oder Räume angewendet werden kann. Diesen Aspekt werde ich im nächsten Abschnitt genauer erläutern.
+
 
 \section{Mehrdimensionale FFTs und die Anwendung an einem Röntgenbild}
 \subsection{Die mehrdimensionale Fouriertransformation}
